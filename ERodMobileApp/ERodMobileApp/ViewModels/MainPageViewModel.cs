@@ -15,5 +15,15 @@ namespace ERodMobileApp.ViewModels
         {
             Title = "Main Page";
         }
+
+        public override void OnNavigatedFrom(INavigationParameters parameters)
+        {
+
+        }
+
+        public override void OnNavigatedTo(INavigationParameters parameters)
+        {
+
+        }
     }
 }
