@@ -1,0 +1,156 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="http://prismlibrary.com" xmlns:Custom="clr-namespace:ERodMobileApp.CustomRenderers" xmlns:Converter="clr-namespace:ERodMobileApp.Converters"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="ERodMobileApp.Views.LoginPage"
+             NavigationPage.HasNavigationBar="False">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Converter:InverseBoolConverter x:Key="InverseBoolConverter"></Converter:InverseBoolConverter>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout Margin="0,20,0,0">
+            <ContentView IsVisible="{Binding LoginIsVisible}">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1.8*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="2*"/>
+                        <RowDefinition Height="3*"/>
+                        <RowDefinition Height="1.7*"/>
+                        <RowDefinition Height="5*"/>
+                        <RowDefinition Height="2*"/>
+                        <RowDefinition Height="2*"/>
+                    </Grid.RowDefinitions>
+                    <Image Grid.Row="0" Source="RodLogo.png"/>
+                    <Image Grid.Row="1" Source="Profile.png" Aspect="AspectFit"/>
+                    <Label Grid.Row="2" Text="User Profile Found!" TextColor="#404040" FontSize="18" HorizontalTextAlignment="Center"/>
+                    <Label Grid.Row="3" Text="{Binding UserName}" TextColor="#404040" FontSize="28" FontAttributes="Bold"
+                       VerticalOptions="End" HorizontalTextAlignment="Center"/>
+                    <StackLayout Grid.Row="4" HorizontalOptions="FillAndExpand" Margin="45,0,35,20">
+                        <StackLayout Orientation="Horizontal">
+                            <Image Source="Company.png" HeightRequest="25" WidthRequest="25"/>
+                            <Label Text="{Binding Company}" TextColor="#404040" FontSize="20"/>
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal">
+                            <Image Source="Phone.png" HeightRequest="25" WidthRequest="25"/>
+                            <Label Text="{Binding MobileNumber}" TextColor="#404040" FontSize="20"/>
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal">
+                            <Image Source="Email.png" HeightRequest="25" WidthRequest="25"/>
+                            <Label Text="{Binding Email}" TextColor="#404040" FontSize="20"/>
+                        </StackLayout>
+                    </StackLayout>
+                    <Label Text="NOTIFICATION PREFERENCES" Grid.Row="5" TextColor="#FF6600" FontSize="20" Margin="45,0,35,0"
+                       VerticalOptions="End"/>
+                    <StackLayout Grid.Row="6" Margin="45,0,35,0">
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="Emails Notifications" FontSize="18" TextColor="#000000" HorizontalOptions="StartAndExpand"/>
+                            <Switch IsToggled="{Binding EmailNotification}" OnColor="#0C752a" ThumbColor="#f2f2f2" HorizontalOptions="End"/>
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal" Margin="0,0,0,10">
+                            <Label Text="SMS Notifications" FontSize="18" TextColor="#000000" HorizontalOptions="StartAndExpand"/>
+                            <Switch IsToggled="{Binding SmsNotification}" OnColor="#0C752a" ThumbColor="#f2f2f2" HorizontalOptions="End"/>
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="Order Status Change" FontSize="18" TextColor="#000000" HorizontalOptions="StartAndExpand"/>
+                            <Switch IsToggled="{Binding OrderStatusChange}" OnColor="#0C752a" ThumbColor="#f2f2f2" HorizontalOptions="End"/>
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="Shipping Notification" FontSize="18" TextColor="#000000" HorizontalOptions="StartAndExpand"/>
+                            <Switch IsToggled="{Binding ShippingNotification}" OnColor="#0C752a" ThumbColor="#f2f2f2" HorizontalOptions="End"/>
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="Signature Reminder" FontSize="18" TextColor="#000000" HorizontalOptions="StartAndExpand"/>
+                            <Switch IsToggled="{Binding SignReminder}" OnColor="#0C752a" ThumbColor="#f2f2f2" HorizontalOptions="End"/>
+                        </StackLayout>
+                    </StackLayout>
+                    <StackLayout Grid.Row="7" Margin="30,15,25,8" HorizontalOptions="FillAndExpand" VerticalOptions="End">
+                        <StackLayout  Orientation="Horizontal">
+                            <CheckBox IsChecked="{Binding IsAgree}" Color="Gray" Margin="0,0,4,0" HeightRequest="35" WidthRequest="35"/>
+                            <Label Text="I agree with the" FontSize="16" VerticalOptions="Center" TextColor="#000000"/>
+                            <Label Text="Terms &amp; Conditions" TextColor="#ff6600" FontAttributes="italic" FontSize="16"
+                           VerticalOptions="Center"/>
+                        </StackLayout>
+                    </StackLayout>
+                    <Button Text="DONE" Grid.Row="8" TextColor="White" Command="{Binding DoneButtonCommand}"
+                            BackgroundColor="#FF6600" WidthRequest="200" HeightRequest="40" HorizontalOptions="CenterAndExpand" 
+                            VerticalOptions="Start" CornerRadius="3"/>
+                </Grid>
+            </ContentView>
+            <ContentView IsVisible="{Binding ActivationCodePageIsVisible}">
+                <Grid Margin="45,30,40,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1.5*"/>
+                        <RowDefinition Height="1.5*"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="4*"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="2*"/>
+                        <RowDefinition Height="2*"/>
+                    </Grid.RowDefinitions>
+                    <Image Grid.Row="0" Source="RodLogo.png" Aspect="AspectFit" VerticalOptions="Start"/>
+                    <Image Grid.Row="1" Source="vector.png" Aspect="AspectFit" VerticalOptions="End"/>
+                    <Label Grid.Row="2" Text="PROFILE NOT FOUND" HorizontalTextAlignment="Center" TextColor="#828282" FontSize="22"/>
+                    <Label Grid.Row="3" Text="Phone number on this device 713-987-6543 does not match any of our customer profile.  Please contact your Exceed represetative to create a profile for you. If you have received an activation code, please enter below. "
+                       HorizontalTextAlignment="Start" TextColor="Black" FontSize="18" HorizontalOptions="StartAndExpand"
+                       VerticalOptions="CenterAndExpand"/>
+                    <Label Grid.Row="4" Text="ACTIVATION CODE" HorizontalTextAlignment="Center" TextColor="#FF6600" FontSize="20"/>
+                    <StackLayout Grid.Row="5" Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Start">
+                        <Frame Padding="0,3,0,3" HasShadow="False" Grid.Column="3"  Grid.Row="1" OutlineColor="#C4C4C4" 
+                           HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="#F2F2F2" 
+                           CornerRadius="2" WidthRequest="30" HeightRequest="40">
+                            <Custom:XEntry Text="{Binding Text1}" WidthRequest="28" MaxLength="1" FontSize="20" 
+                              HorizontalOptions="Center" HorizontalTextAlignment="Center" Keyboard="Numeric" Margin="3,0,3,0"
+                                       x:Name="Entry_one" TextColor="#434e5e" RemovePadding="True" TextChanged="Entry_one_TextChanged"/>
+                        </Frame>
+                        <Frame Padding="0,3,0,3" HasShadow="False" Grid.Column="3"  Grid.Row="1" OutlineColor="#C4C4C4" 
+                           HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="#F2F2F2" 
+                           CornerRadius="2" WidthRequest="30" HeightRequest="40">
+                            <Custom:XEntry Text="{Binding Text2}" WidthRequest="28" MaxLength="1" FontSize="20" Margin="3,0,3,0"
+                                        HorizontalOptions="Center" HorizontalTextAlignment="Center"  Keyboard="Numeric"
+                                       x:Name="Entry_two" TextColor="#434e5e" RemovePadding="True" TextChanged="Entry_two_TextChanged"/>
+                        </Frame>
+                        <Frame Padding="0,3,0,3" HasShadow="False" Grid.Column="3"  Grid.Row="1" OutlineColor="#C4C4C4" 
+                           HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="#F2F2F2" 
+                           CornerRadius="2" WidthRequest="30" HeightRequest="40">
+                            <Custom:XEntry Text="{Binding Text3}" WidthRequest="28" MaxLength="1" FontSize="20" Margin="3,0,3,0"
+                                        HorizontalOptions="Center" HorizontalTextAlignment="Center" Keyboard="Numeric"
+                                       x:Name="Entry_three" TextColor="#434e5e" RemovePadding="True" TextChanged="Entry_three_TextChanged"/>
+                        </Frame>
+                        <Frame Padding="0,3,0,3" HasShadow="False" Grid.Column="3"  Grid.Row="1" OutlineColor="#C4C4C4" 
+                           HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="#F2F2F2" 
+                           CornerRadius="2" Margin="15,0,0,0" WidthRequest="30" HeightRequest="40">
+                            <Custom:XEntry Text="{Binding Text4}" WidthRequest="28" MaxLength="1" FontSize="20" Margin="3,0,3,0"
+                                        HorizontalOptions="Center" HorizontalTextAlignment="Center"  Keyboard="Numeric" 
+                                       x:Name="Entry_four" TextColor="#434e5e" RemovePadding="True" TextChanged="Entry_four_TextChanged"/>
+                        </Frame>
+                        <Frame Padding="0,3,0,3" HasShadow="False" Grid.Column="3"  Grid.Row="1" OutlineColor="#C4C4C4" 
+                           HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="#F2F2F2" 
+                           CornerRadius="2" WidthRequest="30" HeightRequest="40">
+                            <Custom:XEntry Text="{Binding Text5}" WidthRequest="28" MaxLength="1" FontSize="20" Margin="3,0,3,0"
+                                        HorizontalOptions="Center" HorizontalTextAlignment="Center"  Keyboard="Numeric" 
+                                       x:Name="Entry_five" TextColor="#434e5e" RemovePadding="True" TextChanged="Entry_five_TextChanged"/>
+                        </Frame>
+                        <Frame Padding="0,3,0,3" HasShadow="False" Grid.Column="3"  Grid.Row="1" OutlineColor="#C4C4C4" 
+                           HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="#F2F2F2" 
+                           CornerRadius="2" WidthRequest="30" HeightRequest="40">
+                            <Custom:XEntry Text="{Binding Text6}" WidthRequest="28" MaxLength="1" FontSize="20" Margin="3,0,3,0"
+                                        HorizontalOptions="Center" HorizontalTextAlignment="Center"  Keyboard="Numeric"
+                                       x:Name="Entry_six" TextColor="#434e5e" RemovePadding="True" TextChanged="Entry_six_TextChanged"/>
+                        </Frame>
+                    </StackLayout>
+                    <Button x:Name="exit_btn" Grid.Row="6" Text="EXIT" HorizontalOptions="CenterAndExpand" BackgroundColor="#404040" 
+                        TextColor="White" VerticalOptions="Start" IsVisible="{Binding ExitBtnIsVisible}"
+                        HeightRequest="45" WidthRequest="200" CornerRadius="3" FontSize="18" Clicked="Exit_btn_Clicked"/>
+                    <Button x:Name="next_btn" Grid.Row="6" Text="NEXT" HorizontalOptions="CenterAndExpand" BackgroundColor="#ff6600" 
+                        TextColor="White" VerticalOptions="Start" IsVisible="{Binding ExitBtnIsVisible, Converter={StaticResource InverseBoolConverter}}"
+                        HeightRequest="45" WidthRequest="200" CornerRadius="3" FontSize="18" Clicked="LoginWithActivationCode_Clicked"/>
+                </Grid>
+            </ContentView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
