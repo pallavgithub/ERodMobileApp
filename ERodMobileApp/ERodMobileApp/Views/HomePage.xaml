@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:UserControl="clr-namespace:ERodMobileApp.Views" xmlns:Converter="clr-namespace:ERodMobileApp.Converters"
+             x:Class="ERodMobileApp.Views.HomePage"
+             NavigationPage.HasNavigationBar="False">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Converter:InverseBoolConverter x:Key="InverseBoolConverter"></Converter:InverseBoolConverter>
+            <Converter:TabVisibilityConverter x:Key="TabVisibilityConverter"></Converter:TabVisibilityConverter>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="600*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <StackLayout Grid.Row="0" VerticalOptions="FillAndExpand">
+                    <UserControl:ProfileUserControl/>
+                </StackLayout>
+                <Frame Grid.Row="1" VerticalOptions="End" HeightRequest="50" Padding="0,3,0,3" BackgroundColor="#F0FBFF">
+                    <StackLayout Orientation="Horizontal" Spacing="0">
+                        <Grid HorizontalOptions="FillAndExpand" HeightRequest="48" WidthRequest="48">
+                            <Image Source="Profileon" IsVisible="{Binding TabData, Converter={StaticResource TabVisibilityConverter}, ConverterParameter=Profile}"/>
+                            <Image Source="Profileoff" IsVisible="False"/>
+                            <Grid.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding GoToProfileCommand}"/>
+                            </Grid.GestureRecognizers>
+                        </Grid>
+                        <Grid HorizontalOptions="FillAndExpand" HeightRequest="48" WidthRequest="48">
+                            <Image Source="Orderon" IsVisible="{Binding TabData, Converter={StaticResource TabVisibilityConverter}, ConverterParameter=Orders}"/>
+                            <Image Source="Orderoff"/>
+                            <Grid.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding GoToOrdersCommand}"/>
+                            </Grid.GestureRecognizers>
+                        </Grid>
+                        <Grid HorizontalOptions="FillAndExpand" HeightRequest="48" WidthRequest="48">
+                            <Image Source="NewOrderOn" IsVisible="{Binding TabData, Converter={StaticResource TabVisibilityConverter}, ConverterParameter=NewOrder}"/>
+                            <Image Source="NewOrderOf" IsVisible="True"/>
+                            <Grid.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding GoToNewOrderCommand}"/>
+                            </Grid.GestureRecognizers>
+                        </Grid>
+                        <Grid HorizontalOptions="FillAndExpand" HeightRequest="48" WidthRequest="48">
+                            <Image Source="Bellon" IsVisible="{Binding TabData, Converter={StaticResource TabVisibilityConverter}, ConverterParameter=Notification}"/>
+                            <Image Source="Belloff" IsVisible="True"/>
+                            <Grid.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding GoToNotificationCommand}"/>
+                            </Grid.GestureRecognizers>
+                        </Grid>
+                    </StackLayout>
+                </Frame>
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
