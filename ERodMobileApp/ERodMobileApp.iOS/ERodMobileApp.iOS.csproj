@@ -105,7 +105,6 @@
     <AppExtensionDebugBundleId />
   </PropertyGroup>
   <ItemGroup>
-  <ItemGroup>
     <Compile Include="CustomRenderers\MessageIOS.cs" />
     <Compile Include="CustomRenderers\XEntryRenderer.cs" />
     <Compile Include="Main.cs" />
