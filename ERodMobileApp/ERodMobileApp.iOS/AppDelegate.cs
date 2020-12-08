@@ -1,8 +1,9 @@
-﻿using Foundation;
+﻿using ERodMobileApp.iOS.CustomRenderers;
+using Foundation;
 using Prism;
 using Prism.Ioc;
 using UIKit;
-
+using Xamarin.Forms;
 
 namespace ERodMobileApp.iOS
 {
@@ -22,6 +23,8 @@ namespace ERodMobileApp.iOS
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
             global::Xamarin.Forms.Forms.Init();
+            DependencyService.Register<MessageIOS>();
+
             LoadApplication(new App(new iOSInitializer()));
 
             return base.FinishedLaunching(app, options);

@@ -16,6 +16,12 @@ namespace ERodMobileApp.ViewModels
             get => _mobileNumber;
             set => SetProperty(ref _mobileNumber, value);
         }
+        private string _phone;
+        public string Phone
+        {
+            get => _phone;
+            set => SetProperty(ref _phone, value);
+        }
         private string _activationCode;
         public string ActivationCode
         {
@@ -27,6 +33,12 @@ namespace ERodMobileApp.ViewModels
         {
             get => _loginIsVisible;
             set => SetProperty(ref _loginIsVisible, value);
+        }
+        public bool _enterMobilePageIsVisible;
+        public bool EnterMobilePageIsVisible
+        {
+            get => _enterMobilePageIsVisible;
+            set => SetProperty(ref _enterMobilePageIsVisible, value);
         }
         public bool _activationCodePageIsVisible;
         public bool ActivationCodePageIsVisible
@@ -138,35 +150,55 @@ namespace ERodMobileApp.ViewModels
         }
         public DelegateCommand DoneButtonCommand { get; set; }
         public UserModel User { get; set; }
+        public UserNotificationModel UserNotifications { get; set; }
         public LoginPageViewModel(INavigationService navigationService) : base(navigationService)
         {
+            EnterMobilePageIsVisible = true;
             User = new UserModel();
             DoneButtonCommand = new DelegateCommand(DoneButtonClicked);
-            LoginWithMobileNumber();
+            //LoginWithMobileNumber();
         }
         public async Task LoginWithMobileNumber()
         {
-            string Mobile = "281-781-6334";
-           
-            ResponseModel<UserModel> response = await new ApiData().PostData<UserModel>("api/account/Login?MobileNumber=" + Mobile, true);
-            if (response != null && response.data != null)
+            var Toast = DependencyService.Get<IMessage>();
+            if (string.IsNullOrEmpty(Phone))
             {
-                ExitBtnIsVisible = true;
-                LoginIsVisible = true;
-                User = response.data;
-                UserName = User.Name;
-                MobileNumber = User.PhoneNumber;
-                Company = User.Company;
-                Email = User.Email;
-                EmailNotification = User.EmailNotification;
-                SmsNotification = User.SMSNotification;
-                OrderStatusChange = User.StatusChangeNotification;
-                ShippingNotification = User.ShippingNotification;
-                SignReminder = User.SignatureReminder;
+                Toast.LongAlert("Please fill Mobile Number");
+                return;
+            }
+            if (IsBusy)
+            {
+                return;
             }
             else
             {
-                ActivationCodePageIsVisible = true;
+                IsBusy = true;
+                //string Mobile = "281-781-6334";
+
+                ResponseModel<UserModel> response = await new ApiData().PostData<UserModel>("api/account/Login?MobileNumber=" + Phone, true);
+                if (response != null && response.data != null)
+                {
+                    ExitBtnIsVisible = true;
+                    EnterMobilePageIsVisible = false;
+                    LoginIsVisible = true;
+                    User = response.data;
+                    UserName = User.Name;
+                    MobileNumber = User.PhoneNumber;
+                    Company = User.Company;
+                    Email = User.Email;
+                    EmailNotification = User.EmailNotification;
+                    SmsNotification = User.SMSNotification;
+                    OrderStatusChange = User.StatusChangeNotification;
+                    ShippingNotification = User.ShippingNotification;
+                    SignReminder = User.SignatureReminder;
+                }
+                else
+                {
+                    LoginIsVisible = false;
+                    EnterMobilePageIsVisible = false;
+                    ActivationCodePageIsVisible = true;
+                }
+                IsBusy = false;
             }
         }
         public async Task LoginWithActivationCode()
@@ -175,8 +207,8 @@ namespace ERodMobileApp.ViewModels
             if (!string.IsNullOrEmpty(Text1) && !string.IsNullOrEmpty(Text2) && !string.IsNullOrEmpty(Text3) && !string.IsNullOrEmpty(Text4) && !string.IsNullOrEmpty(Text5) && !string.IsNullOrEmpty(Text6))
             {
                 ActivationCode = Text1 + Text2 + Text3 + Text4 + Text5 + Text6;
-                string _activationCode = "411226";
-                ResponseModel<UserModel> response = await new ApiData().PostData<UserModel>("api/account/Login?ActivationCode=" + _activationCode, true);
+                // string _activationCode = "411226";
+                ResponseModel<UserModel> response = await new ApiData().PostData<UserModel>("api/account/Login?ActivationCode=" + ActivationCode, true);
                 if (response != null && response.data != null)
                 {
                     LoginIsVisible = true;
@@ -203,17 +235,48 @@ namespace ERodMobileApp.ViewModels
                 Toast.LongAlert("Please fill activation code.");
             }
         }
+        public async Task UpdateUserNotification()
+        {
+            var updatedNotifications = new UserNotificationModel()
+            {
+                EmailNotification = EmailNotification,
+                AppNotification = true,
+                SMSNotification = SmsNotification,
+                StatusChangeNotification = OrderStatusChange,
+                ShippingNotification = ShippingNotification,
+                SignatureReminder = SignReminder,
+                PhoneNumber = MobileNumber
+            };
+            var response = await new ApiData().PostData<string>("api/account/UpdateNotification", updatedNotifications, true);
+            if (response != null)
+            {
+                UserNotifications = updatedNotifications;
+            }
+        }
         public void DoneButtonClicked()
         {
             var Toast = DependencyService.Get<IMessage>();
             if (IsAgree)
             {
+                Application.Current.Properties["User"] = User;
+                Application.Current.Properties["UserNotifications"] = UserNotifications;
+                Application.Current.SavePropertiesAsync();
+
                 NavigationService.NavigateAsync("HomePage");
             }
             else
             {
                 Toast.LongAlert("Please check Terms and Conditions");
             }
+        }
+        public bool ExitApp()
+        {
+            Device.BeginInvokeOnMainThread(() =>
+            {
+                var closer = DependencyService.Get<IExitApp>();
+                closer?.closeApplication();
+            });
+            return true;
         }
     }
 }

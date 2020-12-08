@@ -22,10 +22,10 @@
                 <Frame Grid.Row="1" VerticalOptions="End" HeightRequest="50" Padding="0,3,0,3" BackgroundColor="#F0FBFF">
                     <StackLayout Orientation="Horizontal" Spacing="0">
                         <Grid HorizontalOptions="FillAndExpand" HeightRequest="48" WidthRequest="48">
-                            <Image Source="Profileon" IsVisible="{Binding TabData, Converter={StaticResource TabVisibilityConverter}, ConverterParameter=Profile}"/>
-                            <Image Source="Profileoff" IsVisible="False"/>
+                            <Image Source="Profileon" IsVisible="true"/>
+                            <Image Source="Profileoff" IsVisible="false"/>
                             <Grid.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding GoToProfileCommand}"/>
+                                <TapGestureRecognizer Command="{Binding GoToProfileCommand, ConverterParameter=Profile}"/>
                             </Grid.GestureRecognizers>
                         </Grid>
                         <Grid HorizontalOptions="FillAndExpand" HeightRequest="48" WidthRequest="48">

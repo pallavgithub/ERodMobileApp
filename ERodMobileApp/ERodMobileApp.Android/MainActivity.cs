@@ -1,6 +1,7 @@
 ﻿using Android.App;
 using Android.Content.PM;
 using Android.OS;
+using ERodMobileApp.Droid.CustomRenderers;
 using Prism;
 using Prism.Ioc;
 
@@ -16,6 +17,7 @@ namespace ERodMobileApp.Droid
             ToolbarResource = Resource.Layout.Toolbar;
 
             base.OnCreate(savedInstanceState);
+            Xamarin.Forms.DependencyService.Register<MessageAndroid>();
 
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             LoadApplication(new App(new AndroidInitializer()));

@@ -1,12 +1,6 @@
 ﻿using ERodMobileApp.ViewModels;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using Xamarin.Forms;
-using Xamarin.Forms.PlatformConfiguration;
 using Xamarin.Forms.Xaml;
 
 namespace ERodMobileApp.Views
@@ -19,10 +13,13 @@ namespace ERodMobileApp.Views
             InitializeComponent();
             (BindingContext as LoginPageViewModel).ExitBtnIsVisible = true;
         }
-
         private async void LoginWithActivationCode_Clicked(object sender, EventArgs e)
         {
             await (BindingContext as LoginPageViewModel).LoginWithActivationCode();
+        }
+        private async void LoginWithMobileNumber_Clicked(object sender, EventArgs e)
+        {
+            await (BindingContext as LoginPageViewModel).LoginWithMobileNumber();
         }
         private void Entry_one_TextChanged(object sender, TextChangedEventArgs e)
         {
@@ -68,7 +65,6 @@ namespace ERodMobileApp.Views
                 Entry_five.Focus();
             }
         }
-
         private void Entry_five_TextChanged(object sender, TextChangedEventArgs e)
         {
             if (string.IsNullOrEmpty(Entry_five.Text))
@@ -91,9 +87,13 @@ namespace ERodMobileApp.Views
                 (BindingContext as LoginPageViewModel).ExitBtnIsVisible = false;
             }
         }
-
         private void Exit_btn_Clicked(object sender, EventArgs e)
         {
+            (BindingContext as LoginPageViewModel).ExitApp();
+        }
+        private void Notification_Toggled(object sender, ToggledEventArgs e)
+        {
+            (BindingContext as LoginPageViewModel).UpdateUserNotification();
         }
     }
 }

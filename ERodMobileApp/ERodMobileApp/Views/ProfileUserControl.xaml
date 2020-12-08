@@ -1,7 +1,9 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="ERodMobileApp.Views.ProfileUserControl">
+             x:Class="ERodMobileApp.Views.ProfileUserControl"
+             xmlns:prism="http://prismlibrary.com" 
+             prism:ViewModelLocator.AutowireViewModel="True">
   <ContentView.Content>
       <StackLayout VerticalOptions="FillAndExpand" Margin="0,20,0,0">
             <Grid VerticalOptions="FillAndExpand">
@@ -16,20 +18,20 @@
                 <Image Grid.Row="0" Source="RodLogo.png"/>
                 <Image Grid.Row="1" Source="Profile.png" VerticalOptions="Center" Margin="0,20,0,0"
                        />
-                <Label Grid.Row="2" Text="John Doe" TextColor="#404040" FontSize="28" FontAttributes="Bold"
+                <Label Grid.Row="2" Text="{Binding UserName}" TextColor="#404040" FontSize="28" FontAttributes="Bold"
                        VerticalOptions="End" HorizontalTextAlignment="Center"/>
                 <StackLayout Grid.Row="3" HorizontalOptions="FillAndExpand" Margin="40,10,35,15">
                     <StackLayout Orientation="Horizontal">
                         <Image Source="Company.png" HeightRequest="25" WidthRequest="25"/>
-                        <Label Text="ABC Natural Resources" TextColor="#404040" FontSize="20"/>
+                        <Label Text="{Binding Company}" TextColor="#404040" FontSize="20"/>
                     </StackLayout>
                     <StackLayout Orientation="Horizontal">
                         <Image Source="Phone.png" HeightRequest="25" WidthRequest="25"/>
-                        <Label Text="123-123-1234" TextColor="#404040" FontSize="20"/>
+                        <Label Text="{Binding MobileNumber}" TextColor="#404040" FontSize="20"/>
                     </StackLayout>
                     <StackLayout Orientation="Horizontal">
                         <Image Source="Email.png" HeightRequest="25" WidthRequest="25"/>
-                        <Label Text="john.doe@gmail.com" TextColor="#404040" FontSize="20"/>
+                        <Label Text="{Binding Email}" TextColor="#404040" FontSize="20"/>
                     </StackLayout>
                 </StackLayout>
                 <Label Text="NOTIFICATION PREFERENCES" Grid.Row="4" TextColor="#FF6600" FontSize="20" Margin="40,0,35,0"
@@ -37,23 +39,23 @@
                 <StackLayout Grid.Row="5" Margin="40,0,35,0">
                     <StackLayout Orientation="Horizontal">
                         <Label Text="Emails Notifications" FontSize="18" TextColor="#000000" HorizontalOptions="StartAndExpand"/>
-                        <Switch IsToggled="True" OnColor="#0C752a" ThumbColor="#f2f2f2" HorizontalOptions="End"/>
+                        <Switch IsToggled="{Binding EmailNotification}" IsEnabled="False" OnColor="#0C752a" ThumbColor="#f2f2f2" HorizontalOptions="End"/>
                     </StackLayout>
                     <StackLayout Orientation="Horizontal" Margin="0,0,0,10">
                         <Label Text="SMS Notifications" FontSize="18" TextColor="#000000" HorizontalOptions="StartAndExpand"/>
-                        <Switch IsToggled="false" OnColor="#0C752a" ThumbColor="#f2f2f2" HorizontalOptions="End"/>
+                        <Switch IsToggled="{Binding SmsNotification}" IsEnabled="False" OnColor="#0C752a" ThumbColor="#f2f2f2" HorizontalOptions="End"/>
                     </StackLayout>
                     <StackLayout Orientation="Horizontal">
                         <Label Text="Order Status Change" FontSize="18" TextColor="#000000" HorizontalOptions="StartAndExpand"/>
-                        <Switch IsToggled="True" OnColor="#0C752a" ThumbColor="#f2f2f2" HorizontalOptions="End"/>
+                        <Switch IsToggled="{Binding OrderStatusChange}" IsEnabled="False" OnColor="#0C752a" ThumbColor="#f2f2f2" HorizontalOptions="End"/>
                     </StackLayout>
                     <StackLayout Orientation="Horizontal">
                         <Label Text="Shipping Notification" FontSize="18" TextColor="#000000" HorizontalOptions="StartAndExpand"/>
-                        <Switch IsToggled="True" OnColor="#0C752a" ThumbColor="#f2f2f2" HorizontalOptions="End"/>
+                        <Switch IsToggled="{Binding ShippingNotification}" IsEnabled="False" OnColor="#0C752a" ThumbColor="#f2f2f2" HorizontalOptions="End"/>
                     </StackLayout>
                     <StackLayout Orientation="Horizontal">
                         <Label Text="Signature Reminder" FontSize="18" TextColor="#000000" HorizontalOptions="StartAndExpand"/>
-                        <Switch IsToggled="True" OnColor="#0C752a" ThumbColor="#f2f2f2" HorizontalOptions="End"/>
+                        <Switch IsToggled="{Binding SignReminder}" IsEnabled="False" OnColor="#0C752a" ThumbColor="#f2f2f2" HorizontalOptions="End"/>
                     </StackLayout>
                 </StackLayout>
                
