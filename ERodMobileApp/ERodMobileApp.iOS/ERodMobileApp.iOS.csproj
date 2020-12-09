@@ -196,7 +196,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ERodMobileApp\ERodMobileApp.csproj">
-      <Project>{A682884C-CB44-4A89-B752-27BB634E0ABE}</Project>
+      <Project>{6E811E53-0D33-4773-A177-A6E78603C4EB}</Project>
       <Name>ERodMobileApp</Name>
     </ProjectReference>
   </ItemGroup>
@@ -346,6 +346,7 @@
     <BundleResource Include="Resources\UserIcon%403x.png" />
     <BundleResource Include="Resources\LogoWhite.png" />
     <BundleResource Include="Resources\LogoWhite%402x.png" />
+    <Content Include="Resources\an2.mp4" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>
