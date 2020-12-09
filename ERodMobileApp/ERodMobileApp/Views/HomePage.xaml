@@ -10,16 +10,17 @@
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
+        <RelativeLayout>
         <StackLayout>
             <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="600*"/>
+                <!--<Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
                     <RowDefinition Height="Auto"/>
-                </Grid.RowDefinitions>
-                <StackLayout Grid.Row="0" VerticalOptions="FillAndExpand">
+                </Grid.RowDefinitions>-->
+                <StackLayout VerticalOptions="FillAndExpand" IsVisible="True">
                     <UserControl:ProfileUserControl/>
                 </StackLayout>
-                <Frame Grid.Row="1" VerticalOptions="End" HeightRequest="50" Padding="0,3,0,3" BackgroundColor="#F0FBFF">
+                <!--<Frame Grid.Row="1" VerticalOptions="End" HeightRequest="50" Padding="0,3,0,3" BackgroundColor="#F0FBFF">
                     <StackLayout Orientation="Horizontal" Spacing="0">
                         <Grid HorizontalOptions="FillAndExpand" HeightRequest="48" WidthRequest="48">
                             <Image Source="Profileon" IsVisible="true"/>
@@ -50,8 +51,48 @@
                             </Grid.GestureRecognizers>
                         </Grid>
                     </StackLayout>
-                </Frame>
+                </Frame>-->
             </Grid>
-        </StackLayout>
+                
+            </StackLayout>
+            <Frame HeightRequest="50" Padding="0,3,0,3" BackgroundColor="#F0FBFF"
+                     RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent,
+                        Property=Height,Factor=.91,Constant=0}"
+                    RelativeLayout.WidthConstraint="{ConstraintExpression
+                        Type=RelativeToParent,Property=Width,Factor=1,Constant=0}"
+                    RelativeLayout.HeightConstraint="{ConstraintExpression
+                        Type=RelativeToParent,Property=Height,Factor=1,Constant=0}">
+                <StackLayout Orientation="Horizontal" Spacing="0" VerticalOptions="Start">
+                    <Grid HorizontalOptions="FillAndExpand" HeightRequest="48" WidthRequest="48">
+                        <Image Source="Profileon" IsVisible="true"/>
+                        <Image Source="Profileoff" IsVisible="false"/>
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding GoToProfileCommand, ConverterParameter=Profile}"/>
+                        </Grid.GestureRecognizers>
+                    </Grid>
+                    <Grid HorizontalOptions="FillAndExpand" HeightRequest="48" WidthRequest="48">
+                        <Image Source="Orderon" IsVisible="{Binding TabData, Converter={StaticResource TabVisibilityConverter}, ConverterParameter=Orders}"/>
+                        <Image Source="Orderoff"/>
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding GoToOrdersCommand}"/>
+                        </Grid.GestureRecognizers>
+                    </Grid>
+                    <Grid HorizontalOptions="FillAndExpand" HeightRequest="48" WidthRequest="48">
+                        <Image Source="NewOrderOn" IsVisible="{Binding TabData, Converter={StaticResource TabVisibilityConverter}, ConverterParameter=NewOrder}"/>
+                        <Image Source="NewOrderOf" IsVisible="True"/>
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding GoToNewOrderCommand}"/>
+                        </Grid.GestureRecognizers>
+                    </Grid>
+                    <Grid HorizontalOptions="FillAndExpand" HeightRequest="48" WidthRequest="48">
+                        <Image Source="Bellon" IsVisible="{Binding TabData, Converter={StaticResource TabVisibilityConverter}, ConverterParameter=Notification}"/>
+                        <Image Source="Belloff" IsVisible="True"/>
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding GoToNotificationCommand}"/>
+                        </Grid.GestureRecognizers>
+                    </Grid>
+                </StackLayout>
+            </Frame>
+        </RelativeLayout>
     </ContentPage.Content>
 </ContentPage>

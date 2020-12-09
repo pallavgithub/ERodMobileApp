@@ -1,9 +1,13 @@
-﻿using Android.App;
+﻿using Android;
+using Android.App;
 using Android.Content.PM;
 using Android.OS;
+using AndroidX.Core.App;
+using AndroidX.Core.Content;
 using ERodMobileApp.Droid.CustomRenderers;
 using Prism;
 using Prism.Ioc;
+using System;
 
 namespace ERodMobileApp.Droid
 {
@@ -15,8 +19,16 @@ namespace ERodMobileApp.Droid
         {
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
-
+            ActivityCompat.RequestPermissions(this, new String[] { Manifest.Permission.ReadPhoneNumbers, Manifest.Permission.ReadSms, Manifest.Permission.ReadPhoneState }, 0);
             base.OnCreate(savedInstanceState);
+            //if (ContextCompat.CheckSelfPermission(this, permission) != Permission.Granted)
+            //{
+            ActivityCompat.RequestPermissions(this, new String[] { Manifest.Permission.ReadPhoneState, Manifest.Permission.ReadSms, Manifest.Permission.ReadPhoneNumbers }, 0);
+            //}
+            //else
+            //{
+            //    System.Diagnostics.Debug.WriteLine("Permission Granted!!!");
+            //}
             Xamarin.Forms.DependencyService.Register<MessageAndroid>();
 
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
@@ -29,6 +41,7 @@ namespace ERodMobileApp.Droid
 
             base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
         }
+
     }
 
     public class AndroidInitializer : IPlatformInitializer

@@ -328,6 +328,24 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\an1.mp4" />
+    <BundleResource Include="Resources\LogoWhite%403x.png" />
+    <BundleResource Include="Resources\Mobile.png" />
+    <BundleResource Include="Resources\Mobile%402x.png" />
+    <BundleResource Include="Resources\Mobile%403x.png" />
+    <BundleResource Include="Resources\LoginBg.png" />
+    <BundleResource Include="Resources\LoginBg%402x.png" />
+    <BundleResource Include="Resources\LoginBg%403x.png" />
+    <BundleResource Include="Resources\Rectangle110.png" />
+    <BundleResource Include="Resources\Rectangle110%402x.png" />
+    <BundleResource Include="Resources\Rectangle110%403x.png" />
+    <BundleResource Include="Resources\BlueBg.png" />
+    <BundleResource Include="Resources\BlueBg%402x.png" />
+    <BundleResource Include="Resources\BlueBg%403x.png" />
+    <BundleResource Include="Resources\UserIcon.png" />
+    <BundleResource Include="Resources\UserIcon%402x.png" />
+    <BundleResource Include="Resources\UserIcon%403x.png" />
+    <BundleResource Include="Resources\LogoWhite.png" />
+    <BundleResource Include="Resources\LogoWhite%402x.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>

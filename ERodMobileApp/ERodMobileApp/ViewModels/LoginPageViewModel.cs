@@ -3,6 +3,7 @@ using ERodMobileApp.Models;
 using ERodMobileApp.Views;
 using Prism.Commands;
 using Prism.Navigation;
+using System;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
@@ -153,18 +154,47 @@ namespace ERodMobileApp.ViewModels
         public UserNotificationModel UserNotifications { get; set; }
         public LoginPageViewModel(INavigationService navigationService) : base(navigationService)
         {
-            EnterMobilePageIsVisible = true;
             User = new UserModel();
             DoneButtonCommand = new DelegateCommand(DoneButtonClicked);
+            CheckPlatform();
             //LoginWithMobileNumber();
+        }
+        public void CheckPlatform()
+        {
+            switch (Device.RuntimePlatform)
+            {
+                case "Android":
+                    try
+                    {
+                        var deviceInfo = Xamarin.Forms.DependencyService.Get<IDeviceInfo>();
+                        Phone = deviceInfo.GetPhoneNumber();
+                        LoginWithMobileNumber();
+                    }
+                    catch (Exception e)
+                    {
+
+                    }
+                    break;
+                case "iOS":
+                    EnterMobilePageIsVisible = true;
+                    break;
+            }
         }
         public async Task LoginWithMobileNumber()
         {
             var Toast = DependencyService.Get<IMessage>();
             if (string.IsNullOrEmpty(Phone))
             {
-                Toast.LongAlert("Please fill Mobile Number");
-                return;
+                if (Device.RuntimePlatform == "iOS")
+                {
+                    Toast.LongAlert("Please fill Mobile Number");
+                    return;
+                }
+                else
+                {
+                    Toast.LongAlert("Phone number not found");
+                    return;
+                }
             }
             if (IsBusy)
             {
@@ -261,7 +291,6 @@ namespace ERodMobileApp.ViewModels
                 Application.Current.Properties["User"] = User;
                 Application.Current.Properties["UserNotifications"] = UserNotifications;
                 Application.Current.SavePropertiesAsync();
-
                 NavigationService.NavigateAsync("HomePage");
             }
             else

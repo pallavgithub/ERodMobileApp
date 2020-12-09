@@ -5,22 +5,22 @@
              xmlns:prism="http://prismlibrary.com" 
              prism:ViewModelLocator.AutowireViewModel="True">
   <ContentView.Content>
-      <StackLayout VerticalOptions="FillAndExpand" Margin="0,20,0,0">
+      <StackLayout VerticalOptions="FillAndExpand" Margin="0,0,0,0">
             <Grid VerticalOptions="FillAndExpand">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="1.4*"/>
                     <RowDefinition Height="1.8*"/>
+                    <RowDefinition Height="2.3*"/>
                     <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="3*"/>
-                    <RowDefinition Height="1.7*"/>
+                    <RowDefinition Height="2.2*"/>
+                    <RowDefinition Height="1.5*"/>
                     <RowDefinition Height="5*"/>                    
-                </Grid.RowDefinitions>
-                <Image Grid.Row="0" Source="RodLogo.png"/>
-                <Image Grid.Row="1" Source="Profile.png" VerticalOptions="Center" Margin="0,20,0,0"
-                       />
+                </Grid.RowDefinitions>                
+                <Image Grid.RowSpan="2" Source="BlueBg.png" Aspect="Fill"/>
+                <Image Grid.Row="0" Source="LogoWhite.png" Margin="0,20,0,0"/>
+                <Image Grid.Row="1" Source="UserIcon.png" VerticalOptions="Center" Margin="0,20,0,0"/>
                 <Label Grid.Row="2" Text="{Binding UserName}" TextColor="#404040" FontSize="28" FontAttributes="Bold"
                        VerticalOptions="End" HorizontalTextAlignment="Center"/>
-                <StackLayout Grid.Row="3" HorizontalOptions="FillAndExpand" Margin="40,10,35,15">
+                <StackLayout Grid.Row="3" HorizontalOptions="FillAndExpand" Margin="40,10,35,0">
                     <StackLayout Orientation="Horizontal">
                         <Image Source="Company.png" HeightRequest="25" WidthRequest="25"/>
                         <Label Text="{Binding Company}" TextColor="#404040" FontSize="20"/>
