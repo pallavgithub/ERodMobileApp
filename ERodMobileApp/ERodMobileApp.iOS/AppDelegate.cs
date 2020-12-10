@@ -26,6 +26,7 @@ namespace ERodMobileApp.iOS
 
             var controller = new SplashPlayerController();
 
+
             var NavController = new UINavigationController(controller);
 
             Window.RootViewController = NavController;
@@ -40,7 +41,6 @@ namespace ERodMobileApp.iOS
 
             return true;
 
-            return base.FinishedLaunching(app, options);
         }
     }
 

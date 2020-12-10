@@ -11,12 +11,25 @@ namespace ERodMobileApp.iOS
         AVPlayerLayer avplayerLayer;
         AVAsset avasset;
         AVPlayerItem avplayerItem;
-
+      
 
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
-            avasset = AVAsset.FromUrl(NSUrl.FromFilename("an1.mp4"));
+            bool IsFirstLogin = NSUserDefaults.StandardUserDefaults.BoolForKey("SmallVidIntro");
+
+
+            if (IsFirstLogin)
+            {
+                avasset = AVAsset.FromUrl(NSUrl.FromFilename("an1.mp4"));
+                
+            }
+            else
+            {
+                avasset = AVAsset.FromUrl(NSUrl.FromFilename("an2.mp4"));
+                NSUserDefaults.StandardUserDefaults.SetBool(true, "SmallVidIntro");
+            }
+
             avplayerItem = new AVPlayerItem(avasset);
             avplayer = new AVPlayer(avplayerItem);
             avplayerLayer = AVPlayerLayer.FromPlayer(avplayer);
@@ -24,13 +37,13 @@ namespace ERodMobileApp.iOS
             View.Layer.AddSublayer(avplayerLayer);
             avplayer.Play();
 
-            NSTimer.CreateScheduledTimer(7, false, (obj) =>
-            {
-                MessagingCenter.Send<object, object>(this, "ShowMainScreen", null);
-            });
-
-            // Perform any additional setup after loading the view, typically from a nib.  
+            NSNotificationCenter.DefaultCenter.AddObserver(AVPlayerItem.DidPlayToEndTimeNotification, MainScreenHandler);
+           
         }
 
+        public void MainScreenHandler(NSNotification notification)
+        {
+            MessagingCenter.Send<object, object>(this, "ShowMainScreen", null);
+        }
     }
 }
