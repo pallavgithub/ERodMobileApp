@@ -149,15 +149,37 @@ namespace ERodMobileApp.ViewModels
             get => _exitBtnIsVisible;
             set => SetProperty(ref _exitBtnIsVisible, value);
         }
+        public bool _popupIsVisible;
+        public bool PopupIsVisible
+        {
+            get => _popupIsVisible;
+            set => SetProperty(ref _popupIsVisible, value);
+        }
         public DelegateCommand DoneButtonCommand { get; set; }
+        public DelegateCommand OpenPopupCommand { get; set; }
+        public DelegateCommand EmailToggleCommand { get; set; }
+        public DelegateCommand SmsToggleCommand { get; set; }
+        public DelegateCommand OrderStatusToggleCommand { get; set; }
+        public DelegateCommand ShippingToggleCommand { get; set; }
+        public DelegateCommand SignToggleCommand { get; set; }
         public UserModel User { get; set; }
         public UserNotificationModel UserNotifications { get; set; }
         public LoginPageViewModel(INavigationService navigationService) : base(navigationService)
         {
             User = new UserModel();
             DoneButtonCommand = new DelegateCommand(DoneButtonClicked);
+            OpenPopupCommand = new DelegateCommand(OpenClosePopup);
+            EmailToggleCommand = new DelegateCommand(async () => await UpdateUserNotification("Email"));
+            SmsToggleCommand = new DelegateCommand(async () => await UpdateUserNotification("Sms"));
+            OrderStatusToggleCommand = new DelegateCommand(async () => await UpdateUserNotification("OrderStatus"));
+            ShippingToggleCommand = new DelegateCommand(async () => await UpdateUserNotification("Shipping"));
+            SignToggleCommand = new DelegateCommand(async () => await UpdateUserNotification("Sign"));
             CheckPlatform();
             //LoginWithMobileNumber();
+        }
+        public void OpenClosePopup()
+        {
+            PopupIsVisible = !PopupIsVisible;
         }
         public void CheckPlatform()
         {
@@ -221,6 +243,14 @@ namespace ERodMobileApp.ViewModels
                     OrderStatusChange = User.StatusChangeNotification;
                     ShippingNotification = User.ShippingNotification;
                     SignReminder = User.SignatureReminder;
+                    UserNotifications = new UserNotificationModel();
+                    UserNotifications.AppNotification = User.AppNotification;
+                    UserNotifications.EmailNotification = User.EmailNotification;
+                    UserNotifications.SMSNotification = User.SMSNotification;
+                    UserNotifications.StatusChangeNotification = User.StatusChangeNotification;
+                    UserNotifications.ShippingNotification = User.ShippingNotification;
+                    UserNotifications.SignatureReminder = User.SignatureReminder;
+                    UserNotifications.PhoneNumber = User.PhoneNumber;
                 }
                 else
                 {
@@ -254,6 +284,14 @@ namespace ERodMobileApp.ViewModels
                     SignReminder = User.SignatureReminder;
                     ActivationCodePageIsVisible = false;
                     LoginIsVisible = true;
+                    UserNotifications = new UserNotificationModel();
+                    UserNotifications.AppNotification = User.AppNotification;
+                    UserNotifications.EmailNotification = User.EmailNotification;
+                    UserNotifications.SMSNotification = User.SMSNotification;
+                    UserNotifications.StatusChangeNotification = User.StatusChangeNotification;
+                    UserNotifications.ShippingNotification = User.ShippingNotification;
+                    UserNotifications.SignatureReminder = User.SignatureReminder;
+                    UserNotifications.PhoneNumber = User.PhoneNumber;
                 }
                 else
                 {
@@ -265,22 +303,47 @@ namespace ERodMobileApp.ViewModels
                 Toast.LongAlert("Please fill activation code.");
             }
         }
-        public async Task UpdateUserNotification()
+        public async Task UpdateUserNotification(string ToggledNotification)
         {
-            var updatedNotifications = new UserNotificationModel()
+            if (ToggledNotification == "Email")
             {
-                EmailNotification = EmailNotification,
-                AppNotification = true,
-                SMSNotification = SmsNotification,
-                StatusChangeNotification = OrderStatusChange,
-                ShippingNotification = ShippingNotification,
-                SignatureReminder = SignReminder,
-                PhoneNumber = MobileNumber
-            };
-            var response = await new ApiData().PostData<string>("api/account/UpdateNotification", updatedNotifications, true);
+                EmailNotification = !EmailNotification;
+                UserNotifications.EmailNotification = EmailNotification;
+            }
+            if (ToggledNotification == "Sms")
+            {
+                SmsNotification = !SmsNotification;
+                UserNotifications.SMSNotification = SmsNotification;
+            }
+            if (ToggledNotification == "OrderStatus")
+            {
+                OrderStatusChange = !OrderStatusChange;
+                UserNotifications.StatusChangeNotification = OrderStatusChange;
+            }
+            if (ToggledNotification == "Shipping")
+            {
+                ShippingNotification = !ShippingNotification;
+                UserNotifications.ShippingNotification = ShippingNotification;
+            }
+            if (ToggledNotification == "Sign")
+            {
+                SignReminder = !SignReminder;
+                UserNotifications.SignatureReminder = SignReminder;
+            }
+            //var updatedNotifications = new UserNotificationModel()
+            //{
+            //    EmailNotification = EmailNotification,
+            //    AppNotification = true,
+            //    SMSNotification = SmsNotification,
+            //    StatusChangeNotification = OrderStatusChange,
+            //    ShippingNotification = ShippingNotification,
+            //    SignatureReminder = SignReminder,
+            //    PhoneNumber = MobileNumber
+            //};
+            var response = await new ApiData().PostData<string>("api/account/UpdateNotification", UserNotifications, true);
             if (response != null)
             {
-                UserNotifications = updatedNotifications;
+               // UserNotifications = updatedNotifications;
             }
         }
         public void DoneButtonClicked()

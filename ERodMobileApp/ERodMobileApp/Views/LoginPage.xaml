@@ -45,9 +45,24 @@
                                 <StackLayout Orientation="Horizontal"  HorizontalOptions="CenterAndExpand">
                                     <Label Text="Question?" TextColor="#979797"/>
                                     <Label Text="Contact Exceed" TextColor="#979797"/>
+                                    <StackLayout.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding OpenPopupCommand}"/>
+                                    </StackLayout.GestureRecognizers>
                                 </StackLayout>
                             </StackLayout>
                         </Grid>
+                        <ContentView IsVisible="{Binding PopupIsVisible}">
+                            <Frame HorizontalOptions="Center" VerticalOptions="Center" CornerRadius="10" HeightRequest="280"
+                                   WidthRequest="200" Padding="35,0,30,0">
+                                <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand" Spacing="50">
+                                    <Label Text="Customer of Exceed can obtain free APP account. Please contact your Exceed representative for more information. "
+                                           HorizontalOptions="CenterAndExpand" TextColor="#50555C" FontSize="20"/>
+                                    <Button Text="OK" TextColor="White" BackgroundColor="#333333" HorizontalOptions="Center"
+                                            HeightRequest="45" WidthRequest="145" CornerRadius="3" FontSize="18" 
+                                            Command="{Binding OpenPopupCommand}"/>
+                                </StackLayout>
+                            </Frame>
+                        </ContentView>
                     </Grid>
                 </ContentView>
                 <ContentView IsVisible="{Binding LoginIsVisible}" Margin="0,20,0,0">
@@ -87,28 +102,64 @@
                         <StackLayout Grid.Row="6" Margin="45,0,35,0" VerticalOptions="FillAndExpand">
                             <StackLayout Orientation="Horizontal">
                                 <Label Text="Emails Notifications" FontSize="18" TextColor="#000000" HorizontalOptions="StartAndExpand"/>
-                                <Switch IsToggled="{Binding EmailNotification}" OnColor="#0C752a" ThumbColor="#f2f2f2"
-                                    HorizontalOptions="End" Toggled="Notification_Toggled"/>
+
+                                <Grid>
+                                    <Switch IsToggled="{Binding EmailNotification}" OnColor="#0C752a" ThumbColor="#f2f2f2"
+                                    HorizontalOptions="End" />
+                                    <StackLayout>
+                                        <StackLayout.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding EmailToggleCommand}"/>
+                                        </StackLayout.GestureRecognizers>
+                                    </StackLayout>
+                                </Grid>
                             </StackLayout>
                             <StackLayout Orientation="Horizontal" Margin="0,0,0,10">
                                 <Label Text="SMS Notifications" FontSize="18" TextColor="#000000" HorizontalOptions="StartAndExpand"/>
-                                <Switch IsToggled="{Binding SmsNotification}" OnColor="#0C752a" ThumbColor="#f2f2f2" 
-                                    HorizontalOptions="End" Toggled="Notification_Toggled"/>
+                                <Grid>
+                                    <Switch IsToggled="{Binding SmsNotification}" OnColor="#0C752a" ThumbColor="#f2f2f2" 
+                                    HorizontalOptions="End"/>
+                                    <StackLayout>
+                                        <StackLayout.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding SmsToggleCommand}"/>
+                                        </StackLayout.GestureRecognizers>
+                                    </StackLayout>
+                                </Grid>
                             </StackLayout>
                             <StackLayout Orientation="Horizontal">
                                 <Label Text="Order Status Change" FontSize="18" TextColor="#000000" HorizontalOptions="StartAndExpand"/>
-                                <Switch IsToggled="{Binding OrderStatusChange}" OnColor="#0C752a" ThumbColor="#f2f2f2" 
-                                    HorizontalOptions="End" Toggled="Notification_Toggled"/>
+                                <Grid>
+                                    <Switch IsToggled="{Binding OrderStatusChange}" OnColor="#0C752a" ThumbColor="#f2f2f2" 
+                                    HorizontalOptions="End"/>
+                                    <StackLayout>
+                                        <StackLayout.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding OrderStatusToggleCommand}"/>
+                                        </StackLayout.GestureRecognizers>
+                                    </StackLayout>
+                                </Grid>
                             </StackLayout>
                             <StackLayout Orientation="Horizontal">
                                 <Label Text="Shipping Notification" FontSize="18" TextColor="#000000" HorizontalOptions="StartAndExpand"/>
-                                <Switch IsToggled="{Binding ShippingNotification}" OnColor="#0C752a" ThumbColor="#f2f2f2" 
-                                    HorizontalOptions="End" Toggled="Notification_Toggled"/>
+                                <Grid>
+                                    <Switch IsToggled="{Binding ShippingNotification}" OnColor="#0C752a" ThumbColor="#f2f2f2" 
+                                    HorizontalOptions="End"/>
+                                    <StackLayout>
+                                        <StackLayout.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding ShippingToggleCommand}"/>
+                                        </StackLayout.GestureRecognizers>
+                                    </StackLayout>
+                                </Grid>
                             </StackLayout>
                             <StackLayout Orientation="Horizontal">
                                 <Label Text="Signature Reminder" FontSize="18" TextColor="#000000" HorizontalOptions="StartAndExpand"/>
-                                <Switch IsToggled="{Binding SignReminder}" OnColor="#0C752a" ThumbColor="#f2f2f2" 
-                                    HorizontalOptions="End" Toggled="Notification_Toggled"/>
+                                <Grid>
+                                    <Switch IsToggled="{Binding SignReminder}" OnColor="#0C752a" ThumbColor="#f2f2f2" 
+                                    HorizontalOptions="End" />
+                                    <StackLayout>
+                                        <StackLayout.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding SignToggleCommand}"/>
+                                        </StackLayout.GestureRecognizers>
+                                    </StackLayout>
+                                </Grid>
                             </StackLayout>
                         </StackLayout>
                         <StackLayout Grid.Row="7" Margin="30,0,25,8" HorizontalOptions="FillAndExpand" VerticalOptions="End">
@@ -138,9 +189,6 @@
                         <Image Grid.Row="0" Source="RodLogo.png" Aspect="AspectFit" VerticalOptions="Start"/>
                         <Image Grid.Row="1" Source="vector.png" Aspect="AspectFit" VerticalOptions="End"/>
                         <Label Grid.Row="2" Text="PROFILE NOT FOUND" HorizontalTextAlignment="Center" TextColor="#828282" FontSize="22"/>
-                        <!--<Label Grid.Row="3" Text="Phone number on this device 713-987-6543 does not match any of our customer profile.  Please contact your Exceed represetative to create a profile for you. If you have received an activation code, please enter below. "
-                       HorizontalTextAlignment="Start" TextColor="Black" FontSize="18" HorizontalOptions="StartAndExpand"
-                       VerticalOptions="CenterAndExpand"/>-->
                         <Label Grid.Row="3" HorizontalTextAlignment="Start" TextColor="Black" FontSize="18" HorizontalOptions="StartAndExpand"
                        VerticalOptions="CenterAndExpand" LineBreakMode="WordWrap">
                             <Label.FormattedText>

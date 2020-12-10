@@ -93,7 +93,7 @@ namespace ERodMobileApp.Views
         }
         private void Notification_Toggled(object sender, ToggledEventArgs e)
         {
-            (BindingContext as LoginPageViewModel).UpdateUserNotification();
+            //(BindingContext as LoginPageViewModel).UpdateUserNotification();
         }
     }
 }
