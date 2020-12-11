@@ -187,7 +187,7 @@ namespace ERodMobileApp.ViewModels
         {
             PopupIsVisible = !PopupIsVisible;
         }
-        public void CheckPlatform()
+        public async void CheckPlatform()
         {
             switch (Device.RuntimePlatform)
             {
@@ -195,8 +195,9 @@ namespace ERodMobileApp.ViewModels
                     try
                     {
                         var deviceInfo = Xamarin.Forms.DependencyService.Get<IDeviceInfo>();
-                        Phone = deviceInfo.GetPhoneNumber();
-                        LoginWithMobileNumber();
+                        var _phn = deviceInfo.GetPhoneNumber();
+                        Phone = _phn.Substring(_phn.Length - Math.Min(10, _phn.Length));                        
+                        await LoginWithMobileNumber();
                     }
                     catch (Exception e)
                     {
@@ -220,7 +221,8 @@ namespace ERodMobileApp.ViewModels
                 }
                 else
                 {
-                    Toast.LongAlert("Phone number not found");
+                    //Toast.LongAlert("Phone number not found");
+                    ActivationCodePageIsVisible = true;
                     return;
                 }
             }
