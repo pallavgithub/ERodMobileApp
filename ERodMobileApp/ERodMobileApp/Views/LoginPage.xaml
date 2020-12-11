@@ -69,7 +69,7 @@
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="1.8*"/>
-                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="1.8*"/>
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="1.6*"/>
                             <RowDefinition Height="2.8*"/>
@@ -79,7 +79,7 @@
                             <RowDefinition Height="2*"/>
                         </Grid.RowDefinitions>
                         <Image Grid.Row="0" Source="RodLogo.png"/>
-                        <Image Grid.Row="1" Source="Profile.png" Aspect="AspectFit"/>
+                        <Image Grid.Row="1" Source="userFound.png"/>
                         <Label Grid.Row="2" Text="User Profile Found!" TextColor="#404040" FontSize="18" HorizontalTextAlignment="Center"/>
                         <Label Grid.Row="3" Text="{Binding UserName}" TextColor="#404040" FontSize="28" FontAttributes="Bold"
                        VerticalOptions="End" HorizontalTextAlignment="Center"/>
@@ -164,8 +164,18 @@
                         </StackLayout>
                         <StackLayout Grid.Row="7" Margin="30,0,25,8" HorizontalOptions="FillAndExpand" VerticalOptions="End">
                             <StackLayout  Orientation="Horizontal">
-                                <CheckBox IsChecked="{Binding IsAgree}" Color="Gray" Margin="0,0,4,0" HeightRequest="35" WidthRequest="35"/>
-                                <Label Text="I agree with the" FontSize="16" VerticalOptions="Center" TextColor="#000000"/>
+                                <!--<CheckBox IsChecked="{Binding IsAgree}" Color="Gray" Margin="0,0,4,0" HeightRequest="35" WidthRequest="35"
+                                          />-->
+                                <Grid WidthRequest="18">
+                                    <Image Source="Check.png" IsVisible="{Binding IsAgree}" HeightRequest="20" WidthRequest="20" 
+                                           Margin="0,2,-5,0"/>
+                                    <Image Source="UnCheck.png"  HeightRequest="15" WidthRequest="15"
+                                           IsVisible="{Binding IsAgree, Converter={StaticResource InverseBoolConverter}}"/>
+                                    <Grid.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding CheckBoxCommand}"/>
+                                    </Grid.GestureRecognizers>
+                                </Grid>
+                                <Label Text="I agree with the" FontSize="16" VerticalOptions="Center" TextColor="#000000" Margin="10,0,0,0"/>
                                 <Label Text="Terms &amp; Conditions" TextColor="#ff6600" FontAttributes="italic" FontSize="16"
                            VerticalOptions="Center"/>
                             </StackLayout>
@@ -186,9 +196,11 @@
                             <RowDefinition Height="2*"/>
                             <RowDefinition Height="2*"/>
                         </Grid.RowDefinitions>
-                        <Image Grid.Row="0" Source="RodLogo.png" Aspect="AspectFit" VerticalOptions="Start"/>
+                        <Image Grid.Row="0" Source="RodLogo.png"/>
+                        <!--<Image Grid.Row="0" Source="RodLogo.png"  />-->
                         <Image Grid.Row="1" Source="vector.png" Aspect="AspectFit" VerticalOptions="End"/>
-                        <Label Grid.Row="2" Text="PROFILE NOT FOUND" HorizontalTextAlignment="Center" TextColor="#828282" FontSize="22"/>
+                        <Label Grid.Row="2" Text="PROFILE NOT FOUND" HorizontalTextAlignment="Center" TextColor="#828282" 
+                               FontAttributes="Bold" FontSize="22"/>
                         <Label Grid.Row="3" HorizontalTextAlignment="Start" TextColor="Black" FontSize="18" HorizontalOptions="StartAndExpand"
                        VerticalOptions="CenterAndExpand" LineBreakMode="WordWrap">
                             <Label.FormattedText>

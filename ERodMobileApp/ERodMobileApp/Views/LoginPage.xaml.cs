@@ -30,6 +30,10 @@ namespace ERodMobileApp.Views
             else
             {
                 Entry_two.Focus();
+                if (!string.IsNullOrEmpty(Entry_one.Text) && !string.IsNullOrEmpty(Entry_two.Text) && !string.IsNullOrEmpty(Entry_three.Text) && !string.IsNullOrEmpty(Entry_four.Text) && !string.IsNullOrEmpty(Entry_five.Text) && !string.IsNullOrEmpty(Entry_six.Text))
+                {
+                    (BindingContext as LoginPageViewModel).ExitBtnIsVisible = false;
+                }
             }
         }
         private void Entry_two_TextChanged(object sender, TextChangedEventArgs e)
@@ -41,6 +45,10 @@ namespace ERodMobileApp.Views
             else
             {
                 Entry_three.Focus();
+                if (!string.IsNullOrEmpty(Entry_one.Text) && !string.IsNullOrEmpty(Entry_two.Text) && !string.IsNullOrEmpty(Entry_three.Text) && !string.IsNullOrEmpty(Entry_four.Text) && !string.IsNullOrEmpty(Entry_five.Text) && !string.IsNullOrEmpty(Entry_six.Text))
+                {
+                    (BindingContext as LoginPageViewModel).ExitBtnIsVisible = false;
+                }
             }
         }
         private void Entry_three_TextChanged(object sender, TextChangedEventArgs e)
@@ -52,6 +60,10 @@ namespace ERodMobileApp.Views
             else
             {
                 Entry_four.Focus();
+                if (!string.IsNullOrEmpty(Entry_one.Text) && !string.IsNullOrEmpty(Entry_two.Text) && !string.IsNullOrEmpty(Entry_three.Text) && !string.IsNullOrEmpty(Entry_four.Text) && !string.IsNullOrEmpty(Entry_five.Text) && !string.IsNullOrEmpty(Entry_six.Text))
+                {
+                    (BindingContext as LoginPageViewModel).ExitBtnIsVisible = false;
+                }
             }
         }
         private void Entry_four_TextChanged(object sender, TextChangedEventArgs e)
@@ -63,6 +75,10 @@ namespace ERodMobileApp.Views
             else
             {
                 Entry_five.Focus();
+                if (!string.IsNullOrEmpty(Entry_one.Text) && !string.IsNullOrEmpty(Entry_two.Text) && !string.IsNullOrEmpty(Entry_three.Text) && !string.IsNullOrEmpty(Entry_four.Text) && !string.IsNullOrEmpty(Entry_five.Text) && !string.IsNullOrEmpty(Entry_six.Text))
+                {
+                    (BindingContext as LoginPageViewModel).ExitBtnIsVisible = false;
+                }
             }
         }
         private void Entry_five_TextChanged(object sender, TextChangedEventArgs e)
@@ -74,6 +90,10 @@ namespace ERodMobileApp.Views
             else
             {
                 Entry_six.Focus();
+                if (!string.IsNullOrEmpty(Entry_one.Text) && !string.IsNullOrEmpty(Entry_two.Text) && !string.IsNullOrEmpty(Entry_three.Text) && !string.IsNullOrEmpty(Entry_four.Text) && !string.IsNullOrEmpty(Entry_five.Text) && !string.IsNullOrEmpty(Entry_six.Text))
+                {
+                    (BindingContext as LoginPageViewModel).ExitBtnIsVisible = false;
+                }
             }
         }
         private void Entry_six_TextChanged(object sender, TextChangedEventArgs e)
@@ -95,5 +115,6 @@ namespace ERodMobileApp.Views
         {
             //(BindingContext as LoginPageViewModel).UpdateUserNotification();
         }
+        protected override bool OnBackButtonPressed() => true;
     }
 }

@@ -162,6 +162,7 @@ namespace ERodMobileApp.ViewModels
         public DelegateCommand OrderStatusToggleCommand { get; set; }
         public DelegateCommand ShippingToggleCommand { get; set; }
         public DelegateCommand SignToggleCommand { get; set; }
+        public DelegateCommand CheckBoxCommand { get; set; }
         public UserModel User { get; set; }
         public UserNotificationModel UserNotifications { get; set; }
         public LoginPageViewModel(INavigationService navigationService) : base(navigationService)
@@ -174,8 +175,13 @@ namespace ERodMobileApp.ViewModels
             OrderStatusToggleCommand = new DelegateCommand(async () => await UpdateUserNotification("OrderStatus"));
             ShippingToggleCommand = new DelegateCommand(async () => await UpdateUserNotification("Shipping"));
             SignToggleCommand = new DelegateCommand(async () => await UpdateUserNotification("Sign"));
+            CheckBoxCommand = new DelegateCommand(CheckBoxCheckUncheck);
             CheckPlatform();
             //LoginWithMobileNumber();
+        }
+        public void CheckBoxCheckUncheck()
+        {
+            IsAgree = !IsAgree;
         }
         public void OpenClosePopup()
         {
@@ -295,7 +301,7 @@ namespace ERodMobileApp.ViewModels
                 }
                 else
                 {
-                    Toast.LongAlert("User not found.");
+                    Toast.LongAlert("Incorrect activation code.");
                 }
             }
             else

@@ -347,6 +347,15 @@
     <BundleResource Include="Resources\LogoWhite.png" />
     <BundleResource Include="Resources\LogoWhite%402x.png" />
     <Content Include="Resources\an2.mp4" />
+    <BundleResource Include="Resources\userFound.png" />
+    <BundleResource Include="Resources\userFound%402x.png" />
+    <BundleResource Include="Resources\userFound%403x.png" />
+    <BundleResource Include="Resources\UnCheck%403x.png" />
+    <BundleResource Include="Resources\Check.png" />
+    <BundleResource Include="Resources\Check%402x.png" />
+    <BundleResource Include="Resources\Check%403x.png" />
+    <BundleResource Include="Resources\UnCheck.png" />
+    <BundleResource Include="Resources\UnCheck%402x.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>
