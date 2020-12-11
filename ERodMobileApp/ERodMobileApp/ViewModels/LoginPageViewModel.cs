@@ -368,7 +368,7 @@ namespace ERodMobileApp.ViewModels
             }
         }
         public bool ExitApp()
-        {
+        {            
             Device.BeginInvokeOnMainThread(() =>
             {
                 var closer = DependencyService.Get<IExitApp>();
@@ -376,5 +376,6 @@ namespace ERodMobileApp.ViewModels
             });
             return true;
         }
+     
     }
 }

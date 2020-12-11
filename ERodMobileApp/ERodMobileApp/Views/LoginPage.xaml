@@ -89,7 +89,7 @@
                                 <Label Text="{Binding Company}" TextColor="#404040" FontSize="20"/>
                             </StackLayout>
                             <StackLayout Orientation="Horizontal">
-                                <Image Source="Phone.png" HeightRequest="25" WidthRequest="25"/>
+                                <Image Source="Phone.png" HeightRequest="25" WidthRequest="25" BackgroundColor="Yellow"/>
                                 <Label Text="{Binding MobileNumber}" TextColor="#404040" FontSize="20"/>
                             </StackLayout>
                             <StackLayout Orientation="Horizontal">
@@ -217,43 +217,49 @@
                            HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="#F2F2F2" 
                            CornerRadius="2" WidthRequest="30" HeightRequest="40">
                                 <Custom:XEntry Text="{Binding Text1}" WidthRequest="28" MaxLength="1" FontSize="20" 
-                              HorizontalOptions="Center" HorizontalTextAlignment="Center" Keyboard="Numeric" Margin="3,0,3,0"
-                                       x:Name="Entry_one" TextColor="#434e5e" RemovePadding="True" TextChanged="Entry_one_TextChanged"/>
+                                       HorizontalOptions="Center" HorizontalTextAlignment="Center" Keyboard="Numeric" Margin="3,0,3,0"
+                                       x:Name="Entry_one" TextColor="#434e5e" RemovePadding="True"
+                                       TextChanged="Entry_one_TextChanged"/>
                             </Frame>
                             <Frame Padding="0,3,0,3" HasShadow="False" Grid.Column="3"  Grid.Row="1" OutlineColor="#C4C4C4" 
                            HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="#F2F2F2" 
                            CornerRadius="2" WidthRequest="30" HeightRequest="40">
                                 <Custom:XEntry Text="{Binding Text2}" WidthRequest="28" MaxLength="1" FontSize="20" Margin="3,0,3,0"
                                         HorizontalOptions="Center" HorizontalTextAlignment="Center"  Keyboard="Numeric"
-                                       x:Name="Entry_two" TextColor="#434e5e" RemovePadding="True" TextChanged="Entry_two_TextChanged"/>
+                                       x:Name="Entry_two" TextColor="#434e5e" RemovePadding="True" 
+                                               TextChanged="Entry_two_TextChanged"/>
                             </Frame>
                             <Frame Padding="0,3,0,3" HasShadow="False" Grid.Column="3"  Grid.Row="1" OutlineColor="#C4C4C4" 
                            HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="#F2F2F2" 
                            CornerRadius="2" WidthRequest="30" HeightRequest="40">
                                 <Custom:XEntry Text="{Binding Text3}" WidthRequest="28" MaxLength="1" FontSize="20" Margin="3,0,3,0"
                                         HorizontalOptions="Center" HorizontalTextAlignment="Center" Keyboard="Numeric"
-                                       x:Name="Entry_three" TextColor="#434e5e" RemovePadding="True" TextChanged="Entry_three_TextChanged"/>
+                                       x:Name="Entry_three" TextColor="#434e5e" RemovePadding="True"
+                                               TextChanged="Entry_three_TextChanged"/>
                             </Frame>
                             <Frame Padding="0,3,0,3" HasShadow="False" Grid.Column="3"  Grid.Row="1" OutlineColor="#C4C4C4" 
                            HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="#F2F2F2" 
                            CornerRadius="2" Margin="15,0,0,0" WidthRequest="30" HeightRequest="40">
                                 <Custom:XEntry Text="{Binding Text4}" WidthRequest="28" MaxLength="1" FontSize="20" Margin="3,0,3,0"
                                         HorizontalOptions="Center" HorizontalTextAlignment="Center"  Keyboard="Numeric" 
-                                       x:Name="Entry_four" TextColor="#434e5e" RemovePadding="True" TextChanged="Entry_four_TextChanged"/>
+                                       x:Name="Entry_four" TextColor="#434e5e" RemovePadding="True"
+                                               TextChanged="Entry_four_TextChanged"/>
                             </Frame>
                             <Frame Padding="0,3,0,3" HasShadow="False" Grid.Column="3"  Grid.Row="1" OutlineColor="#C4C4C4" 
                            HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="#F2F2F2" 
                            CornerRadius="2" WidthRequest="30" HeightRequest="40">
                                 <Custom:XEntry Text="{Binding Text5}" WidthRequest="28" MaxLength="1" FontSize="20" Margin="3,0,3,0"
                                         HorizontalOptions="Center" HorizontalTextAlignment="Center"  Keyboard="Numeric" 
-                                       x:Name="Entry_five" TextColor="#434e5e" RemovePadding="True" TextChanged="Entry_five_TextChanged"/>
+                                       x:Name="Entry_five" TextColor="#434e5e" RemovePadding="True"
+                                               TextChanged="Entry_five_TextChanged"/>
                             </Frame>
                             <Frame Padding="0,3,0,3" HasShadow="False" Grid.Column="3"  Grid.Row="1" OutlineColor="#C4C4C4" 
                            HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="#F2F2F2" 
                            CornerRadius="2" WidthRequest="30" HeightRequest="40">
                                 <Custom:XEntry Text="{Binding Text6}" WidthRequest="28" MaxLength="1" FontSize="20" Margin="3,0,3,0"
                                         HorizontalOptions="Center" HorizontalTextAlignment="Center"  Keyboard="Numeric"
-                                       x:Name="Entry_six" TextColor="#434e5e" RemovePadding="True" TextChanged="Entry_six_TextChanged"/>
+                                       x:Name="Entry_six" TextColor="#434e5e" RemovePadding="True" 
+                                               TextChanged="Entry_six_TextChanged"/>
                             </Frame>
                         </StackLayout>
                         <Button x:Name="exit_btn" Grid.Row="6" Text="EXIT" HorizontalOptions="CenterAndExpand" BackgroundColor="#404040" 
