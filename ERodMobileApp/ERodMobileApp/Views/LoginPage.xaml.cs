@@ -184,5 +184,11 @@ namespace ERodMobileApp.Views
             var previousEntry = _entries[indexOfCurrentEntry - 1];
             return previousEntry;
         }
+
+        protected override async void OnAppearing()
+        {
+            await App.CheckAndRequestPhonePermission();
+            (BindingContext as LoginPageViewModel).CheckPlatform();
+        }
     }
 }

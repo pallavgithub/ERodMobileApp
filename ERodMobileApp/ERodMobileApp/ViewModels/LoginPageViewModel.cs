@@ -176,7 +176,7 @@ namespace ERodMobileApp.ViewModels
             ShippingToggleCommand = new DelegateCommand(async () => await UpdateUserNotification("Shipping"));
             SignToggleCommand = new DelegateCommand(async () => await UpdateUserNotification("Sign"));
             CheckBoxCommand = new DelegateCommand(CheckBoxCheckUncheck);
-            CheckPlatform();
+            //CheckPlatform();
             //LoginWithMobileNumber();
         }
         public void CheckBoxCheckUncheck()
@@ -196,7 +196,7 @@ namespace ERodMobileApp.ViewModels
                     {
                         var deviceInfo = Xamarin.Forms.DependencyService.Get<IDeviceInfo>();
                         var _phn = deviceInfo.GetPhoneNumber();
-                        Phone = _phn.Substring(_phn.Length - Math.Min(10, _phn.Length));                        
+                        Phone = _phn.Substring(_phn.Length - Math.Min(10, _phn.Length));
                         await LoginWithMobileNumber();
                     }
                     catch (Exception e)

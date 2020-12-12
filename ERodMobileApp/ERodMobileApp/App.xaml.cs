@@ -2,6 +2,9 @@ using ERodMobileApp.ViewModels;
 using ERodMobileApp.Views;
 using Prism;
 using Prism.Ioc;
+using Prism.Navigation;
+using System.Threading.Tasks;
+using Xamarin.Essentials;
 using Xamarin.Essentials.Implementation;
 using Xamarin.Essentials.Interfaces;
 using Xamarin.Forms;
@@ -15,11 +18,14 @@ namespace ERodMobileApp
         {
         }
 
-        protected override async void OnInitialized()
+        protected override async void OnStart()
+        {
+            await NavigationService.NavigateAsync("NavigationPage/LoginPage");
+        }
+
+        protected override void OnInitialized()
         {
             InitializeComponent();
-
-            await NavigationService.NavigateAsync("NavigationPage/LoginPage");
         }
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
@@ -31,6 +37,63 @@ namespace ERodMobileApp
             containerRegistry.RegisterForNavigation<Login, LoginViewModel>();
             containerRegistry.RegisterForNavigation<LoginPage, LoginPageViewModel>();
             containerRegistry.RegisterForNavigation<HomePage, HomePageViewModel>();
+        }
+
+        public static async Task<PermissionStatus> CheckAndRequestPhonePermission()
+        {
+            var status = await Permissions.CheckStatusAsync<Permissions.Phone>();
+            if (status == PermissionStatus.Granted)
+                return status;
+            if (status == PermissionStatus.Denied && DeviceInfo.Platform == DevicePlatform.iOS)
+            {
+                // Prompt the user to turn on in settings
+                // On iOS once a permission has been denied it may not be requested again from the application
+                return status;
+            }
+            status = await Permissions.RequestAsync<Permissions.Phone>();
+            return status;
+        }
+        public async Task<PermissionStatus> CheckAndRequestSMSPermission()
+        {
+            var status = await Permissions.CheckStatusAsync<Permissions.Sms>();
+            if (status == PermissionStatus.Granted)
+                return status;
+            if (status == PermissionStatus.Denied && DeviceInfo.Platform == DevicePlatform.iOS)
+            {
+                // Prompt the user to turn on in settings
+                // On iOS once a permission has been denied it may not be requested again from the application
+                return status;
+            }
+            status = await Permissions.RequestAsync<Permissions.Sms>();
+            return status;
+        }
+        public async Task<PermissionStatus> CheckAndRequestStorageReadPermission()
+        {
+            var status = await Permissions.CheckStatusAsync<Permissions.StorageRead>();
+            if (status == PermissionStatus.Granted)
+                return status;
+            if (status == PermissionStatus.Denied && DeviceInfo.Platform == DevicePlatform.iOS)
+            {
+                // Prompt the user to turn on in settings
+                // On iOS once a permission has been denied it may not be requested again from the application
+                return status;
+            }
+            status = await Permissions.RequestAsync<Permissions.StorageRead>();
+            return status;
+        }
+        public async Task<PermissionStatus> CheckAndRequestStorageWritePermission()
+        {
+            var status = await Permissions.CheckStatusAsync<Permissions.StorageWrite>();
+            if (status == PermissionStatus.Granted)
+                return status;
+            if (status == PermissionStatus.Denied && DeviceInfo.Platform == DevicePlatform.iOS)
+            {
+                // Prompt the user to turn on in settings
+                // On iOS once a permission has been denied it may not be requested again from the application
+                return status;
+            }
+            status = await Permissions.RequestAsync<Permissions.StorageWrite>();
+            return status;
         }
     }
 }

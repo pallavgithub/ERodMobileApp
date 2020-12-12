@@ -17,13 +17,13 @@ namespace ERodMobileApp.Droid
     {
         protected override void OnCreate(Bundle savedInstanceState)
         {
-            TabLayoutResource = Resource.Layout.Tabbar;
-            ToolbarResource = Resource.Layout.Toolbar;
-            ActivityCompat.RequestPermissions(this, new String[] { Manifest.Permission.ReadPhoneNumbers, Manifest.Permission.ReadSms, Manifest.Permission.ReadPhoneState }, 0);
+            //TabLayoutResource = Resource.Layout.Tabbar;
+            //ToolbarResource = Resource.Layout.Toolbar;
+            //ActivityCompat.RequestPermissions(this, new String[] { Manifest.Permission.ReadPhoneNumbers, Manifest.Permission.ReadSms, Manifest.Permission.ReadPhoneState }, 0);
             base.OnCreate(savedInstanceState);
             //if (ContextCompat.CheckSelfPermission(this, permission) != Permission.Granted)
             //{
-            ActivityCompat.RequestPermissions(this, new String[] { Manifest.Permission.ReadPhoneState, Manifest.Permission.ReadSms, Manifest.Permission.ReadPhoneNumbers }, 0);
+            //ActivityCompat.RequestPermissions(this, new String[] { Manifest.Permission.ReadPhoneState, Manifest.Permission.ReadSms, Manifest.Permission.ReadPhoneNumbers }, 0);
             //}
             //else
             //{
