@@ -2,6 +2,7 @@
 using ERodMobileApp.ViewModels;
 using System;
 using System.Collections.Generic;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -187,7 +188,8 @@ namespace ERodMobileApp.Views
 
         protected override async void OnAppearing()
         {
-            await App.CheckAndRequestPhonePermission();
+            if (Device.RuntimePlatform != "iOS")
+                await App.CheckAndRequestPhonePermission();
             (BindingContext as LoginPageViewModel).CheckPlatform();
         }
     }
