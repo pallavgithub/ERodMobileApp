@@ -330,6 +330,9 @@
     <BundleResource Include="Resources\Vector%403x.png" />
   </ItemGroup>
   <ItemGroup>
+    <BundleResource Include="Resources\active.png" />
+    <BundleResource Include="Resources\active%402x.png" />
+    <BundleResource Include="Resources\active%403x.png" />
     <Content Include="Resources\an1.mp4" />
     <BundleResource Include="Resources\LogoWhite%403x.png" />
     <BundleResource Include="Resources\Mobile.png" />
@@ -359,6 +362,45 @@
     <BundleResource Include="Resources\Check%403x.png" />
     <BundleResource Include="Resources\UnCheck.png" />
     <BundleResource Include="Resources\UnCheck%402x.png" />
+    <BundleResource Include="Resources\Arrive.png" />
+    <BundleResource Include="Resources\Arrive%402x.png" />
+    <BundleResource Include="Resources\Arrive%403x.png" />
+    <BundleResource Include="Resources\BannerBG.png" />
+    <BundleResource Include="Resources\BannerBG%402x.png" />
+    <BundleResource Include="Resources\BannerBG%403x.png" />
+    <BundleResource Include="Resources\box.png" />
+    <BundleResource Include="Resources\box%402x.png" />
+    <BundleResource Include="Resources\box%403x.png" />
+    <BundleResource Include="Resources\boxActive.png" />
+    <BundleResource Include="Resources\boxActive%402x.png" />
+    <BundleResource Include="Resources\boxActive%403x.png" />
+    <BundleResource Include="Resources\CartActive.png" />
+    <BundleResource Include="Resources\CartActive%402x.png" />
+    <BundleResource Include="Resources\CartActive%403x.png" />
+    <BundleResource Include="Resources\circle.png" />
+    <BundleResource Include="Resources\circle%402x.png" />
+    <BundleResource Include="Resources\circle%403x.png" />
+    <BundleResource Include="Resources\deliverytruck.png" />
+    <BundleResource Include="Resources\deliverytruck%402x.png" />
+    <BundleResource Include="Resources\deliverytruck%403x.png" />
+    <BundleResource Include="Resources\greenTick.png" />
+    <BundleResource Include="Resources\greenTick%402x.png" />
+    <BundleResource Include="Resources\greenTick%403x.png" />
+    <BundleResource Include="Resources\Group.png" />
+    <BundleResource Include="Resources\Group%402x.png" />
+    <BundleResource Include="Resources\Group%403x.png" />
+    <BundleResource Include="Resources\inActive.png" />
+    <BundleResource Include="Resources\inActive%402x.png" />
+    <BundleResource Include="Resources\inActive%403x.png" />
+    <BundleResource Include="Resources\pen.png" />
+    <BundleResource Include="Resources\pen%402x.png" />
+    <BundleResource Include="Resources\pen%403x.png" />
+    <BundleResource Include="Resources\refresh.png" />
+    <BundleResource Include="Resources\refresh%402x.png" />
+    <BundleResource Include="Resources\refresh%403x.png" />
+    <BundleResource Include="Resources\truck.png" />
+    <BundleResource Include="Resources\truck%402x.png" />
+    <BundleResource Include="Resources\truck%403x.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>

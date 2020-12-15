@@ -17,6 +17,7 @@ namespace ERodMobileApp.ViewModels
         public DelegateCommand GoToNotificationCommand { get; set; }
         public HomePageViewModel(INavigationService navigationService) : base(navigationService)
         {
+            TabData = "Profile";
             GoToProfileCommand = new DelegateCommand(ProfileTabSelected);
             GoToOrdersCommand = new DelegateCommand(OrdersTabSelected);
             GoToNewOrderCommand = new DelegateCommand(NewOrderTabSelected);

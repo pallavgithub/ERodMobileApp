@@ -4,15 +4,15 @@ using Xamarin.Forms;
 
 namespace ERodMobileApp.Converters
 {
-    public class TabVisibilityConverter : IValueConverter
+    public class ReverseTabVisibilityConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             var data = value as string;
-            bool isVisible = false;
+            bool isVisible = true;
             if (data == parameter as string)
             {
-                isVisible = true;
+                isVisible = false;
             }
             return isVisible;
         }

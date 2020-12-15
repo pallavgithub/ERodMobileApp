@@ -1,98 +1,83 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:UserControl="clr-namespace:ERodMobileApp.Views" xmlns:Converter="clr-namespace:ERodMobileApp.Converters"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:UserControl="clr-namespace:ERodMobileApp.Views" 
+             xmlns:Converter="clr-namespace:ERodMobileApp.Converters"
              x:Class="ERodMobileApp.Views.HomePage"
              NavigationPage.HasNavigationBar="False">
     <ContentPage.Resources>
         <ResourceDictionary>
             <Converter:InverseBoolConverter x:Key="InverseBoolConverter"></Converter:InverseBoolConverter>
             <Converter:TabVisibilityConverter x:Key="TabVisibilityConverter"></Converter:TabVisibilityConverter>
+            <Converter:ReverseTabVisibilityConverter x:Key="ReverseTabVisibilityConverter"></Converter:ReverseTabVisibilityConverter>
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
-        <RelativeLayout>
-        <StackLayout>
-            <Grid>
-                <!--<Grid.RowDefinitions>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="Auto"/>
-                </Grid.RowDefinitions>-->
-                <StackLayout VerticalOptions="FillAndExpand" IsVisible="True">
-                    <UserControl:ProfileUserControl/>
-                </StackLayout>
-                <!--<Frame Grid.Row="1" VerticalOptions="End" HeightRequest="50" Padding="0,3,0,3" BackgroundColor="#F0FBFF">
-                    <StackLayout Orientation="Horizontal" Spacing="0">
-                        <Grid HorizontalOptions="FillAndExpand" HeightRequest="48" WidthRequest="48">
-                            <Image Source="Profileon" IsVisible="true"/>
-                            <Image Source="Profileoff" IsVisible="false"/>
-                            <Grid.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding GoToProfileCommand, ConverterParameter=Profile}"/>
-                            </Grid.GestureRecognizers>
-                        </Grid>
-                        <Grid HorizontalOptions="FillAndExpand" HeightRequest="48" WidthRequest="48">
-                            <Image Source="Orderon" IsVisible="{Binding TabData, Converter={StaticResource TabVisibilityConverter}, ConverterParameter=Orders}"/>
-                            <Image Source="Orderoff"/>
-                            <Grid.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding GoToOrdersCommand}"/>
-                            </Grid.GestureRecognizers>
-                        </Grid>
-                        <Grid HorizontalOptions="FillAndExpand" HeightRequest="48" WidthRequest="48">
-                            <Image Source="NewOrderOn" IsVisible="{Binding TabData, Converter={StaticResource TabVisibilityConverter}, ConverterParameter=NewOrder}"/>
-                            <Image Source="NewOrderOf" IsVisible="True"/>
-                            <Grid.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding GoToNewOrderCommand}"/>
-                            </Grid.GestureRecognizers>
-                        </Grid>
-                        <Grid HorizontalOptions="FillAndExpand" HeightRequest="48" WidthRequest="48">
-                            <Image Source="Bellon" IsVisible="{Binding TabData, Converter={StaticResource TabVisibilityConverter}, ConverterParameter=Notification}"/>
-                            <Image Source="Belloff" IsVisible="True"/>
-                            <Grid.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding GoToNotificationCommand}"/>
-                            </Grid.GestureRecognizers>
-                        </Grid>
+        <!--<RelativeLayout>-->
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <StackLayout>
+                <Grid VerticalOptions="FillAndExpand">
+                    <StackLayout VerticalOptions="FillAndExpand" IsVisible="{Binding TabData, Converter={StaticResource TabVisibilityConverter}, ConverterParameter=Profile}">
+                        <UserControl:ProfileUserControl/>
                     </StackLayout>
-                </Frame>-->
-            </Grid>
-                
+                    <StackLayout VerticalOptions="FillAndExpand" IsVisible="{Binding TabData, Converter={StaticResource TabVisibilityConverter}, ConverterParameter=Orders}">
+                        <ScrollView VerticalScrollBarVisibility="Never">
+                            <UserControl:OrdersUserControl/>
+                        </ScrollView>
+                    </StackLayout>
+                    <StackLayout VerticalOptions="FillAndExpand" IsVisible="{Binding TabData, Converter={StaticResource TabVisibilityConverter}, ConverterParameter=NewOrder}">
+                        <UserControl:NewOrderUserControl/>
+                    </StackLayout>
+                    <StackLayout VerticalOptions="FillAndExpand" IsVisible="{Binding TabData, Converter={StaticResource TabVisibilityConverter}, ConverterParameter=Notification}">
+                        <UserControl:NotificationUserControl/>
+                    </StackLayout>
+                </Grid>
             </StackLayout>
-            <Frame HeightRequest="50" Padding="0,3,0,3" BackgroundColor="#F0FBFF"
+            <!--<Frame Grid.Row="1" Padding="0,3,0,3" BackgroundColor="#F0FBFF"
                      RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent,
                         Property=Height,Factor=.91,Constant=0}"
                     RelativeLayout.WidthConstraint="{ConstraintExpression
                         Type=RelativeToParent,Property=Width,Factor=1,Constant=0}"
                     RelativeLayout.HeightConstraint="{ConstraintExpression
-                        Type=RelativeToParent,Property=Height,Factor=1,Constant=0}">
+                        Type=RelativeToParent,Property=Height,Factor=1,Constant=0}">-->
+            <Frame Grid.Row="1" Padding="0,3,0,3" BackgroundColor="#F0FBFF" HasShadow="True">
                 <StackLayout Orientation="Horizontal" Spacing="0" VerticalOptions="Start">
-                    <Grid HorizontalOptions="FillAndExpand" HeightRequest="48" WidthRequest="48">
-                        <Image Source="Profileon" IsVisible="true"/>
-                        <Image Source="Profileoff" IsVisible="false"/>
+                    <Grid HorizontalOptions="FillAndExpand" HeightRequest="44" WidthRequest="48">
+                        <Image Source="Profileon" IsVisible="{Binding TabData, Converter={StaticResource TabVisibilityConverter}, ConverterParameter=Profile}"/>
+                        <Image Source="Profileoff" IsVisible="{Binding TabData, Converter={StaticResource ReverseTabVisibilityConverter}, ConverterParameter=Profile}"/>
                         <Grid.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding GoToProfileCommand, ConverterParameter=Profile}"/>
+                            <TapGestureRecognizer Command="{Binding GoToProfileCommand}"/>
                         </Grid.GestureRecognizers>
                     </Grid>
-                    <Grid HorizontalOptions="FillAndExpand" HeightRequest="48" WidthRequest="48">
+                    <Grid HorizontalOptions="FillAndExpand" HeightRequest="44" WidthRequest="48">
                         <Image Source="Orderon" IsVisible="{Binding TabData, Converter={StaticResource TabVisibilityConverter}, ConverterParameter=Orders}"/>
-                        <Image Source="Orderoff"/>
+                        <Image Source="Orderoff" IsVisible="{Binding TabData, Converter={StaticResource ReverseTabVisibilityConverter}, ConverterParameter=Orders}"/>
                         <Grid.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding GoToOrdersCommand}"/>
                         </Grid.GestureRecognizers>
                     </Grid>
-                    <Grid HorizontalOptions="FillAndExpand" HeightRequest="48" WidthRequest="48">
+                    <Grid HorizontalOptions="FillAndExpand" HeightRequest="44" WidthRequest="48">
                         <Image Source="NewOrderOn" IsVisible="{Binding TabData, Converter={StaticResource TabVisibilityConverter}, ConverterParameter=NewOrder}"/>
-                        <Image Source="NewOrderOf" IsVisible="True"/>
+                        <Image Source="NewOrderOf" IsVisible="{Binding TabData, Converter={StaticResource ReverseTabVisibilityConverter}, ConverterParameter=NewOrder}"/>
                         <Grid.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding GoToNewOrderCommand}"/>
                         </Grid.GestureRecognizers>
                     </Grid>
-                    <Grid HorizontalOptions="FillAndExpand" HeightRequest="48" WidthRequest="48">
+                    <Grid HorizontalOptions="FillAndExpand" HeightRequest="44" WidthRequest="48">
                         <Image Source="Bellon" IsVisible="{Binding TabData, Converter={StaticResource TabVisibilityConverter}, ConverterParameter=Notification}"/>
-                        <Image Source="Belloff" IsVisible="True"/>
+                        <Image Source="Belloff" IsVisible="{Binding TabData, Converter={StaticResource ReverseTabVisibilityConverter}, ConverterParameter=Notification}"/>
                         <Grid.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding GoToNotificationCommand}"/>
                         </Grid.GestureRecognizers>
                     </Grid>
                 </StackLayout>
             </Frame>
-        </RelativeLayout>
+
+        </Grid>
+        <!--</RelativeLayout>-->
     </ContentPage.Content>
 </ContentPage>

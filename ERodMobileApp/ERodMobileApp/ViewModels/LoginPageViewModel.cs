@@ -1,6 +1,5 @@
 ﻿using ERodMobileApp.Helpers;
 using ERodMobileApp.Models;
-using ERodMobileApp.Views;
 using Prism.Commands;
 using Prism.Navigation;
 using System;

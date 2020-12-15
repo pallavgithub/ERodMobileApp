@@ -1,10 +1,198 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="ERodMobileApp.Views.OrdersUserControl">
-  <ContentView.Content>
-      <StackLayout>
-          <Label Text="Orders" />
-      </StackLayout>
-  </ContentView.Content>
+             x:Class="ERodMobileApp.Views.OrdersUserControl"
+             xmlns:prism="http://prismlibrary.com" 
+             prism:ViewModelLocator.AutowireViewModel="True"
+             NavigationPage.HasNavigationBar="False">
+    <ContentView.Content>
+        <Grid>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Image Source="BannerBG.png" Grid.Row="0"/>
+                <StackLayout Orientation="Horizontal" Grid.Row="0" Spacing="14" Margin="15,-20,15,0" HorizontalOptions="FillAndExpand"
+                             VerticalOptions="FillAndExpand">
+                    <Label Text="MY ORDERS" HorizontalOptions="Start" TextColor="#333333" FontSize="26" VerticalOptions="CenterAndExpand"/>
+                    <Image Source="refresh.png" HorizontalOptions="Start" VerticalOptions="CenterAndExpand" HeightRequest="25"/>
+                    <Image Source="RodLogo.png" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" HeightRequest="40"/>
+                </StackLayout>
+                <Grid Grid.Row="1"  Margin="15,-10,15,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Frame Grid.Row="0" Padding="0" BackgroundColor="#ADB3BC" CornerRadius="8" HeightRequest="36">
+                        <Label Text="ACTIVE ORDERS" HorizontalTextAlignment="Center" TextColor="White" VerticalOptions="CenterAndExpand"
+                               FontSize="20"/>
+                    </Frame>
+                    <ListView Grid.Row="1" ItemsSource="{Binding Orders}" HasUnevenRows="True" SeparatorVisibility="None"
+                              VerticalScrollBarVisibility="Never">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <StackLayout Margin="0,5,0,5" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                                        <Frame BackgroundColor="#F0FBFF" CornerRadius="12" HasShadow="False" 
+                                                   VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Padding="12,6,12,12">
+                                            <StackLayout Spacing="3">
+                                                <Label Text="{Binding CustomerName}" FontSize="20" TextColor="#FF6600" FontAttributes="Bold"/>
+                                                <StackLayout Orientation="Horizontal">
+                                                    <Label Text="Delivery Time:" FontSize="14" TextColor="#333333"/>
+                                                    <Label Text="{Binding IssuedDate}" HorizontalOptions="EndAndExpand" FontSize="16" TextColor="#333333" FontAttributes="Bold"/>
+                                                </StackLayout>
+                                                <Grid HeightRequest="60" Margin="0,5,0,0">
+                                                    <!--Provisional status-->
+                                                    <StackLayout IsVisible="True" Spacing="0">
+                                                        <Frame BackgroundColor="#a4b0bf" CornerRadius="12" HeightRequest="26" WidthRequest="146" 
+                                                           Padding="0,0,10,0" HorizontalOptions="CenterAndExpand">
+                                                            <StackLayout Orientation="Horizontal" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand">
+                                                                <Label Text="PROVISIONAL" TextColor="White" HorizontalOptions="CenterAndExpand" 
+                                                               HorizontalTextAlignment="Center" FontSize="18"/>
+                                                                <Image Source="pen.png" HorizontalOptions="End" HeightRequest="18" WidthRequest="18"/>
+                                                            </StackLayout>
+                                                        </Frame>
+                                                        <Label Text="> > >  order to be confirmed  &lt; &lt; &lt;" TextColor="#1E5494" VerticalOptions="CenterAndExpand"
+                                                               HorizontalTextAlignment="Center" FontSize="18" FontAttributes="Italic"/>
+                                                    </StackLayout>
+                                                    <!--Confirmed status-->
+                                                    <StackLayout IsVisible="False" Spacing="0">
+                                                        <Frame BackgroundColor="#d8e3da" CornerRadius="12" HeightRequest="26" WidthRequest="146" 
+                                                           Padding="0,0,10,0" HorizontalOptions="CenterAndExpand">
+                                                            <StackLayout Orientation="Horizontal" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand">
+                                                                <Label Text="CONFIRMED" TextColor="White" HorizontalOptions="CenterAndExpand" 
+                                                               HorizontalTextAlignment="Center" FontSize="18"/>
+                                                                <Image Source="greenTick.png" HorizontalOptions="End" HeightRequest="18" WidthRequest="18"/>
+                                                            </StackLayout>
+                                                        </Frame>
+                                                        <Label Text="> > >  processing start soon  &lt; &lt; &lt;" TextColor="#0C752A" VerticalOptions="CenterAndExpand"
+                                                               HorizontalTextAlignment="Center" FontSize="18" FontAttributes="Italic"/>
+                                                    </StackLayout>
+                                                    <!--Procressing status-->
+                                                    <StackLayout IsVisible="False">
+                                                        <Frame BackgroundColor="#f78c45" CornerRadius="12" HeightRequest="26" WidthRequest="146" 
+                                                           Padding="0,0,10,0" HorizontalOptions="CenterAndExpand">
+                                                            <StackLayout Orientation="Horizontal" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand">
+                                                                <Label Text="PROCESSING" TextColor="White" HorizontalOptions="CenterAndExpand" 
+                                                               HorizontalTextAlignment="Center" FontSize="18"/>
+                                                                <Image Source="box.png" HorizontalOptions="End" HeightRequest="18" WidthRequest="18"/>
+                                                            </StackLayout>
+                                                        </Frame>
+                                                        <Grid>
+                                                            <StackLayout HeightRequest="1" BackgroundColor="#ADB3BC" VerticalOptions="Center"/>
+                                                            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand"                                         >
+                                                                <Grid HorizontalOptions="StartAndExpand">
+                                                                    <Image Source="inActive.png" HorizontalOptions="Center"/>
+                                                                    <Image Source="boxActive.png" HorizontalOptions="Center"/>
+                                                                </Grid>
+                                                                <Image Source="inActive.png" HorizontalOptions="CenterAndExpand"/>
+                                                                <Image Source="inActive.png" HorizontalOptions="EndAndExpand"/>
+                                                            </StackLayout>
+                                                        </Grid>
+                                                    </StackLayout>
+                                                    <!--EnRoute status-->
+                                                    <StackLayout IsVisible="False">
+                                                        <Frame BackgroundColor="#f78c45" CornerRadius="12" HeightRequest="26" WidthRequest="146" 
+                                                           Padding="0,0,10,0" HorizontalOptions="CenterAndExpand">
+                                                            <StackLayout Orientation="Horizontal" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand">
+                                                                <Label Text="EN ROUTE" TextColor="White" HorizontalOptions="CenterAndExpand" 
+                                                               HorizontalTextAlignment="Center" FontSize="18"/>
+                                                                <Image Source="truck.png" HorizontalOptions="End" HeightRequest="18" WidthRequest="18"/>
+                                                            </StackLayout>
+                                                        </Frame>
+                                                        <Grid>
+                                                            <StackLayout HeightRequest="1" BackgroundColor="#ADB3BC" VerticalOptions="Center"/>
+                                                            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                                                                <Image Source="circle.png" HorizontalOptions="StartAndExpand"/>
+                                                                <Grid HorizontalOptions="CenterAndExpand">
+                                                                    <Image Source="inActive.png" HorizontalOptions="Center"/>
+                                                                    <Image Source="deliverytruck.png" HorizontalOptions="Center"/>
+                                                                </Grid>
+                                                                <Image Source="inActive.png" HorizontalOptions="EndAndExpand"/>
+                                                            </StackLayout>
+                                                        </Grid>
+                                                    </StackLayout>
+                                                    <!--Delivered status-->
+                                                    <StackLayout IsVisible="False">
+                                                        <Frame BackgroundColor="#f78c45" CornerRadius="12" HeightRequest="26" WidthRequest="146" 
+                                                           Padding="0,0,10,0" HorizontalOptions="CenterAndExpand">
+                                                            <StackLayout Orientation="Horizontal" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand">
+                                                                <Label Text="DELIVERED" TextColor="White" HorizontalOptions="CenterAndExpand" 
+                                                               HorizontalTextAlignment="Center" FontSize="18"/>
+                                                                <Image Source="truck.png" HorizontalOptions="End" HeightRequest="18" WidthRequest="18"/>
+                                                            </StackLayout>
+                                                        </Frame>
+                                                        <Grid>
+                                                            <StackLayout HeightRequest="1" BackgroundColor="#ADB3BC" VerticalOptions="Center"/>
+                                                            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                                                                <Image Source="circle.png" HorizontalOptions="StartAndExpand"/>
+                                                                <Image Source="circle.png" HorizontalOptions="CenterAndExpand"/>
+                                                                <Grid HorizontalOptions="EndAndExpand">
+                                                                    <Image Source="inActive.png" HorizontalOptions="Center"/>
+                                                                    <Image Source="CartActive.png" HorizontalOptions="Center"/>
+                                                                </Grid>
+                                                            </StackLayout>
+                                                        </Grid>
+                                                    </StackLayout>
+                                                </Grid>        
+                                                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="0,5,0,0">
+                                                    <Button Text="REVIEW" BackgroundColor="#828282" TextColor="White" CornerRadius="3"
+                                                                HeightRequest="40" WidthRequest="84" FontSize="18" Padding="2" HorizontalOptions="StartAndExpand"/>
+                                                    <Button Text="EDIT" BackgroundColor="#828282" TextColor="White" CornerRadius="3"
+                                                                HeightRequest="40" WidthRequest="84" FontSize="18" Padding="2" HorizontalOptions="CenterAndExpand"/>
+                                                    <Button Text="SIGN" BackgroundColor="#828282" TextColor="White" CornerRadius="3"
+                                                                HeightRequest="40" WidthRequest="84" FontSize="18" Padding="2" HorizontalOptions="EndAndExpand"/>
+                                                </StackLayout>
+                                            </StackLayout>
+
+                                        </Frame>
+                                    </StackLayout>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </Grid>
+                <Grid Grid.Row="2"  Margin="15,20,15,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Frame Grid.Row="0" Padding="0" BackgroundColor="#50555C" CornerRadius="8" HeightRequest="36">
+                        <Label Text="CLOSED ORDERS" HorizontalTextAlignment="Center" TextColor="White" VerticalOptions="CenterAndExpand"
+                               FontSize="20"/>
+                    </Frame>
+                    <ListView Grid.Row="1" ItemsSource="{Binding Orders}" HasUnevenRows="True" SeparatorVisibility="Default"
+                              VerticalScrollBarVisibility="Never">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                                        <Frame CornerRadius="12" HasShadow="False" 
+                                                   VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Padding="8,12,8,12">
+                                            <StackLayout Orientation="Horizontal">
+                                                <Label Text="{Binding CustomerName}" TextColor="#979797" FontSize="16" FontAttributes="Bold" VerticalTextAlignment="Center"/>
+                                                <StackLayout HorizontalOptions="EndAndExpand" VerticalOptions="FillAndExpand" Spacing="0">
+                                                    <Label Text="Delivered on" FontSize="12" TextColor="#979797"/>
+                                                    <Label Text="{Binding IssuedDate}" FontSize="16" FontAttributes="Bold" TextColor="#979797"/>
+                                                </StackLayout>
+                                                <Image Source="Group.png" HeightRequest="25" WidthRequest="21" VerticalOptions="FillAndExpand"/>
+                                            </StackLayout>
+
+                                        </Frame>
+                                    </StackLayout>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </Grid>
+            </Grid>
+            <ContentView IsVisible="{Binding IsBusy}" VerticalOptions="FillAndExpand">
+                <ActivityIndicator Color="#FF6600" IsVisible="{Binding IsBusy}" IsRunning="{Binding IsBusy}"  HeightRequest="30" WidthRequest="30"
+                                   HorizontalOptions="Center" VerticalOptions="Start" Margin="0,300,0,0"/>
+            </ContentView>
+
+        </Grid>
+    </ContentView.Content>
 </ContentView>
