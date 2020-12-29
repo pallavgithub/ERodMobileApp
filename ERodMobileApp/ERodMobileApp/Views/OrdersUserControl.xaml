@@ -50,7 +50,7 @@
                                                     <Label Text="Delivery Time:" FontSize="14" TextColor="#333333"/>
                                                     <Label Text="{Binding OrderTime}" HorizontalOptions="EndAndExpand" FontSize="16" TextColor="#333333" FontAttributes="Bold"/>
                                                 </StackLayout>
-                                                <Grid HeightRequest="60" Margin="0,5,0,0">
+                                                <Grid Margin="0,5,0,0">
                                                     <!--Provisional status-->
                                                     <StackLayout IsVisible="{Binding Status, Converter={StaticResource OrderStatusVisibilityConverter}, ConverterParameter=Provisional}" Spacing="0">
                                                         <Frame BackgroundColor="#a4b0bf" CornerRadius="12" HeightRequest="26" WidthRequest="146" 
@@ -63,6 +63,14 @@
                                                         </Frame>
                                                         <Label Text="> > >  order to be confirmed  &lt; &lt; &lt;" TextColor="#1E5494" VerticalOptions="CenterAndExpand"
                                                                HorizontalTextAlignment="Center" FontSize="18" FontAttributes="Italic"/>
+                                                        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="0,5,0,0">
+                                                            <Button Text="REVIEW" BackgroundColor="#828282" TextColor="White" CornerRadius="3"
+                                                                HeightRequest="40" WidthRequest="84" FontSize="18" Padding="2" HorizontalOptions="StartAndExpand"/>
+                                                            <Button Text="EDIT" BackgroundColor="#828282" TextColor="White" CornerRadius="3"
+                                                                HeightRequest="40" WidthRequest="84" FontSize="18" Padding="2" HorizontalOptions="CenterAndExpand"/>
+                                                            <Button Text="SIGN" BackgroundColor="#DADADA" TextColor="White" CornerRadius="3"
+                                                                HeightRequest="40" WidthRequest="84" FontSize="18" Padding="2" HorizontalOptions="EndAndExpand"/>
+                                                        </StackLayout>
                                                     </StackLayout>
                                                     <!--Confirmed status-->
                                                     <StackLayout IsVisible="{Binding Status, Converter={StaticResource OrderStatusVisibilityConverter}, ConverterParameter=Confirmed}" Spacing="0">
@@ -76,6 +84,14 @@
                                                         </Frame>
                                                         <Label Text="> > >  processing start soon  &lt; &lt; &lt;" TextColor="#0C752A" VerticalOptions="CenterAndExpand"
                                                                HorizontalTextAlignment="Center" FontSize="18" FontAttributes="Italic"/>
+                                                        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="0,5,0,0">
+                                                            <Button Text="REVIEW" BackgroundColor="#828282" TextColor="White" CornerRadius="3"
+                                                                HeightRequest="40" WidthRequest="84" FontSize="18" Padding="2" HorizontalOptions="StartAndExpand"/>
+                                                            <Button Text="EDIT" BackgroundColor="#828282" TextColor="White" CornerRadius="3"
+                                                                HeightRequest="40" WidthRequest="84" FontSize="18" Padding="2" HorizontalOptions="CenterAndExpand"/>
+                                                            <Button Text="SIGN" BackgroundColor="#DADADA" TextColor="White" CornerRadius="3"
+                                                                HeightRequest="40" WidthRequest="84" FontSize="18" Padding="2" HorizontalOptions="EndAndExpand"/>
+                                                        </StackLayout>
                                                     </StackLayout>
                                                     <!--Procressing status-->
                                                     <StackLayout IsVisible="{Binding Status, Converter={StaticResource OrderStatusVisibilityConverter}, ConverterParameter=Processing}">
@@ -98,6 +114,14 @@
                                                                 <Image Source="inActive.png" HorizontalOptions="EndAndExpand"/>
                                                             </StackLayout>
                                                         </Grid>
+                                                        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="0,5,0,0">
+                                                            <Button Text="REVIEW" BackgroundColor="#828282" TextColor="White" CornerRadius="3"
+                                                                HeightRequest="40" WidthRequest="84" FontSize="18" Padding="2" HorizontalOptions="StartAndExpand"/>
+                                                            <Button Text="EDIT" BackgroundColor="#DADADA" TextColor="White" CornerRadius="3"
+                                                                HeightRequest="40" WidthRequest="84" FontSize="18" Padding="2" HorizontalOptions="CenterAndExpand"/>
+                                                            <Button Text="SIGN" BackgroundColor="#DADADA" TextColor="White" CornerRadius="3"
+                                                                HeightRequest="40" WidthRequest="84" FontSize="18" Padding="2" HorizontalOptions="EndAndExpand"/>
+                                                        </StackLayout>
                                                     </StackLayout>
                                                     <!--EnRoute status-->
                                                     <StackLayout IsVisible="{Binding Status, Converter={StaticResource OrderStatusVisibilityConverter}, ConverterParameter=EnRoute}">
@@ -120,6 +144,14 @@
                                                                 <Image Source="inActive.png" HorizontalOptions="EndAndExpand"/>
                                                             </StackLayout>
                                                         </Grid>
+                                                        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="0,5,0,0">
+                                                            <Button Text="REVIEW" BackgroundColor="#828282" TextColor="White" CornerRadius="3"
+                                                                HeightRequest="40" WidthRequest="84" FontSize="18" Padding="2" HorizontalOptions="StartAndExpand"/>
+                                                            <Button Text="EDIT" BackgroundColor="#DADADA" TextColor="White" CornerRadius="3"
+                                                                HeightRequest="40" WidthRequest="84" FontSize="18" Padding="2" HorizontalOptions="CenterAndExpand"/>
+                                                            <Button Text="SIGN" BackgroundColor="#828282" TextColor="White" CornerRadius="3"
+                                                                HeightRequest="40" WidthRequest="84" FontSize="18" Padding="2" HorizontalOptions="EndAndExpand"/>
+                                                        </StackLayout>
                                                     </StackLayout>
                                                     <!--Delivered status-->
                                                     <StackLayout IsVisible="{Binding Status, Converter={StaticResource OrderStatusVisibilityConverter}, ConverterParameter=Delivered}">
@@ -128,7 +160,7 @@
                                                             <StackLayout Orientation="Horizontal" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand">
                                                                 <Label Text="DELIVERED" TextColor="White" HorizontalOptions="CenterAndExpand" 
                                                                HorizontalTextAlignment="Center" FontSize="18"/>
-                                                                <Image Source="truck.png" HorizontalOptions="End" HeightRequest="18" WidthRequest="18"/>
+                                                                <Image Source="Arrive.png" HorizontalOptions="End" HeightRequest="18" WidthRequest="18"/>
                                                             </StackLayout>
                                                         </Frame>
                                                         <Grid>
@@ -142,16 +174,24 @@
                                                                 </Grid>
                                                             </StackLayout>
                                                         </Grid>
+                                                        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="0,5,0,0">
+                                                            <Button Text="REVIEW" BackgroundColor="#828282" TextColor="White" CornerRadius="3"
+                                                                HeightRequest="40" WidthRequest="84" FontSize="18" Padding="2" HorizontalOptions="StartAndExpand"/>
+                                                            <Button Text="EDIT" BackgroundColor="#DADADA" TextColor="White" CornerRadius="3"
+                                                                HeightRequest="40" WidthRequest="84" FontSize="18" Padding="2" HorizontalOptions="CenterAndExpand"/>
+                                                            <Button Text="SIGN" BackgroundColor="#828282" TextColor="White" CornerRadius="3"
+                                                                HeightRequest="40" WidthRequest="84" FontSize="18" Padding="2" HorizontalOptions="EndAndExpand"/>
+                                                        </StackLayout>
                                                     </StackLayout>
                                                 </Grid>        
-                                                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="0,5,0,0">
+                                                <!--<StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="0,5,0,0">
                                                     <Button Text="REVIEW" BackgroundColor="#828282" TextColor="White" CornerRadius="3"
                                                                 HeightRequest="40" WidthRequest="84" FontSize="18" Padding="2" HorizontalOptions="StartAndExpand"/>
                                                     <Button Text="EDIT" BackgroundColor="#828282" TextColor="White" CornerRadius="3"
                                                                 HeightRequest="40" WidthRequest="84" FontSize="18" Padding="2" HorizontalOptions="CenterAndExpand"/>
                                                     <Button Text="SIGN" BackgroundColor="#828282" TextColor="White" CornerRadius="3"
                                                                 HeightRequest="40" WidthRequest="84" FontSize="18" Padding="2" HorizontalOptions="EndAndExpand"/>
-                                                </StackLayout>
+                                                </StackLayout>-->
                                             </StackLayout>
                                         </Frame>
                                         <StackLayout.GestureRecognizers>
@@ -253,7 +293,7 @@
                 <Frame HasShadow="False" OutlineColor="#FF6600" CornerRadius="10" BackgroundColor="#F0FBFF" Margin="30,10,30,30" Padding="12">
                     <StackLayout>
                         <Label Text="Questions? Contact Exceed" TextColor="#FF6600" HorizontalTextAlignment="Center" FontSize="20"/>
-                    <Grid RowSpacing="4">
+                    <Grid RowSpacing="4" ColumnSpacing="0" Margin="10,0,0,0">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="Auto"/>
@@ -264,11 +304,11 @@
                             <ColumnDefinition Width="0.6*"/>
                             <ColumnDefinition Width="1.4*"/>
                         </Grid.ColumnDefinitions>
-                            <Image/>
+                            <Image Grid.Row="0" Grid.Column="0" Source="ProfileIcon.png" WidthRequest="15" HeightRequest="15"/>
                             <Label Grid.Row="0" Grid.Column="1" Text="Ashley Clay" TextColor="Black" FontSize="18" HorizontalOptions="StartAndExpand"/>
-                            <Image/>
+                            <Image Grid.Row="1" Grid.Column="0" Source="PhoneIcon.png" WidthRequest="15" HeightRequest="15"/>
                             <Label Grid.Row="1" Grid.Column="1" Text="406-459-5279" TextColor="Black" FontSize="18" HorizontalOptions="StartAndExpand"/>
-                            <Image/>
+                            <Image Grid.Row="2" Grid.Column="0" Source="EmailIcon.png" WidthRequest="15" HeightRequest="15"/>
                             <Label Grid.Row="2" Grid.Column="1" Text="aclay@eoe-inc.com" TextColor="Black" FontSize="18" HorizontalOptions="StartAndExpand"/>
                         </Grid>
                     </StackLayout>
@@ -630,7 +670,7 @@
                        Padding="12">
                     <StackLayout>
                         <Label Text="Questions? Contact Exceed" TextColor="#FF6600" HorizontalTextAlignment="Center" FontSize="20"/>
-                        <Grid RowSpacing="4">
+                        <Grid RowSpacing="4" Margin="10,0,0,0">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="Auto"/>
                                 <RowDefinition Height="Auto"/>
@@ -641,11 +681,11 @@
                                 <ColumnDefinition Width="0.6*"/>
                                 <ColumnDefinition Width="1.4*"/>
                             </Grid.ColumnDefinitions>
-                            <Image/>
+                            <Image Grid.Row="0" Grid.Column="0" Source="ProfileIcon.png" WidthRequest="15" HeightRequest="15"/>
                             <Label Grid.Row="0" Grid.Column="1" Text="Ashley Clay" TextColor="Black" FontSize="18" HorizontalOptions="StartAndExpand"/>
-                            <Image/>
+                            <Image Grid.Row="1" Grid.Column="0" Source="PhoneIcon.png" WidthRequest="15" HeightRequest="15"/>
                             <Label Grid.Row="1" Grid.Column="1" Text="406-459-5279" TextColor="Black" FontSize="18" HorizontalOptions="StartAndExpand"/>
-                            <Image/>
+                            <Image Grid.Row="2" Grid.Column="0" Source="EmailIcon.png" WidthRequest="15" HeightRequest="15"/>
                             <Label Grid.Row="2" Grid.Column="1" Text="aclay@eoe-inc.com" TextColor="Black" FontSize="18" HorizontalOptions="StartAndExpand"/>
                         </Grid>
                     </StackLayout>

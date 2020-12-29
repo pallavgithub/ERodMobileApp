@@ -1,0 +1,122 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ERodMobileApp.Views.NewOrderPage"
+             xmlns:prism="http://prismlibrary.com" xmlns:Custom="clr-namespace:ERodMobileApp.CustomRenderers"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             NavigationPage.HasNavigationBar="False">
+    <ContentPage.Content>
+        <StackLayout>
+            <ScrollView VerticalScrollBarVisibility="Never">
+                <StackLayout>
+                    <Grid BackgroundColor="#FF6600" HeightRequest="60" Padding="20,0,20,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Image Source="RodWhite.png" HeightRequest="30"/>
+                        <Label Text="New Order" Grid.Column="1" FontSize="24" TextColor="White" HorizontalOptions="Center" VerticalOptions="CenterAndExpand"
+                        CharacterSpacing="1"/>
+                    </Grid>
+                    <StackLayout Margin="20,10,20,50" Spacing="30">
+            <Label Text="Update Order Information" TextColor="#50555C" FontSize="24" Margin="5,0,0,0"/>
+            <StackLayout Spacing="0">
+                <Label Text="Location Name" TextTransform="Uppercase" FontSize="18" TextColor="#FF6600"/>
+                    <Frame Padding="0,3,0,3" HasShadow="False" Grid.Row="1" OutlineColor="#ADB3BC" 
+                           HorizontalOptions="FillAndExpand" VerticalOptions="Center" BackgroundColor="#F0FBFF" 
+                           CornerRadius="5" HeightRequest="40">
+                        <Custom:XEntry Text="" FontSize="20" 
+                              HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" Keyboard="Default" 
+                                       TextColor="Black" Margin="10,0,0,0" RemovePadding="True"/>
+                    </Frame>
+                </StackLayout>
+                <StackLayout Spacing="0">
+                    <Label Text="Customer Company" TextTransform="Uppercase" FontSize="18" TextColor="#FF6600"/>
+                    <Frame Padding="0,3,0,3" HasShadow="False" Grid.Row="1" OutlineColor="#ADB3BC" 
+                           HorizontalOptions="FillAndExpand" VerticalOptions="Center" BackgroundColor="#F0FBFF" 
+                           CornerRadius="5" HeightRequest="40">
+                                <Custom:XEntry Text="ABC Resources" FontSize="20" 
+                              HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" Keyboard="Default" 
+                                       TextColor="Black" Margin="10,0,0,0" RemovePadding="True"/>
+                    </Frame>
+                </StackLayout>
+                <StackLayout Spacing="0">
+                    <Label Text="Customer Name" TextTransform="Uppercase" FontSize="18" TextColor="#FF6600"/>
+                    <Frame Padding="0,3,0,3" HasShadow="False" Grid.Row="1" OutlineColor="#ADB3BC" 
+                           HorizontalOptions="FillAndExpand" VerticalOptions="Center" BackgroundColor="#F0FBFF" 
+                           CornerRadius="5" HeightRequest="40">
+                                <Custom:XEntry Text="ABC Resources" FontSize="20" 
+                              HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" Keyboard="Default" 
+                                       TextColor="Black" Margin="10,0,0,0" RemovePadding="True"/>
+                    </Frame>
+                </StackLayout>
+                <StackLayout Spacing="0">
+                    <Label Text="Customer Phone" TextTransform="Uppercase" FontSize="18" TextColor="#FF6600"/>
+                    <Frame Padding="0,3,0,3" HasShadow="False" Grid.Row="1" OutlineColor="#ADB3BC" 
+                           HorizontalOptions="FillAndExpand" VerticalOptions="Center" BackgroundColor="#F0FBFF" 
+                           CornerRadius="5" HeightRequest="40">
+                                <Custom:XEntry Text="ABC Resources" FontSize="20" 
+                              HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" Keyboard="Default" 
+                                       TextColor="Black" Margin="10,0,0,0" RemovePadding="True"/>
+                    </Frame>
+
+                        </StackLayout>
+                        <StackLayout Spacing="0">
+                            <Label Text="engr. / supvr." TextTransform="Uppercase" FontSize="18" TextColor="#FF6600"/>
+                            <Frame Padding="0,3,0,3" HasShadow="False" Grid.Row="1" OutlineColor="#ADB3BC" 
+                           HorizontalOptions="FillAndExpand" VerticalOptions="Center" BackgroundColor="#F0FBFF" 
+                           CornerRadius="5" HeightRequest="40">
+                                <Custom:XEntry Text="ABC Resources" FontSize="20" 
+                              HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" Keyboard="Default" 
+                                       TextColor="Black" Margin="10,0,0,0" RemovePadding="True"/>
+                            </Frame>
+                        </StackLayout>
+                        <StackLayout Spacing="0">
+                            <Label Text="Office" TextTransform="Uppercase" FontSize="18" TextColor="#FF6600"/>
+                            <Frame Padding="0,3,0,3" HasShadow="False" Grid.Row="1" OutlineColor="#ADB3BC" 
+                           HorizontalOptions="FillAndExpand" VerticalOptions="Center" BackgroundColor="#F0FBFF" 
+                           CornerRadius="5" HeightRequest="40">
+                                <Custom:XEntry Text="ABC Resources" FontSize="20" 
+                              HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" Keyboard="Default" 
+                                       TextColor="Black" Margin="10,0,0,0" RemovePadding="True"/>
+                            </Frame>
+                        </StackLayout>
+                        <StackLayout Spacing="0">
+                            <Label Text="AFE#" TextTransform="Uppercase" FontSize="18" TextColor="#FF6600"/>
+                            <Frame Padding="0,3,0,3" HasShadow="False" Grid.Row="1" OutlineColor="#ADB3BC" 
+                           HorizontalOptions="FillAndExpand" VerticalOptions="Center" BackgroundColor="#F0FBFF" 
+                           CornerRadius="5" HeightRequest="40">
+                                <Custom:XEntry Text="ABC Resources" FontSize="20" 
+                              HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" Keyboard="Default" 
+                                       TextColor="Black" Margin="10,0,0,0" RemovePadding="True"/>
+                            </Frame>
+                        </StackLayout>
+                        <StackLayout Spacing="0">
+                            <Label Text="GlCode" TextTransform="Uppercase" FontSize="18" TextColor="#FF6600"/>
+                            <Frame Padding="0,3,0,3" HasShadow="False" Grid.Row="1" OutlineColor="#ADB3BC" 
+                           HorizontalOptions="FillAndExpand" VerticalOptions="Center" BackgroundColor="#F0FBFF" 
+                           CornerRadius="5" HeightRequest="40">
+                                <Custom:XEntry Text="ABC Resources" FontSize="20" 
+                              HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" Keyboard="Default" 
+                                       TextColor="Black" Margin="10,0,0,0" RemovePadding="True"/>
+                            </Frame>
+                        </StackLayout>
+                        <StackLayout Spacing="0">
+                                            <Label Text="Note" TextTransform="Uppercase" FontSize="18" TextColor="#FF6600"/>
+                                            <Frame Padding="0,3,0,3" HasShadow="False" Grid.Row="1" OutlineColor="#ADB3BC" 
+                           HorizontalOptions="FillAndExpand" VerticalOptions="Center" BackgroundColor="#F0FBFF" 
+                           CornerRadius="5" HeightRequest="80">
+                                                <Custom:XEntry FontSize="20" 
+                              HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" Keyboard="Default"
+                                       TextColor="Black" Margin="10,0,0,0" RemovePadding="True" Placeholder="Add note here" PlaceholderColor="#50555C"/>
+                                            </Frame>
+                                        </StackLayout>
+                        <Button Text="Save and Continue" FontSize="18" Padding="2" TextColor="White" BackgroundColor="#FF6600" CornerRadius="3" VerticalOptions="CenterAndExpand" HeightRequest="40" WidthRequest="335"/>
+                        <Button Text="Cancel" FontSize="18" Padding="2" TextColor="White" BackgroundColor="#333333" CornerRadius="3" VerticalOptions="CenterAndExpand" HeightRequest="40" WidthRequest="335" Clicked="CancelBtn_Clicked"/>
+                    </StackLayout>
+                </StackLayout>
+            </ScrollView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

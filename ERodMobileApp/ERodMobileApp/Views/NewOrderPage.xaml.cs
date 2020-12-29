@@ -10,11 +10,16 @@ using Xamarin.Forms.Xaml;
 namespace ERodMobileApp.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class NewOrderUserControl : ContentView
+    public partial class NewOrderPage : ContentPage
     {
-        public NewOrderUserControl()
+        public NewOrderPage()
         {
             InitializeComponent();
-        }       
+        }
+
+        private void CancelBtn_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PopAsync();
+        }
     }
 }
