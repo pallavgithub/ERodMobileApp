@@ -20,7 +20,7 @@
                         </Grid.RowDefinitions>
                         <StackLayout Orientation="Horizontal" Grid.Row="0" Spacing="14" Margin="0,0,0,30" HorizontalOptions="FillAndExpand"
                              VerticalOptions="FillAndExpand">
-                            <Label Text="MY ORDERS" HorizontalOptions="Start" TextColor="#333333" FontSize="26" VerticalOptions="CenterAndExpand"/>
+                            <Label Text="New Order" HorizontalOptions="Start" TextColor="#333333" FontSize="26" VerticalOptions="CenterAndExpand" TextTransform="Uppercase"/>
                             <Image Source="RodLogo.png" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" HeightRequest="30"/>
                         </StackLayout>
                         <Frame Grid.Row="1" Padding="0" BackgroundColor="#FF6600" CornerRadius="8" HeightRequest="36">
