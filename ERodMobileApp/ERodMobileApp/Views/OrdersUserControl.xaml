@@ -183,7 +183,7 @@
                                             <StackLayout Orientation="Horizontal">
                                                 <Label Text="{Binding OrderID}" TextColor="#979797" FontSize="16" FontAttributes="Bold" VerticalTextAlignment="Center"/>
                                                 <StackLayout HorizontalOptions="EndAndExpand" VerticalOptions="FillAndExpand" Spacing="0">
-                                                    <Label Text="Delivered on" FontSize="12" TextColor="#979797"/>
+                                                    <Label Text="Delivered on" FontSize="12" TextColor="#979797" FontAttributes="Italic"/>
                                                     <Label Text="{Binding DeliveryTime}" FontSize="16" FontAttributes="Bold" TextColor="#979797"/>
                                                 </StackLayout>
                                                 <Image Source="Group.png" HeightRequest="25" WidthRequest="21" VerticalOptions="FillAndExpand"/>
@@ -282,10 +282,10 @@
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
-                                <StackLayout Spacing="0">
+                                <StackLayout Spacing="0" VerticalOptions="CenterAndExpand">
                                     <StackLayout Orientation="Horizontal">
-                                        <Label Text="{Binding Name}"/>
-                                        <Label Text="{Binding Quantity}" HorizontalOptions="EndAndExpand"/>
+                                        <Label Text="{Binding Name}" TextColor="Black" FontSize="18"/>
+                                        <Label Text="{Binding Quantity}" HorizontalOptions="EndAndExpand" TextColor="Black" FontSize="18"/>
                                     </StackLayout>
                                     <Label Text="{Binding Description}"/>
                                 </StackLayout>
@@ -298,10 +298,10 @@
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
-                                <StackLayout Spacing="0">
+                                <StackLayout Spacing="0" VerticalOptions="CenterAndExpand">
                                     <StackLayout Orientation="Horizontal">
-                                        <Label Text="{Binding Name}"/>
-                                        <Label Text="{Binding Quantity}" HorizontalOptions="EndAndExpand"/>
+                                        <Label Text="{Binding Name}" TextColor="Black" FontSize="18"/>
+                                        <Label Text="{Binding Quantity}" HorizontalOptions="EndAndExpand" TextColor="Black" FontSize="18"/>
                                     </StackLayout>
                                     <Label Text="{Binding Description}"/>
                                 </StackLayout>
@@ -314,10 +314,10 @@
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
-                                <StackLayout Spacing="0">
+                                <StackLayout Spacing="0" VerticalOptions="CenterAndExpand">
                                     <StackLayout Orientation="Horizontal">
-                                        <Label Text="{Binding Name}"/>
-                                        <Label Text="{Binding Quantity}" HorizontalOptions="EndAndExpand"/>
+                                        <Label Text="{Binding Name}" TextColor="Black" FontSize="18"/>
+                                        <Label Text="{Binding Quantity}" HorizontalOptions="EndAndExpand" TextColor="Black" FontSize="18"/>
                                     </StackLayout>
                                 </StackLayout>
                             </ViewCell>
@@ -329,10 +329,10 @@
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
-                                <StackLayout Spacing="0">
+                                <StackLayout Spacing="0" VerticalOptions="CenterAndExpand">
                                     <StackLayout Orientation="Horizontal">
-                                        <Label Text="{Binding Name}"/>
-                                        <Label Text="{Binding Quantity}" HorizontalOptions="EndAndExpand"/>
+                                        <Label Text="{Binding Name}" TextColor="Black" FontSize="18"/>
+                                        <Label Text="{Binding Quantity}" HorizontalOptions="EndAndExpand" TextColor="Black" FontSize="18"/>
                                     </StackLayout>
                                 </StackLayout>
                             </ViewCell>
@@ -344,10 +344,10 @@
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
-                                <StackLayout Spacing="0">
+                                <StackLayout Spacing="0" VerticalOptions="CenterAndExpand">
                                     <StackLayout Orientation="Horizontal">
-                                        <Label Text="{Binding Name}"/>
-                                        <Label Text="{Binding Quantity}" HorizontalOptions="EndAndExpand"/>
+                                        <Label Text="{Binding Name}" TextColor="Black" FontSize="18"/>
+                                        <Label Text="{Binding Quantity}" HorizontalOptions="EndAndExpand" TextColor="Black" FontSize="18"/>
                                     </StackLayout>
                                 </StackLayout>
                             </ViewCell>
@@ -359,10 +359,10 @@
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
-                                <StackLayout Spacing="0">
+                                <StackLayout Spacing="0" VerticalOptions="CenterAndExpand">
                                     <StackLayout Orientation="Horizontal">
-                                        <Label Text="{Binding Name}"/>
-                                        <Label Text="{Binding Quantity}" HorizontalOptions="EndAndExpand"/>
+                                        <Label Text="{Binding Name}" TextColor="Black" FontSize="18"/>
+                                        <Label Text="{Binding Quantity}" HorizontalOptions="EndAndExpand" TextColor="Black" FontSize="18"/>
                                     </StackLayout>
                                 </StackLayout>
                             </ViewCell>
@@ -374,10 +374,10 @@
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
-                                <StackLayout Spacing="0">
+                                <StackLayout Spacing="0" VerticalOptions="CenterAndExpand">
                                     <StackLayout Orientation="Horizontal">
-                                        <Label Text="{Binding Name}"/>
-                                        <Label Text="{Binding Quantity}" HorizontalOptions="EndAndExpand"/>
+                                        <Label Text="{Binding Name}" TextColor="Black" FontSize="18"/>
+                                        <Label Text="{Binding Quantity}" HorizontalOptions="EndAndExpand" TextColor="Black" FontSize="18"/>
                                     </StackLayout>
                                 </StackLayout>
                             </ViewCell>
@@ -454,10 +454,10 @@
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
-                                <StackLayout Spacing="0">
+                                <StackLayout Spacing="0" VerticalOptions="CenterAndExpand">
                                 <StackLayout Orientation="Horizontal">
-                                    <Label Text="{Binding Name}"/>
-                                    <Label Text="{Binding Quantity}" HorizontalOptions="EndAndExpand"/>
+                                        <Label Text="{Binding Name}" TextColor="Black" FontSize="18"/>
+                                        <Label Text="{Binding Quantity}" HorizontalOptions="EndAndExpand" TextColor="Black" FontSize="18"/>
                                 </StackLayout>
                                 <Label Text="{Binding Description}"/>
                                 </StackLayout>
@@ -470,10 +470,10 @@
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
-                                <StackLayout Spacing="0">
+                                <StackLayout Spacing="0" VerticalOptions="CenterAndExpand">
                                     <StackLayout Orientation="Horizontal">
-                                        <Label Text="{Binding Name}"/>
-                                        <Label Text="{Binding Quantity}" HorizontalOptions="EndAndExpand"/>
+                                        <Label Text="{Binding Name}" TextColor="Black" FontSize="18"/>
+                                        <Label Text="{Binding Quantity}" HorizontalOptions="EndAndExpand" TextColor="Black" FontSize="18"/>
                                     </StackLayout>
                                     <Label Text="{Binding Description}"/>
                                 </StackLayout>
@@ -487,9 +487,9 @@
                         <DataTemplate>
                             <ViewCell>
                                 <StackLayout Spacing="0">
-                                    <StackLayout Orientation="Horizontal">
-                                        <Label Text="{Binding Name}"/>
-                                        <Label Text="{Binding Quantity}" HorizontalOptions="EndAndExpand"/>
+                                    <StackLayout Orientation="Horizontal" VerticalOptions="CenterAndExpand">
+                                        <Label Text="{Binding Name}" TextColor="Black" FontSize="18"/>
+                                        <Label Text="{Binding Quantity}" HorizontalOptions="EndAndExpand" TextColor="Black" FontSize="18"/>
                                     </StackLayout>
                                 </StackLayout>
                             </ViewCell>
@@ -501,10 +501,10 @@
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
-                                <StackLayout Spacing="0">
+                                <StackLayout Spacing="0" VerticalOptions="CenterAndExpand">
                                     <StackLayout Orientation="Horizontal">
-                                        <Label Text="{Binding Name}"/>
-                                        <Label Text="{Binding Quantity}" HorizontalOptions="EndAndExpand"/>
+                                        <Label Text="{Binding Name}" TextColor="Black" FontSize="18"/>
+                                        <Label Text="{Binding Quantity}" HorizontalOptions="EndAndExpand" TextColor="Black" FontSize="18"/>
                                     </StackLayout>
                                 </StackLayout>
                             </ViewCell>
@@ -516,10 +516,10 @@
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
-                                <StackLayout Spacing="0">
+                                <StackLayout Spacing="0" VerticalOptions="CenterAndExpand">
                                     <StackLayout Orientation="Horizontal">
-                                        <Label Text="{Binding Name}"/>
-                                        <Label Text="{Binding Quantity}" HorizontalOptions="EndAndExpand"/>
+                                        <Label Text="{Binding Name}" TextColor="Black" FontSize="18"/>
+                                        <Label Text="{Binding Quantity}" HorizontalOptions="EndAndExpand" TextColor="Black" FontSize="18"/>
                                     </StackLayout>
                                 </StackLayout>
                             </ViewCell>
@@ -531,10 +531,10 @@
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
-                                <StackLayout Spacing="0">
+                                <StackLayout Spacing="0" VerticalOptions="CenterAndExpand">
                                     <StackLayout Orientation="Horizontal">
-                                        <Label Text="{Binding Name}"/>
-                                        <Label Text="{Binding Quantity}" HorizontalOptions="EndAndExpand"/>
+                                        <Label Text="{Binding Name}" TextColor="Black" FontSize="18"/>
+                                        <Label Text="{Binding Quantity}" HorizontalOptions="EndAndExpand" TextColor="Black" FontSize="18"/>
                                     </StackLayout>
                                 </StackLayout>
                             </ViewCell>
@@ -546,10 +546,10 @@
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
-                                <StackLayout Spacing="0">
+                                <StackLayout Spacing="0" VerticalOptions="CenterAndExpand">
                                     <StackLayout Orientation="Horizontal">
-                                        <Label Text="{Binding Name}"/>
-                                        <Label Text="{Binding Quantity}" HorizontalOptions="EndAndExpand"/>
+                                        <Label Text="{Binding Name}" TextColor="Black" FontSize="18"/>
+                                        <Label Text="{Binding Quantity}" HorizontalOptions="EndAndExpand" TextColor="Black" FontSize="18"/>
                                     </StackLayout>
                                 </StackLayout>
                             </ViewCell>
@@ -657,7 +657,7 @@
                             HorizontalOptions="CenterAndExpand" Padding="1" CornerRadius="3" Clicked="ClosedOrderToList_Clicked"/>
                 </StackLayout>
             </StackLayout>
-            <ContentView IsVisible="{Binding IsBusy}" VerticalOptions="FillAndExpand">
+            <ContentView IsVisible="{Binding IsBusy}" VerticalOptions="FillAndExpand" BackgroundColor="Yellow">
                 <ActivityIndicator Color="#FF6600" IsVisible="{Binding IsBusy}" IsRunning="{Binding IsBusy}"  HeightRequest="30" WidthRequest="30"
                                    HorizontalOptions="Center" VerticalOptions="Start" Margin="0,300,0,0"/>
             </ContentView>
