@@ -115,6 +115,7 @@
     <None Include="Info.plist" />
     <LinkDescription Include="LinkerSettings.xml" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <BundleResource Include="Resources\animation.mp4" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\Contents.json">
@@ -419,6 +420,9 @@
     <BundleResource Include="Resources\RodWhite%403x.png" />
     <BundleResource Include="Resources\RodWhite.png" />
     <BundleResource Include="Resources\RodWhite%402x.png" />
+    <BundleResource Include="Resources\Exceed.png" />
+    <BundleResource Include="Resources\Exceed%402x.png" />
+    <BundleResource Include="Resources\Exceed%403x.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>

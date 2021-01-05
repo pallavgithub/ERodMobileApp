@@ -20,12 +20,14 @@ namespace ERodMobileApp
 
         protected override async void OnStart()
         {
-            await NavigationService.NavigateAsync("NavigationPage/LoginPage");
+           // await NavigationService.NavigateAsync("NavigationPage/LoginPage");
+            await NavigationService.NavigateAsync("NavigationPage/MainPage");
         }
 
         protected override void OnInitialized()
         {
             InitializeComponent();
+            Device.SetFlags(new string[] { "MediaElement_Experimental" });
         }
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
