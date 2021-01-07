@@ -15,6 +15,10 @@ namespace ERodMobileApp.ViewModels
         {
             Title = "Main Page";
         }
+        public async void GoToLoginPage()
+        {
+            await NavigationService.NavigateAsync("LoginPage");
+        }
 
         public override void OnNavigatedFrom(INavigationParameters parameters)
         {

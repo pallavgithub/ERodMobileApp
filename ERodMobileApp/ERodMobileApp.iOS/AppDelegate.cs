@@ -24,19 +24,19 @@ namespace ERodMobileApp.iOS
             global::Xamarin.Forms.Forms.Init();
             Window = new UIWindow(UIScreen.MainScreen.Bounds);
 
-            var controller = new SplashPlayerController();
+           // var controller = new SplashPlayerController();
 
 
-            var NavController = new UINavigationController(controller);
+           // var NavController = new UINavigationController(controller);
 
-            Window.RootViewController = NavController;
-            Window.MakeKeyAndVisible();
+           // Window.RootViewController = NavController;
+           // Window.MakeKeyAndVisible();
 
-            MessagingCenter.Subscribe<object, object>(this, "ShowMainScreen", (sender, args) =>
-            {
+          //  MessagingCenter.Subscribe<object, object>(this, "ShowMainScreen", (sender, args) =>
+           // {
                 LoadApplication(new App(new iOSInitializer()));
                 base.FinishedLaunching(app, options);
-            });
+           // });
 
 
             return true;

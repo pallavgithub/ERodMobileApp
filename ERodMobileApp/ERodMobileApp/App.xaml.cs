@@ -21,13 +21,48 @@ namespace ERodMobileApp
         protected override async void OnStart()
         {
            // await NavigationService.NavigateAsync("NavigationPage/LoginPage");
-            await NavigationService.NavigateAsync("NavigationPage/MainPage");
+            await NavigationService.NavigateAsync("MainPage");
         }
 
         protected override void OnInitialized()
         {
             InitializeComponent();
             Device.SetFlags(new string[] { "MediaElement_Experimental" });
+           // MainPage = new NavigationPage(new MainPage());
+
+        }
+
+        protected override void OnSleep()
+        {
+            Connectivity.ConnectivityChanged -= Connectivity_ConnectivityChanged;
+            // Handle when your app sleeps
+        }
+
+        protected override void OnResume()
+        {
+            Connectivity.ConnectivityChanged += Connectivity_ConnectivityChanged;
+            // Handle when your app resumes
+        }
+
+        private void Connectivity_ConnectivityChanged(object sender, ConnectivityChangedEventArgs e)
+        {
+            var current = Connectivity.NetworkAccess;
+
+            if (current != NetworkAccess.Internet)
+            {
+                Page page;
+                if (MainPage is NavigationPage)
+                {
+                    page = ((NavigationPage)MainPage).CurrentPage;
+                }
+                else
+                {
+                    page = MainPage;
+                }
+
+                //page.DisplayAlert("Status", "Internet has been disconnected.", "OK");
+            }
+
         }
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
