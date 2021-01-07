@@ -21,6 +21,7 @@ namespace ERodMobileApp.Views
             base.OnAppearing();
             try
             {
+                video.Source = "ms-appx:///animation.mp4";
                 await Task.Delay(2000);
                 exceed.IsVisible = true;
                 await exceed.ScaleTo(1, 600);

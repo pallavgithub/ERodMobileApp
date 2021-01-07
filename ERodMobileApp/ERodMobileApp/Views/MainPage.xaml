@@ -4,10 +4,9 @@
              x:Class="ERodMobileApp.Views.MainPage"
              Title="{Binding Title}"
              NavigationPage.HasNavigationBar="False">
-
     <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-        <MediaElement Source="ms-appx:///animation.mp4" IsVisible="True"
-              ShowsPlaybackControls="False" IsLooping="True" AutoPlay="True" Aspect="AspectFill"/>
+        <MediaElement IsVisible="True" 
+              ShowsPlaybackControls="False" IsLooping="True" AutoPlay="True" Aspect="AspectFill" x:Name="video"/>
         <AbsoluteLayout HorizontalOptions="CenterAndExpand" VerticalOptions="FillAndExpand">
             <Image x:Name="exceed" Source="Exceed.png" Aspect="Fill"  AbsoluteLayout.LayoutBounds="0,0.3,1,0.3"
                  AbsoluteLayout.LayoutFlags="All"
