@@ -8,7 +8,7 @@
     <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
         <MediaElement Source="ms-appx:///animation.mp4" IsVisible="True"
               ShowsPlaybackControls="False" IsLooping="True" AutoPlay="True" Aspect="AspectFill"/>
-        <AbsoluteLayout HorizontalOptions="CenterAndExpand" VerticalOptions="End">
+        <AbsoluteLayout HorizontalOptions="CenterAndExpand" VerticalOptions="FillAndExpand">
             <Image x:Name="exceed" Source="Exceed.png" Aspect="Fill"  AbsoluteLayout.LayoutBounds="0,0.3,1,0.3"
                  AbsoluteLayout.LayoutFlags="All"
                  TranslationY="{Binding Height, Source={x:Reference receive}}"
