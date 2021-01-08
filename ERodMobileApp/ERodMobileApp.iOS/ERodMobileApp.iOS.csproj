@@ -423,6 +423,12 @@
     <BundleResource Include="Resources\Exceed.png" />
     <BundleResource Include="Resources\Exceed%402x.png" />
     <BundleResource Include="Resources\Exceed%403x.png" />
+    <BundleResource Include="Resources\BannerBGgreen%403x.png" />
+    <BundleResource Include="Resources\BannerBGgreen.png" />
+    <BundleResource Include="Resources\BannerBGgreen%402x.png" />
+    <BundleResource Include="Resources\Arrow%403x.png" />
+    <BundleResource Include="Resources\Arrow.png" />
+    <BundleResource Include="Resources\Arrow%402x.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>
