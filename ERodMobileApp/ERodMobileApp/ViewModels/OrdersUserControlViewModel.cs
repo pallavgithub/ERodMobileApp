@@ -285,14 +285,14 @@ namespace ERodMobileApp.ViewModels
                     else
                         PonyList.Add(item);
                 }
-                Couplings.Add(new OrderItem {Name="Crossover 1"+'"'+"X 7/8"+'"'+ "SM Slimhole",Quantity="1pcs" });
-                Couplings.Add(new OrderItem { Name = "Crossover 3/4" + '"' + "X 7/8" + '"' + "SM Slimhole", Quantity = "1pcs" });
-                SinkerBar.Add(new OrderItem {Name="C 1-1/2"+'"'+" 25ft w/ 3/4 pin" , Quantity="15pcs"});
-                PolishedRod.Add(new OrderItem {Name="Alloy Metal 1-1/2"+'"'+" 26ft 1"+'"'+"pin" , Quantity = "1pcs" });
-                StablizerBar.Add(new OrderItem { Name = "EHK 1" + '"' + " 4ft 3/4" + '"' + "pin", Quantity = "3pcs" });
-                OtherItems.Add(new OrderItem { Name = "Pin Glue", Quantity = "3pcs" });
-                OtherItems.Add(new OrderItem { Name = "Break cleaner", Quantity = "3pcs" });
-                OtherItems.Add(new OrderItem { Name = "Rags", Quantity = "3pcs" });
+                Couplings.Add(new OrderItem {Name="Crossover 1"+'"'+"X 7/8"+'"'+ "SM Slimhole",Quantity="1pcs",ProductType="Couplings" });
+                Couplings.Add(new OrderItem { Name = "Crossover 3/4" + '"' + "X 7/8" + '"' + "SM Slimhole", Quantity = "1pcs", ProductType = "Couplings" });
+                SinkerBar.Add(new OrderItem {Name="C 1-1/2"+'"'+" 25ft w/ 3/4 pin" , Quantity="15pcs", ProductType = "Sinker" });
+                PolishedRod.Add(new OrderItem {Name="Alloy Metal 1-1/2"+'"'+" 26ft 1"+'"'+"pin" , Quantity = "1pcs" , ProductType = "Polished" });
+                StablizerBar.Add(new OrderItem { Name = "EHK 1" + '"' + " 4ft 3/4" + '"' + "pin", Quantity = "3pcs", ProductType = "Stablizer" });
+                OtherItems.Add(new OrderItem { Name = "Pin Glue", Quantity = "3pcs" , ProductType = "Other" });
+                OtherItems.Add(new OrderItem { Name = "Break cleaner", Quantity = "3pcs", ProductType = "Other" });
+                OtherItems.Add(new OrderItem { Name = "Rags", Quantity = "3pcs" , ProductType = "Other" });
                 IsBusy = false;
             }
             catch (Exception e)
@@ -332,20 +332,26 @@ namespace ERodMobileApp.ViewModels
                     else
                         PonyList.Add(item);
                 }
-                Couplings.Add(new OrderItem { Name = "Crossover 1" + '"' + "X 7/8" + '"' + "SM Slimhole", Quantity = "1pcs" });
-                Couplings.Add(new OrderItem { Name = "Crossover 3/4" + '"' + "X 7/8" + '"' + "SM Slimhole", Quantity = "1pcs" });
-                SinkerBar.Add(new OrderItem { Name = "C 1-1/2" + '"' + " 25ft w/ 3/4 pin", Quantity = "15pcs" });
-                PolishedRod.Add(new OrderItem { Name = "Alloy Metal 1-1/2" + '"' + " 26ft 1" + '"' + "pin", Quantity = "1pcs" });
-                StablizerBar.Add(new OrderItem { Name = "EHK 1" + '"' + " 4ft 3/4" + '"' + "pin", Quantity = "3pcs" });
-                OtherItems.Add(new OrderItem { Name = "Pin Glue", Quantity = "3pcs" });
-                OtherItems.Add(new OrderItem { Name = "Break cleaner", Quantity = "3pcs" });
-                OtherItems.Add(new OrderItem { Name = "Rags", Quantity = "3pcs" });
+                Couplings.Add(new OrderItem { Name = "Crossover 1" + '"' + "X 7/8" + '"' + "SM Slimhole", Quantity = "1pcs", ProductType = "Couplings" });
+                Couplings.Add(new OrderItem { Name = "Crossover 3/4" + '"' + "X 7/8" + '"' + "SM Slimhole", Quantity = "1pcs", ProductType = "Couplings" });
+                SinkerBar.Add(new OrderItem { Name = "C 1-1/2" + '"' + " 25ft w/ 3/4 pin", Quantity = "15pcs", ProductType = "Sinker" });
+                PolishedRod.Add(new OrderItem { Name = "Alloy Metal 1-1/2" + '"' + " 26ft 1" + '"' + "pin", Quantity = "1pcs", ProductType = "Polished" });
+                StablizerBar.Add(new OrderItem { Name = "EHK 1" + '"' + " 4ft 3/4" + '"' + "pin", Quantity = "3pcs", ProductType = "Stablizer" });
+                OtherItems.Add(new OrderItem { Name = "Pin Glue", Quantity = "3pcs", ProductType = "Other" });
+                OtherItems.Add(new OrderItem { Name = "Break cleaner", Quantity = "3pcs", ProductType = "Other" });
+                OtherItems.Add(new OrderItem { Name = "Rags", Quantity = "3pcs", ProductType = "Other" });
                 IsBusy = false;
             }
             catch (Exception e)
             {
 
             }
+        }
+        public void GoToReviewOrderPage(SalesOrderDataModel salesOrder)
+        {
+            NavigationParameters navigationParameters = new NavigationParameters();
+            navigationParameters.Add("SalesOrder", salesOrder);
+            NavigationService.NavigateAsync("ReviewOrderPage", navigationParameters);
         }
     }
 }

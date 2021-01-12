@@ -38,5 +38,11 @@ namespace ERodMobileApp.Views
             (BindingContext as OrdersUserControlViewModel).ActiveOrderPageIsVisible = false;
             (BindingContext as OrdersUserControlViewModel).SoListPageIsVisible = true;
         }
+
+        private void ReviewButton_Clicked(object sender, EventArgs e)
+        {
+            var selectedItem = (SalesOrderDataModel)((Button)sender).CommandParameter;
+            (BindingContext as OrdersUserControlViewModel).GoToReviewOrderPage(selectedItem);
+        }
     }
 }

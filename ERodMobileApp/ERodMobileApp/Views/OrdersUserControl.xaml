@@ -64,9 +64,9 @@
                                                         <Label Text="> > >  order to be confirmed  &lt; &lt; &lt;" TextColor="#1E5494" VerticalOptions="CenterAndExpand"
                                                                HorizontalTextAlignment="Center" FontSize="18" FontAttributes="Italic"/>
                                                         <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="0,5,0,0">
-                                                            <Button Text="REVIEW" BackgroundColor="#828282" TextColor="White" CornerRadius="3"
+                                                            <Button Text="REVIEW" BackgroundColor="#828282" TextColor="White" CornerRadius="3" Clicked="ReviewButton_Clicked" CommandParameter="{Binding .}" 
                                                                 HeightRequest="40" WidthRequest="84" FontSize="18" Padding="2" HorizontalOptions="StartAndExpand"/>
-                                                            <Button Text="EDIT" BackgroundColor="#828282" TextColor="White" CornerRadius="3"
+                                                            <Button Text="EDIT" BackgroundColor="#828282" TextColor="White" CornerRadius="3" 
                                                                 HeightRequest="40" WidthRequest="84" FontSize="18" Padding="2" HorizontalOptions="CenterAndExpand"/>
                                                             <Button Text="SIGN" BackgroundColor="#DADADA" TextColor="White" CornerRadius="3"
                                                                 HeightRequest="40" WidthRequest="84" FontSize="18" Padding="2" HorizontalOptions="EndAndExpand"/>
@@ -85,7 +85,7 @@
                                                         <Label Text="> > >  processing start soon  &lt; &lt; &lt;" TextColor="#0C752A" VerticalOptions="CenterAndExpand"
                                                                HorizontalTextAlignment="Center" FontSize="18" FontAttributes="Italic"/>
                                                         <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="0,5,0,0">
-                                                            <Button Text="REVIEW" BackgroundColor="#828282" TextColor="White" CornerRadius="3"
+                                                            <Button Text="REVIEW" BackgroundColor="#828282" TextColor="White" CornerRadius="3" Clicked="ReviewButton_Clicked" CommandParameter="{Binding .}"
                                                                 HeightRequest="40" WidthRequest="84" FontSize="18" Padding="2" HorizontalOptions="StartAndExpand"/>
                                                             <Button Text="EDIT" BackgroundColor="#828282" TextColor="White" CornerRadius="3"
                                                                 HeightRequest="40" WidthRequest="84" FontSize="18" Padding="2" HorizontalOptions="CenterAndExpand"/>
@@ -115,7 +115,7 @@
                                                             </StackLayout>
                                                         </Grid>
                                                         <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="0,5,0,0">
-                                                            <Button Text="REVIEW" BackgroundColor="#828282" TextColor="White" CornerRadius="3"
+                                                            <Button Text="REVIEW" BackgroundColor="#828282" TextColor="White" CornerRadius="3" Clicked="ReviewButton_Clicked" CommandParameter="{Binding .}"
                                                                 HeightRequest="40" WidthRequest="84" FontSize="18" Padding="2" HorizontalOptions="StartAndExpand"/>
                                                             <Button Text="EDIT" BackgroundColor="#DADADA" TextColor="White" CornerRadius="3"
                                                                 HeightRequest="40" WidthRequest="84" FontSize="18" Padding="2" HorizontalOptions="CenterAndExpand"/>
@@ -145,7 +145,7 @@
                                                             </StackLayout>
                                                         </Grid>
                                                         <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="0,5,0,0">
-                                                            <Button Text="REVIEW" BackgroundColor="#828282" TextColor="White" CornerRadius="3"
+                                                            <Button Text="REVIEW" BackgroundColor="#828282" TextColor="White" CornerRadius="3" Clicked="ReviewButton_Clicked" CommandParameter="{Binding .}"
                                                                 HeightRequest="40" WidthRequest="84" FontSize="18" Padding="2" HorizontalOptions="StartAndExpand"/>
                                                             <Button Text="EDIT" BackgroundColor="#DADADA" TextColor="White" CornerRadius="3"
                                                                 HeightRequest="40" WidthRequest="84" FontSize="18" Padding="2" HorizontalOptions="CenterAndExpand"/>
@@ -175,7 +175,7 @@
                                                             </StackLayout>
                                                         </Grid>
                                                         <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="0,5,0,0">
-                                                            <Button Text="REVIEW" BackgroundColor="#828282" TextColor="White" CornerRadius="3"
+                                                            <Button Text="REVIEW" BackgroundColor="#828282" TextColor="White" CornerRadius="3" Clicked="ReviewButton_Clicked" CommandParameter="{Binding .}"
                                                                 HeightRequest="40" WidthRequest="84" FontSize="18" Padding="2" HorizontalOptions="StartAndExpand"/>
                                                             <Button Text="EDIT" BackgroundColor="#DADADA" TextColor="White" CornerRadius="3"
                                                                 HeightRequest="40" WidthRequest="84" FontSize="18" Padding="2" HorizontalOptions="CenterAndExpand"/>
@@ -183,15 +183,7 @@
                                                                 HeightRequest="40" WidthRequest="84" FontSize="18" Padding="2" HorizontalOptions="EndAndExpand"/>
                                                         </StackLayout>
                                                     </StackLayout>
-                                                </Grid>        
-                                                <!--<StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="0,5,0,0">
-                                                    <Button Text="REVIEW" BackgroundColor="#828282" TextColor="White" CornerRadius="3"
-                                                                HeightRequest="40" WidthRequest="84" FontSize="18" Padding="2" HorizontalOptions="StartAndExpand"/>
-                                                    <Button Text="EDIT" BackgroundColor="#828282" TextColor="White" CornerRadius="3"
-                                                                HeightRequest="40" WidthRequest="84" FontSize="18" Padding="2" HorizontalOptions="CenterAndExpand"/>
-                                                    <Button Text="SIGN" BackgroundColor="#828282" TextColor="White" CornerRadius="3"
-                                                                HeightRequest="40" WidthRequest="84" FontSize="18" Padding="2" HorizontalOptions="EndAndExpand"/>
-                                                </StackLayout>-->
+                                                </Grid>   
                                             </StackLayout>
                                         </Frame>
                                         <StackLayout.GestureRecognizers>
