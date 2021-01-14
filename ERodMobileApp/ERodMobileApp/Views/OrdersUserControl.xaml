@@ -68,7 +68,7 @@
                                                                 HeightRequest="40" WidthRequest="84" FontSize="18" Padding="2" HorizontalOptions="StartAndExpand"/>
                                                             <Button Text="EDIT" BackgroundColor="#828282" TextColor="White" CornerRadius="3" 
                                                                 HeightRequest="40" WidthRequest="84" FontSize="18" Padding="2" HorizontalOptions="CenterAndExpand"/>
-                                                            <Button Text="SIGN" BackgroundColor="#DADADA" TextColor="White" CornerRadius="3"
+                                                            <Button Text="SIGN" BackgroundColor="#DADADA" TextColor="White" CornerRadius="3" Clicked="SignButton_Clicked"
                                                                 HeightRequest="40" WidthRequest="84" FontSize="18" Padding="2" HorizontalOptions="EndAndExpand"/>
                                                         </StackLayout>
                                                     </StackLayout>
@@ -89,7 +89,7 @@
                                                                 HeightRequest="40" WidthRequest="84" FontSize="18" Padding="2" HorizontalOptions="StartAndExpand"/>
                                                             <Button Text="EDIT" BackgroundColor="#828282" TextColor="White" CornerRadius="3"
                                                                 HeightRequest="40" WidthRequest="84" FontSize="18" Padding="2" HorizontalOptions="CenterAndExpand"/>
-                                                            <Button Text="SIGN" BackgroundColor="#DADADA" TextColor="White" CornerRadius="3"
+                                                            <Button Text="SIGN" BackgroundColor="#DADADA" TextColor="White" CornerRadius="3" Clicked="SignButton_Clicked"
                                                                 HeightRequest="40" WidthRequest="84" FontSize="18" Padding="2" HorizontalOptions="EndAndExpand"/>
                                                         </StackLayout>
                                                     </StackLayout>
@@ -119,7 +119,7 @@
                                                                 HeightRequest="40" WidthRequest="84" FontSize="18" Padding="2" HorizontalOptions="StartAndExpand"/>
                                                             <Button Text="EDIT" BackgroundColor="#DADADA" TextColor="White" CornerRadius="3"
                                                                 HeightRequest="40" WidthRequest="84" FontSize="18" Padding="2" HorizontalOptions="CenterAndExpand"/>
-                                                            <Button Text="SIGN" BackgroundColor="#DADADA" TextColor="White" CornerRadius="3"
+                                                            <Button Text="SIGN" BackgroundColor="#DADADA" TextColor="White" CornerRadius="3" Clicked="SignButton_Clicked"
                                                                 HeightRequest="40" WidthRequest="84" FontSize="18" Padding="2" HorizontalOptions="EndAndExpand"/>
                                                         </StackLayout>
                                                     </StackLayout>
@@ -149,7 +149,7 @@
                                                                 HeightRequest="40" WidthRequest="84" FontSize="18" Padding="2" HorizontalOptions="StartAndExpand"/>
                                                             <Button Text="EDIT" BackgroundColor="#DADADA" TextColor="White" CornerRadius="3"
                                                                 HeightRequest="40" WidthRequest="84" FontSize="18" Padding="2" HorizontalOptions="CenterAndExpand"/>
-                                                            <Button Text="SIGN" BackgroundColor="#828282" TextColor="White" CornerRadius="3"
+                                                            <Button Text="SIGN" BackgroundColor="#828282" TextColor="White" CornerRadius="3" Clicked="SignButton_Clicked"
                                                                 HeightRequest="40" WidthRequest="84" FontSize="18" Padding="2" HorizontalOptions="EndAndExpand"/>
                                                         </StackLayout>
                                                     </StackLayout>
@@ -179,7 +179,7 @@
                                                                 HeightRequest="40" WidthRequest="84" FontSize="18" Padding="2" HorizontalOptions="StartAndExpand"/>
                                                             <Button Text="EDIT" BackgroundColor="#DADADA" TextColor="White" CornerRadius="3"
                                                                 HeightRequest="40" WidthRequest="84" FontSize="18" Padding="2" HorizontalOptions="CenterAndExpand"/>
-                                                            <Button Text="SIGN" BackgroundColor="#828282" TextColor="White" CornerRadius="3"
+                                                            <Button Text="SIGN" BackgroundColor="#828282" TextColor="White" CornerRadius="3" Clicked="SignButton_Clicked"
                                                                 HeightRequest="40" WidthRequest="84" FontSize="18" Padding="2" HorizontalOptions="EndAndExpand"/>
                                                         </StackLayout>
                                                     </StackLayout>

@@ -44,5 +44,10 @@ namespace ERodMobileApp.Views
             var selectedItem = (SalesOrderDataModel)((Button)sender).CommandParameter;
             (BindingContext as OrdersUserControlViewModel).GoToReviewOrderPage(selectedItem);
         }
+
+        private void SignButton_Clicked(object sender, EventArgs e)
+        {
+            (BindingContext as OrdersUserControlViewModel).GoToSignaturePage();
+        }
     }
 }

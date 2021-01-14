@@ -1,7 +1,9 @@
 ﻿using ERodMobileApp.iOS.CustomRenderers;
+using ERodMobileApp.Views;
 using Foundation;
 using Prism;
 using Prism.Ioc;
+using System.Linq;
 using UIKit;
 using Xamarin.Forms;
 namespace ERodMobileApp.iOS
@@ -41,6 +43,15 @@ namespace ERodMobileApp.iOS
 
             return true;
 
+        }
+        public override UIInterfaceOrientationMask GetSupportedInterfaceOrientations(UIApplication application, UIWindow forWindow)
+        {
+            var mainPage = Xamarin.Forms.Application.Current.MainPage;
+            if (mainPage.Navigation.NavigationStack.Last() is SignaturePage)
+            {
+                return UIInterfaceOrientationMask.Landscape;
+            }
+            return UIInterfaceOrientationMask.Portrait;
         }
     }
 

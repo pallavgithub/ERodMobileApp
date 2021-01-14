@@ -5,9 +5,11 @@ using Android.OS;
 using AndroidX.Core.App;
 using AndroidX.Core.Content;
 using ERodMobileApp.Droid.CustomRenderers;
+using ERodMobileApp.Views;
 using Prism;
 using Prism.Ioc;
 using System;
+using Xamarin.Forms;
 
 namespace ERodMobileApp.Droid
 {
@@ -29,6 +31,18 @@ namespace ERodMobileApp.Droid
             //{
             //    System.Diagnostics.Debug.WriteLine("Permission Granted!!!");
             //}
+
+            //allowing the device to change the screen orientation based on the rotation
+            MessagingCenter.Subscribe<SignaturePage>(this, "allowLandScapePortrait", sender =>
+            {
+                RequestedOrientation = ScreenOrientation.Landscape;
+            });
+
+            //during page close setting back to portrait
+            MessagingCenter.Subscribe<SignaturePage>(this, "preventLandScape", sender =>
+            {
+                RequestedOrientation = ScreenOrientation.Portrait;
+            });
             Xamarin.Forms.DependencyService.Register<MessageAndroid>();
 
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);

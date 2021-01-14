@@ -1,5 +1,6 @@
 ﻿using ERodMobileApp.Helpers;
 using ERodMobileApp.Models;
+using Prism.Commands;
 using Prism.Navigation;
 using System;
 using System.Collections.Generic;
@@ -171,6 +172,10 @@ namespace ERodMobileApp.ViewModels
             //SoListPageIsVisible = true;
             GetSalesOrderList();
             //GetAllSalesOrders();
+        }
+        public void GoToSignaturePage()
+        {
+            NavigationService.NavigateAsync("SignaturePage");
         }
         public async void GetAllSalesOrders()
         {
