@@ -33,6 +33,7 @@ namespace ERodMobileApp.Droid
             //}
 
             //allowing the device to change the screen orientation based on the rotation
+
             MessagingCenter.Subscribe<SignaturePage>(this, "allowLandScapePortrait", sender =>
             {
                 RequestedOrientation = ScreenOrientation.Landscape;

@@ -28,6 +28,7 @@ namespace ERodMobileApp
         {
             InitializeComponent();
             Device.SetFlags(new string[] { "MediaElement_Experimental" });
+            Plugin.Media.CrossMedia.Current.Initialize();
            // MainPage = new NavigationPage(new MainPage());
 
         }
