@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ERodMobileApp.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,7 +20,12 @@ namespace ERodMobileApp.Views
 
         private void CancelBtn_Clicked(object sender, EventArgs e)
         {
-            Navigation.PopAsync();
+            (BindingContext as NewOrderPageViewModel)._navigation.GoBackAsync();
+        }
+
+        private void SaveBtn_Clicked(object sender, EventArgs e)
+        {
+            (BindingContext as NewOrderPageViewModel)._navigation.NavigateAsync("ProductsPage");
         }
     }
 }

@@ -112,7 +112,8 @@
                                        TextColor="Black" Margin="10,0,0,0" RemovePadding="True" Placeholder="Add note here" PlaceholderColor="#50555C"/>
                                             </Frame>
                                         </StackLayout>
-                        <Button Text="Save and Continue" FontSize="18" Padding="2" TextColor="White" BackgroundColor="#FF6600" CornerRadius="3" VerticalOptions="CenterAndExpand" HeightRequest="40" WidthRequest="335"/>
+                        <Button Text="Save and Continue" FontSize="18" Padding="2" TextColor="White" BackgroundColor="#FF6600" CornerRadius="3" VerticalOptions="CenterAndExpand" HeightRequest="40" WidthRequest="335"
+                                Clicked="SaveBtn_Clicked"/>
                         <Button Text="Cancel" FontSize="18" Padding="2" TextColor="White" BackgroundColor="#333333" CornerRadius="3" VerticalOptions="CenterAndExpand" HeightRequest="40" WidthRequest="335" Clicked="CancelBtn_Clicked"/>
                     </StackLayout>
                 </StackLayout>

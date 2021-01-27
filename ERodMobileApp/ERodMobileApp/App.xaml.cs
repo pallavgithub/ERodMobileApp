@@ -77,6 +77,7 @@ namespace ERodMobileApp
             containerRegistry.RegisterForNavigation<NewOrderPage, NewOrderPageViewModel>();
             containerRegistry.RegisterForNavigation<ReviewOrderPage, ReviewOrderPageViewModel>();
             containerRegistry.RegisterForNavigation<SignaturePage, SignaturePageViewModel>();
+            containerRegistry.RegisterForNavigation<ProductsPage, ProductsPageViewModel>();
         }
 
         public static async Task<PermissionStatus> CheckAndRequestPhonePermission()

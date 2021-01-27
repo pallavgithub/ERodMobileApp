@@ -13,6 +13,7 @@
     <ContentPage.Content>
         <StackLayout>
             <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                <!--Enter Mobile (for ios)-->
                 <ContentView IsVisible="{Binding EnterMobilePageIsVisible}" VerticalOptions="FillAndExpand"
                              HorizontalOptions="FillAndExpand">
                     <Grid>
@@ -39,7 +40,7 @@
                                        TextColor="#434e5e" Margin="10,0,0,0" RemovePadding="True"/>
                                     </Frame>
                                 </StackLayout>
-                                <Button Text="Log In" BackgroundColor="#FF6600" FontSize="18" TextColor="White"
+                                <Button Text="Log In" TextTransform="Uppercase" BackgroundColor="#FF6600" FontSize="18" TextColor="White"
                             Clicked="LoginWithMobileNumber_Clicked" HeightRequest="45" CornerRadius="5" WidthRequest="200" 
                                     HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand"/>
                                 <StackLayout Orientation="Horizontal"  HorizontalOptions="CenterAndExpand">
@@ -65,6 +66,7 @@
                         </ContentView>
                     </Grid>
                 </ContentView>
+                <!--Profile Found-->
                 <ContentView IsVisible="{Binding LoginIsVisible}" Margin="0,20,0,0">
                     <Grid>
                         <Grid.RowDefinitions>
@@ -185,6 +187,7 @@
                             VerticalOptions="Start" CornerRadius="3"/>
                     </Grid>
                 </ContentView>
+                <!--Activation Code Page-->
                 <ContentView IsVisible="{Binding ActivationCodePageIsVisible}" Margin="0,30,0,0">
                     <Grid Margin="45,0,40,0">
                         <Grid.RowDefinitions>
@@ -275,7 +278,6 @@
                                    HorizontalOptions="Center" VerticalOptions="Center"/>
                 </ContentView>
             </Grid>
-
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

@@ -4,15 +4,17 @@ using Xamarin.Forms;
 
 namespace ERodMobileApp.Converters
 {
-    public class OrderStatusVisibilityConverter : IValueConverter
+    public class SelectedFrameBgColor : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            string status = value as string;
-            bool IsVisible = false;
-            if (parameter as string == status)
-                IsVisible = true;
-            return IsVisible;
+            Color BgColor = Color.FromHex("#50555C");
+            var data = value as string;
+            if (parameter as string == data)
+            {
+                BgColor = Color.FromHex("#F0FBFF");
+            }
+            return BgColor;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
