@@ -1,6 +1,5 @@
 ﻿using ERodMobileApp.Helpers;
 using ERodMobileApp.Models;
-using ERodMobileApp.ViewModels;
 using Prism.Commands;
 using Prism.Navigation;
 using System.Collections.Generic;
@@ -8,7 +7,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
-namespace ERodMobileApp.Views
+namespace ERodMobileApp.ViewModels
 {
     public class ProductsPageViewModel : ViewModelBase
     {

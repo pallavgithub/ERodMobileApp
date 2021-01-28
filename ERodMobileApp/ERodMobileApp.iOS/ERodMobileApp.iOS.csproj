@@ -435,6 +435,9 @@
     <BundleResource Include="Resources\Arrow%403x.png" />
     <BundleResource Include="Resources\Arrow.png" />
     <BundleResource Include="Resources\Arrow%402x.png" />
+    <BundleResource Include="Resources\Remove.png" />
+    <BundleResource Include="Resources\Remove%402x.png" />
+    <BundleResource Include="Resources\Remove%403x.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>

@@ -167,15 +167,21 @@ namespace ERodMobileApp.ViewModels
             get => _orderStatus;
             set => SetProperty(ref _orderStatus, value);
         }
+        public DelegateCommand<SalesOrderDataModel> EditOrderCommand { get; set; }
         public OrdersUserControlViewModel(INavigationService navigationService) : base(navigationService)
         {
-            //SoListPageIsVisible = true;
             GetSalesOrderList();
-            //GetAllSalesOrders();
+            EditOrderCommand = new DelegateCommand<SalesOrderDataModel>(GoToEditOrderPage);
         }
         public void GoToSignaturePage()
         {
             NavigationService.NavigateAsync("SignaturePage");
+        }
+        public void GoToEditOrderPage(SalesOrderDataModel model)
+        {
+            NavigationParameters navigationParameters = new NavigationParameters();
+            navigationParameters.Add("SalesOrderData", model);
+            NavigationService.NavigateAsync("EditOrderPage", navigationParameters);
         }
         public async void GetAllSalesOrders()
         {
@@ -210,7 +216,7 @@ namespace ERodMobileApp.ViewModels
                 ActiveSalesOrders.Add(new SalesOrderDataModel { OrderID = "Hobbs-WHX-16", OrderTime = "12/18/20", SOId = "SO201084", Status = "Processing", WellName = "Packineau USA 21-3H - Grover 11-3TFH", Customer = "QEP", Phone = "John Doe", Engineer = "534675-6", GlCode = "534675-6", ShippingName = "ND Express Trucking", DeliveryTime = "10/18/20 10AM", DriverName = "Adam Smith", DriverPhone = "406-123-4567" });
                 ActiveSalesOrders.Add(new SalesOrderDataModel { OrderID = "Hobbs-WHX-17", OrderTime = "13/18/20", SOId = "SO201084", Status = "EnRoute", WellName = "Packineau USA 21-3H - Grover 11-3TFH", Customer = "QEP", Phone = "John Doe", Engineer = "534675-6", GlCode = "534675-6", ShippingName = "ND Express Trucking", DeliveryTime = "10/18/20 10AM", DriverName = "Adam Smith", DriverPhone = "406-123-4567" });
                 ActiveSalesOrders.Add(new SalesOrderDataModel { OrderID = "Hobbs-WHX-18", OrderTime = "14/18/20", SOId = "SO201084", Status = "Delivered", WellName = "Packineau USA 21-3H - Grover 11-3TFH", Customer = "QEP", Phone = "John Doe", Engineer = "534675-6", GlCode = "534675-6", ShippingName = "ND Express Trucking", DeliveryTime = "10/18/20 10AM", DriverName = "Adam Smith", DriverPhone = "406-123-4567" });
-             
+
                 foreach (var activeSO in ActiveSalesOrders)
                 {
                     activeSO.OrderItems = new List<OrderItem>();
@@ -290,14 +296,14 @@ namespace ERodMobileApp.ViewModels
                     else
                         PonyList.Add(item);
                 }
-                Couplings.Add(new OrderItem {Name="Crossover 1"+'"'+"X 7/8"+'"'+ "SM Slimhole",Quantity="1pcs",ProductType="Couplings" });
+                Couplings.Add(new OrderItem { Name = "Crossover 1" + '"' + "X 7/8" + '"' + "SM Slimhole", Quantity = "1pcs", ProductType = "Couplings" });
                 Couplings.Add(new OrderItem { Name = "Crossover 3/4" + '"' + "X 7/8" + '"' + "SM Slimhole", Quantity = "1pcs", ProductType = "Couplings" });
-                SinkerBar.Add(new OrderItem {Name="C 1-1/2"+'"'+" 25ft w/ 3/4 pin" , Quantity="15pcs", ProductType = "Sinker" });
-                PolishedRod.Add(new OrderItem {Name="Alloy Metal 1-1/2"+'"'+" 26ft 1"+'"'+"pin" , Quantity = "1pcs" , ProductType = "Polished" });
+                SinkerBar.Add(new OrderItem { Name = "C 1-1/2" + '"' + " 25ft w/ 3/4 pin", Quantity = "15pcs", ProductType = "Sinker" });
+                PolishedRod.Add(new OrderItem { Name = "Alloy Metal 1-1/2" + '"' + " 26ft 1" + '"' + "pin", Quantity = "1pcs", ProductType = "Polished" });
                 StablizerBar.Add(new OrderItem { Name = "EHK 1" + '"' + " 4ft 3/4" + '"' + "pin", Quantity = "3pcs", ProductType = "Stablizer" });
-                OtherItems.Add(new OrderItem { Name = "Pin Glue", Quantity = "3pcs" , ProductType = "Other" });
+                OtherItems.Add(new OrderItem { Name = "Pin Glue", Quantity = "3pcs", ProductType = "Other" });
                 OtherItems.Add(new OrderItem { Name = "Break cleaner", Quantity = "3pcs", ProductType = "Other" });
-                OtherItems.Add(new OrderItem { Name = "Rags", Quantity = "3pcs" , ProductType = "Other" });
+                OtherItems.Add(new OrderItem { Name = "Rags", Quantity = "3pcs", ProductType = "Other" });
                 IsBusy = false;
             }
             catch (Exception e)
