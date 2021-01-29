@@ -20,16 +20,15 @@ namespace ERodMobileApp
 
         protected override async void OnStart()
         {
-           // await NavigationService.NavigateAsync("NavigationPage/LoginPage");
-            await NavigationService.NavigateAsync("MainPage");
+            await NavigationService.NavigateAsync("NavigationPage/MainPage");
+           
         }
 
         protected override void OnInitialized()
         {
             InitializeComponent();
             Device.SetFlags(new string[] { "MediaElement_Experimental" });
-            Plugin.Media.CrossMedia.Current.Initialize();
-           // MainPage = new NavigationPage(new MainPage());
+            Plugin.Media.CrossMedia.Current.Initialize();      
 
         }
 
