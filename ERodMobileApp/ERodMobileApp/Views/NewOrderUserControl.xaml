@@ -23,7 +23,7 @@
                             <Label Text="New Order" HorizontalOptions="Start" TextColor="#333333" FontSize="26" VerticalOptions="CenterAndExpand" TextTransform="Uppercase"/>
                             <Image Source="RodLogo.png" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" HeightRequest="30"/>
                         </StackLayout>
-                        <Frame Grid.Row="1" Padding="0" BackgroundColor="#FF6600" CornerRadius="8" HeightRequest="36">
+                        <Frame Grid.Row="1" Padding="0" HasShadow="False" BackgroundColor="#FF6600" CornerRadius="8" HeightRequest="36">
                             <Label Text="Select order to copy" HorizontalTextAlignment="Center" TextColor="White" VerticalOptions="CenterAndExpand"
                                FontSize="20" TextTransform="Uppercase"/>
                         </Frame>

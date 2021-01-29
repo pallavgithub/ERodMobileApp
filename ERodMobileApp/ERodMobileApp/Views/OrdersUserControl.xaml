@@ -32,7 +32,7 @@
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
-                    <Frame Grid.Row="0" Padding="0" BackgroundColor="#ADB3BC" CornerRadius="8" HeightRequest="36">
+                    <Frame Grid.Row="0" Padding="0" HasShadow="False" BackgroundColor="#ADB3BC" CornerRadius="8" HeightRequest="36">
                         <Label Text="ACTIVE ORDERS" HorizontalTextAlignment="Center" TextColor="White" VerticalOptions="CenterAndExpand"
                                FontSize="20"/>
                     </Frame>
@@ -54,7 +54,7 @@
                                                     <!--Provisional status-->
                                                     <StackLayout IsVisible="{Binding Status, Converter={StaticResource OrderStatusVisibilityConverter}, ConverterParameter=Provisional}" Spacing="0">
                                                         <Frame BackgroundColor="#a4b0bf" CornerRadius="12" HeightRequest="26" WidthRequest="146" 
-                                                           Padding="0,0,10,0" HorizontalOptions="CenterAndExpand">
+                                                           Padding="0,0,10,0" HorizontalOptions="CenterAndExpand" HasShadow="False">
                                                             <StackLayout Orientation="Horizontal" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand">
                                                                 <Label Text="PROVISIONAL" TextColor="White" HorizontalOptions="CenterAndExpand" 
                                                                HorizontalTextAlignment="Center" FontSize="18"/>
@@ -75,7 +75,7 @@
                                                     <!--Confirmed status-->
                                                     <StackLayout IsVisible="{Binding Status, Converter={StaticResource OrderStatusVisibilityConverter}, ConverterParameter=Confirmed}" Spacing="0">
                                                         <Frame BackgroundColor="#d8e3da" CornerRadius="12" HeightRequest="26" WidthRequest="146" 
-                                                           Padding="0,0,10,0" HorizontalOptions="CenterAndExpand">
+                                                           Padding="0,0,10,0" HorizontalOptions="CenterAndExpand" HasShadow="False">
                                                             <StackLayout Orientation="Horizontal" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand">
                                                                 <Label Text="CONFIRMED" TextColor="White" HorizontalOptions="CenterAndExpand" 
                                                                HorizontalTextAlignment="Center" FontSize="18"/>
@@ -96,7 +96,7 @@
                                                     <!--Procressing status-->
                                                     <StackLayout IsVisible="{Binding Status, Converter={StaticResource OrderStatusVisibilityConverter}, ConverterParameter=Processing}">
                                                         <Frame BackgroundColor="#f78c45" CornerRadius="12" HeightRequest="26" WidthRequest="146" 
-                                                           Padding="0,0,10,0" HorizontalOptions="CenterAndExpand">
+                                                           Padding="0,0,10,0" HorizontalOptions="CenterAndExpand" HasShadow="False">
                                                             <StackLayout Orientation="Horizontal" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand">
                                                                 <Label Text="PROCESSING" TextColor="White" HorizontalOptions="CenterAndExpand" 
                                                                HorizontalTextAlignment="Center" FontSize="18"/>
@@ -126,7 +126,7 @@
                                                     <!--EnRoute status-->
                                                     <StackLayout IsVisible="{Binding Status, Converter={StaticResource OrderStatusVisibilityConverter}, ConverterParameter=EnRoute}">
                                                         <Frame BackgroundColor="#f78c45" CornerRadius="12" HeightRequest="26" WidthRequest="146" 
-                                                           Padding="0,0,10,0" HorizontalOptions="CenterAndExpand">
+                                                           Padding="0,0,10,0" HorizontalOptions="CenterAndExpand" HasShadow="False">
                                                             <StackLayout Orientation="Horizontal" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand">
                                                                 <Label Text="EN ROUTE" TextColor="White" HorizontalOptions="CenterAndExpand" 
                                                                HorizontalTextAlignment="Center" FontSize="18"/>
@@ -156,7 +156,7 @@
                                                     <!--Delivered status-->
                                                     <StackLayout IsVisible="{Binding Status, Converter={StaticResource OrderStatusVisibilityConverter}, ConverterParameter=Delivered}">
                                                         <Frame BackgroundColor="#f78c45" CornerRadius="12" HeightRequest="26" WidthRequest="146" 
-                                                           Padding="0,0,10,0" HorizontalOptions="CenterAndExpand">
+                                                           Padding="0,0,10,0" HorizontalOptions="CenterAndExpand" HasShadow="False">
                                                             <StackLayout Orientation="Horizontal" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand">
                                                                 <Label Text="DELIVERED" TextColor="White" HorizontalOptions="CenterAndExpand" 
                                                                HorizontalTextAlignment="Center" FontSize="18"/>
@@ -200,7 +200,7 @@
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
-                    <Frame Grid.Row="0" Padding="0" BackgroundColor="#50555C" CornerRadius="8" HeightRequest="36">
+                    <Frame Grid.Row="0" Padding="0" BackgroundColor="#50555C" HasShadow="False" CornerRadius="8" HeightRequest="36">
                         <Label Text="CLOSED ORDERS" HorizontalTextAlignment="Center" TextColor="White" VerticalOptions="CenterAndExpand"
                                FontSize="20"/>
                     </Frame>

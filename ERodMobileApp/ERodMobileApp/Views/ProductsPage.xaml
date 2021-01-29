@@ -49,37 +49,37 @@
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
-                            <Frame OutlineColor="#50555C" BackgroundColor="{Binding TabData, Converter={StaticResource ProductFrameBgColorConverter}, ConverterParameter=SuckerRod}" Padding="0" Grid.Row="0" Grid.Column="0">
+                            <Frame OutlineColor="#50555C" HasShadow="False" BackgroundColor="{Binding TabData, Converter={StaticResource ProductFrameBgColorConverter}, ConverterParameter=SuckerRod}" Padding="0" Grid.Row="0" Grid.Column="0">
                                 <Label Text="Sucker Rod" TextColor="{Binding TabData, Converter={StaticResource ProductLabelColorConverter}, ConverterParameter=SuckerRod}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
                                 <Frame.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding SuckerRodSelectedCommand}"/>
                                 </Frame.GestureRecognizers>
                             </Frame>
-                            <Frame OutlineColor="#50555C" BackgroundColor="{Binding TabData, Converter={StaticResource ProductFrameBgColorConverter}, ConverterParameter=PonyRod}" Padding="0" Grid.Row="0" Grid.Column="1">
+                            <Frame OutlineColor="#50555C" HasShadow="False" BackgroundColor="{Binding TabData, Converter={StaticResource ProductFrameBgColorConverter}, ConverterParameter=PonyRod}" Padding="0" Grid.Row="0" Grid.Column="1">
                                 <Label Text="Pony Rod" TextColor="{Binding TabData, Converter={StaticResource ProductLabelColorConverter}, ConverterParameter=PonyRod}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
                                 <Frame.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding PonyRodSelectedCommand}"/>
                                 </Frame.GestureRecognizers>
                             </Frame>
-                            <Frame OutlineColor="#50555C" BackgroundColor="{Binding TabData, Converter={StaticResource ProductFrameBgColorConverter}, ConverterParameter=Couplings}" Padding="0" Grid.Row="1" Grid.Column="0">
+                            <Frame OutlineColor="#50555C" HasShadow="False" BackgroundColor="{Binding TabData, Converter={StaticResource ProductFrameBgColorConverter}, ConverterParameter=Couplings}" Padding="0" Grid.Row="1" Grid.Column="0">
                                 <Label Text="Couplings" TextColor="{Binding TabData, Converter={StaticResource ProductLabelColorConverter}, ConverterParameter=Couplings}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
                                 <Frame.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding CouplingsSelectedCommand}"/>
                                 </Frame.GestureRecognizers>
                             </Frame>
-                            <Frame OutlineColor="#50555C" BackgroundColor="{Binding TabData, Converter={StaticResource ProductFrameBgColorConverter}, ConverterParameter=SinkerBar}" Padding="0" Grid.Row="1" Grid.Column="1">
+                            <Frame OutlineColor="#50555C" HasShadow="False" BackgroundColor="{Binding TabData, Converter={StaticResource ProductFrameBgColorConverter}, ConverterParameter=SinkerBar}" Padding="0" Grid.Row="1" Grid.Column="1">
                                 <Label Text="Sinker Bar" TextColor="{Binding TabData, Converter={StaticResource ProductLabelColorConverter}, ConverterParameter=SinkerBar}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
                                 <Frame.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding SinkerBarSelectedCommand}"/>
                                 </Frame.GestureRecognizers>
                             </Frame>
-                            <Frame OutlineColor="#50555C" BackgroundColor="{Binding TabData, Converter={StaticResource ProductFrameBgColorConverter}, ConverterParameter=PolishedRod}" Padding="0" Grid.Row="2" Grid.Column="0">
+                            <Frame OutlineColor="#50555C" HasShadow="False" BackgroundColor="{Binding TabData, Converter={StaticResource ProductFrameBgColorConverter}, ConverterParameter=PolishedRod}" Padding="0" Grid.Row="2" Grid.Column="0">
                                 <Label Text="Polished Rod" TextColor="{Binding TabData, Converter={StaticResource ProductLabelColorConverter}, ConverterParameter=PolishedRod}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
                                 <Frame.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding PolishedRodSelectedCommand}"/>
                                 </Frame.GestureRecognizers>
                             </Frame>
-                            <Frame OutlineColor="#50555C" BackgroundColor="{Binding TabData, Converter={StaticResource ProductFrameBgColorConverter}, ConverterParameter=MiscItem}" Padding="0" Grid.Row="2" Grid.Column="1">
+                            <Frame OutlineColor="#50555C" HasShadow="False" BackgroundColor="{Binding TabData, Converter={StaticResource ProductFrameBgColorConverter}, ConverterParameter=MiscItem}" Padding="0" Grid.Row="2" Grid.Column="1">
                                 <Label Text="Misc Item" TextColor="{Binding TabData, Converter={StaticResource ProductLabelColorConverter}, ConverterParameter=MiscItem}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
                                 <Frame.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding MiscItemSelectedCommand}"/>
@@ -107,25 +107,25 @@
                                     <ColumnDefinition Width="*"/>
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
-                                <Frame OutlineColor="#50555C" BackgroundColor="{Binding SelectedProductGrade, Converter={StaticResource SelectedFrameBgColor}, ConverterParameter=EHK}" Padding="0" Grid.Column="0" Grid.Row="0">
+                                <Frame OutlineColor="#50555C" HasShadow="False" BackgroundColor="{Binding SelectedProductGrade, Converter={StaticResource SelectedFrameBgColor}, ConverterParameter=EHK}" Padding="0" Grid.Column="0" Grid.Row="0">
                                     <Label Text="EHK" TextColor="{Binding SelectedProductGrade, Converter={StaticResource SelectedLabelColorConverter}, ConverterParameter=EHK}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
                                     <Frame.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding ProductGradeSelectedCommand}" CommandParameter="EHK"/>
                                     </Frame.GestureRecognizers>
                                 </Frame>
-                                <Frame OutlineColor="#50555C" BackgroundColor="{Binding SelectedProductGrade, Converter={StaticResource SelectedFrameBgColor}, ConverterParameter=EH}" Padding="0" Grid.Column="1" Grid.Row="0">
+                                <Frame OutlineColor="#50555C" HasShadow="False" BackgroundColor="{Binding SelectedProductGrade, Converter={StaticResource SelectedFrameBgColor}, ConverterParameter=EH}" Padding="0" Grid.Column="1" Grid.Row="0">
                                     <Label Text="EH" TextColor="{Binding SelectedProductGrade, Converter={StaticResource SelectedLabelColorConverter}, ConverterParameter=EH}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
                                     <Frame.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding ProductGradeSelectedCommand}" CommandParameter="EH"/>
                                     </Frame.GestureRecognizers>
                                 </Frame>
-                                <Frame OutlineColor="#50555C" BackgroundColor="{Binding SelectedProductGrade, Converter={StaticResource SelectedFrameBgColor}, ConverterParameter=EKD}" Padding="0" Grid.Column="0" Grid.Row="1">
+                                <Frame OutlineColor="#50555C" HasShadow="False" BackgroundColor="{Binding SelectedProductGrade, Converter={StaticResource SelectedFrameBgColor}, ConverterParameter=EKD}" Padding="0" Grid.Column="0" Grid.Row="1">
                                     <Label Text="EKD" TextColor="{Binding SelectedProductGrade, Converter={StaticResource SelectedLabelColorConverter}, ConverterParameter=EKD}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
                                     <Frame.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding ProductGradeSelectedCommand}" CommandParameter="EKD"/>
                                     </Frame.GestureRecognizers>
                                 </Frame>
-                                <Frame OutlineColor="#50555C" BackgroundColor="{Binding SelectedProductGrade, Converter={StaticResource SelectedFrameBgColor}, ConverterParameter=D}" Padding="0" Grid.Column="1" Grid.Row="1">
+                                <Frame OutlineColor="#50555C" HasShadow="False" BackgroundColor="{Binding SelectedProductGrade, Converter={StaticResource SelectedFrameBgColor}, ConverterParameter=D}" Padding="0" Grid.Column="1" Grid.Row="1">
                                     <Label Text="D" TextColor="{Binding SelectedProductGrade, Converter={StaticResource SelectedLabelColorConverter}, ConverterParameter=D}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
                                     <Frame.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding ProductGradeSelectedCommand}" CommandParameter="D"/>
@@ -152,31 +152,31 @@
                                     <ColumnDefinition Width="*"/>
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
-                                <Frame OutlineColor="#50555C" BackgroundColor="{Binding SelectedProductSize, Converter={StaticResource SelectedFrameBgColor}, ConverterParameter=1-1/8 IN}" Padding="0" Grid.Row="0" Grid.Column="0">
+                                <Frame OutlineColor="#50555C" HasShadow="False" BackgroundColor="{Binding SelectedProductSize, Converter={StaticResource SelectedFrameBgColor}, ConverterParameter=1-1/8 IN}" Padding="0" Grid.Row="0" Grid.Column="0">
                                     <Label Text="1-1/8&quot;" TextColor="{Binding SelectedProductSize, Converter={StaticResource SelectedLabelColorConverter}, ConverterParameter=1-1/8 IN}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
                                     <Frame.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding ProductSizeSelectedCommand}" CommandParameter="1-1/8 IN"/>
                                     </Frame.GestureRecognizers>
                                 </Frame>
-                                <Frame OutlineColor="#50555C" BackgroundColor="{Binding SelectedProductSize, Converter={StaticResource SelectedFrameBgColor}, ConverterParameter=1 IN}" Padding="0" Grid.Row="0" Grid.Column="1">
+                                <Frame OutlineColor="#50555C" HasShadow="False" BackgroundColor="{Binding SelectedProductSize, Converter={StaticResource SelectedFrameBgColor}, ConverterParameter=1 IN}" Padding="0" Grid.Row="0" Grid.Column="1">
                                     <Label Text="1&quot;" TextColor="{Binding SelectedProductSize, Converter={StaticResource SelectedLabelColorConverter}, ConverterParameter=1 IN}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
                                     <Frame.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding ProductSizeSelectedCommand}" CommandParameter="1 IN"/>
                                     </Frame.GestureRecognizers>
                                 </Frame>
-                                <Frame OutlineColor="#50555C" BackgroundColor="{Binding SelectedProductSize, Converter={StaticResource SelectedFrameBgColor}, ConverterParameter=7/8 IN}" Padding="0" Grid.Row="1" Grid.Column="0">
+                                <Frame OutlineColor="#50555C" HasShadow="False" BackgroundColor="{Binding SelectedProductSize, Converter={StaticResource SelectedFrameBgColor}, ConverterParameter=7/8 IN}" Padding="0" Grid.Row="1" Grid.Column="0">
                                     <Label Text="7/8&quot;" TextColor="{Binding SelectedProductSize, Converter={StaticResource SelectedLabelColorConverter}, ConverterParameter=7/8 IN}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
                                     <Frame.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding ProductSizeSelectedCommand}" CommandParameter="7/8 IN"/>
                                     </Frame.GestureRecognizers>
                                 </Frame>
-                                <Frame OutlineColor="#50555C" BackgroundColor="{Binding SelectedProductSize, Converter={StaticResource SelectedFrameBgColor}, ConverterParameter=3/4 IN}" Padding="0" Grid.Row="1" Grid.Column="1">
+                                <Frame OutlineColor="#50555C" HasShadow="False" BackgroundColor="{Binding SelectedProductSize, Converter={StaticResource SelectedFrameBgColor}, ConverterParameter=3/4 IN}" Padding="0" Grid.Row="1" Grid.Column="1">
                                     <Label Text="3/4&quot;" TextColor="{Binding SelectedProductSize, Converter={StaticResource SelectedLabelColorConverter}, ConverterParameter=3/4 IN}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
                                     <Frame.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding ProductSizeSelectedCommand}" CommandParameter="3/4 IN"/>
                                     </Frame.GestureRecognizers>
                                 </Frame>
-                                <Frame OutlineColor="#50555C" BackgroundColor="{Binding SelectedProductSize, Converter={StaticResource SelectedFrameBgColor}, ConverterParameter=5/8 IN}" Padding="0" Grid.Row="2" Grid.Column="0">
+                                <Frame OutlineColor="#50555C" HasShadow="False" BackgroundColor="{Binding SelectedProductSize, Converter={StaticResource SelectedFrameBgColor}, ConverterParameter=5/8 IN}" Padding="0" Grid.Row="2" Grid.Column="0">
                                     <Label Text="5/8&quot;" TextColor="{Binding SelectedProductSize, Converter={StaticResource SelectedLabelColorConverter}, ConverterParameter=5/8 IN}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
                                     <Frame.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding ProductSizeSelectedCommand}" CommandParameter="5/8 IN"/>
@@ -202,13 +202,13 @@
                                     <ColumnDefinition Width="*"/>
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
-                                <Frame OutlineColor="#50555C" BackgroundColor="{Binding SelectedProductLength, Converter={StaticResource SelectedFrameBgColor}, ConverterParameter=25 FT}" Padding="0" Grid.Row="0" Grid.Column="0">
+                                <Frame OutlineColor="#50555C" HasShadow="False" BackgroundColor="{Binding SelectedProductLength, Converter={StaticResource SelectedFrameBgColor}, ConverterParameter=25 FT}" Padding="0" Grid.Row="0" Grid.Column="0">
                                     <Label Text="25 FT" TextColor="{Binding SelectedProductLength, Converter={StaticResource SelectedLabelColorConverter}, ConverterParameter=25 FT}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
                                     <Frame.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding ProductLengthSelectedCommand}" CommandParameter="25 FT"/>
                                     </Frame.GestureRecognizers>
                                 </Frame>
-                                <Frame OutlineColor="#50555C" BackgroundColor="{Binding SelectedProductLength, Converter={StaticResource SelectedFrameBgColor}, ConverterParameter=30 FT}" Padding="0" Grid.Row="0" Grid.Column="1">
+                                <Frame OutlineColor="#50555C" HasShadow="False" BackgroundColor="{Binding SelectedProductLength, Converter={StaticResource SelectedFrameBgColor}, ConverterParameter=30 FT}" Padding="0" Grid.Row="0" Grid.Column="1">
                                     <Label Text="30 FT" TextColor="{Binding SelectedProductLength, Converter={StaticResource SelectedLabelColorConverter}, ConverterParameter=30 FT}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
                                     <Frame.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding ProductLengthSelectedCommand}" CommandParameter="30 FT"/>
@@ -245,16 +245,16 @@
                                     <ColumnDefinition Width="*"/>
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
-                                <Frame OutlineColor="#50555C" BackgroundColor="{Binding TabData, Converter={StaticResource ProductFrameBgColorConverter}, ConverterParameter=TFullSize}" Padding="0" Grid.Row="0" Grid.Column="0">
+                                <Frame OutlineColor="#50555C" HasShadow="False" BackgroundColor="{Binding TabData, Converter={StaticResource ProductFrameBgColorConverter}, ConverterParameter=TFullSize}" Padding="0" Grid.Row="0" Grid.Column="0">
                                     <Label Text="T Full Size" TextColor="White" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
                                 </Frame>
-                                <Frame OutlineColor="#50555C" BackgroundColor="{Binding TabData, Converter={StaticResource ProductFrameBgColorConverter}, ConverterParameter=SMFullSize}" Padding="0" Grid.Row="0" Grid.Column="1">
+                                <Frame OutlineColor="#50555C" HasShadow="False" BackgroundColor="{Binding TabData, Converter={StaticResource ProductFrameBgColorConverter}, ConverterParameter=SMFullSize}" Padding="0" Grid.Row="0" Grid.Column="1">
                                     <Label Text="SM Fullsize" TextColor="White" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
                                 </Frame>
-                                <Frame OutlineColor="#50555C" BackgroundColor="{Binding TabData, Converter={StaticResource ProductFrameBgColorConverter}, ConverterParameter=TSlimHole}" Padding="0" Grid.Row="1" Grid.Column="0">
+                                <Frame OutlineColor="#50555C" HasShadow="False" BackgroundColor="{Binding TabData, Converter={StaticResource ProductFrameBgColorConverter}, ConverterParameter=TSlimHole}" Padding="0" Grid.Row="1" Grid.Column="0">
                                     <Label Text="T Slimhole" TextColor="White" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
                                 </Frame>
-                                <Frame OutlineColor="#50555C" BackgroundColor="{Binding TabData, Converter={StaticResource ProductFrameBgColorConverter}, ConverterParameter=SMSlimHole}" Padding="0" Grid.Row="1" Grid.Column="1">
+                                <Frame OutlineColor="#50555C" HasShadow="False" BackgroundColor="{Binding TabData, Converter={StaticResource ProductFrameBgColorConverter}, ConverterParameter=SMSlimHole}" Padding="0" Grid.Row="1" Grid.Column="1">
                                     <Label Text="SM Slim Hole" TextColor="White" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
                                 </Frame>
                             </Grid>
@@ -270,13 +270,13 @@
                                     <ColumnDefinition Width="*"/>
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
-                                <Frame OutlineColor="#50555C" BackgroundColor="{Binding TabData, Converter={StaticResource ProductFrameBgColorConverter}, ConverterParameter=Two}" Padding="0" Grid.Row="0" Grid.Column="0">
+                                <Frame OutlineColor="#50555C" HasShadow="False" BackgroundColor="{Binding TabData, Converter={StaticResource ProductFrameBgColorConverter}, ConverterParameter=Two}" Padding="0" Grid.Row="0" Grid.Column="0">
                                     <Label Text="2&quot;" TextColor="White" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
                                 </Frame>
-                                <Frame OutlineColor="#50555C" BackgroundColor="{Binding TabData, Converter={StaticResource ProductFrameBgColorConverter}, ConverterParameter=TwoAndHalf}" Padding="0" Grid.Row="0" Grid.Column="1">
+                                <Frame OutlineColor="#50555C" HasShadow="False" BackgroundColor="{Binding TabData, Converter={StaticResource ProductFrameBgColorConverter}, ConverterParameter=TwoAndHalf}" Padding="0" Grid.Row="0" Grid.Column="1">
                                     <Label Text="2.5&quot;" TextColor="White" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
                                 </Frame>
-                                <Frame OutlineColor="#50555C" BackgroundColor="{Binding TabData, Converter={StaticResource ProductFrameBgColorConverter}, ConverterParameter=Three}" Padding="0" Grid.Row="1" Grid.Column="0">
+                                <Frame OutlineColor="#50555C" HasShadow="False" BackgroundColor="{Binding TabData, Converter={StaticResource ProductFrameBgColorConverter}, ConverterParameter=Three}" Padding="0" Grid.Row="1" Grid.Column="0">
                                     <Label Text="3&quot;" TextColor="White" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
                                 </Frame>
                                 <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Grid.Row="1" Grid.Column="1">
@@ -326,31 +326,31 @@
                                     <ColumnDefinition Width="*"/>
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
-                                <Frame OutlineColor="#50555C" BackgroundColor="{Binding SelectedProductGrade, Converter={StaticResource SelectedFrameBgColor}, ConverterParameter=EHK}" Padding="0" Grid.Column="0" Grid.Row="0">
+                                <Frame OutlineColor="#50555C" HasShadow="False"  BackgroundColor="{Binding SelectedProductGrade, Converter={StaticResource SelectedFrameBgColor}, ConverterParameter=EHK}" Padding="0" Grid.Column="0" Grid.Row="0">
                                     <Label Text="EHK" TextColor="{Binding SelectedProductGrade, Converter={StaticResource SelectedLabelColorConverter}, ConverterParameter=EHK}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
                                     <Frame.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding ProductGradeSelectedCommand}" CommandParameter="EHK"/>
                                     </Frame.GestureRecognizers>
                                 </Frame>
-                                <Frame OutlineColor="#50555C" BackgroundColor="{Binding SelectedProductGrade, Converter={StaticResource SelectedFrameBgColor}, ConverterParameter=EH}" Padding="0" Grid.Column="1" Grid.Row="0">
+                                <Frame OutlineColor="#50555C" HasShadow="False" BackgroundColor="{Binding SelectedProductGrade, Converter={StaticResource SelectedFrameBgColor}, ConverterParameter=EH}" Padding="0" Grid.Column="1" Grid.Row="0">
                                     <Label Text="EH" TextColor="{Binding SelectedProductGrade, Converter={StaticResource SelectedLabelColorConverter}, ConverterParameter=EH}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
                                     <Frame.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding ProductGradeSelectedCommand}" CommandParameter="EH"/>
                                     </Frame.GestureRecognizers>
                                 </Frame>
-                                <Frame OutlineColor="#50555C" BackgroundColor="{Binding SelectedProductGrade, Converter={StaticResource SelectedFrameBgColor}, ConverterParameter=EKD}" Padding="0" Grid.Column="0" Grid.Row="1">
+                                <Frame OutlineColor="#50555C" HasShadow="False" BackgroundColor="{Binding SelectedProductGrade, Converter={StaticResource SelectedFrameBgColor}, ConverterParameter=EKD}" Padding="0" Grid.Column="0" Grid.Row="1">
                                     <Label Text="EKD" TextColor="{Binding SelectedProductGrade, Converter={StaticResource SelectedLabelColorConverter}, ConverterParameter=EKD}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
                                     <Frame.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding ProductGradeSelectedCommand}" CommandParameter="EKD"/>
                                     </Frame.GestureRecognizers>
                                 </Frame>
-                                <Frame OutlineColor="#50555C" BackgroundColor="{Binding SelectedProductGrade, Converter={StaticResource SelectedFrameBgColor}, ConverterParameter=D}" Padding="0" Grid.Column="1" Grid.Row="1">
+                                <Frame OutlineColor="#50555C" HasShadow="False" BackgroundColor="{Binding SelectedProductGrade, Converter={StaticResource SelectedFrameBgColor}, ConverterParameter=D}" Padding="0" Grid.Column="1" Grid.Row="1">
                                     <Label Text="D" TextColor="{Binding SelectedProductGrade, Converter={StaticResource SelectedLabelColorConverter}, ConverterParameter=D}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
                                     <Frame.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding ProductGradeSelectedCommand}" CommandParameter="D"/>
                                     </Frame.GestureRecognizers>
                                 </Frame>
-                                <Frame OutlineColor="#50555C" BackgroundColor="{Binding SelectedProductGrade, Converter={StaticResource SelectedFrameBgColor}, ConverterParameter=EH9}" Padding="0" Grid.Column="0" Grid.Row="2">
+                                <Frame OutlineColor="#50555C" HasShadow="False" BackgroundColor="{Binding SelectedProductGrade, Converter={StaticResource SelectedFrameBgColor}, ConverterParameter=EH9}" Padding="0" Grid.Column="0" Grid.Row="2">
                                     <Label Text="EH9" TextColor="{Binding SelectedProductGrade, Converter={StaticResource SelectedLabelColorConverter}, ConverterParameter=EH9}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
                                     <Frame.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding ProductGradeSelectedCommand}" CommandParameter="EH9"/>
@@ -377,31 +377,31 @@
                                     <ColumnDefinition Width="*"/>
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
-                                <Frame OutlineColor="#50555C" BackgroundColor="{Binding SelectedProductSize, Converter={StaticResource SelectedFrameBgColor}, ConverterParameter=1-1/8 IN}" Padding="0" Grid.Row="0" Grid.Column="0">
+                                <Frame OutlineColor="#50555C" HasShadow="False" BackgroundColor="{Binding SelectedProductSize, Converter={StaticResource SelectedFrameBgColor}, ConverterParameter=1-1/8 IN}" Padding="0" Grid.Row="0" Grid.Column="0">
                                     <Label Text="1-1/8&quot;" TextColor="{Binding SelectedProductSize, Converter={StaticResource SelectedLabelColorConverter}, ConverterParameter=1-1/8 IN}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
                                     <Frame.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding ProductSizeSelectedCommand}" CommandParameter="1-1/8 IN"/>
                                     </Frame.GestureRecognizers>
                                 </Frame>
-                                <Frame OutlineColor="#50555C" BackgroundColor="{Binding SelectedProductSize, Converter={StaticResource SelectedFrameBgColor}, ConverterParameter=1 IN}" Padding="0" Grid.Row="0" Grid.Column="1">
+                                <Frame OutlineColor="#50555C" HasShadow="False" BackgroundColor="{Binding SelectedProductSize, Converter={StaticResource SelectedFrameBgColor}, ConverterParameter=1 IN}" Padding="0" Grid.Row="0" Grid.Column="1">
                                     <Label Text="1&quot;" TextColor="{Binding SelectedProductSize, Converter={StaticResource SelectedLabelColorConverter}, ConverterParameter=1 IN}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
                                     <Frame.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding ProductSizeSelectedCommand}" CommandParameter="1 IN"/>
                                     </Frame.GestureRecognizers>
                                 </Frame>
-                                <Frame OutlineColor="#50555C" BackgroundColor="{Binding SelectedProductSize, Converter={StaticResource SelectedFrameBgColor}, ConverterParameter=7/8 IN}" Padding="0" Grid.Row="1" Grid.Column="0">
+                                <Frame OutlineColor="#50555C" HasShadow="False" BackgroundColor="{Binding SelectedProductSize, Converter={StaticResource SelectedFrameBgColor}, ConverterParameter=7/8 IN}" Padding="0" Grid.Row="1" Grid.Column="0">
                                     <Label Text="7/8&quot;" TextColor="{Binding SelectedProductSize, Converter={StaticResource SelectedLabelColorConverter}, ConverterParameter=7/8 IN}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
                                     <Frame.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding ProductSizeSelectedCommand}" CommandParameter="7/8 IN"/>
                                     </Frame.GestureRecognizers>
                                 </Frame>
-                                <Frame OutlineColor="#50555C" BackgroundColor="{Binding SelectedProductSize, Converter={StaticResource SelectedFrameBgColor}, ConverterParameter=3/4 IN}" Padding="0" Grid.Row="1" Grid.Column="1">
+                                <Frame OutlineColor="#50555C" HasShadow="False" BackgroundColor="{Binding SelectedProductSize, Converter={StaticResource SelectedFrameBgColor}, ConverterParameter=3/4 IN}" Padding="0" Grid.Row="1" Grid.Column="1">
                                     <Label Text="3/4&quot;" TextColor="{Binding SelectedProductSize, Converter={StaticResource SelectedLabelColorConverter}, ConverterParameter=3/4 IN}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
                                     <Frame.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding ProductSizeSelectedCommand}" CommandParameter="3/4 IN"/>
                                     </Frame.GestureRecognizers>
                                 </Frame>
-                                <Frame OutlineColor="#50555C" BackgroundColor="{Binding SelectedProductSize, Converter={StaticResource SelectedFrameBgColor}, ConverterParameter=5/8 IN}" Padding="0" Grid.Row="2" Grid.Column="0">
+                                <Frame OutlineColor="#50555C" HasShadow="False" BackgroundColor="{Binding SelectedProductSize, Converter={StaticResource SelectedFrameBgColor}, ConverterParameter=5/8 IN}" Padding="0" Grid.Row="2" Grid.Column="0">
                                     <Label Text="5/8&quot;" TextColor="{Binding SelectedProductSize, Converter={StaticResource SelectedLabelColorConverter}, ConverterParameter=5/8 IN}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
                                     <Frame.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding ProductSizeSelectedCommand}" CommandParameter="5/8 IN"/>
@@ -429,37 +429,37 @@
                                     <ColumnDefinition Width="*"/>
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
-                                <Frame OutlineColor="#50555C"  BackgroundColor="{Binding SelectedProductLength, Converter={StaticResource SelectedFrameBgColor}, ConverterParameter=2 FT}" Padding="0" Grid.Row="0" Grid.Column="0">
+                                <Frame OutlineColor="#50555C" HasShadow="False" BackgroundColor="{Binding SelectedProductLength, Converter={StaticResource SelectedFrameBgColor}, ConverterParameter=2 FT}" Padding="0" Grid.Row="0" Grid.Column="0">
                                     <Label Text="2 FT" TextColor="{Binding SelectedProductLength, Converter={StaticResource SelectedLabelColorConverter}, ConverterParameter=2 FT}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
                                     <Frame.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding ProductLengthSelectedCommand}" CommandParameter="2 FT"/>
                                     </Frame.GestureRecognizers>
                                 </Frame>
-                                <Frame OutlineColor="#50555C" BackgroundColor="{Binding SelectedProductLength, Converter={StaticResource SelectedFrameBgColor}, ConverterParameter=4 FT}" Padding="0" Grid.Row="0" Grid.Column="1">
+                                <Frame OutlineColor="#50555C" HasShadow="False" BackgroundColor="{Binding SelectedProductLength, Converter={StaticResource SelectedFrameBgColor}, ConverterParameter=4 FT}" Padding="0" Grid.Row="0" Grid.Column="1">
                                     <Label Text="4 FT" TextColor="{Binding SelectedProductLength, Converter={StaticResource SelectedLabelColorConverter}, ConverterParameter=4 FT}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
                                     <Frame.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding ProductLengthSelectedCommand}" CommandParameter="4 FT"/>
                                     </Frame.GestureRecognizers>
                                 </Frame>
-                                <Frame OutlineColor="#50555C" BackgroundColor="{Binding SelectedProductLength, Converter={StaticResource SelectedFrameBgColor}, ConverterParameter=6 FT}" Padding="0" Grid.Row="1" Grid.Column="0">
+                                <Frame OutlineColor="#50555C" HasShadow="False" BackgroundColor="{Binding SelectedProductLength, Converter={StaticResource SelectedFrameBgColor}, ConverterParameter=6 FT}" Padding="0" Grid.Row="1" Grid.Column="0">
                                     <Label Text="6 FT" TextColor="{Binding SelectedProductLength, Converter={StaticResource SelectedLabelColorConverter}, ConverterParameter=6 FT}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
                                     <Frame.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding ProductLengthSelectedCommand}" CommandParameter="6 FT"/>
                                     </Frame.GestureRecognizers>
                                 </Frame>
-                                <Frame OutlineColor="#50555C" BackgroundColor="{Binding SelectedProductLength, Converter={StaticResource SelectedFrameBgColor}, ConverterParameter=8 FT}" Padding="0" Grid.Row="1" Grid.Column="1">
+                                <Frame OutlineColor="#50555C" HasShadow="False" BackgroundColor="{Binding SelectedProductLength, Converter={StaticResource SelectedFrameBgColor}, ConverterParameter=8 FT}" Padding="0" Grid.Row="1" Grid.Column="1">
                                     <Label Text="8 FT" TextColor="{Binding SelectedProductLength, Converter={StaticResource SelectedLabelColorConverter}, ConverterParameter=8 FT}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
                                     <Frame.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding ProductLengthSelectedCommand}" CommandParameter="8 FT"/>
                                     </Frame.GestureRecognizers>
                                 </Frame>
-                                <Frame OutlineColor="#50555C" BackgroundColor="{Binding SelectedProductLength, Converter={StaticResource SelectedFrameBgColor}, ConverterParameter=10 FT}" Padding="0" Grid.Row="2" Grid.Column="0">
+                                <Frame OutlineColor="#50555C" HasShadow="False" BackgroundColor="{Binding SelectedProductLength, Converter={StaticResource SelectedFrameBgColor}, ConverterParameter=10 FT}" Padding="0" Grid.Row="2" Grid.Column="0">
                                     <Label Text="10 FT" TextColor="{Binding SelectedProductLength, Converter={StaticResource SelectedLabelColorConverter}, ConverterParameter=10 FT}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
                                     <Frame.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding ProductLengthSelectedCommand}" CommandParameter="10 FT"/>
                                     </Frame.GestureRecognizers>
                                 </Frame>
-                                <Frame OutlineColor="#50555C" BackgroundColor="{Binding SelectedProductLength, Converter={StaticResource SelectedFrameBgColor}, ConverterParameter=12 FT}" Padding="0" Grid.Row="2" Grid.Column="1">
+                                <Frame OutlineColor="#50555C" HasShadow="False" BackgroundColor="{Binding SelectedProductLength, Converter={StaticResource SelectedFrameBgColor}, ConverterParameter=12 FT}" Padding="0" Grid.Row="2" Grid.Column="1">
                                     <Label Text="12 FT" TextColor="{Binding SelectedProductLength, Converter={StaticResource SelectedLabelColorConverter}, ConverterParameter=12 FT}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
                                     <Frame.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding ProductLengthSelectedCommand}" CommandParameter="12 FT"/>
@@ -496,16 +496,16 @@
                                     <ColumnDefinition Width="*"/>
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
-                                <Frame BackgroundColor="#50555C" Padding="0" Grid.Row="0" Grid.Column="0">
+                                <Frame BackgroundColor="#50555C" HasShadow="False" Padding="0" Grid.Row="0" Grid.Column="0">
                                     <Label Text="T Full Size" TextColor="White" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
                                 </Frame>
-                                <Frame BackgroundColor="#50555C" Padding="0" Grid.Row="0" Grid.Column="1">
+                                <Frame BackgroundColor="#50555C" HasShadow="False" Padding="0" Grid.Row="0" Grid.Column="1">
                                     <Label Text="SM Fullsize" TextColor="White" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
                                 </Frame>
-                                <Frame BackgroundColor="#50555C" Padding="0" Grid.Row="1" Grid.Column="0">
+                                <Frame BackgroundColor="#50555C" HasShadow="False" Padding="0" Grid.Row="1" Grid.Column="0">
                                     <Label Text="T Simhole" TextColor="White" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
                                 </Frame>
-                                <Frame BackgroundColor="#50555C" Padding="0" Grid.Row="1" Grid.Column="1">
+                                <Frame BackgroundColor="#50555C" HasShadow="False" Padding="0" Grid.Row="1" Grid.Column="1">
                                     <Label Text="SM Slim Hole" TextColor="White" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
                                 </Frame>
                             </Grid>
@@ -542,19 +542,19 @@
                                     <ColumnDefinition Width="*"/>
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
-                                <Frame OutlineColor="#50555C" BackgroundColor="{Binding SelectedProductSubGroup, Converter={StaticResource SelectedFrameBgColor}, ConverterParameter=Regular}" Padding="0" Grid.Column="0" Grid.Row="0">
+                                <Frame OutlineColor="#50555C" HasShadow="False" BackgroundColor="{Binding SelectedProductSubGroup, Converter={StaticResource SelectedFrameBgColor}, ConverterParameter=Regular}" Padding="0" Grid.Column="0" Grid.Row="0">
                                     <Label Text="Sucker Rod Cplg" TextColor="{Binding SelectedProductSubGroup, Converter={StaticResource SelectedLabelColorConverter}, ConverterParameter=Regular}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
                                     <Frame.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding ProductSubGroupSelectedCommand}" CommandParameter="Regular"/>
                                     </Frame.GestureRecognizers>
                                 </Frame>
-                                <Frame OutlineColor="#50555C" BackgroundColor="{Binding SelectedProductSubGroup, Converter={StaticResource SelectedFrameBgColor}, ConverterParameter=PR Coupling}" Padding="0" Grid.Column="1" Grid.Row="0">
+                                <Frame OutlineColor="#50555C" HasShadow="False" BackgroundColor="{Binding SelectedProductSubGroup, Converter={StaticResource SelectedFrameBgColor}, ConverterParameter=PR Coupling}" Padding="0" Grid.Column="1" Grid.Row="0">
                                     <Label Text="Polished Rod Cplg" TextColor="{Binding SelectedProductSubGroup, Converter={StaticResource SelectedLabelColorConverter}, ConverterParameter=PR Coupling}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
                                     <Frame.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding ProductSubGroupSelectedCommand}" CommandParameter="PR Coupling"/>
                                     </Frame.GestureRecognizers>
                                 </Frame>
-                                <Frame OutlineColor="#50555C" BackgroundColor="{Binding SelectedProductSubGroup, Converter={StaticResource SelectedFrameBgColor}, ConverterParameter=Crossover}" Padding="0" Grid.Column="0" Grid.Row="1">
+                                <Frame OutlineColor="#50555C" HasShadow="False" BackgroundColor="{Binding SelectedProductSubGroup, Converter={StaticResource SelectedFrameBgColor}, ConverterParameter=Crossover}" Padding="0" Grid.Column="0" Grid.Row="1">
                                     <Label Text="Cross-over Cplg" TextColor="{Binding SelectedProductSubGroup, Converter={StaticResource SelectedLabelColorConverter}, ConverterParameter=Crossover}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
                                     <Frame.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding ProductSubGroupSelectedCommand}" CommandParameter="Crossover"/>
@@ -580,13 +580,13 @@
                                     <ColumnDefinition Width="*"/>
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
-                                <Frame OutlineColor="#50555C" BackgroundColor="{Binding SelectedProductGrade, Converter={StaticResource SelectedFrameBgColor}, ConverterParameter=T}" Padding="0" Grid.Column="0" Grid.Row="0">
+                                <Frame OutlineColor="#50555C" HasShadow="False" BackgroundColor="{Binding SelectedProductGrade, Converter={StaticResource SelectedFrameBgColor}, ConverterParameter=T}" Padding="0" Grid.Column="0" Grid.Row="0">
                                     <Label Text="T" TextColor="{Binding SelectedProductGrade, Converter={StaticResource SelectedLabelColorConverter}, ConverterParameter=T}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
                                         <Frame.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding ProductGradeSelectedCommand}" CommandParameter="T"/>
                                         </Frame.GestureRecognizers>
                                 </Frame>
-                                <Frame OutlineColor="#50555C" BackgroundColor="{Binding SelectedProductGrade, Converter={StaticResource SelectedFrameBgColor}, ConverterParameter=SM}" Padding="0" Grid.Column="1" Grid.Row="0">
+                                <Frame OutlineColor="#50555C" HasShadow="False" BackgroundColor="{Binding SelectedProductGrade, Converter={StaticResource SelectedFrameBgColor}, ConverterParameter=SM}" Padding="0" Grid.Column="1" Grid.Row="0">
                                     <Label Text="SM" TextColor="{Binding SelectedProductGrade, Converter={StaticResource SelectedLabelColorConverter}, ConverterParameter=SM}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
                                     <Frame.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding ProductGradeSelectedCommand}" CommandParameter="SM"/>
@@ -624,13 +624,13 @@
                                     <ColumnDefinition Width="*"/>
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
-                                <Frame OutlineColor="#50555C" BackgroundColor="{Binding SelectedProductSubGrade, Converter={StaticResource SelectedFrameBgColor}, ConverterParameter=Fullsize}" Padding="0" Grid.Column="0" Grid.Row="0">
+                                <Frame OutlineColor="#50555C" HasShadow="False" BackgroundColor="{Binding SelectedProductSubGrade, Converter={StaticResource SelectedFrameBgColor}, ConverterParameter=Fullsize}" Padding="0" Grid.Column="0" Grid.Row="0">
                                     <Label Text="Fullsize" TextColor="{Binding SelectedProductSubGrade, Converter={StaticResource SelectedLabelColorConverter}, ConverterParameter=Fullsize}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
                                     <Frame.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding ProductSubGradeSelectedCommand}" CommandParameter="Fullsize"/>
                                     </Frame.GestureRecognizers>
                                 </Frame>
-                                <Frame OutlineColor="#50555C" BackgroundColor="{Binding SelectedProductSubGrade, Converter={StaticResource SelectedFrameBgColor}, ConverterParameter=Slimhole}" Padding="0" Grid.Column="1" Grid.Row="0">
+                                <Frame OutlineColor="#50555C" HasShadow="False" BackgroundColor="{Binding SelectedProductSubGrade, Converter={StaticResource SelectedFrameBgColor}, ConverterParameter=Slimhole}" Padding="0" Grid.Column="1" Grid.Row="0">
                                     <Label Text="Slimhole" TextColor="{Binding SelectedProductSubGrade, Converter={StaticResource SelectedLabelColorConverter}, ConverterParameter=Slimhole}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
                                     <Frame.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding ProductSubGradeSelectedCommand}" CommandParameter="Slimhole"/>
@@ -657,31 +657,31 @@
                                     <ColumnDefinition Width="*"/>
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
-                                <Frame OutlineColor="#50555C" BackgroundColor="{Binding SelectedProductSize, Converter={StaticResource SelectedFrameBgColor}, ConverterParameter=1-1/8 IN}" Padding="0" Grid.Row="0" Grid.Column="0">
+                                <Frame OutlineColor="#50555C" HasShadow="False" BackgroundColor="{Binding SelectedProductSize, Converter={StaticResource SelectedFrameBgColor}, ConverterParameter=1-1/8 IN}" Padding="0" Grid.Row="0" Grid.Column="0">
                                     <Label Text="1-1/8&quot;" TextColor="{Binding SelectedProductSize, Converter={StaticResource SelectedLabelColorConverter}, ConverterParameter=1-1/8 IN}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
                                     <Frame.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding ProductSizeSelectedCommand}" CommandParameter="1-1/8 IN"/>
                                     </Frame.GestureRecognizers>
                                 </Frame>
-                                <Frame OutlineColor="#50555C" BackgroundColor="{Binding SelectedProductSize, Converter={StaticResource SelectedFrameBgColor}, ConverterParameter=1 IN}" Padding="0" Grid.Row="0" Grid.Column="1">
+                                <Frame OutlineColor="#50555C" HasShadow="False" BackgroundColor="{Binding SelectedProductSize, Converter={StaticResource SelectedFrameBgColor}, ConverterParameter=1 IN}" Padding="0" Grid.Row="0" Grid.Column="1">
                                     <Label Text="1&quot;" TextColor="{Binding SelectedProductSize, Converter={StaticResource SelectedLabelColorConverter}, ConverterParameter=1 IN}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
                                     <Frame.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding ProductSizeSelectedCommand}" CommandParameter="1 IN"/>
                                     </Frame.GestureRecognizers>
                                 </Frame>
-                                <Frame OutlineColor="#50555C" BackgroundColor="{Binding SelectedProductSize, Converter={StaticResource SelectedFrameBgColor}, ConverterParameter=7/8 IN}" Padding="0" Grid.Row="1" Grid.Column="0">
+                                <Frame OutlineColor="#50555C" HasShadow="False" BackgroundColor="{Binding SelectedProductSize, Converter={StaticResource SelectedFrameBgColor}, ConverterParameter=7/8 IN}" Padding="0" Grid.Row="1" Grid.Column="0">
                                     <Label Text="7/8&quot;" TextColor="{Binding SelectedProductSize, Converter={StaticResource SelectedLabelColorConverter}, ConverterParameter=7/8 IN}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
                                     <Frame.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding ProductSizeSelectedCommand}" CommandParameter="7/8 IN"/>
                                     </Frame.GestureRecognizers>
                                 </Frame>
-                                <Frame OutlineColor="#50555C" BackgroundColor="{Binding SelectedProductSize, Converter={StaticResource SelectedFrameBgColor}, ConverterParameter=3/4 IN}" Padding="0" Grid.Row="1" Grid.Column="1">
+                                <Frame OutlineColor="#50555C" HasShadow="False" BackgroundColor="{Binding SelectedProductSize, Converter={StaticResource SelectedFrameBgColor}, ConverterParameter=3/4 IN}" Padding="0" Grid.Row="1" Grid.Column="1">
                                     <Label Text="3/4&quot;" TextColor="{Binding SelectedProductSize, Converter={StaticResource SelectedLabelColorConverter}, ConverterParameter=3/4 IN}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
                                     <Frame.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding ProductSizeSelectedCommand}" CommandParameter="3/4 IN"/>
                                     </Frame.GestureRecognizers>
                                 </Frame>
-                                <Frame OutlineColor="#50555C" BackgroundColor="{Binding SelectedProductSize, Converter={StaticResource SelectedFrameBgColor}, ConverterParameter=5/8 IN}" Padding="0" Grid.Row="2" Grid.Column="0">
+                                <Frame OutlineColor="#50555C" HasShadow="False" BackgroundColor="{Binding SelectedProductSize, Converter={StaticResource SelectedFrameBgColor}, ConverterParameter=5/8 IN}" Padding="0" Grid.Row="2" Grid.Column="0">
                                     <Label Text="5/8&quot;" TextColor="{Binding SelectedProductSize, Converter={StaticResource SelectedLabelColorConverter}, ConverterParameter=5/8 IN}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
                                     <Frame.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding ProductSizeSelectedCommand}" CommandParameter="5/8 IN"/>
@@ -721,19 +721,19 @@
                                     <ColumnDefinition Width="*"/>
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
-                                <Frame OutlineColor="#50555C" BackgroundColor="{Binding SelectedProductGrade, Converter={StaticResource SelectedFrameBgColor}, ConverterParameter=C}" Padding="0" Grid.Column="0" Grid.Row="0">
+                                <Frame OutlineColor="#50555C" HasShadow="False" BackgroundColor="{Binding SelectedProductGrade, Converter={StaticResource SelectedFrameBgColor}, ConverterParameter=C}" Padding="0" Grid.Column="0" Grid.Row="0">
                                     <Label Text="C" TextColor="{Binding SelectedProductGrade, Converter={StaticResource SelectedLabelColorConverter}, ConverterParameter=C}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
                                     <Frame.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding ProductGradeSelectedCommand}" CommandParameter="C"/>
                                     </Frame.GestureRecognizers>
                                 </Frame>
-                                <Frame OutlineColor="#50555C" BackgroundColor="{Binding SelectedProductGrade, Converter={StaticResource SelectedFrameBgColor}, ConverterParameter=K}" Padding="0" Grid.Column="1" Grid.Row="0">
+                                <Frame OutlineColor="#50555C" HasShadow="False" BackgroundColor="{Binding SelectedProductGrade, Converter={StaticResource SelectedFrameBgColor}, ConverterParameter=K}" Padding="0" Grid.Column="1" Grid.Row="0">
                                     <Label Text="K" TextColor="{Binding SelectedProductGrade, Converter={StaticResource SelectedLabelColorConverter}, ConverterParameter=K}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
                                     <Frame.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding ProductGradeSelectedCommand}" CommandParameter="K"/>
                                     </Frame.GestureRecognizers>
                                 </Frame>
-                                <Frame OutlineColor="#50555C" BackgroundColor="{Binding SelectedProductGrade, Converter={StaticResource SelectedFrameBgColor}, ConverterParameter=D}" Padding="0" Grid.Column="0" Grid.Row="1">
+                                <Frame OutlineColor="#50555C" HasShadow="False" BackgroundColor="{Binding SelectedProductGrade, Converter={StaticResource SelectedFrameBgColor}, ConverterParameter=D}" Padding="0" Grid.Column="0" Grid.Row="1">
                                     <Label Text="D" TextColor="{Binding SelectedProductGrade, Converter={StaticResource SelectedLabelColorConverter}, ConverterParameter=D}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
                                     <Frame.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding ProductGradeSelectedCommand}" CommandParameter="D"/>
@@ -759,7 +759,7 @@
                                     <ColumnDefinition Width="*"/>
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
-                                <Frame OutlineColor="#50555C" BackgroundColor="{Binding SelectedProductSize, Converter={StaticResource SelectedFrameBgColor}, ConverterParameter=1-1/4 IN}" Padding="0" Grid.Row="0" Grid.Column="0">
+                                <Frame OutlineColor="#50555C" HasShadow="False" BackgroundColor="{Binding SelectedProductSize, Converter={StaticResource SelectedFrameBgColor}, ConverterParameter=1-1/4 IN}" Padding="0" Grid.Row="0" Grid.Column="0">
                                     <Label Text="1-1/4&quot;" TextColor="{Binding SelectedProductSize, Converter={StaticResource SelectedLabelColorConverter}, ConverterParameter=1-1/4 IN}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
                                     <Frame.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding ProductSizeSelectedCommand}" CommandParameter="1-1/4 IN"/>
@@ -771,13 +771,13 @@
                                         <TapGestureRecognizer Command="{Binding ProductSizeSelectedCommand}" CommandParameter="1-1/4 IN"/>
                                     </Frame.GestureRecognizers>
                                 </Frame>-->
-                                <Frame OutlineColor="#50555C" BackgroundColor="{Binding SelectedProductSize, Converter={StaticResource SelectedFrameBgColor}, ConverterParameter=1-1/2 IN}" Padding="0" Grid.Row="0" Grid.Column="1">
+                                <Frame OutlineColor="#50555C" HasShadow="False" BackgroundColor="{Binding SelectedProductSize, Converter={StaticResource SelectedFrameBgColor}, ConverterParameter=1-1/2 IN}" Padding="0" Grid.Row="0" Grid.Column="1">
                                     <Label Text="1-1/2&quot;" TextColor="{Binding SelectedProductSize, Converter={StaticResource SelectedLabelColorConverter}, ConverterParameter=1-1/2 IN}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
                                     <Frame.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding ProductSizeSelectedCommand}" CommandParameter="1-1/2 IN"/>
                                     </Frame.GestureRecognizers>
                                 </Frame>
-                                <Frame OutlineColor="#50555C" BackgroundColor="{Binding SelectedProductSize, Converter={StaticResource SelectedFrameBgColor}, ConverterParameter=1-5/8 IN}" Padding="0" Grid.Row="1" Grid.Column="0">
+                                <Frame OutlineColor="#50555C" HasShadow="False" BackgroundColor="{Binding SelectedProductSize, Converter={StaticResource SelectedFrameBgColor}, ConverterParameter=1-5/8 IN}" Padding="0" Grid.Row="1" Grid.Column="0">
                                     <Label Text="1-5/8&quot;" TextColor="{Binding SelectedProductSize, Converter={StaticResource SelectedLabelColorConverter}, ConverterParameter=1-5/8 IN}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
                                     <Frame.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding ProductSizeSelectedCommand}" CommandParameter="1-5/8 IN"/>
@@ -834,13 +834,13 @@
                                     <ColumnDefinition Width="*"/>
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
-                                <Frame OutlineColor="#50555C" BackgroundColor="{Binding SelectedProductPinSize, Converter={StaticResource SelectedFrameBgColor}, ConverterParameter=3/4 IN}" Padding="0" Grid.Row="0" Grid.Column="0">
+                                <Frame OutlineColor="#50555C" HasShadow="False" BackgroundColor="{Binding SelectedProductPinSize, Converter={StaticResource SelectedFrameBgColor}, ConverterParameter=3/4 IN}" Padding="0" Grid.Row="0" Grid.Column="0">
                                     <Label Text="3/4&quot;" TextColor="{Binding SelectedProductPinSize, Converter={StaticResource SelectedLabelColorConverter}, ConverterParameter=3/4 IN}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
                                     <Frame.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding ProductPinSizeSelectedCommand}" CommandParameter="3/4 IN"/>
                                     </Frame.GestureRecognizers>
                                 </Frame>
-                                <Frame OutlineColor="#50555C" BackgroundColor="{Binding SelectedProductPinSize, Converter={StaticResource SelectedFrameBgColor}, ConverterParameter=7/8 IN}" Padding="0" Grid.Row="0" Grid.Column="1">
+                                <Frame OutlineColor="#50555C" HasShadow="False" BackgroundColor="{Binding SelectedProductPinSize, Converter={StaticResource SelectedFrameBgColor}, ConverterParameter=7/8 IN}" Padding="0" Grid.Row="0" Grid.Column="1">
                                     <Label Text="7/8&quot;" TextColor="{Binding SelectedProductPinSize, Converter={StaticResource SelectedLabelColorConverter}, ConverterParameter=7/8 IN}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
                                     <Frame.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding ProductPinSizeSelectedCommand}" CommandParameter="7/8 IN"/>
@@ -879,13 +879,13 @@
                                     <ColumnDefinition Width="*"/>
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
-                                <Frame OutlineColor="#50555C" BackgroundColor="{Binding SelectedProductGrade, Converter={StaticResource SelectedFrameBgColor}, ConverterParameter=Alloy}" Padding="0" Grid.Column="0" Grid.Row="0">
+                                <Frame OutlineColor="#50555C" HasShadow="False" BackgroundColor="{Binding SelectedProductGrade, Converter={StaticResource SelectedFrameBgColor}, ConverterParameter=Alloy}" Padding="0" Grid.Column="0" Grid.Row="0">
                                     <Label Text="Alloy Steel w/SM" TextColor="{Binding SelectedProductGrade, Converter={StaticResource SelectedLabelColorConverter}, ConverterParameter=Alloy}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
                                     <Frame.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding ProductGradeSelectedCommand}" CommandParameter="Alloy"/>
                                     </Frame.GestureRecognizers>
                                 </Frame>
-                                <Frame OutlineColor="#50555C" BackgroundColor="{Binding SelectedProductGrade, Converter={StaticResource SelectedFrameBgColor}, ConverterParameter=Piston}" Padding="0" Grid.Column="1" Grid.Row="0">
+                                <Frame OutlineColor="#50555C" HasShadow="False" BackgroundColor="{Binding SelectedProductGrade, Converter={StaticResource SelectedFrameBgColor}, ConverterParameter=Piston}" Padding="0" Grid.Column="1" Grid.Row="0">
                                     <Label Text="Piston steel" TextColor="{Binding SelectedProductGrade, Converter={StaticResource SelectedLabelColorConverter}, ConverterParameter=Piston}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
                                     <Frame.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding ProductGradeSelectedCommand}" CommandParameter="Piston"/>
@@ -910,13 +910,13 @@
                                     <ColumnDefinition Width="*"/>
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
-                                <Frame OutlineColor="#50555C" BackgroundColor="{Binding SelectedProductSize, Converter={StaticResource SelectedFrameBgColor}, ConverterParameter=1-1/4 IN}" Padding="0" Grid.Row="0" Grid.Column="0">
+                                <Frame OutlineColor="#50555C" HasShadow="False" BackgroundColor="{Binding SelectedProductSize, Converter={StaticResource SelectedFrameBgColor}, ConverterParameter=1-1/4 IN}" Padding="0" Grid.Row="0" Grid.Column="0">
                                     <Label Text="1-1/4&quot;" TextColor="{Binding SelectedProductSize, Converter={StaticResource SelectedLabelColorConverter}, ConverterParameter=1-1/4 IN}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
                                     <Frame.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding ProductSizeSelectedCommand}" CommandParameter="1-1/4 IN"/>
                                     </Frame.GestureRecognizers>
                                 </Frame>
-                                <Frame OutlineColor="#50555C" BackgroundColor="{Binding SelectedProductSize, Converter={StaticResource SelectedFrameBgColor}, ConverterParameter=1-1/2 IN}" Padding="0" Grid.Row="0" Grid.Column="1">
+                                <Frame OutlineColor="#50555C" HasShadow="False" BackgroundColor="{Binding SelectedProductSize, Converter={StaticResource SelectedFrameBgColor}, ConverterParameter=1-1/2 IN}" Padding="0" Grid.Row="0" Grid.Column="1">
                                     <Label Text="1-1/2&quot;" TextColor="{Binding SelectedProductSize, Converter={StaticResource SelectedLabelColorConverter}, ConverterParameter=1-1/2 IN}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
                                     <Frame.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding ProductSizeSelectedCommand}" CommandParameter="1-1/2 IN"/>
@@ -943,25 +943,25 @@
                                     <ColumnDefinition Width="*"/>
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
-                                <Frame OutlineColor="#50555C" BackgroundColor="{Binding SelectedProductLength, Converter={StaticResource SelectedFrameBgColor}, ConverterParameter=22 FT}" Padding="0" Grid.Row="0" Grid.Column="0">
+                                <Frame OutlineColor="#50555C" HasShadow="False" BackgroundColor="{Binding SelectedProductLength, Converter={StaticResource SelectedFrameBgColor}, ConverterParameter=22 FT}" Padding="0" Grid.Row="0" Grid.Column="0">
                                     <Label Text="22 FT" TextColor="{Binding SelectedProductLength, Converter={StaticResource SelectedLabelColorConverter}, ConverterParameter=22 FT}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
                                     <Frame.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding ProductLengthSelectedCommand}" CommandParameter="22 FT"/>
                                     </Frame.GestureRecognizers>
                                 </Frame>
-                                <Frame OutlineColor="#50555C" BackgroundColor="{Binding SelectedProductLength, Converter={StaticResource SelectedFrameBgColor}, ConverterParameter=24 FT}" Padding="0" Grid.Row="0" Grid.Column="1">
+                                <Frame OutlineColor="#50555C" HasShadow="False" BackgroundColor="{Binding SelectedProductLength, Converter={StaticResource SelectedFrameBgColor}, ConverterParameter=24 FT}" Padding="0" Grid.Row="0" Grid.Column="1">
                                     <Label Text="24 FT" TextColor="{Binding SelectedProductLength, Converter={StaticResource SelectedLabelColorConverter}, ConverterParameter=24 FT}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
                                     <Frame.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding ProductLengthSelectedCommand}" CommandParameter="24 FT"/>
                                     </Frame.GestureRecognizers>
                                 </Frame>
-                                <Frame OutlineColor="#50555C" BackgroundColor="{Binding SelectedProductLength, Converter={StaticResource SelectedFrameBgColor}, ConverterParameter=25 FT}" Padding="0" Grid.Row="1" Grid.Column="0">
+                                <Frame OutlineColor="#50555C" HasShadow="False" BackgroundColor="{Binding SelectedProductLength, Converter={StaticResource SelectedFrameBgColor}, ConverterParameter=25 FT}" Padding="0" Grid.Row="1" Grid.Column="0">
                                     <Label Text="25 FT" TextColor="{Binding SelectedProductLength, Converter={StaticResource SelectedLabelColorConverter}, ConverterParameter=25 FT}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
                                     <Frame.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding ProductLengthSelectedCommand}" CommandParameter="25 FT"/>
                                     </Frame.GestureRecognizers>
                                 </Frame>
-                                <Frame OutlineColor="#50555C" BackgroundColor="{Binding SelectedProductLength, Converter={StaticResource SelectedFrameBgColor}, ConverterParameter=26 FT}" Padding="0" Grid.Row="1" Grid.Column="1">
+                                <Frame OutlineColor="#50555C" HasShadow="False" BackgroundColor="{Binding SelectedProductLength, Converter={StaticResource SelectedFrameBgColor}, ConverterParameter=26 FT}" Padding="0" Grid.Row="1" Grid.Column="1">
                                     <Label Text="26 FT" TextColor="{Binding SelectedProductLength, Converter={StaticResource SelectedLabelColorConverter}, ConverterParameter=26 FT}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
                                     <Frame.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding ProductLengthSelectedCommand}" CommandParameter="26 FT"/>
@@ -986,13 +986,13 @@
                                     <ColumnDefinition Width="*"/>
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
-                                <Frame OutlineColor="#50555C" BackgroundColor="{Binding SelectedProductPinSize, Converter={StaticResource SelectedFrameBgColor}, ConverterParameter=7/8 IN}" Padding="0" Grid.Row="0" Grid.Column="0">
+                                <Frame OutlineColor="#50555C" HasShadow="False" BackgroundColor="{Binding SelectedProductPinSize, Converter={StaticResource SelectedFrameBgColor}, ConverterParameter=7/8 IN}" Padding="0" Grid.Row="0" Grid.Column="0">
                                     <Label Text="7/8&quot;" TextColor="{Binding SelectedProductPinSize, Converter={StaticResource SelectedLabelColorConverter}, ConverterParameter=7/8 IN}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
                                     <Frame.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding ProductPinSizeSelectedCommand}" CommandParameter="7/8 IN"/>
                                     </Frame.GestureRecognizers>
                                 </Frame>
-                                <Frame OutlineColor="#50555C" BackgroundColor="{Binding SelectedProductPinSize, Converter={StaticResource SelectedFrameBgColor}, ConverterParameter=1 IN}" Padding="0" Grid.Row="0" Grid.Column="1">
+                                <Frame OutlineColor="#50555C" HasShadow="False" BackgroundColor="{Binding SelectedProductPinSize, Converter={StaticResource SelectedFrameBgColor}, ConverterParameter=1 IN}" Padding="0" Grid.Row="0" Grid.Column="1">
                                     <Label Text="1&quot;" TextColor="{Binding SelectedProductPinSize, Converter={StaticResource SelectedLabelColorConverter}, ConverterParameter=1 IN}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
                                     <Frame.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding ProductPinSizeSelectedCommand}" CommandParameter="1 IN"/>
@@ -1034,49 +1034,49 @@
                                     <ColumnDefinition Width="*"/>
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
-                                <Frame OutlineColor="#50555C" BackgroundColor="{Binding SelectedMiscProduct, Converter={StaticResource SelectedFrameBgColor}, ConverterParameter=PinLube}" Padding="0" Grid.Column="0" Grid.Row="0">
+                                <Frame OutlineColor="#50555C" HasShadow="False" BackgroundColor="{Binding SelectedMiscProduct, Converter={StaticResource SelectedFrameBgColor}, ConverterParameter=PinLube}" Padding="0" Grid.Column="0" Grid.Row="0">
                                     <Label Text="Pin Lube" TextColor="{Binding SelectedMiscProduct, Converter={StaticResource SelectedLabelColorConverter}, ConverterParameter=PinLube}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
                                     <Frame.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding MiscItemProductSelectedCommand}" CommandParameter="PinLube"/>
                                     </Frame.GestureRecognizers>
                                 </Frame>
-                                <Frame OutlineColor="#50555C" BackgroundColor="{Binding SelectedMiscProduct, Converter={StaticResource SelectedFrameBgColor}, ConverterParameter=BrakeCleaner}" Padding="0" Grid.Column="1" Grid.Row="0">
+                                <Frame OutlineColor="#50555C" HasShadow="False" BackgroundColor="{Binding SelectedMiscProduct, Converter={StaticResource SelectedFrameBgColor}, ConverterParameter=BrakeCleaner}" Padding="0" Grid.Column="1" Grid.Row="0">
                                     <Label Text="Brake Cleaner" TextColor="{Binding SelectedMiscProduct, Converter={StaticResource SelectedLabelColorConverter}, ConverterParameter=BrakeCleaner}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
                                     <Frame.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding MiscItemProductSelectedCommand}" CommandParameter="BrakeCleaner"/>
                                     </Frame.GestureRecognizers>
                                 </Frame>
-                                <Frame OutlineColor="#50555C" BackgroundColor="{Binding SelectedMiscProduct, Converter={StaticResource SelectedFrameBgColor}, ConverterParameter=Rags}" Padding="0" Grid.Column="0" Grid.Row="1">
+                                <Frame OutlineColor="#50555C" HasShadow="False" BackgroundColor="{Binding SelectedMiscProduct, Converter={StaticResource SelectedFrameBgColor}, ConverterParameter=Rags}" Padding="0" Grid.Column="0" Grid.Row="1">
                                     <Label Text="Rags" TextColor="{Binding SelectedMiscProduct, Converter={StaticResource SelectedLabelColorConverter}, ConverterParameter=Rags}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
                                     <Frame.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding MiscItemProductSelectedCommand}" CommandParameter="Rags"/>
                                     </Frame.GestureRecognizers>
                                 </Frame>
-                                <Frame OutlineColor="#50555C" BackgroundColor="{Binding SelectedMiscProduct, Converter={StaticResource SelectedFrameBgColor}, ConverterParameter=PinPrepKit}" Padding="0" Grid.Column="1" Grid.Row="1">
+                                <Frame OutlineColor="#50555C" HasShadow="False" BackgroundColor="{Binding SelectedMiscProduct, Converter={StaticResource SelectedFrameBgColor}, ConverterParameter=PinPrepKit}" Padding="0" Grid.Column="1" Grid.Row="1">
                                     <Label Text="Pin Prep Kit" TextColor="{Binding SelectedMiscProduct, Converter={StaticResource SelectedLabelColorConverter}, ConverterParameter=PinPrepKit}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
                                     <Frame.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding MiscItemProductSelectedCommand}" CommandParameter="PinPrepKit"/>
                                     </Frame.GestureRecognizers>
                                 </Frame>
-                                <Frame OutlineColor="#50555C" BackgroundColor="{Binding SelectedMiscProduct, Converter={StaticResource SelectedFrameBgColor}, ConverterParameter=PRClamp}" Padding="0" Grid.Column="0" Grid.Row="2">
+                                <Frame OutlineColor="#50555C" HasShadow="False" BackgroundColor="{Binding SelectedMiscProduct, Converter={StaticResource SelectedFrameBgColor}, ConverterParameter=PRClamp}" Padding="0" Grid.Column="0" Grid.Row="2">
                                     <Label Text="PR Clamp 1.5&quot;" TextColor="{Binding SelectedMiscProduct, Converter={StaticResource SelectedLabelColorConverter}, ConverterParameter=PRClamp}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
                                     <Frame.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding MiscItemProductSelectedCommand}" CommandParameter="PRClamp"/>
                                     </Frame.GestureRecognizers>
                                 </Frame>
-                                <Frame OutlineColor="#50555C" BackgroundColor="{Binding SelectedMiscProduct, Converter={StaticResource SelectedFrameBgColor}, ConverterParameter=StablizerBar}" Padding="0" Grid.Column="1" Grid.Row="2">
+                                <Frame OutlineColor="#50555C" HasShadow="False" BackgroundColor="{Binding SelectedMiscProduct, Converter={StaticResource SelectedFrameBgColor}, ConverterParameter=StablizerBar}" Padding="0" Grid.Column="1" Grid.Row="2">
                                     <Label Text="Stablizer Bar" TextColor="{Binding SelectedMiscProduct, Converter={StaticResource SelectedLabelColorConverter}, ConverterParameter=StablizerBar}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
                                     <Frame.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding MiscItemProductSelectedCommand}" CommandParameter="StablizerBar"/>
                                     </Frame.GestureRecognizers>
                                 </Frame>
-                                <Frame OutlineColor="#50555C" BackgroundColor="{Binding SelectedMiscProduct, Converter={StaticResource SelectedFrameBgColor}, ConverterParameter=ThreadProtector}" Padding="0" Grid.Column="0" Grid.Row="3">
+                                <Frame OutlineColor="#50555C" HasShadow="False" BackgroundColor="{Binding SelectedMiscProduct, Converter={StaticResource SelectedFrameBgColor}, ConverterParameter=ThreadProtector}" Padding="0" Grid.Column="0" Grid.Row="3">
                                     <Label Text="Thread Protector" TextColor="{Binding SelectedMiscProduct, Converter={StaticResource SelectedLabelColorConverter}, ConverterParameter=ThreadProtector}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
                                     <Frame.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding MiscItemProductSelectedCommand}" CommandParameter="ThreadProtector"/>
                                     </Frame.GestureRecognizers>
                                 </Frame>
-                                <Frame OutlineColor="#50555C" BackgroundColor="{Binding SelectedMiscProduct, Converter={StaticResource SelectedFrameBgColor}, ConverterParameter=Other}" Padding="0" Grid.Column="1" Grid.Row="3">
+                                <Frame OutlineColor="#50555C" HasShadow="False" BackgroundColor="{Binding SelectedMiscProduct, Converter={StaticResource SelectedFrameBgColor}, ConverterParameter=Other}" Padding="0" Grid.Column="1" Grid.Row="3">
                                     <Label Text="Other Items" TextColor="{Binding SelectedMiscProduct, Converter={StaticResource SelectedLabelColorConverter}, ConverterParameter=Other}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
                                     <Frame.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding MiscItemProductSelectedCommand}" CommandParameter="Other"/>

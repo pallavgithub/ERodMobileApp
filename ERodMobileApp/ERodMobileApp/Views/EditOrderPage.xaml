@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ERodMobileApp.Views.EditOrderPage"
-             xmlns:prism="http://prismlibrary.com" 
+             xmlns:prism="http://prismlibrary.com" xmlns:local="clr-namespace:ERodMobileApp.Helpers"
              prism:ViewModelLocator.AutowireViewModel="True"
              NavigationPage.HasNavigationBar="False">
     <ContentPage.Content>
@@ -65,9 +65,12 @@
                                FontSize="18"/>
                         </Frame>
                         <Frame OutlineColor="#ADB3BC" BackgroundColor="#F0FBFF" Padding="2" HasShadow="False">
-                            <Label Text="{Binding DeliveryTime}" TextTransform="Uppercase" HorizontalOptions="CenterAndExpand" FontSize="22" TextColor="Black" FontAttributes="Bold"/>
+                            <Grid> 
+                                <Label x:Name="_deliveryDate" Text="{Binding DeliveryTime}" TextTransform="Uppercase" HorizontalOptions="CenterAndExpand" FontSize="22" TextColor="Black" FontAttributes="Bold"/>
+                                <local:DateTimePicker x:Name="dateTime_picker" HeightRequest="30" BackgroundColor="Transparent"/>
+                            </Grid>
                         </Frame>
-                        <DatePicker/>
+                        <!--<local:DateTimePicker x:Name="dateTime_picker" HeightRequest="30" BackgroundColor="Yellow"/>-->
                         <Button Text="Select Time" BackgroundColor="Black" FontSize="18" Padding="0" TextColor="White" TextTransform="Uppercase" HeightRequest="35" HorizontalOptions="CenterAndExpand" WidthRequest="200"/>
                         <Frame Padding="0" BackgroundColor="#FF6600" CornerRadius="8" HeightRequest="36" HasShadow="False" Margin="0,20,0,0">
                             <Label Text="Product Details" TextTransform="Uppercase" HorizontalTextAlignment="Center" TextColor="White" VerticalOptions="CenterAndExpand"

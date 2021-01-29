@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-using Xamarin.Forms;
+﻿using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace ERodMobileApp.Views
@@ -15,6 +9,12 @@ namespace ERodMobileApp.Views
         public EditOrderPage()
         {
             InitializeComponent();
+            dateTime_picker._timePicker.Unfocused += dateTime_picker_Unfocused;
+        }
+
+        private void dateTime_picker_Unfocused(object sender, FocusEventArgs e)
+        {
+            _deliveryDate.Text = dateTime_picker._entry.Text;
         }
     }
 }
