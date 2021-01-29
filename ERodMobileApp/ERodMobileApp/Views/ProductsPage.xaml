@@ -1122,7 +1122,7 @@
                             </Frame>
                         </StackLayout>
                         <Button Text="Add Selected Item to Order" TextColor="White" TextTransform="None"  Margin="0,20,0,5" BackgroundColor="#FF6600" CornerRadius="5" Padding="1" FontSize="18" HeightRequest="40"/>
-                        <Button Text="Delete and Return" TextColor="White" TextTransform="None" BackgroundColor="#333333" CornerRadius="5" Padding="1" FontSize="18" HeightRequest="40"/>
+                        <Button Text="Delete and Return" TextColor="White" TextTransform="None" BackgroundColor="#333333" CornerRadius="5" Padding="1" FontSize="18" HeightRequest="40" Command="{Binding DeleteAndReturnBtnCommand}"/>
                         <Frame HasShadow="False" OutlineColor="#FF6600" CornerRadius="10" BackgroundColor="#F0FBFF" Margin="30,30,30,10" 
                        Padding="12">
                             <StackLayout>

@@ -60,14 +60,6 @@ namespace ERodMobileApp.Views
                 signature.IsVisible = false;
                 stampImg.IsVisible = true;
             }
-            //pic.Source = ImageSource.FromStream(() =>
-            //{
-            //    var stream = file.GetStream();
-            //    return stream;
-            //});
-            //var st = file.GetStream();
-            //FileStream fs = st as FileStream;
-            //await _vm.UploadImageAsync(st, fs.Name);
         }
     }
     //public async void Save(object sender, EventArgs eventArgs)

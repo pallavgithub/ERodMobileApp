@@ -138,6 +138,7 @@ namespace ERodMobileApp.ViewModels
         public DelegateCommand<string> ProductPinSizeSelectedCommand { get; set; }
         public DelegateCommand<string> ProductSubGradeSelectedCommand { get; set; }
         public DelegateCommand<string> MiscItemProductSelectedCommand { get; set; }
+        public DelegateCommand DeleteAndReturnBtnCommand { get; set; }
         public ProductsPageViewModel(INavigationService navigationService) : base(navigationService)
         {
             PonyRod = new List<ProductModel>();
@@ -169,6 +170,7 @@ namespace ERodMobileApp.ViewModels
             ProductPinSizeSelectedCommand = new DelegateCommand<string>(ProductPinSizeSelected);
             ProductSubGradeSelectedCommand = new DelegateCommand<string>(ProductSubGradeSelected);
             MiscItemProductSelectedCommand = new DelegateCommand<string>(MiscItemProductSelected);
+            DeleteAndReturnBtnCommand = new DelegateCommand(DeleteAndReturn);
         }
         public void ProductGroupSelected(string group)
         {
@@ -242,6 +244,10 @@ namespace ERodMobileApp.ViewModels
         public void MiscItemProductSelected(string product)
         {
             SelectedMiscProduct = product;
+        }
+        public void DeleteAndReturn()
+        {
+            NavigationService.GoBackAsync();
         }
         public async Task GetAllProducts()
         {
