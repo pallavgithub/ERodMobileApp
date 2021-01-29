@@ -124,35 +124,35 @@
                         <Frame OutlineColor="#ADB3BC" BackgroundColor="#F0FBFF" CornerRadius="5" Margin="5" HasShadow="False">
                             <StackLayout>
                                 <Label Text="Couplings Rod" TextColor="#FF6600" FontSize="24" HorizontalOptions="CenterAndExpand"/>
-
+                                    <Label Text="T, SM,Crossover and PR Couplings" TextColor="#50555C" FontSize="20" HorizontalOptions="CenterAndExpand"/>
                                 <Button Text="Add New Item" BackgroundColor="Black" FontSize="18" Padding="0" TextColor="White" TextTransform="None" HeightRequest="35" HorizontalOptions="CenterAndExpand" WidthRequest="200"/>
                             </StackLayout>
                         </Frame>
                         <Frame OutlineColor="#ADB3BC" BackgroundColor="#F0FBFF" CornerRadius="5" Margin="5" HasShadow="False">
                             <StackLayout>
                                 <Label Text="Sinker Bar" TextColor="#FF6600" FontSize="24" HorizontalOptions="CenterAndExpand"/>
-
-                                <Button Text="Add New Item" BackgroundColor="Black" FontSize="18" Padding="0" TextColor="White" TextTransform="None" HeightRequest="35" HorizontalOptions="CenterAndExpand" WidthRequest="200"/>
+                                    <Label Text="C, K grade Sinker Bars" TextColor="#50555C" FontSize="20" HorizontalOptions="CenterAndExpand"/>
+                                    <Button Text="Add New Item" BackgroundColor="Black" FontSize="18" Padding="0" TextColor="White" TextTransform="None" HeightRequest="35" HorizontalOptions="CenterAndExpand" WidthRequest="200"/>
                             </StackLayout>
                         </Frame>
                         <Frame OutlineColor="#ADB3BC" BackgroundColor="#F0FBFF" CornerRadius="5" Margin="5" HasShadow="False">
                             <StackLayout>
                                 <Label Text="Polished Rod" TextColor="#FF6600" FontSize="24" HorizontalOptions="CenterAndExpand"/>
-
-                                <Button Text="Add New Item" BackgroundColor="Black" FontSize="18" Padding="0" TextColor="White" TextTransform="None" HeightRequest="35" HorizontalOptions="CenterAndExpand" WidthRequest="200"/>
+                                    <Label Text="Polished Rod Description" TextColor="#50555C" FontSize="20" HorizontalOptions="CenterAndExpand"/>
+                                    <Button Text="Add New Item" BackgroundColor="Black" FontSize="18" Padding="0" TextColor="White" TextTransform="None" HeightRequest="35" HorizontalOptions="CenterAndExpand" WidthRequest="200"/>
                             </StackLayout>
                         </Frame>
                         <Frame OutlineColor="#ADB3BC" BackgroundColor="#F0FBFF" CornerRadius="5" Margin="5" HasShadow="False">
                             <StackLayout>
                                 <Label Text="Other Items" TextColor="#FF6600" FontSize="24" HorizontalOptions="CenterAndExpand"/>
-
-                                <Button Text="Add New Item" BackgroundColor="Black" FontSize="18" Padding="0" TextColor="White" TextTransform="None" HeightRequest="35" HorizontalOptions="CenterAndExpand" WidthRequest="200"/>
+                                    <Label Text="Pin lube, brake cleaner, rags &amp; etc" TextColor="#50555C" FontSize="20" HorizontalOptions="CenterAndExpand"/>
+                                    <Button Text="Add New Item" BackgroundColor="Black" FontSize="18" Padding="0" TextColor="White" TextTransform="None" HeightRequest="35" HorizontalOptions="CenterAndExpand" WidthRequest="200"/>
                             </StackLayout>
                             </Frame>
                         </StackLayout>
                         <Button Text="Review and Submit Order" TextTransform="None" TextColor="White" BackgroundColor="#FF6600" HeightRequest="40" FontSize="20" Padding="0"/>
-                        <Button Text="Save and Edit Later" TextTransform="None" Margin="0,8,0,8" TextColor="White" BackgroundColor="#FF6600" HeightRequest="40" FontSize="20" Padding="0"/>
-                        <Button Text="Discard Change" TextTransform="None" TextColor="White" BackgroundColor="#50555C" HeightRequest="40" FontSize="20" Padding="0"/>
+                        <Button Text="Save and Edit Later" TextTransform="None" Margin="0,8,0,8" TextColor="White" BackgroundColor="#FF6600" HeightRequest="40" FontSize="20" Padding="0" Command="{Binding SaveAndEditLaterBtnCommand}"/>
+                        <Button Text="Discard Change" TextTransform="None" TextColor="White" BackgroundColor="#50555C" HeightRequest="40" FontSize="20" Padding="0" Command="{Binding DiscardChangesBtnCommand}"/>
                     </StackLayout>
                 </StackLayout>
             </ScrollView>

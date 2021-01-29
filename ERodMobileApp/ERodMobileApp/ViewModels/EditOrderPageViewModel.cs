@@ -1,4 +1,5 @@
 ﻿using ERodMobileApp.Models;
+using Prism.Commands;
 using Prism.Navigation;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -61,9 +62,12 @@ namespace ERodMobileApp.ViewModels
             get => _glCode;
             set => SetProperty(ref _glCode, value);
         }
+        public DelegateCommand SaveAndEditLaterBtnCommand { get; set; }
+        public DelegateCommand DiscardChangesBtnCommand { get; set; }
         public EditOrderPageViewModel(INavigationService navigationService) : base(navigationService)
         {
-
+            SaveAndEditLaterBtnCommand = new DelegateCommand(SaveAndEditLater);
+            DiscardChangesBtnCommand = new DelegateCommand(DiscardChanges);
         }
         public override void OnNavigatedTo(INavigationParameters parameters)
         {
@@ -88,6 +92,14 @@ namespace ERodMobileApp.ViewModels
             }
             SuckerListHeight = (SuckerList.Count() * 70).ToString();
             PonyListHeight = (PonyList.Count() * 70).ToString();
+        }
+        public void SaveAndEditLater()
+        {
+            NavigationService.GoBackAsync();
+        }
+        public void DiscardChanges()
+        {
+            NavigationService.GoBackAsync();
         }
     }
 }
