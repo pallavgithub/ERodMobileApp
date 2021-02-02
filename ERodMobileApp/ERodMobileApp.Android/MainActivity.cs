@@ -2,6 +2,7 @@
 using Android.App;
 using Android.Content.PM;
 using Android.OS;
+using Android.Views;
 using AndroidX.Core.App;
 using AndroidX.Core.Content;
 using ERodMobileApp.Droid.CustomRenderers;
@@ -32,8 +33,14 @@ namespace ERodMobileApp.Droid
             //    System.Diagnostics.Debug.WriteLine("Permission Granted!!!");
             //}
 
-            //allowing the device to change the screen orientation based on the rotation
+            var uiOptions = (int)Window.DecorView.SystemUiVisibility;
+            uiOptions ^= (int)SystemUiFlags.LayoutStable;
+            uiOptions ^= (int)SystemUiFlags.LayoutFullscreen;
+            Window.DecorView.SystemUiVisibility = (StatusBarVisibility)uiOptions;
+            Window.SetFlags(WindowManagerFlags.TranslucentStatus, WindowManagerFlags.TranslucentStatus);
+            Window.AddFlags(WindowManagerFlags.DrawsSystemBarBackgrounds);
 
+            //allowing the device to change the screen orientation based on the rotation
             MessagingCenter.Subscribe<SignaturePage>(this, "allowLandScapePortrait", sender =>
             {
                 RequestedOrientation = ScreenOrientation.Landscape;

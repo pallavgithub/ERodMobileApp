@@ -8,6 +8,12 @@
         <MediaElement IsVisible="True" 
               ShowsPlaybackControls="False" IsLooping="True" AutoPlay="True" Aspect="AspectFill" x:Name="video"/>
         <AbsoluteLayout HorizontalOptions="CenterAndExpand" VerticalOptions="FillAndExpand">
+            <AbsoluteLayout.Margin>
+                <OnPlatform x:TypeArguments="Thickness">
+                    <On Platform="iOS" Value="0,35,0,0"/>
+                    <On Platform="Android" Value="0,25,0,0"/>
+                </OnPlatform>
+            </AbsoluteLayout.Margin>
             <Image x:Name="exceed" Source="Exceed.png" Aspect="Fill"  AbsoluteLayout.LayoutBounds="0,0.3,1,0.3"
                  AbsoluteLayout.LayoutFlags="All"
                  TranslationY="{Binding Height, Source={x:Reference receive}}"

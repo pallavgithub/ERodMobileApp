@@ -19,7 +19,13 @@
             <ScrollView VerticalScrollBarVisibility="Never">
                 <Grid>
                     <Image Source="BannerBGgreen.png" VerticalOptions="Start"/>
-                    <StackLayout Margin="15,10,15,30">
+                    <StackLayout>
+                        <StackLayout.Margin>
+                            <OnPlatform x:TypeArguments="Thickness">
+                                <On Platform="iOS" Value="15,45,15,30" />
+                                <On Platform="Android" Value="15,35,15,30"/>
+                            </OnPlatform>
+                        </StackLayout.Margin>
                         <StackLayout Orientation="Horizontal" Grid.Row="0" Spacing="14" Margin="0,0,0,30" HorizontalOptions="FillAndExpand"
                              VerticalOptions="FillAndExpand">
                             <Label Text="Product Selection" HorizontalOptions="Start" TextColor="#FF6600" FontSize="22" VerticalOptions="CenterAndExpand" TextTransform="Uppercase"/>
@@ -582,9 +588,9 @@
                                 </Grid.ColumnDefinitions>
                                 <Frame OutlineColor="#50555C" HasShadow="False" BackgroundColor="{Binding SelectedProductGrade, Converter={StaticResource SelectedFrameBgColor}, ConverterParameter=T}" Padding="0" Grid.Column="0" Grid.Row="0">
                                     <Label Text="T" TextColor="{Binding SelectedProductGrade, Converter={StaticResource SelectedLabelColorConverter}, ConverterParameter=T}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
-                                        <Frame.GestureRecognizers>
+                                    <Frame.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding ProductGradeSelectedCommand}" CommandParameter="T"/>
-                                        </Frame.GestureRecognizers>
+                                    </Frame.GestureRecognizers>
                                 </Frame>
                                 <Frame OutlineColor="#50555C" HasShadow="False" BackgroundColor="{Binding SelectedProductGrade, Converter={StaticResource SelectedFrameBgColor}, ConverterParameter=SM}" Padding="0" Grid.Column="1" Grid.Row="0">
                                     <Label Text="SM" TextColor="{Binding SelectedProductGrade, Converter={StaticResource SelectedLabelColorConverter}, ConverterParameter=SM}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>

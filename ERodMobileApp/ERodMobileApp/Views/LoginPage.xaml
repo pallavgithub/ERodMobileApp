@@ -12,6 +12,12 @@
     </ContentPage.Resources>
     <ContentPage.Content>
         <StackLayout>
+            <StackLayout.Margin>
+                <OnPlatform x:TypeArguments="Thickness">
+                    <On Platform="iOS" Value="0,25,0,0" />
+                    <On Platform="Android" Value="0,15,0,0" />
+                </OnPlatform>
+            </StackLayout.Margin>
             <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                 <!--Enter Mobile (for ios)-->
                 <ContentView IsVisible="{Binding EnterMobilePageIsVisible}" VerticalOptions="FillAndExpand"

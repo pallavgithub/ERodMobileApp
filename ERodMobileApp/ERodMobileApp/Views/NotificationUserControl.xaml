@@ -5,11 +5,17 @@
              xmlns:prism="http://prismlibrary.com"
              prism:ViewModelLocator.AutowireViewModel="True"
              NavigationPage.HasNavigationBar="False">
-  <ContentView.Content>
-      <StackLayout>
+    <ContentView.Content>
+        <StackLayout>
             <Grid>
                 <Image Source="BannerBGgreen.png" VerticalOptions="Start"/>
-                <Grid Margin="15,10,15,30" RowSpacing="20">
+                <Grid RowSpacing="20">
+                    <Grid.Margin>
+                        <OnPlatform x:TypeArguments="Thickness">
+                            <On Platform="iOS" Value="15,25,15,30" />
+                            <On Platform="Android" Value="15,35,15,30"/>
+                        </OnPlatform>
+                    </Grid.Margin>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
@@ -46,5 +52,5 @@
                 </Grid>
             </Grid>
         </StackLayout>
-  </ContentView.Content>
+    </ContentView.Content>
 </ContentView>

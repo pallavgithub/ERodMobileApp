@@ -5,20 +5,26 @@
               xmlns:prism="http://prismlibrary.com" 
              prism:ViewModelLocator.AutowireViewModel="True"
              NavigationPage.HasNavigationBar="False">
-    <ContentPage.Content>        
-            <StackLayout Padding="10,10,10,10" BackgroundColor="White">
+    <ContentPage.Content>
+        <StackLayout Padding="10,10,10,10" BackgroundColor="White">
+            <StackLayout.Margin>
+                <OnPlatform x:TypeArguments="Thickness">
+                    <On Platform="iOS" Value="10,20,10,10" />
+                    <On Platform="Android" Value="10,20,10,10"/>
+                </OnPlatform>
+            </StackLayout.Margin>
             <Label Text="I acknowledge the receipt of Exced Order SO2042 for WellName_123G" Margin="20,0,0,0" TextColor="#50555C" FontSize="18"/>
             <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                 <Image x:Name="stampImg"/>
                 <forms:SignaturePadView x:Name="signature" BackgroundColor="White" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"
                                     StrokeColor="Black" StrokeWidth="3" CaptionText="" CaptionFontSize="24" CaptionTextColor="#333333"/>
-            </Grid>                
+            </Grid>
             <Label Text="John Doe" Margin="20,-40,0,0" TextColor="#50555C" FontSize="18"/>
             <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand" Margin="0,0,40,0">
-                    <Button Text="Cancel" HorizontalOptions="End" WidthRequest="145" HeightRequest="40" BackgroundColor="#333333" CornerRadius="3" TextColor="White" Clicked="CancelBtn_Clicked"/>
+                <Button Text="Cancel" HorizontalOptions="End" WidthRequest="145" HeightRequest="40" BackgroundColor="#333333" CornerRadius="3" TextColor="White" Clicked="CancelBtn_Clicked"/>
                 <Button Text="Upload" HorizontalOptions="End" WidthRequest="145" HeightRequest="40" BackgroundColor="#FF6600" CornerRadius="3" TextColor="White" Clicked="UploadBtn_Clicked"/>
                 <Button Text="Confirm" HorizontalOptions="End" WidthRequest="145" HeightRequest="40" BackgroundColor="#FF6600" CornerRadius="3" TextColor="White"/>
-                </StackLayout>
-            </StackLayout>        
+            </StackLayout>
+        </StackLayout>
     </ContentPage.Content>
 </ContentPage>

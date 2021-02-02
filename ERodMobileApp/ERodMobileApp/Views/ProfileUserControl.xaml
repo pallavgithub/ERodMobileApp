@@ -4,19 +4,26 @@
              x:Class="ERodMobileApp.Views.ProfileUserControl"
              xmlns:prism="http://prismlibrary.com" 
              prism:ViewModelLocator.AutowireViewModel="True">
-  <ContentView.Content>
-      <StackLayout VerticalOptions="FillAndExpand" Margin="0,0,0,0">
+    <ContentView.Content>
+        <StackLayout VerticalOptions="FillAndExpand" Margin="0,0,0,0">
             <Grid VerticalOptions="FillAndExpand">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="1.8*"/>
+                    <RowDefinition Height="2.3*"/>
                     <RowDefinition Height="2.3*"/>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="2.2*"/>
                     <RowDefinition Height="1.5*"/>
-                    <RowDefinition Height="5*"/>                    
-                </Grid.RowDefinitions>                
+                    <RowDefinition Height="5*"/>
+                </Grid.RowDefinitions>
                 <Image Grid.RowSpan="2" Source="BlueBg.png" Aspect="Fill"/>
-                <Image Grid.Row="0" Source="LogoWhite.png" Margin="0,20,0,0"/>
+                <Image Grid.Row="0" Source="LogoWhite.png">
+                    <Image.Margin>
+                        <OnPlatform x:TypeArguments="Thickness">
+                            <On Platform="iOS" Value="0,50,0,0" />
+                            <On Platform="Android" Value="0,40,0,0" />
+                        </OnPlatform>
+                    </Image.Margin>
+                </Image>
                 <Image Grid.Row="1" Source="UserIcon.png" VerticalOptions="Center" Margin="0,20,0,0"/>
                 <Label Grid.Row="2" Text="{Binding UserName}" TextColor="#404040" FontSize="28" FontAttributes="Bold"
                        VerticalOptions="End" HorizontalTextAlignment="Center"/>
@@ -58,9 +65,9 @@
                         <Switch IsToggled="{Binding SignReminder}" IsEnabled="False" OnColor="#0C752a" ThumbColor="#f2f2f2" HorizontalOptions="End"/>
                     </StackLayout>
                 </StackLayout>
-               
-               
+
+
             </Grid>
         </StackLayout>
-  </ContentView.Content>
+    </ContentView.Content>
 </ContentView>
