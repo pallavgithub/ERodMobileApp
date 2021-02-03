@@ -97,10 +97,10 @@
                         <Label Grid.Row="2" Text="User Profile Found!" FontFamily="{StaticResource RobotoRegular}" TextColor="#404040" FontSize="18" HorizontalTextAlignment="Center"/>
                         <Label Grid.Row="3" Text="{Binding UserName}" FontFamily="{StaticResource InterBold}" TextColor="#404040" FontSize="28"
                        VerticalOptions="End" HorizontalTextAlignment="Center"/>
-                        <StackLayout Grid.Row="4" HorizontalOptions="FillAndExpand" Margin="45,0,35,20" BackgroundColor="Yellow">
+                        <StackLayout Grid.Row="4" HorizontalOptions="FillAndExpand" Margin="45,0,35,20">
                             <StackLayout Orientation="Horizontal">
                                 <Image Source="Company.png" HeightRequest="25" WidthRequest="25"/>
-                                <Label Text="{Binding Company}" FontFamily="{StaticResource InterMedium}" TextColor="#404040" FontSize="20" BackgroundColor="Pink"/>
+                                <Label Text="{Binding Company}" FontFamily="{StaticResource InterMedium}" TextColor="#404040" FontSize="20"/>
                             </StackLayout>
                             <StackLayout Orientation="Horizontal">
                                 <Image Source="Phone.png" HeightRequest="25" WidthRequest="25"/>
