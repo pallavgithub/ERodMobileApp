@@ -116,6 +116,14 @@
     <LinkDescription Include="LinkerSettings.xml" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <BundleResource Include="Resources\animation.mp4" />
+    <BundleResource Include="Resources\Roboto-Regular.ttf" />
+    <BundleResource Include="Resources\Roboto-Light.ttf" />
+    <BundleResource Include="Resources\Inter-Regular.ttf" />
+    <BundleResource Include="Resources\Inter-Bold.ttf" />
+    <BundleResource Include="Resources\Inter-Light.ttf" />
+    <BundleResource Include="Resources\Inter-Medium.ttf" />
+    <BundleResource Include="Resources\Roboto-Bold.ttf" />
+    <BundleResource Include="Resources\Roboto-Medium.ttf" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\Contents.json">

@@ -88,28 +88,28 @@
                         </Grid.RowDefinitions>
                         <Image Grid.Row="0" Source="RodLogo.png"/>
                         <Image Grid.Row="1" Source="userFound.png"/>
-                        <Label Grid.Row="2" Text="User Profile Found!" TextColor="#404040" FontSize="18" HorizontalTextAlignment="Center"/>
-                        <Label Grid.Row="3" Text="{Binding UserName}" TextColor="#404040" FontSize="28" FontAttributes="Bold"
+                        <Label Grid.Row="2" Text="User Profile Found!" FontFamily="{StaticResource RobotoRegular}" TextColor="#404040" FontSize="18" HorizontalTextAlignment="Center"/>
+                        <Label Grid.Row="3" Text="{Binding UserName}" FontFamily="{StaticResource InterBold}" TextColor="#404040" FontSize="28"
                        VerticalOptions="End" HorizontalTextAlignment="Center"/>
                         <StackLayout Grid.Row="4" HorizontalOptions="FillAndExpand" Margin="45,0,35,20">
                             <StackLayout Orientation="Horizontal">
                                 <Image Source="Company.png" HeightRequest="25" WidthRequest="25"/>
-                                <Label Text="{Binding Company}" TextColor="#404040" FontSize="20"/>
+                                <Label Text="{Binding Company}" FontFamily="{StaticResource InterMedium}" TextColor="#404040" FontSize="20"/>
                             </StackLayout>
                             <StackLayout Orientation="Horizontal">
                                 <Image Source="Phone.png" HeightRequest="25" WidthRequest="25"/>
-                                <Label Text="{Binding MobileNumber}" TextColor="#404040" FontSize="20"/>
+                                <Label Text="{Binding MobileNumber}" FontFamily="{StaticResource InterMedium}" TextColor="#404040" FontSize="20"/>
                             </StackLayout>
                             <StackLayout Orientation="Horizontal">
                                 <Image Source="Email.png" HeightRequest="25" WidthRequest="25"/>
-                                <Label Text="{Binding Email}" TextColor="#404040" FontSize="20"/>
+                                <Label Text="{Binding Email}" FontFamily="{StaticResource InterMedium}" TextColor="#404040" FontSize="20"/>
                             </StackLayout>
                         </StackLayout>
                         <Label Text="NOTIFICATION PREFERENCES" Grid.Row="5" TextColor="#FF6600" FontSize="20" Margin="45,0,35,0"
                        VerticalOptions="End"/>
                         <StackLayout Grid.Row="6" Margin="45,0,35,0" VerticalOptions="FillAndExpand">
                             <StackLayout Orientation="Horizontal">
-                                <Label Text="Emails Notifications" FontSize="18" TextColor="#000000" HorizontalOptions="StartAndExpand"/>
+                                <Label Text="Emails Notifications" FontFamily="{StaticResource InterRegular}" FontSize="18" TextColor="#000000" HorizontalOptions="StartAndExpand"/>
 
                                 <Grid>
                                     <Switch IsToggled="{Binding EmailNotification}" OnColor="#0C752a" ThumbColor="#f2f2f2"
@@ -122,7 +122,7 @@
                                 </Grid>
                             </StackLayout>
                             <StackLayout Orientation="Horizontal" Margin="0,0,0,10">
-                                <Label Text="SMS Notifications" FontSize="18" TextColor="#000000" HorizontalOptions="StartAndExpand"/>
+                                <Label Text="SMS Notifications" FontFamily="{StaticResource InterRegular}" FontSize="18" TextColor="#000000" HorizontalOptions="StartAndExpand"/>
                                 <Grid>
                                     <Switch IsToggled="{Binding SmsNotification}" OnColor="#0C752a" ThumbColor="#f2f2f2" 
                                     HorizontalOptions="End"/>
@@ -134,7 +134,7 @@
                                 </Grid>
                             </StackLayout>
                             <StackLayout Orientation="Horizontal">
-                                <Label Text="Order Status Change" FontSize="18" TextColor="#000000" HorizontalOptions="StartAndExpand"/>
+                                <Label Text="Order Status Change" FontFamily="{StaticResource InterRegular}" FontSize="18" TextColor="#000000" HorizontalOptions="StartAndExpand"/>
                                 <Grid>
                                     <Switch IsToggled="{Binding OrderStatusChange}" OnColor="#0C752a" ThumbColor="#f2f2f2" 
                                     HorizontalOptions="End"/>
@@ -146,7 +146,7 @@
                                 </Grid>
                             </StackLayout>
                             <StackLayout Orientation="Horizontal">
-                                <Label Text="Shipping Notification" FontSize="18" TextColor="#000000" HorizontalOptions="StartAndExpand"/>
+                                <Label Text="Shipping Notification" FontFamily="{StaticResource InterRegular}" FontSize="18" TextColor="#000000" HorizontalOptions="StartAndExpand"/>
                                 <Grid>
                                     <Switch IsToggled="{Binding ShippingNotification}" OnColor="#0C752a" ThumbColor="#f2f2f2" 
                                     HorizontalOptions="End"/>
@@ -158,7 +158,7 @@
                                 </Grid>
                             </StackLayout>
                             <StackLayout Orientation="Horizontal">
-                                <Label Text="Signature Reminder" FontSize="18" TextColor="#000000" HorizontalOptions="StartAndExpand"/>
+                                <Label Text="Signature Reminder" FontFamily="{StaticResource InterRegular}" FontSize="18" TextColor="#000000" HorizontalOptions="StartAndExpand"/>
                                 <Grid>
                                     <Switch IsToggled="{Binding SignReminder}" OnColor="#0C752a" ThumbColor="#f2f2f2" 
                                     HorizontalOptions="End" />
@@ -183,12 +183,12 @@
                                         <TapGestureRecognizer Command="{Binding CheckBoxCommand}"/>
                                     </Grid.GestureRecognizers>
                                 </Grid>
-                                <Label Text="I agree with the" FontSize="16" VerticalOptions="Center" TextColor="#000000" Margin="10,0,0,0"/>
-                                <Label Text="Terms &amp; Conditions" TextColor="#ff6600" FontAttributes="italic" FontSize="16"
+                                <Label Text="I agree with the" FontFamily="{StaticResource InterMedium}" FontSize="15" VerticalOptions="Center" TextColor="#000000" Margin="10,0,0,0"/>
+                                <Label Text="Terms &amp; Conditions"  FontFamily="{StaticResource InterMedium}" TextColor="#ff6600" FontAttributes="italic" FontSize="15"
                            VerticalOptions="Center"/>
                             </StackLayout>
                         </StackLayout>
-                        <Button Text="DONE" Grid.Row="8" TextColor="White" Command="{Binding DoneButtonCommand}"
+                        <Button Text="DONE" Grid.Row="8" FontFamily="{StaticResource RobotoBold}" TextColor="White" Command="{Binding DoneButtonCommand}"
                             BackgroundColor="#FF6600" WidthRequest="200" HeightRequest="40" HorizontalOptions="CenterAndExpand" 
                             VerticalOptions="Start" CornerRadius="3"/>
                     </Grid>
@@ -208,10 +208,10 @@
                         <Image Grid.Row="0" Source="RodLogo.png"/>
                         <!--<Image Grid.Row="0" Source="RodLogo.png"  />-->
                         <Image Grid.Row="1" Source="vector.png" Aspect="AspectFit" VerticalOptions="End"/>
-                        <Label Grid.Row="2" Text="PROFILE NOT FOUND" HorizontalTextAlignment="Center" TextColor="#828282" 
-                               FontAttributes="Bold" FontSize="22"/>
+                        <Label Grid.Row="2" Text="PROFILE NOT FOUND" FontFamily="{StaticResource RobotoMedium}" HorizontalTextAlignment="Center" TextColor="#828282" 
+                               FontSize="22"/>
                         <Label Grid.Row="3" HorizontalTextAlignment="Start" TextColor="Black" FontSize="18" HorizontalOptions="StartAndExpand"
-                       VerticalOptions="CenterAndExpand" LineBreakMode="WordWrap">
+                       VerticalOptions="CenterAndExpand" FontFamily="{StaticResource InterRegular}" LineBreakMode="WordWrap">
                             <Label.FormattedText>
                                 <FormattedString>
                                     <Span Text="Phone number "/>
@@ -220,7 +220,7 @@
                                 </FormattedString>
                             </Label.FormattedText>
                         </Label>
-                        <Label Grid.Row="4" Text="ACTIVATION CODE" HorizontalTextAlignment="Center" TextColor="#FF6600" FontSize="20"/>
+                        <Label Grid.Row="4" Text="ACTIVATION CODE" FontFamily="{StaticResource InterLight}" HorizontalTextAlignment="Center" TextColor="#FF6600" FontSize="20"/>
                         <StackLayout Grid.Row="5" Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Start">
                             <Frame Padding="0,3,0,3" HasShadow="False" Grid.Column="3"  Grid.Row="1" OutlineColor="#C4C4C4" 
                            HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="#F2F2F2" 
@@ -271,10 +271,10 @@
                                                TextChanged="Entry_six_TextChanged"/>
                             </Frame>
                         </StackLayout>
-                        <Button x:Name="exit_btn" Grid.Row="6" Text="EXIT" HorizontalOptions="CenterAndExpand" BackgroundColor="#404040" 
+                        <Button x:Name="exit_btn" Grid.Row="6" Text="EXIT" FontFamily="{StaticResource RobotoMedium}" HorizontalOptions="CenterAndExpand" BackgroundColor="#404040" 
                         TextColor="White" VerticalOptions="Start" IsVisible="{Binding ExitBtnIsVisible}"
                         HeightRequest="45" WidthRequest="200" CornerRadius="3" FontSize="18" Clicked="Exit_btn_Clicked"/>
-                        <Button x:Name="next_btn" Grid.Row="6" Text="NEXT" HorizontalOptions="CenterAndExpand" BackgroundColor="#ff6600" 
+                        <Button x:Name="next_btn" Grid.Row="6" Text="NEXT" FontFamily="{StaticResource RobotoMedium}" HorizontalOptions="CenterAndExpand" BackgroundColor="#ff6600" 
                         TextColor="White" VerticalOptions="Start" IsVisible="{Binding ExitBtnIsVisible, Converter={StaticResource InverseBoolConverter}}"
                         HeightRequest="45" WidthRequest="200" CornerRadius="3" FontSize="18" Clicked="LoginWithActivationCode_Clicked"/>
                     </Grid>

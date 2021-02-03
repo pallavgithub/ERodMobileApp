@@ -25,7 +25,14 @@ namespace ERodMobileApp.Views
 
         private void SaveBtn_Clicked(object sender, EventArgs e)
         {
-            (BindingContext as NewOrderPageViewModel)._navigation.NavigateAsync("ProductsPage");
+            try
+            {
+                (BindingContext as NewOrderPageViewModel)._navigation.NavigateAsync("ProductsPage");
+            }
+            catch (Exception)
+            {
+
+            }
         }
     }
 }

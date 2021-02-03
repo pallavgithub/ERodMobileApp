@@ -25,43 +25,43 @@
                     </Image.Margin>
                 </Image>
                 <Image Grid.Row="1" Source="UserIcon.png" VerticalOptions="Center" Margin="0,20,0,0"/>
-                <Label Grid.Row="2" Text="{Binding UserName}" TextColor="#404040" FontSize="28" FontAttributes="Bold"
+                <Label Grid.Row="2" Text="{Binding UserName}" FontFamily="{StaticResource InterBold}" TextColor="#404040" FontSize="28" 
                        VerticalOptions="End" HorizontalTextAlignment="Center"/>
                 <StackLayout Grid.Row="3" HorizontalOptions="FillAndExpand" Margin="40,10,35,0">
                     <StackLayout Orientation="Horizontal">
                         <Image Source="Company.png" HeightRequest="25" WidthRequest="25"/>
-                        <Label Text="{Binding Company}" TextColor="#404040" FontSize="20"/>
+                        <Label Text="{Binding Company}" FontFamily="{StaticResource InterMedium}" TextColor="#404040" FontSize="20"/>
                     </StackLayout>
                     <StackLayout Orientation="Horizontal">
                         <Image Source="Phone.png" HeightRequest="25" WidthRequest="25"/>
-                        <Label Text="{Binding MobileNumber}" TextColor="#404040" FontSize="20"/>
+                        <Label Text="{Binding MobileNumber}" FontFamily="{StaticResource InterMedium}" TextColor="#404040" FontSize="20"/>
                     </StackLayout>
                     <StackLayout Orientation="Horizontal">
                         <Image Source="Email.png" HeightRequest="25" WidthRequest="25"/>
-                        <Label Text="{Binding Email}" TextColor="#404040" FontSize="20"/>
+                        <Label Text="{Binding Email}" FontFamily="{StaticResource InterMedium}" TextColor="#404040" FontSize="20"/>
                     </StackLayout>
                 </StackLayout>
                 <Label Text="NOTIFICATION PREFERENCES" Grid.Row="4" TextColor="#FF6600" FontSize="20" Margin="40,0,35,0"
                        VerticalOptions="End"/>
                 <StackLayout Grid.Row="5" Margin="40,0,35,0">
                     <StackLayout Orientation="Horizontal">
-                        <Label Text="Emails Notifications" FontSize="18" TextColor="#000000" HorizontalOptions="StartAndExpand"/>
+                        <Label Text="Emails Notifications" FontFamily="{StaticResource InterRegular}" FontSize="18" TextColor="#000000" HorizontalOptions="StartAndExpand"/>
                         <Switch IsToggled="{Binding EmailNotification}" IsEnabled="False" OnColor="#0C752a" ThumbColor="#f2f2f2" HorizontalOptions="End"/>
                     </StackLayout>
                     <StackLayout Orientation="Horizontal" Margin="0,0,0,10">
-                        <Label Text="SMS Notifications" FontSize="18" TextColor="#000000" HorizontalOptions="StartAndExpand"/>
+                        <Label Text="SMS Notifications" FontFamily="{StaticResource InterRegular}" FontSize="18" TextColor="#000000" HorizontalOptions="StartAndExpand"/>
                         <Switch IsToggled="{Binding SmsNotification}" IsEnabled="False" OnColor="#0C752a" ThumbColor="#f2f2f2" HorizontalOptions="End"/>
                     </StackLayout>
                     <StackLayout Orientation="Horizontal">
-                        <Label Text="Order Status Change" FontSize="18" TextColor="#000000" HorizontalOptions="StartAndExpand"/>
+                        <Label Text="Order Status Change" FontFamily="{StaticResource InterRegular}" FontSize="18" TextColor="#000000" HorizontalOptions="StartAndExpand"/>
                         <Switch IsToggled="{Binding OrderStatusChange}" IsEnabled="False" OnColor="#0C752a" ThumbColor="#f2f2f2" HorizontalOptions="End"/>
                     </StackLayout>
                     <StackLayout Orientation="Horizontal">
-                        <Label Text="Shipping Notification" FontSize="18" TextColor="#000000" HorizontalOptions="StartAndExpand"/>
+                        <Label Text="Shipping Notification" FontFamily="{StaticResource InterRegular}" FontSize="18" TextColor="#000000" HorizontalOptions="StartAndExpand"/>
                         <Switch IsToggled="{Binding ShippingNotification}" IsEnabled="False" OnColor="#0C752a" ThumbColor="#f2f2f2" HorizontalOptions="End"/>
                     </StackLayout>
                     <StackLayout Orientation="Horizontal">
-                        <Label Text="Signature Reminder" FontSize="18" TextColor="#000000" HorizontalOptions="StartAndExpand"/>
+                        <Label Text="Signature Reminder" FontFamily="{StaticResource InterRegular}" FontSize="18" TextColor="#000000" HorizontalOptions="StartAndExpand"/>
                         <Switch IsToggled="{Binding SignReminder}" IsEnabled="False" OnColor="#0C752a" ThumbColor="#f2f2f2" HorizontalOptions="End"/>
                     </StackLayout>
                 </StackLayout>

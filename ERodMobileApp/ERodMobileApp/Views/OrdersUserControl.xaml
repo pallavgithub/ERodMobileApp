@@ -26,10 +26,9 @@
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
-                <!--<Image Source="BannerBG.png" Grid.Row="0"/>-->
                 <StackLayout Orientation="Horizontal" Grid.Row="0" Spacing="14" Margin="15,20,15,0" HorizontalOptions="FillAndExpand"
                              VerticalOptions="FillAndExpand">
-                    <Label Text="MY ORDERS" HorizontalOptions="Start" TextColor="#333333" FontSize="26" VerticalOptions="CenterAndExpand"/>
+                    <Label Text="MY ORDERS" FontFamily="{StaticResource RobotoLight}" HorizontalOptions="Start" TextColor="#333333" FontSize="26" VerticalOptions="CenterAndExpand"/>
                     <Image Source="refresh.png" HorizontalOptions="Start" VerticalOptions="CenterAndExpand" HeightRequest="25"/>
                     <Image Source="RodLogo.png" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" HeightRequest="40"/>
                 </StackLayout>
@@ -39,7 +38,7 @@
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
                     <Frame Grid.Row="0" Padding="0" HasShadow="False" BackgroundColor="#ADB3BC" CornerRadius="8" HeightRequest="36">
-                        <Label Text="ACTIVE ORDERS" HorizontalTextAlignment="Center" TextColor="White" VerticalOptions="CenterAndExpand"
+                        <Label Text="ACTIVE ORDERS" FontFamily="{StaticResource InterMedium}" HorizontalTextAlignment="Center" TextColor="White" VerticalOptions="CenterAndExpand"
                                FontSize="20"/>
                     </Frame>
                     <ListView Grid.Row="1" x:Name="SOList" ItemsSource="{Binding ActiveSalesOrders}" HasUnevenRows="True" SeparatorVisibility="None"
@@ -51,10 +50,10 @@
                                         <Frame BackgroundColor="#F0FBFF" CornerRadius="12" HasShadow="False" 
                                                    VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Padding="12,6,12,12">
                                             <StackLayout Spacing="3">
-                                                <Label Text="{Binding OrderID}" FontSize="20" TextColor="#FF6600" FontAttributes="Bold"/>
+                                                <Label Text="{Binding OrderID}" FontFamily="{StaticResource InterMedium}" FontSize="20" TextColor="#FF6600" FontAttributes="Bold"/>
                                                 <StackLayout Orientation="Horizontal">
-                                                    <Label Text="Delivery Time:" FontSize="14" TextColor="#333333"/>
-                                                    <Label Text="{Binding OrderTime}" HorizontalOptions="EndAndExpand" FontSize="16" TextColor="#333333" FontAttributes="Bold"/>
+                                                    <Label Text="Delivery Time:" FontFamily="{StaticResource InterRegular}" FontSize="14" TextColor="#333333"/>
+                                                    <Label Text="{Binding OrderTime}" FontFamily="{StaticResource InterMedium}" HorizontalOptions="EndAndExpand" FontSize="16" TextColor="#333333" FontAttributes="Bold"/>
                                                 </StackLayout>
                                                 <Grid Margin="0,5,0,0">
                                                     <!--Provisional status-->
@@ -62,7 +61,7 @@
                                                         <Frame BackgroundColor="#a4b0bf" CornerRadius="12" HeightRequest="26" WidthRequest="146" 
                                                            Padding="0,0,10,0" HorizontalOptions="CenterAndExpand" HasShadow="False">
                                                             <StackLayout Orientation="Horizontal" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand">
-                                                                <Label Text="PROVISIONAL" TextColor="White" HorizontalOptions="CenterAndExpand" 
+                                                                <Label Text="PROVISIONAL" FontFamily="{StaticResource InterRegular}" TextColor="White" HorizontalOptions="CenterAndExpand" 
                                                                HorizontalTextAlignment="Center" FontSize="18"/>
                                                                 <Image Source="pen.png" HorizontalOptions="End" HeightRequest="18" WidthRequest="18"/>
                                                             </StackLayout>
@@ -70,11 +69,11 @@
                                                         <Label Text="> > >  order to be confirmed  &lt; &lt; &lt;" TextColor="#1E5494" VerticalOptions="CenterAndExpand"
                                                                HorizontalTextAlignment="Center" FontSize="18" FontAttributes="Italic"/>
                                                         <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="0,5,0,0">
-                                                            <Button Text="REVIEW" BackgroundColor="#828282" TextColor="White" CornerRadius="3" Clicked="ReviewButton_Clicked" CommandParameter="{Binding .}" 
+                                                            <Button Text="REVIEW" FontFamily="{StaticResource InterRegular}" BackgroundColor="#828282" TextColor="White" CornerRadius="3" Clicked="ReviewButton_Clicked" CommandParameter="{Binding .}" 
                                                                 HeightRequest="40" WidthRequest="84" FontSize="18" Padding="2" HorizontalOptions="StartAndExpand"/>
-                                                            <Button Text="EDIT" BackgroundColor="#828282" TextColor="White" CornerRadius="3" BindingContext="{Binding Source={x:Reference SOList}, Path=BindingContext}" Command="{Binding EditOrderCommand}" CommandParameter="{Binding Source={x:Reference salesOrder}, Path=BindingContext}" 
+                                                            <Button Text="EDIT" FontFamily="{StaticResource InterRegular}" BackgroundColor="#828282" TextColor="White" CornerRadius="3" BindingContext="{Binding Source={x:Reference SOList}, Path=BindingContext}" Command="{Binding EditOrderCommand}" CommandParameter="{Binding Source={x:Reference salesOrder}, Path=BindingContext}" 
                                                                 HeightRequest="40" WidthRequest="84" FontSize="18" Padding="2" HorizontalOptions="CenterAndExpand"/>
-                                                            <Button Text="SIGN" BackgroundColor="#DADADA" TextColor="White" CornerRadius="3" Clicked="SignButton_Clicked"
+                                                            <Button Text="SIGN" FontFamily="{StaticResource InterRegular}" BackgroundColor="#DADADA" TextColor="White" CornerRadius="3" Clicked="SignButton_Clicked"
                                                                 HeightRequest="40" WidthRequest="84" FontSize="18" Padding="2" HorizontalOptions="EndAndExpand"/>
                                                         </StackLayout>
                                                     </StackLayout>
@@ -83,7 +82,7 @@
                                                         <Frame BackgroundColor="#d8e3da" CornerRadius="12" HeightRequest="26" WidthRequest="146" 
                                                            Padding="0,0,10,0" HorizontalOptions="CenterAndExpand" HasShadow="False">
                                                             <StackLayout Orientation="Horizontal" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand">
-                                                                <Label Text="CONFIRMED" TextColor="White" HorizontalOptions="CenterAndExpand" 
+                                                                <Label Text="CONFIRMED" FontFamily="{StaticResource InterRegular}" TextColor="White" HorizontalOptions="CenterAndExpand" 
                                                                HorizontalTextAlignment="Center" FontSize="18"/>
                                                                 <Image Source="greenTick.png" HorizontalOptions="End" HeightRequest="18" WidthRequest="18"/>
                                                             </StackLayout>
@@ -91,11 +90,11 @@
                                                         <Label Text="> > >  processing start soon  &lt; &lt; &lt;" TextColor="#0C752A" VerticalOptions="CenterAndExpand"
                                                                HorizontalTextAlignment="Center" FontSize="18" FontAttributes="Italic"/>
                                                         <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="0,5,0,0">
-                                                            <Button Text="REVIEW" BackgroundColor="#828282" TextColor="White" CornerRadius="3" Clicked="ReviewButton_Clicked" CommandParameter="{Binding .}"
+                                                            <Button Text="REVIEW" FontFamily="{StaticResource InterRegular}" BackgroundColor="#828282" TextColor="White" CornerRadius="3" Clicked="ReviewButton_Clicked" CommandParameter="{Binding .}"
                                                                 HeightRequest="40" WidthRequest="84" FontSize="18" Padding="2" HorizontalOptions="StartAndExpand"/>
-                                                            <Button Text="EDIT" BackgroundColor="#828282" TextColor="White" CornerRadius="3" BindingContext="{Binding Source={x:Reference SOList}, Path=BindingContext}" Command="{Binding EditOrderCommand}" CommandParameter="{Binding Source={x:Reference salesOrder}, Path=BindingContext}"
+                                                            <Button Text="EDIT" FontFamily="{StaticResource InterRegular}" BackgroundColor="#828282" TextColor="White" CornerRadius="3" BindingContext="{Binding Source={x:Reference SOList}, Path=BindingContext}" Command="{Binding EditOrderCommand}" CommandParameter="{Binding Source={x:Reference salesOrder}, Path=BindingContext}"
                                                                 HeightRequest="40" WidthRequest="84" FontSize="18" Padding="2" HorizontalOptions="CenterAndExpand"/>
-                                                            <Button Text="SIGN" BackgroundColor="#DADADA" TextColor="White" CornerRadius="3" Clicked="SignButton_Clicked"
+                                                            <Button Text="SIGN" FontFamily="{StaticResource InterRegular}" BackgroundColor="#DADADA" TextColor="White" CornerRadius="3" Clicked="SignButton_Clicked"
                                                                 HeightRequest="40" WidthRequest="84" FontSize="18" Padding="2" HorizontalOptions="EndAndExpand"/>
                                                         </StackLayout>
                                                     </StackLayout>
@@ -104,7 +103,7 @@
                                                         <Frame BackgroundColor="#f78c45" CornerRadius="12" HeightRequest="26" WidthRequest="146" 
                                                            Padding="0,0,10,0" HorizontalOptions="CenterAndExpand" HasShadow="False">
                                                             <StackLayout Orientation="Horizontal" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand">
-                                                                <Label Text="PROCESSING" TextColor="White" HorizontalOptions="CenterAndExpand" 
+                                                                <Label Text="PROCESSING" FontFamily="{StaticResource InterRegular}" TextColor="White" HorizontalOptions="CenterAndExpand" 
                                                                HorizontalTextAlignment="Center" FontSize="18"/>
                                                                 <Image Source="box.png" HorizontalOptions="End" HeightRequest="18" WidthRequest="18"/>
                                                             </StackLayout>
@@ -121,11 +120,11 @@
                                                             </StackLayout>
                                                         </Grid>
                                                         <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="0,5,0,0">
-                                                            <Button Text="REVIEW" BackgroundColor="#828282" TextColor="White" CornerRadius="3" Clicked="ReviewButton_Clicked" CommandParameter="{Binding .}"
+                                                            <Button Text="REVIEW" FontFamily="{StaticResource InterRegular}" BackgroundColor="#828282" TextColor="White" CornerRadius="3" Clicked="ReviewButton_Clicked" CommandParameter="{Binding .}"
                                                                 HeightRequest="40" WidthRequest="84" FontSize="18" Padding="2" HorizontalOptions="StartAndExpand"/>
-                                                            <Button Text="EDIT" BackgroundColor="#DADADA" TextColor="White" CornerRadius="3" BindingContext="{Binding Source={x:Reference SOList}, Path=BindingContext}" Command="{Binding EditOrderCommand}" CommandParameter="{Binding Source={x:Reference salesOrder}, Path=BindingContext}"
+                                                            <Button Text="EDIT" FontFamily="{StaticResource InterRegular}" BackgroundColor="#DADADA" TextColor="White" CornerRadius="3" BindingContext="{Binding Source={x:Reference SOList}, Path=BindingContext}" Command="{Binding EditOrderCommand}" CommandParameter="{Binding Source={x:Reference salesOrder}, Path=BindingContext}"
                                                                 HeightRequest="40" WidthRequest="84" FontSize="18" Padding="2" HorizontalOptions="CenterAndExpand"/>
-                                                            <Button Text="SIGN" BackgroundColor="#DADADA" TextColor="White" CornerRadius="3" Clicked="SignButton_Clicked"
+                                                            <Button Text="SIGN" FontFamily="{StaticResource InterRegular}" BackgroundColor="#DADADA" TextColor="White" CornerRadius="3" Clicked="SignButton_Clicked"
                                                                 HeightRequest="40" WidthRequest="84" FontSize="18" Padding="2" HorizontalOptions="EndAndExpand"/>
                                                         </StackLayout>
                                                     </StackLayout>
@@ -134,7 +133,7 @@
                                                         <Frame BackgroundColor="#f78c45" CornerRadius="12" HeightRequest="26" WidthRequest="146" 
                                                            Padding="0,0,10,0" HorizontalOptions="CenterAndExpand" HasShadow="False">
                                                             <StackLayout Orientation="Horizontal" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand">
-                                                                <Label Text="EN ROUTE" TextColor="White" HorizontalOptions="CenterAndExpand" 
+                                                                <Label Text="EN ROUTE" FontFamily="{StaticResource InterRegular}" TextColor="White" HorizontalOptions="CenterAndExpand" 
                                                                HorizontalTextAlignment="Center" FontSize="18"/>
                                                                 <Image Source="truck.png" HorizontalOptions="End" HeightRequest="18" WidthRequest="18"/>
                                                             </StackLayout>
@@ -151,11 +150,11 @@
                                                             </StackLayout>
                                                         </Grid>
                                                         <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="0,5,0,0">
-                                                            <Button Text="REVIEW" BackgroundColor="#828282" TextColor="White" CornerRadius="3" Clicked="ReviewButton_Clicked" CommandParameter="{Binding .}"
+                                                            <Button Text="REVIEW" FontFamily="{StaticResource InterRegular}" BackgroundColor="#828282" TextColor="White" CornerRadius="3" Clicked="ReviewButton_Clicked" CommandParameter="{Binding .}"
                                                                 HeightRequest="40" WidthRequest="84" FontSize="18" Padding="2" HorizontalOptions="StartAndExpand"/>
-                                                            <Button Text="EDIT" BackgroundColor="#DADADA" TextColor="White" CornerRadius="3" BindingContext="{Binding Source={x:Reference SOList}, Path=BindingContext}" Command="{Binding EditOrderCommand}" CommandParameter="{Binding Source={x:Reference salesOrder}, Path=BindingContext}"
+                                                            <Button Text="EDIT" FontFamily="{StaticResource InterRegular}" BackgroundColor="#DADADA" TextColor="White" CornerRadius="3" BindingContext="{Binding Source={x:Reference SOList}, Path=BindingContext}" Command="{Binding EditOrderCommand}" CommandParameter="{Binding Source={x:Reference salesOrder}, Path=BindingContext}"
                                                                 HeightRequest="40" WidthRequest="84" FontSize="18" Padding="2" HorizontalOptions="CenterAndExpand"/>
-                                                            <Button Text="SIGN" BackgroundColor="#828282" TextColor="White" CornerRadius="3" Clicked="SignButton_Clicked"
+                                                            <Button Text="SIGN" FontFamily="{StaticResource InterRegular}" BackgroundColor="#828282" TextColor="White" CornerRadius="3" Clicked="SignButton_Clicked"
                                                                 HeightRequest="40" WidthRequest="84" FontSize="18" Padding="2" HorizontalOptions="EndAndExpand"/>
                                                         </StackLayout>
                                                     </StackLayout>
@@ -164,7 +163,7 @@
                                                         <Frame BackgroundColor="#f78c45" CornerRadius="12" HeightRequest="26" WidthRequest="146" 
                                                            Padding="0,0,10,0" HorizontalOptions="CenterAndExpand" HasShadow="False">
                                                             <StackLayout Orientation="Horizontal" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand">
-                                                                <Label Text="DELIVERED" TextColor="White" HorizontalOptions="CenterAndExpand" 
+                                                                <Label Text="DELIVERED" FontFamily="{StaticResource InterRegular}" TextColor="White" HorizontalOptions="CenterAndExpand" 
                                                                HorizontalTextAlignment="Center" FontSize="18"/>
                                                                 <Image Source="Arrive.png" HorizontalOptions="End" HeightRequest="18" WidthRequest="18"/>
                                                             </StackLayout>
@@ -181,11 +180,11 @@
                                                             </StackLayout>
                                                         </Grid>
                                                         <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="0,5,0,0">
-                                                            <Button Text="REVIEW" BackgroundColor="#828282" TextColor="White" CornerRadius="3" Clicked="ReviewButton_Clicked" CommandParameter="{Binding .}"
+                                                            <Button Text="REVIEW" FontFamily="{StaticResource InterRegular}" BackgroundColor="#828282" TextColor="White" CornerRadius="3" Clicked="ReviewButton_Clicked" CommandParameter="{Binding .}"
                                                                 HeightRequest="40" WidthRequest="84" FontSize="18" Padding="2" HorizontalOptions="StartAndExpand"/>
-                                                            <Button Text="EDIT" BackgroundColor="#DADADA" TextColor="White" CornerRadius="3" BindingContext="{Binding Source={x:Reference SOList}, Path=BindingContext}" Command="{Binding EditOrderCommand}" CommandParameter="{Binding Source={x:Reference salesOrder}, Path=BindingContext}"
+                                                            <Button Text="EDIT" FontFamily="{StaticResource InterRegular}" BackgroundColor="#DADADA" TextColor="White" CornerRadius="3" BindingContext="{Binding Source={x:Reference SOList}, Path=BindingContext}" Command="{Binding EditOrderCommand}" CommandParameter="{Binding Source={x:Reference salesOrder}, Path=BindingContext}"
                                                                 HeightRequest="40" WidthRequest="84" FontSize="18" Padding="2" HorizontalOptions="CenterAndExpand"/>
-                                                            <Button Text="SIGN" BackgroundColor="#828282" TextColor="White" CornerRadius="3" Clicked="SignButton_Clicked"
+                                                            <Button Text="SIGN" FontFamily="{StaticResource InterRegular}" BackgroundColor="#828282" TextColor="White" CornerRadius="3" Clicked="SignButton_Clicked"
                                                                 HeightRequest="40" WidthRequest="84" FontSize="18" Padding="2" HorizontalOptions="EndAndExpand"/>
                                                         </StackLayout>
                                                     </StackLayout>
@@ -207,7 +206,7 @@
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
                     <Frame Grid.Row="0" Padding="0" BackgroundColor="#50555C" HasShadow="False" CornerRadius="8" HeightRequest="36">
-                        <Label Text="CLOSED ORDERS" HorizontalTextAlignment="Center" TextColor="White" VerticalOptions="CenterAndExpand"
+                        <Label Text="CLOSED ORDERS" FontFamily="{StaticResource InterMedium}" HorizontalTextAlignment="Center" TextColor="White" VerticalOptions="CenterAndExpand"
                                FontSize="20"/>
                     </Frame>
                     <ListView Grid.Row="1" ItemsSource="{Binding ClosedSalesOrders}" HasUnevenRows="True" SeparatorVisibility="Default"
@@ -219,10 +218,10 @@
                                         <Frame CornerRadius="12" HasShadow="False" 
                                                    VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Padding="8,12,8,12">
                                             <StackLayout Orientation="Horizontal">
-                                                <Label Text="{Binding OrderID}" TextColor="#979797" FontSize="16" FontAttributes="Bold" VerticalTextAlignment="Center"/>
+                                                <Label Text="{Binding OrderID}" FontFamily="{StaticResource InterMedium}" TextColor="#979797" FontSize="16" FontAttributes="Bold" VerticalTextAlignment="Center"/>
                                                 <StackLayout HorizontalOptions="EndAndExpand" VerticalOptions="FillAndExpand" Spacing="0">
                                                     <Label Text="Delivered on" FontSize="12" TextColor="#979797" FontAttributes="Italic"/>
-                                                    <Label Text="{Binding DeliveryTime}" FontSize="16" FontAttributes="Bold" TextColor="#979797"/>
+                                                    <Label Text="{Binding DeliveryTime}" FontFamily="{StaticResource InterMedium}" FontSize="16" FontAttributes="Bold" TextColor="#979797"/>
                                                 </StackLayout>
                                                 <Image Source="Group.png" HeightRequest="25" WidthRequest="21" VerticalOptions="FillAndExpand"/>
                                             </StackLayout>
@@ -248,31 +247,31 @@
                     </OnPlatform>
                 </StackLayout.Margin>
                 <StackLayout Orientation="Horizontal">
-                    <Label Text="ACTIVE ORDER" FontSize="28" TextColor="#0C752A"/>
+                    <Label Text="ACTIVE ORDER" FontFamily="{StaticResource RobotoLight}" FontSize="28" TextColor="#0C752A"/>
                     <Image Source="RodLogo.png" HorizontalOptions="EndAndExpand" HeightRequest="30"/>
                 </StackLayout>
                 <StackLayout Orientation="Horizontal">
-                    <Label Text="{Binding OrderId}" FontSize="20" TextColor="#FF6600" FontAttributes="Bold"/>
-                    <Label Text="{Binding OrderDate}" FontSize="18" TextColor="#FF6600" HorizontalOptions="EndAndExpand"/>
+                    <Label Text="{Binding OrderId}" FontFamily="{StaticResource InterMedium}" FontSize="20" TextColor="#FF6600" FontAttributes="Bold"/>
+                    <Label Text="{Binding OrderDate}" FontFamily="{StaticResource InterRegular}" FontSize="18" TextColor="#FF6600" HorizontalOptions="EndAndExpand"/>
                 </StackLayout>
                 <Frame Padding="0" BackgroundColor="#D1F4FF" CornerRadius="8" HeightRequest="36" HasShadow="False">
-                    <Label Text="ORDER STATUS" HorizontalTextAlignment="Center" TextColor="Black" VerticalOptions="CenterAndExpand"
+                    <Label Text="ORDER STATUS" FontFamily="{StaticResource InterRegular}" HorizontalTextAlignment="Center" TextColor="Black" VerticalOptions="CenterAndExpand"
                                FontSize="18"/>
                 </Frame>
                 <StackLayout Spacing="0">
-                    <Label Text="This order is currently" HorizontalTextAlignment="Center" TextColor="#979797" VerticalOptions="CenterAndExpand"
+                    <Label Text="This order is currently" FontFamily="{StaticResource InterRegular}" HorizontalTextAlignment="Center" TextColor="#979797" VerticalOptions="CenterAndExpand"
                                FontSize="16"/>
-                    <Label Text="{Binding OrderStatus}" HorizontalTextAlignment="Center" TextColor="#FF6600" VerticalOptions="CenterAndExpand"
+                    <Label Text="{Binding OrderStatus}" FontFamily="{StaticResource InterMedium}" HorizontalTextAlignment="Center" TextColor="#FF6600" VerticalOptions="CenterAndExpand"
                                FontSize="24" FontAttributes="Bold" TextTransform="Uppercase"/>
                 </StackLayout>
                 <StackLayout Orientation="Horizontal">
-                    <Button Text="EDIT" TextColor="White" FontSize="18" BackgroundColor="#C4C4C4" HeightRequest="40" WidthRequest="140"
+                    <Button Text="EDIT" FontFamily="{StaticResource InterRegular}" TextColor="White" FontSize="18" BackgroundColor="#C4C4C4" HeightRequest="40" WidthRequest="140"
                             HorizontalOptions="StartAndExpand" Padding="1" CornerRadius="3"/>
-                    <Button Text="SIGN" TextColor="White" FontSize="18" BackgroundColor="#FF6600" HeightRequest="40" WidthRequest="140"
+                    <Button Text="SIGN" FontFamily="{StaticResource InterRegular}" TextColor="White" FontSize="18" BackgroundColor="#FF6600" HeightRequest="40" WidthRequest="140"
                             HorizontalOptions="EndAndExpand" Padding="1" CornerRadius="3"/>
                 </StackLayout>
                 <StackLayout Margin="0,5,0,0" Spacing="0">
-                    <Label Text="Shipping Info" HorizontalTextAlignment="Center" TextColor="#FF6600" FontSize="20" FontAttributes="Bold"/>
+                    <Label Text="Shipping Info" FontFamily="{StaticResource InterMedium}" HorizontalTextAlignment="Center" TextColor="#FF6600" FontSize="20" FontAttributes="Bold"/>
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"/>
@@ -284,20 +283,21 @@
                             <ColumnDefinition Width="1.2*"/>
                             <ColumnDefinition Width="1.5*"/>
                         </Grid.ColumnDefinitions>
-                        <Label Grid.Row="0" Grid.Column="0" Text="DELIVERY TIME" TextColor="#50555C" FontSize="18" HorizontalOptions="EndAndExpand"/>
-                        <Label Grid.Row="0" Grid.Column="1" Text="{Binding DeliveryTime}" TextColor="Black" FontSize="18" HorizontalOptions="StartAndExpand"/>
-                        <Label Grid.Row="1" Grid.Column="0" Text="TRUCKING CO" TextColor="#50555C" FontSize="18" HorizontalOptions="EndAndExpand"/>
-                        <Label Grid.Row="1" Grid.Column="1" Text="{Binding TruckingCo}" TextColor="Black" FontSize="18" HorizontalOptions="StartAndExpand"/>
-                        <Label Grid.Row="2" Grid.Column="0" Text="DRIVER PH#" TextColor="#50555C" FontSize="18" HorizontalOptions="EndAndExpand"/>
-                        <Label Grid.Row="2" Grid.Column="1" Text="{Binding DriverPhn}" TextColor="Black" FontSize="18" HorizontalOptions="StartAndExpand"/>
-                        <Label Grid.Row="3" Grid.Column="0" Text="DRIVER NAME" TextColor="#50555C" FontSize="18" HorizontalOptions="EndAndExpand"/>
-                        <Label Grid.Row="3" Grid.Column="1" Text="{Binding DriverName}" TextColor="Black" FontSize="18" HorizontalOptions="StartAndExpand"/>
+                        <Label Grid.Row="0" Grid.Column="0" Text="DELIVERY TIME" FontFamily="{StaticResource InterRegular}" TextColor="#50555C" FontSize="18" HorizontalOptions="EndAndExpand"/>
+                        <Label Grid.Row="0" Grid.Column="1" Text="{Binding DeliveryTime}" FontFamily="{StaticResource InterMedium}" TextColor="Black" FontSize="18" HorizontalOptions="StartAndExpand"/>
+                        <Label Grid.Row="1" Grid.Column="0" Text="TRUCKING CO" FontFamily="{StaticResource InterRegular}" TextColor="#50555C" FontSize="18" HorizontalOptions="EndAndExpand"/>
+                        <Label Grid.Row="1" Grid.Column="1" Text="{Binding TruckingCo}" FontFamily="{StaticResource InterMedium}" TextColor="Black" FontSize="18" HorizontalOptions="StartAndExpand"/>
+                        <Label Grid.Row="2" Grid.Column="0" Text="DRIVER PH#" FontFamily="{StaticResource InterRegular}" TextColor="#50555C" FontSize="18" HorizontalOptions="EndAndExpand"/>
+                        <Label Grid.Row="2" Grid.Column="1" Text="{Binding DriverPhn}" FontFamily="{StaticResource InterMedium}" TextColor="Black" FontSize="18" HorizontalOptions="StartAndExpand"/>
+                        <Label Grid.Row="3" Grid.Column="0" Text="DRIVER NAME" FontFamily="{StaticResource InterRegular}" TextColor="#50555C" FontSize="18" HorizontalOptions="EndAndExpand"/>
+                        <Label Grid.Row="3" Grid.Column="1" Text="{Binding DriverName}" FontFamily="{StaticResource InterMedium}" TextColor="Black" FontSize="18" HorizontalOptions="StartAndExpand"/>
                     </Grid>
                 </StackLayout>
-                <Frame HasShadow="False" OutlineColor="#FF6600" CornerRadius="10" BackgroundColor="#F0FBFF" Margin="30,10,30,30" Padding="12">
+                <Frame Grid.Row="4" HasShadow="False" OutlineColor="#FF6600" CornerRadius="10" BackgroundColor="#F0FBFF" Margin="20,50,20,10" 
+                       Padding="12">
                     <StackLayout>
-                        <Label Text="Questions? Contact Exceed" TextColor="#FF6600" HorizontalTextAlignment="Center" FontSize="20"/>
-                        <Grid RowSpacing="4" ColumnSpacing="0" Margin="10,0,0,0">
+                        <Label Text="Questions? Contact Exceed" FontFamily="{StaticResource InterMedium}" TextColor="#FF6600" HorizontalTextAlignment="Center" FontSize="20"/>
+                        <Grid RowSpacing="4" Margin="10,0,0,0">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="Auto"/>
                                 <RowDefinition Height="Auto"/>
@@ -305,123 +305,123 @@
                                 <RowDefinition Height="Auto"/>
                             </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="0.6*"/>
-                                <ColumnDefinition Width="1.4*"/>
+                                <ColumnDefinition Width="0.3*"/>
+                                <ColumnDefinition Width="1.7*"/>
                             </Grid.ColumnDefinitions>
                             <Image Grid.Row="0" Grid.Column="0" Source="ProfileIcon.png" WidthRequest="15" HeightRequest="15"/>
-                            <Label Grid.Row="0" Grid.Column="1" Text="Ashley Clay" TextColor="Black" FontSize="18" HorizontalOptions="StartAndExpand"/>
+                            <Label Grid.Row="0" Grid.Column="1" Text="Ashley Clay" FontFamily="{StaticResource InterRegular}" TextColor="Black" FontSize="18" HorizontalOptions="StartAndExpand"/>
                             <Image Grid.Row="1" Grid.Column="0" Source="PhoneIcon.png" WidthRequest="15" HeightRequest="15"/>
-                            <Label Grid.Row="1" Grid.Column="1" Text="406-459-5279" TextColor="Black" FontSize="18" HorizontalOptions="StartAndExpand"/>
+                            <Label Grid.Row="1" Grid.Column="1" Text="406-459-5279" FontFamily="{StaticResource InterRegular}" TextColor="Black" FontSize="18" HorizontalOptions="StartAndExpand"/>
                             <Image Grid.Row="2" Grid.Column="0" Source="EmailIcon.png" WidthRequest="15" HeightRequest="15"/>
-                            <Label Grid.Row="2" Grid.Column="1" Text="aclay@eoe-inc.com" TextColor="Black" FontSize="18" HorizontalOptions="StartAndExpand"/>
+                            <Label Grid.Row="2" Grid.Column="1" Text="aclay@eoe-inc.com" FontFamily="{StaticResource InterRegular}" TextColor="Black" FontSize="18" HorizontalOptions="StartAndExpand"/>
                         </Grid>
                     </StackLayout>
                 </Frame>
                 <Frame Padding="0" BackgroundColor="#D1F4FF" CornerRadius="8" HeightRequest="36" HasShadow="False">
-                    <Label Text="PRODUCT DETAILS" HorizontalTextAlignment="Center" TextColor="Black" VerticalOptions="CenterAndExpand"
+                    <Label Text="PRODUCT DETAILS" FontFamily="{StaticResource InterRegular}" HorizontalTextAlignment="Center" TextColor="Black" VerticalOptions="CenterAndExpand"
                                FontSize="18"/>
                 </Frame>
-                <Label Text="Sucker Rod" HorizontalTextAlignment="Center" FontSize="20" TextColor="#FF6600"/>
+                <Label Text="Sucker Rod" FontFamily="{StaticResource InterMedium}" HorizontalTextAlignment="Center" FontSize="20" TextColor="#FF6600"/>
                 <ListView ItemsSource="{Binding SuckerList}" HeightRequest="200" SelectionMode="None">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
                                 <StackLayout Spacing="0" VerticalOptions="CenterAndExpand">
                                     <StackLayout Orientation="Horizontal">
-                                        <Label Text="{Binding Name}" TextColor="Black" FontSize="18"/>
-                                        <Label Text="{Binding Quantity}" HorizontalOptions="EndAndExpand" TextColor="Black" FontSize="18"/>
+                                        <Label Text="{Binding Name}" FontFamily="{StaticResource InterRegular}" TextColor="Black" FontSize="18"/>
+                                        <Label Text="{Binding Quantity}" FontFamily="{StaticResource InterRegular}" HorizontalOptions="EndAndExpand" TextColor="Black" FontSize="18"/>
                                     </StackLayout>
-                                    <Label Text="{Binding Description}"/>
+                                    <Label Text="{Binding Description}" FontFamily="{StaticResource InterRegular}"/>
                                 </StackLayout>
                             </ViewCell>
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
-                <Label Text="Pony Rod" HorizontalTextAlignment="Center" FontSize="20" TextColor="#FF6600"/>
+                <Label Text="Pony Rod" FontFamily="{StaticResource InterMedium}" HorizontalTextAlignment="Center" FontSize="20" TextColor="#FF6600"/>
                 <ListView ItemsSource="{Binding PonyList}" HeightRequest="200" SelectionMode="None">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
                                 <StackLayout Spacing="0" VerticalOptions="CenterAndExpand">
                                     <StackLayout Orientation="Horizontal">
-                                        <Label Text="{Binding Name}" TextColor="Black" FontSize="18"/>
-                                        <Label Text="{Binding Quantity}" HorizontalOptions="EndAndExpand" TextColor="Black" FontSize="18"/>
+                                        <Label Text="{Binding Name}" FontFamily="{StaticResource InterRegular}" TextColor="Black" FontSize="18"/>
+                                        <Label Text="{Binding Quantity}" FontFamily="{StaticResource InterRegular}" HorizontalOptions="EndAndExpand" TextColor="Black" FontSize="18"/>
                                     </StackLayout>
-                                    <Label Text="{Binding Description}"/>
+                                    <Label Text="{Binding Description}" FontFamily="{StaticResource InterRegular}"/>
                                 </StackLayout>
                             </ViewCell>
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
-                <Label Text="Couplings" HorizontalTextAlignment="Center" FontSize="20" TextColor="#FF6600"/>
+                <Label Text="Couplings" FontFamily="{StaticResource InterMedium}" HorizontalTextAlignment="Center" FontSize="20" TextColor="#FF6600"/>
                 <ListView ItemsSource="{Binding Couplings}" HeightRequest="90" SelectionMode="None">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
                                 <StackLayout Spacing="0" VerticalOptions="CenterAndExpand">
                                     <StackLayout Orientation="Horizontal">
-                                        <Label Text="{Binding Name}" TextColor="Black" FontSize="18"/>
-                                        <Label Text="{Binding Quantity}" HorizontalOptions="EndAndExpand" TextColor="Black" FontSize="18"/>
+                                        <Label Text="{Binding Name}" FontFamily="{StaticResource InterRegular}" TextColor="Black" FontSize="18"/>
+                                        <Label Text="{Binding Quantity}" FontFamily="{StaticResource InterRegular}" HorizontalOptions="EndAndExpand" TextColor="Black" FontSize="18"/>
                                     </StackLayout>
                                 </StackLayout>
                             </ViewCell>
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
-                <Label Text="Sinker Bar" HorizontalTextAlignment="Center" FontSize="20" TextColor="#FF6600"/>
+                <Label Text="Sinker Bar" FontFamily="{StaticResource InterMedium}" HorizontalTextAlignment="Center" FontSize="20" TextColor="#FF6600"/>
                 <ListView ItemsSource="{Binding SinkerBar}" HeightRequest="50" SelectionMode="None">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
                                 <StackLayout Spacing="0" VerticalOptions="CenterAndExpand">
                                     <StackLayout Orientation="Horizontal">
-                                        <Label Text="{Binding Name}" TextColor="Black" FontSize="18"/>
-                                        <Label Text="{Binding Quantity}" HorizontalOptions="EndAndExpand" TextColor="Black" FontSize="18"/>
+                                        <Label Text="{Binding Name}" FontFamily="{StaticResource InterRegular}" TextColor="Black" FontSize="18"/>
+                                        <Label Text="{Binding Quantity}" FontFamily="{StaticResource InterRegular}" HorizontalOptions="EndAndExpand" TextColor="Black" FontSize="18"/>
                                     </StackLayout>
                                 </StackLayout>
                             </ViewCell>
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
-                <Label Text="Polished Rod" HorizontalTextAlignment="Center" FontSize="20" TextColor="#FF6600"/>
+                <Label Text="Polished Rod" FontFamily="{StaticResource InterMedium}" HorizontalTextAlignment="Center" FontSize="20" TextColor="#FF6600"/>
                 <ListView ItemsSource="{Binding PolishedRod}" HeightRequest="50" SelectionMode="None">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
                                 <StackLayout Spacing="0" VerticalOptions="CenterAndExpand">
                                     <StackLayout Orientation="Horizontal">
-                                        <Label Text="{Binding Name}" TextColor="Black" FontSize="18"/>
-                                        <Label Text="{Binding Quantity}" HorizontalOptions="EndAndExpand" TextColor="Black" FontSize="18"/>
+                                        <Label Text="{Binding Name}" FontFamily="{StaticResource InterRegular}" TextColor="Black" FontSize="18"/>
+                                        <Label Text="{Binding Quantity}" FontFamily="{StaticResource InterRegular}" HorizontalOptions="EndAndExpand" TextColor="Black" FontSize="18"/>
                                     </StackLayout>
                                 </StackLayout>
                             </ViewCell>
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
-                <Label Text="Stablizer Bar" HorizontalTextAlignment="Center" FontSize="20" TextColor="#FF6600"/>
+                <Label Text="Stablizer Bar" FontFamily="{StaticResource InterMedium}" HorizontalTextAlignment="Center" FontSize="20" TextColor="#FF6600"/>
                 <ListView ItemsSource="{Binding StablizerBar}" HeightRequest="50" SelectionMode="None">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
                                 <StackLayout Spacing="0" VerticalOptions="CenterAndExpand">
                                     <StackLayout Orientation="Horizontal">
-                                        <Label Text="{Binding Name}" TextColor="Black" FontSize="18"/>
-                                        <Label Text="{Binding Quantity}" HorizontalOptions="EndAndExpand" TextColor="Black" FontSize="18"/>
+                                        <Label Text="{Binding Name}" FontFamily="{StaticResource InterRegular}" TextColor="Black" FontSize="18"/>
+                                        <Label Text="{Binding Quantity}" FontFamily="{StaticResource InterRegular}" HorizontalOptions="EndAndExpand" TextColor="Black" FontSize="18"/>
                                     </StackLayout>
                                 </StackLayout>
                             </ViewCell>
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
-                <Label Text="Other Items" HorizontalTextAlignment="Center" FontSize="20" TextColor="#FF6600"/>
+                <Label Text="Other Items" FontFamily="{StaticResource InterMedium}" HorizontalTextAlignment="Center" FontSize="20" TextColor="#FF6600"/>
                 <ListView ItemsSource="{Binding OtherItems}" HeightRequest="120" SelectionMode="None">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
                                 <StackLayout Spacing="0" VerticalOptions="CenterAndExpand">
                                     <StackLayout Orientation="Horizontal">
-                                        <Label Text="{Binding Name}" TextColor="Black" FontSize="18"/>
-                                        <Label Text="{Binding Quantity}" HorizontalOptions="EndAndExpand" TextColor="Black" FontSize="18"/>
+                                        <Label Text="{Binding Name}" FontFamily="{StaticResource InterRegular}" TextColor="Black" FontSize="18"/>
+                                        <Label Text="{Binding Quantity}" FontFamily="{StaticResource InterRegular}" HorizontalOptions="EndAndExpand" TextColor="Black" FontSize="18"/>
                                     </StackLayout>
                                 </StackLayout>
                             </ViewCell>
@@ -429,7 +429,7 @@
                     </ListView.ItemTemplate>
                 </ListView>
                 <Frame Padding="0" BackgroundColor="#D1F4FF" CornerRadius="8" HeightRequest="36" HasShadow="False" Margin="0,20,0,10">
-                    <Label Text="ORDER INFORMATION" HorizontalTextAlignment="Center" TextColor="Black" VerticalOptions="CenterAndExpand"
+                    <Label Text="ORDER INFORMATION" FontFamily="{StaticResource InterRegular}" HorizontalTextAlignment="Center" TextColor="Black" VerticalOptions="CenterAndExpand"
                                FontSize="18"/>
                 </Frame>
                 <Grid RowSpacing="0">
@@ -449,31 +449,31 @@
                         <ColumnDefinition Width="1.2*"/>
                         <ColumnDefinition Width="1.5*"/>
                     </Grid.ColumnDefinitions>
-                    <Label Grid.Row="0" Grid.Column="0" Text="ORDER #" TextColor="#50555C" FontSize="18" HorizontalOptions="EndAndExpand"/>
-                    <Label Grid.Row="0" Grid.Column="1" Text="{Binding SoId}" TextColor="Black" FontSize="18" HorizontalOptions="StartAndExpand"/>
-                    <Label Grid.Row="1" Grid.Column="0" Text="WELL NAME" TextColor="#50555C" FontSize="18" HorizontalOptions="EndAndExpand"/>
-                    <Label Grid.Row="1" Grid.Column="1" Text="{Binding WellName}" TextColor="Black" FontSize="18" HorizontalOptions="StartAndExpand"/>
-                    <Label Grid.Row="2" Grid.Column="0" Text="DELIVERY TIME" TextColor="#50555C" FontSize="18" HorizontalOptions="EndAndExpand"/>
-                    <Label Grid.Row="2" Grid.Column="1" Text="{Binding DeliveryTime}" TextColor="Black" FontSize="18" HorizontalOptions="StartAndExpand"/>
-                    <Label Grid.Row="3" Grid.Column="0" Text="CUSTOMER" TextColor="#50555C" FontSize="18" HorizontalOptions="EndAndExpand"/>
-                    <Label Grid.Row="3" Grid.Column="1" Text="{Binding Customer}" TextColor="Black" FontSize="18" HorizontalOptions="StartAndExpand"/>
-                    <Label Grid.Row="4" Grid.Column="0" Text="CUNSULTANT" TextColor="#50555C" FontSize="18" HorizontalOptions="EndAndExpand"/>
-                    <Label Grid.Row="4" Grid.Column="1" Text="{Binding Phone}" TextColor="Black" FontSize="18" HorizontalOptions="StartAndExpand"/>
-                    <Label Grid.Row="5" Grid.Column="0" Text="PHONE" TextColor="#50555C" FontSize="18" HorizontalOptions="EndAndExpand"/>
-                    <Label Grid.Row="5" Grid.Column="1" Text="{Binding Phone}" TextColor="Black" FontSize="18" HorizontalOptions="StartAndExpand"/>
-                    <Label Grid.Row="6" Grid.Column="0" Text="ENGINEER" TextColor="#50555C" FontSize="18" HorizontalOptions="EndAndExpand"/>
-                    <Label Grid.Row="6" Grid.Column="1" Text="{Binding GlCode}" TextColor="Black" FontSize="18" HorizontalOptions="StartAndExpand"/>
-                    <Label Grid.Row="7" Grid.Column="0" Text="AFE #" TextColor="#50555C" FontSize="18" HorizontalOptions="EndAndExpand"/>
-                    <Label Grid.Row="7" Grid.Column="1" Text="{Binding GlCode}" TextColor="Black" FontSize="18" HorizontalOptions="StartAndExpand"/>
-                    <Label Grid.Row="8" Grid.Column="0" Text="GL CODE" TextColor="#50555C" FontSize="18" HorizontalOptions="EndAndExpand"/>
-                    <Label Grid.Row="8" Grid.Column="1" Text="{Binding GlCode}" TextColor="Black" FontSize="18" HorizontalOptions="StartAndExpand"/>
-                    <Label Grid.Row="9" Grid.Column="0" Text="NOTE" TextColor="#50555C" FontSize="18" HorizontalOptions="EndAndExpand"/>
-                    <Label Grid.Row="9" Grid.Column="1" Text="" TextColor="Black" FontSize="18" HorizontalOptions="StartAndExpand"/>
+                    <Label Grid.Row="0" Grid.Column="0" Text="ORDER #" FontFamily="{StaticResource InterRegular}" TextColor="#50555C" FontSize="18" HorizontalOptions="EndAndExpand"/>
+                    <Label Grid.Row="0" Grid.Column="1" Text="{Binding SoId}" FontFamily="{StaticResource InterMedium}" TextColor="Black" FontSize="18" HorizontalOptions="StartAndExpand"/>
+                    <Label Grid.Row="1" Grid.Column="0" Text="WELL NAME" FontFamily="{StaticResource InterRegular}" TextColor="#50555C" FontSize="18" HorizontalOptions="EndAndExpand"/>
+                    <Label Grid.Row="1" Grid.Column="1" Text="{Binding WellName}" FontFamily="{StaticResource InterMedium}" TextColor="Black" FontSize="18" HorizontalOptions="StartAndExpand"/>
+                    <Label Grid.Row="2" Grid.Column="0" Text="DELIVERY TIME" FontFamily="{StaticResource InterRegular}" TextColor="#50555C" FontSize="18" HorizontalOptions="EndAndExpand"/>
+                    <Label Grid.Row="2" Grid.Column="1" Text="{Binding DeliveryTime}" FontFamily="{StaticResource InterMedium}" TextColor="Black" FontSize="18" HorizontalOptions="StartAndExpand"/>
+                    <Label Grid.Row="3" Grid.Column="0" Text="CUSTOMER" FontFamily="{StaticResource InterRegular}" TextColor="#50555C" FontSize="18" HorizontalOptions="EndAndExpand"/>
+                    <Label Grid.Row="3" Grid.Column="1" Text="{Binding Customer}" FontFamily="{StaticResource InterMedium}" TextColor="Black" FontSize="18" HorizontalOptions="StartAndExpand"/>
+                    <Label Grid.Row="4" Grid.Column="0" Text="CUNSULTANT" FontFamily="{StaticResource InterRegular}" TextColor="#50555C" FontSize="18" HorizontalOptions="EndAndExpand"/>
+                    <Label Grid.Row="4" Grid.Column="1" Text="{Binding Phone}" FontFamily="{StaticResource InterMedium}" TextColor="Black" FontSize="18" HorizontalOptions="StartAndExpand"/>
+                    <Label Grid.Row="5" Grid.Column="0" Text="PHONE" FontFamily="{StaticResource InterRegular}" TextColor="#50555C" FontSize="18" HorizontalOptions="EndAndExpand"/>
+                    <Label Grid.Row="5" Grid.Column="1" Text="{Binding Phone}" FontFamily="{StaticResource InterMedium}" TextColor="Black" FontSize="18" HorizontalOptions="StartAndExpand"/>
+                    <Label Grid.Row="6" Grid.Column="0" Text="ENGINEER" FontFamily="{StaticResource InterRegular}" TextColor="#50555C" FontSize="18" HorizontalOptions="EndAndExpand"/>
+                    <Label Grid.Row="6" Grid.Column="1" Text="{Binding GlCode}" FontFamily="{StaticResource InterMedium}" TextColor="Black" FontSize="18" HorizontalOptions="StartAndExpand"/>
+                    <Label Grid.Row="7" Grid.Column="0" Text="AFE #" FontFamily="{StaticResource InterRegular}" TextColor="#50555C" FontSize="18" HorizontalOptions="EndAndExpand"/>
+                    <Label Grid.Row="7" Grid.Column="1" Text="{Binding GlCode}" FontFamily="{StaticResource InterMedium}" TextColor="Black" FontSize="18" HorizontalOptions="StartAndExpand"/>
+                    <Label Grid.Row="8" Grid.Column="0" Text="GL CODE" FontFamily="{StaticResource InterRegular}" TextColor="#50555C" FontSize="18" HorizontalOptions="EndAndExpand"/>
+                    <Label Grid.Row="8" Grid.Column="1" Text="{Binding GlCode}" FontFamily="{StaticResource InterMedium}" TextColor="Black" FontSize="18" HorizontalOptions="StartAndExpand"/>
+                    <Label Grid.Row="9" Grid.Column="0" Text="NOTE" FontFamily="{StaticResource InterRegular}" TextColor="#50555C" FontSize="18" HorizontalOptions="EndAndExpand"/>
+                    <Label Grid.Row="9" Grid.Column="1" Text="" FontFamily="{StaticResource InterMedium}" TextColor="Black" FontSize="18" HorizontalOptions="StartAndExpand"/>
                 </Grid>
                 <StackLayout Orientation="Horizontal" Margin="0,100,0,0">
-                    <Button Text="Duplicate New" TextColor="White" TextTransform="None" FontSize="18" BackgroundColor="#FF6600" HeightRequest="40" WidthRequest="145"
+                    <Button Text="Duplicate New" FontFamily="{StaticResource RobotoRegular}" TextColor="White" TextTransform="None" FontSize="18" BackgroundColor="#FF6600" HeightRequest="40" WidthRequest="145"
                             HorizontalOptions="CenterAndExpand" Padding="1" CornerRadius="3"/>
-                    <Button Text="Close" TextColor="White" TextTransform="None" FontSize="18" BackgroundColor="#333333" HeightRequest="40" WidthRequest="145"
+                    <Button Text="Close" FontFamily="{StaticResource RobotoRegular}" TextColor="White" TextTransform="None" FontSize="18" BackgroundColor="#333333" HeightRequest="40" WidthRequest="145"
                             HorizontalOptions="CenterAndExpand" Padding="1" CornerRadius="3" Clicked="ActiveOrderToList_Clicked"/>
                 </StackLayout>
             </StackLayout>
@@ -488,118 +488,118 @@
                     </OnPlatform>
                 </StackLayout.Margin>
                 <StackLayout Orientation="Horizontal">
-                    <Label Text="CLOSED ORDER" FontSize="28" TextColor="Black"/>
+                    <Label Text="CLOSED ORDER" FontFamily="{StaticResource RobotoLight}" FontSize="28" TextColor="Black"/>
                     <Image Source="RodLogo.png" HorizontalOptions="EndAndExpand" HeightRequest="30"/>
                 </StackLayout>
                 <StackLayout Orientation="Horizontal">
-                    <Label Text="{Binding OrderId}" FontSize="20" TextColor="#333333" FontAttributes="Bold"/>
-                    <Label Text="{Binding OrderDate}" FontSize="18" TextColor="#333333" HorizontalOptions="EndAndExpand"/>
+                    <Label Text="{Binding OrderId}" FontFamily="{StaticResource InterMedium}" FontSize="20" TextColor="#333333" FontAttributes="Bold"/>
+                    <Label Text="{Binding OrderDate}" FontFamily="{StaticResource InterMedium}" FontSize="18" TextColor="#333333" HorizontalOptions="EndAndExpand"/>
                 </StackLayout>
                 <Frame Padding="0" BackgroundColor="#50555C" CornerRadius="8" HeightRequest="36" HasShadow="False" Margin="0,20,0,0">
-                    <Label Text="PRODUCT DETAILS" HorizontalTextAlignment="Center" TextColor="White" VerticalOptions="CenterAndExpand"
+                    <Label Text="PRODUCT DETAILS" FontFamily="{StaticResource InterRegular}" HorizontalTextAlignment="Center" TextColor="White" VerticalOptions="CenterAndExpand"
                                FontSize="18"/>
                 </Frame>
-                <Label Text="Sucker Rod" HorizontalTextAlignment="Center" FontSize="20" TextColor="#FF6600"/>
+                <Label Text="Sucker Rod" FontFamily="{StaticResource InterMedium}" HorizontalTextAlignment="Center" FontSize="20" TextColor="#FF6600"/>
                 <ListView ItemsSource="{Binding SuckerList}" HeightRequest="200" SelectionMode="None">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
                                 <StackLayout Spacing="0" VerticalOptions="CenterAndExpand">
                                     <StackLayout Orientation="Horizontal">
-                                        <Label Text="{Binding Name}" TextColor="Black" FontSize="18"/>
-                                        <Label Text="{Binding Quantity}" HorizontalOptions="EndAndExpand" TextColor="Black" FontSize="18"/>
+                                        <Label Text="{Binding Name}" FontFamily="{StaticResource InterRegular}" TextColor="Black" FontSize="18"/>
+                                        <Label Text="{Binding Quantity}" FontFamily="{StaticResource InterRegular}" HorizontalOptions="EndAndExpand" TextColor="Black" FontSize="18"/>
                                     </StackLayout>
-                                    <Label Text="{Binding Description}"/>
+                                    <Label Text="{Binding Description}" FontFamily="{StaticResource InterRegular}"/>
                                 </StackLayout>
                             </ViewCell>
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
-                <Label Text="Pony Rod" HorizontalTextAlignment="Center" FontSize="20" TextColor="#FF6600"/>
+                <Label Text="Pony Rod" FontFamily="{StaticResource InterMedium}" HorizontalTextAlignment="Center" FontSize="20" TextColor="#FF6600"/>
                 <ListView ItemsSource="{Binding PonyList}" HeightRequest="200" SelectionMode="None">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
                                 <StackLayout Spacing="0" VerticalOptions="CenterAndExpand">
                                     <StackLayout Orientation="Horizontal">
-                                        <Label Text="{Binding Name}" TextColor="Black" FontSize="18"/>
-                                        <Label Text="{Binding Quantity}" HorizontalOptions="EndAndExpand" TextColor="Black" FontSize="18"/>
+                                        <Label Text="{Binding Name}" FontFamily="{StaticResource InterRegular}" TextColor="Black" FontSize="18"/>
+                                        <Label Text="{Binding Quantity}" FontFamily="{StaticResource InterRegular}" HorizontalOptions="EndAndExpand" TextColor="Black" FontSize="18"/>
                                     </StackLayout>
-                                    <Label Text="{Binding Description}"/>
+                                    <Label Text="{Binding Description}" FontFamily="{StaticResource InterRegular}"/>
                                 </StackLayout>
                             </ViewCell>
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
-                <Label Text="Couplings" HorizontalTextAlignment="Center" FontSize="20" TextColor="#FF6600"/>
+                <Label Text="Couplings" FontFamily="{StaticResource InterMedium}" HorizontalTextAlignment="Center" FontSize="20" TextColor="#FF6600"/>
                 <ListView ItemsSource="{Binding Couplings}" HeightRequest="90" SelectionMode="None">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
                                 <StackLayout Spacing="0">
                                     <StackLayout Orientation="Horizontal" VerticalOptions="CenterAndExpand">
-                                        <Label Text="{Binding Name}" TextColor="Black" FontSize="18"/>
-                                        <Label Text="{Binding Quantity}" HorizontalOptions="EndAndExpand" TextColor="Black" FontSize="18"/>
+                                        <Label Text="{Binding Name}" FontFamily="{StaticResource InterRegular}" TextColor="Black" FontSize="18"/>
+                                        <Label Text="{Binding Quantity}" FontFamily="{StaticResource InterRegular}" HorizontalOptions="EndAndExpand" TextColor="Black" FontSize="18"/>
                                     </StackLayout>
                                 </StackLayout>
                             </ViewCell>
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
-                <Label Text="Sinker Bar" HorizontalTextAlignment="Center" FontSize="20" TextColor="#FF6600"/>
+                <Label Text="Sinker Bar" FontFamily="{StaticResource InterMedium}" HorizontalTextAlignment="Center" FontSize="20" TextColor="#FF6600"/>
                 <ListView ItemsSource="{Binding SinkerBar}" HeightRequest="50" SelectionMode="None">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
                                 <StackLayout Spacing="0" VerticalOptions="CenterAndExpand">
                                     <StackLayout Orientation="Horizontal">
-                                        <Label Text="{Binding Name}" TextColor="Black" FontSize="18"/>
-                                        <Label Text="{Binding Quantity}" HorizontalOptions="EndAndExpand" TextColor="Black" FontSize="18"/>
+                                        <Label Text="{Binding Name}" FontFamily="{StaticResource InterRegular}" TextColor="Black" FontSize="18"/>
+                                        <Label Text="{Binding Quantity}" FontFamily="{StaticResource InterRegular}" HorizontalOptions="EndAndExpand" TextColor="Black" FontSize="18"/>
                                     </StackLayout>
                                 </StackLayout>
                             </ViewCell>
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
-                <Label Text="Polished Rod" HorizontalTextAlignment="Center" FontSize="20" TextColor="#FF6600"/>
+                <Label Text="Polished Rod" FontFamily="{StaticResource InterMedium}" HorizontalTextAlignment="Center" FontSize="20" TextColor="#FF6600"/>
                 <ListView ItemsSource="{Binding PolishedRod}" HeightRequest="50" SelectionMode="None">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
                                 <StackLayout Spacing="0" VerticalOptions="CenterAndExpand">
                                     <StackLayout Orientation="Horizontal">
-                                        <Label Text="{Binding Name}" TextColor="Black" FontSize="18"/>
-                                        <Label Text="{Binding Quantity}" HorizontalOptions="EndAndExpand" TextColor="Black" FontSize="18"/>
+                                        <Label Text="{Binding Name}" FontFamily="{StaticResource InterRegular}" TextColor="Black" FontSize="18"/>
+                                        <Label Text="{Binding Quantity}" FontFamily="{StaticResource InterRegular}" HorizontalOptions="EndAndExpand" TextColor="Black" FontSize="18"/>
                                     </StackLayout>
                                 </StackLayout>
                             </ViewCell>
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
-                <Label Text="Stablizer Bar" HorizontalTextAlignment="Center" FontSize="20" TextColor="#FF6600"/>
+                <Label Text="Stablizer Bar" FontFamily="{StaticResource InterMedium}" HorizontalTextAlignment="Center" FontSize="20" TextColor="#FF6600"/>
                 <ListView ItemsSource="{Binding StablizerBar}" HeightRequest="50" SelectionMode="None">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
                                 <StackLayout Spacing="0" VerticalOptions="CenterAndExpand">
                                     <StackLayout Orientation="Horizontal">
-                                        <Label Text="{Binding Name}" TextColor="Black" FontSize="18"/>
-                                        <Label Text="{Binding Quantity}" HorizontalOptions="EndAndExpand" TextColor="Black" FontSize="18"/>
+                                        <Label Text="{Binding Name}" FontFamily="{StaticResource InterRegular}" TextColor="Black" FontSize="18"/>
+                                        <Label Text="{Binding Quantity}" FontFamily="{StaticResource InterRegular}" HorizontalOptions="EndAndExpand" TextColor="Black" FontSize="18"/>
                                     </StackLayout>
                                 </StackLayout>
                             </ViewCell>
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
-                <Label Text="Other Items" HorizontalTextAlignment="Center" FontSize="20" TextColor="#FF6600"/>
+                <Label Text="Other Items" FontFamily="{StaticResource InterMedium}" HorizontalTextAlignment="Center" FontSize="20" TextColor="#FF6600"/>
                 <ListView ItemsSource="{Binding OtherItems}" HeightRequest="120" SelectionMode="None">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
                                 <StackLayout Spacing="0" VerticalOptions="CenterAndExpand">
                                     <StackLayout Orientation="Horizontal">
-                                        <Label Text="{Binding Name}" TextColor="Black" FontSize="18"/>
-                                        <Label Text="{Binding Quantity}" HorizontalOptions="EndAndExpand" TextColor="Black" FontSize="18"/>
+                                        <Label Text="{Binding Name}" FontFamily="{StaticResource InterRegular}" TextColor="Black" FontSize="18"/>
+                                        <Label Text="{Binding Quantity}" FontFamily="{StaticResource InterRegular}" HorizontalOptions="EndAndExpand" TextColor="Black" FontSize="18"/>
                                     </StackLayout>
                                 </StackLayout>
                             </ViewCell>
@@ -608,7 +608,7 @@
                 </ListView>
                 <StackLayout Margin="0,5,0,0" Spacing="15">
                     <Frame Padding="0" BackgroundColor="#50555C" CornerRadius="8" HeightRequest="36" HasShadow="False">
-                        <Label Text="SHIPPING INFORMATION" HorizontalTextAlignment="Center" TextColor="#FCFCFE" VerticalOptions="CenterAndExpand"
+                        <Label Text="SHIPPING INFORMATION" FontFamily="{StaticResource InterRegular}" HorizontalTextAlignment="Center" TextColor="#FCFCFE" VerticalOptions="CenterAndExpand"
                                FontSize="18"/>
                     </Frame>
                     <Grid>
@@ -622,14 +622,14 @@
                             <ColumnDefinition Width="1.2*"/>
                             <ColumnDefinition Width="1.5*"/>
                         </Grid.ColumnDefinitions>
-                        <Label Grid.Row="0" Grid.Column="0" Text="DELIVERY TIME" TextColor="#50555C" FontSize="18" HorizontalOptions="EndAndExpand"/>
-                        <Label Grid.Row="0" Grid.Column="1" Text="{Binding DeliveryTime}" TextColor="Black" FontSize="18" HorizontalOptions="StartAndExpand"/>
-                        <Label Grid.Row="1" Grid.Column="0" Text="TRUCKING CO" TextColor="#50555C" FontSize="18" HorizontalOptions="EndAndExpand"/>
-                        <Label Grid.Row="1" Grid.Column="1" Text="{Binding TruckingCo}" TextColor="Black" FontSize="18" HorizontalOptions="StartAndExpand"/>
-                        <Label Grid.Row="2" Grid.Column="0" Text="DRIVER PH#" TextColor="#50555C" FontSize="18" HorizontalOptions="EndAndExpand"/>
-                        <Label Grid.Row="2" Grid.Column="1" Text="{Binding DriverPhn}" TextColor="Black" FontSize="18" HorizontalOptions="StartAndExpand"/>
-                        <Label Grid.Row="3" Grid.Column="0" Text="DRIVER NAME" TextColor="#50555C" FontSize="18" HorizontalOptions="EndAndExpand"/>
-                        <Label Grid.Row="3" Grid.Column="1" Text="{Binding DriverName}" TextColor="Black" FontSize="18" HorizontalOptions="StartAndExpand"/>
+                        <Label Grid.Row="0" Grid.Column="0" Text="DELIVERY TIME" FontFamily="{StaticResource InterRegular}" TextColor="#50555C" FontSize="18" HorizontalOptions="EndAndExpand"/>
+                        <Label Grid.Row="0" Grid.Column="1" Text="{Binding DeliveryTime}" FontFamily="{StaticResource InterMedium}" TextColor="Black" FontSize="18" HorizontalOptions="StartAndExpand"/>
+                        <Label Grid.Row="1" Grid.Column="0" Text="TRUCKING CO" FontFamily="{StaticResource InterRegular}" TextColor="#50555C" FontSize="18" HorizontalOptions="EndAndExpand"/>
+                        <Label Grid.Row="1" Grid.Column="1" Text="{Binding TruckingCo}" FontFamily="{StaticResource InterMedium}" TextColor="Black" FontSize="18" HorizontalOptions="StartAndExpand"/>
+                        <Label Grid.Row="2" Grid.Column="0" Text="DRIVER PH#" FontFamily="{StaticResource InterRegular}" TextColor="#50555C" FontSize="18" HorizontalOptions="EndAndExpand"/>
+                        <Label Grid.Row="2" Grid.Column="1" Text="{Binding DriverPhn}" FontFamily="{StaticResource InterMedium}" TextColor="Black" FontSize="18" HorizontalOptions="StartAndExpand"/>
+                        <Label Grid.Row="3" Grid.Column="0" Text="DRIVER NAME" FontFamily="{StaticResource InterRegular}" TextColor="#50555C" FontSize="18" HorizontalOptions="EndAndExpand"/>
+                        <Label Grid.Row="3" Grid.Column="1" Text="{Binding DriverName}" FontFamily="{StaticResource InterMedium}" TextColor="Black" FontSize="18" HorizontalOptions="StartAndExpand"/>
                     </Grid>
                 </StackLayout>
                 <StackLayout Margin="0,30,0,0" Spacing="15">
@@ -654,32 +654,32 @@
                             <ColumnDefinition Width="1.2*"/>
                             <ColumnDefinition Width="1.5*"/>
                         </Grid.ColumnDefinitions>
-                        <Label Grid.Row="0" Grid.Column="0" Text="ORDER #" TextColor="#50555C" FontSize="18" HorizontalOptions="EndAndExpand"/>
-                        <Label Grid.Row="0" Grid.Column="1" Text="{Binding SoId}" TextColor="Black" FontSize="18" HorizontalOptions="StartAndExpand"/>
-                        <Label Grid.Row="1" Grid.Column="0" Text="WELL NAME" TextColor="#50555C" FontSize="18" HorizontalOptions="EndAndExpand"/>
-                        <Label Grid.Row="1" Grid.Column="1" Text="{Binding WellName}" TextColor="Black" FontSize="18" HorizontalOptions="StartAndExpand"/>
-                        <Label Grid.Row="2" Grid.Column="0" Text="DELIVERY TIME" TextColor="#50555C" FontSize="18" HorizontalOptions="EndAndExpand"/>
-                        <Label Grid.Row="2" Grid.Column="1" Text="{Binding DeliveryTime}" TextColor="Black" FontSize="18" HorizontalOptions="StartAndExpand"/>
-                        <Label Grid.Row="3" Grid.Column="0" Text="CUSTOMER" TextColor="#50555C" FontSize="18" HorizontalOptions="EndAndExpand"/>
-                        <Label Grid.Row="3" Grid.Column="1" Text="{Binding Customer}" TextColor="Black" FontSize="18" HorizontalOptions="StartAndExpand"/>
-                        <Label Grid.Row="4" Grid.Column="0" Text="CUNSULTANT" TextColor="#50555C" FontSize="18" HorizontalOptions="EndAndExpand"/>
-                        <Label Grid.Row="4" Grid.Column="1" Text="{Binding Phone}" TextColor="Black" FontSize="18" HorizontalOptions="StartAndExpand"/>
-                        <Label Grid.Row="5" Grid.Column="0" Text="PHONE" TextColor="#50555C" FontSize="18" HorizontalOptions="EndAndExpand"/>
-                        <Label Grid.Row="5" Grid.Column="1" Text="{Binding Customer}" TextColor="Black" FontSize="18" HorizontalOptions="StartAndExpand"/>
-                        <Label Grid.Row="6" Grid.Column="0" Text="ENGINEER" TextColor="#50555C" FontSize="18" HorizontalOptions="EndAndExpand"/>
-                        <Label Grid.Row="6" Grid.Column="1" Text="{Binding GlCode}" TextColor="Black" FontSize="18" HorizontalOptions="StartAndExpand"/>
-                        <Label Grid.Row="7" Grid.Column="0" Text="AFE #" TextColor="#50555C" FontSize="18" HorizontalOptions="EndAndExpand"/>
-                        <Label Grid.Row="7" Grid.Column="1" Text="{Binding GlCode}" TextColor="Black" FontSize="18" HorizontalOptions="StartAndExpand"/>
-                        <Label Grid.Row="8" Grid.Column="0" Text="GL CODE" TextColor="#50555C" FontSize="18" HorizontalOptions="EndAndExpand"/>
-                        <Label Grid.Row="8" Grid.Column="1" Text="{Binding GlCode}" TextColor="Black" FontSize="18" HorizontalOptions="StartAndExpand"/>
-                        <Label Grid.Row="9" Grid.Column="0" Text="NOTE" TextColor="#50555C" FontSize="18" HorizontalOptions="EndAndExpand"/>
-                        <Label Grid.Row="9" Grid.Column="1" Text="" TextColor="Black" FontSize="18" HorizontalOptions="StartAndExpand"/>
+                        <Label Grid.Row="0" Grid.Column="0" Text="ORDER #" FontFamily="{StaticResource InterRegular}" TextColor="#50555C" FontSize="18" HorizontalOptions="EndAndExpand"/>
+                        <Label Grid.Row="0" Grid.Column="1" Text="{Binding SoId}" FontFamily="{StaticResource InterMedium}" TextColor="Black" FontSize="18" HorizontalOptions="StartAndExpand"/>
+                        <Label Grid.Row="1" Grid.Column="0" Text="WELL NAME" FontFamily="{StaticResource InterRegular}" TextColor="#50555C" FontSize="18" HorizontalOptions="EndAndExpand"/>
+                        <Label Grid.Row="1" Grid.Column="1" Text="{Binding WellName}" FontFamily="{StaticResource InterMedium}" TextColor="Black" FontSize="18" HorizontalOptions="StartAndExpand"/>
+                        <Label Grid.Row="2" Grid.Column="0" Text="DELIVERY TIME" FontFamily="{StaticResource InterRegular}" TextColor="#50555C" FontSize="18" HorizontalOptions="EndAndExpand"/>
+                        <Label Grid.Row="2" Grid.Column="1" Text="{Binding DeliveryTime}" FontFamily="{StaticResource InterMedium}" TextColor="Black" FontSize="18" HorizontalOptions="StartAndExpand"/>
+                        <Label Grid.Row="3" Grid.Column="0" Text="CUSTOMER" FontFamily="{StaticResource InterRegular}" TextColor="#50555C" FontSize="18" HorizontalOptions="EndAndExpand"/>
+                        <Label Grid.Row="3" Grid.Column="1" Text="{Binding Customer}" FontFamily="{StaticResource InterMedium}" TextColor="Black" FontSize="18" HorizontalOptions="StartAndExpand"/>
+                        <Label Grid.Row="4" Grid.Column="0" Text="CUNSULTANT" FontFamily="{StaticResource InterRegular}" TextColor="#50555C" FontSize="18" HorizontalOptions="EndAndExpand"/>
+                        <Label Grid.Row="4" Grid.Column="1" Text="{Binding Phone}" FontFamily="{StaticResource InterMedium}" TextColor="Black" FontSize="18" HorizontalOptions="StartAndExpand"/>
+                        <Label Grid.Row="5" Grid.Column="0" Text="PHONE" FontFamily="{StaticResource InterRegular}" TextColor="#50555C" FontSize="18" HorizontalOptions="EndAndExpand"/>
+                        <Label Grid.Row="5" Grid.Column="1" Text="{Binding Customer}" FontFamily="{StaticResource InterMedium}" TextColor="Black" FontSize="18" HorizontalOptions="StartAndExpand"/>
+                        <Label Grid.Row="6" Grid.Column="0" Text="ENGINEER" FontFamily="{StaticResource InterRegular}" TextColor="#50555C" FontSize="18" HorizontalOptions="EndAndExpand"/>
+                        <Label Grid.Row="6" Grid.Column="1" Text="{Binding GlCode}" FontFamily="{StaticResource InterMedium}" TextColor="Black" FontSize="18" HorizontalOptions="StartAndExpand"/>
+                        <Label Grid.Row="7" Grid.Column="0" Text="AFE #" FontFamily="{StaticResource InterRegular}" TextColor="#50555C" FontSize="18" HorizontalOptions="EndAndExpand"/>
+                        <Label Grid.Row="7" Grid.Column="1" Text="{Binding GlCode}" FontFamily="{StaticResource InterMedium}" TextColor="Black" FontSize="18" HorizontalOptions="StartAndExpand"/>
+                        <Label Grid.Row="8" Grid.Column="0" Text="GL CODE" FontFamily="{StaticResource InterRegular}" TextColor="#50555C" FontSize="18" HorizontalOptions="EndAndExpand"/>
+                        <Label Grid.Row="8" Grid.Column="1" Text="{Binding GlCode}" FontFamily="{StaticResource InterMedium}" TextColor="Black" FontSize="18" HorizontalOptions="StartAndExpand"/>
+                        <Label Grid.Row="9" Grid.Column="0" Text="NOTE" FontFamily="{StaticResource InterRegular}" TextColor="#50555C" FontSize="18" HorizontalOptions="EndAndExpand"/>
+                        <Label Grid.Row="9" Grid.Column="1" Text="" FontFamily="{StaticResource InterMedium}" TextColor="Black" FontSize="18" HorizontalOptions="StartAndExpand"/>
                     </Grid>
                 </StackLayout>
-                <Frame HasShadow="False" OutlineColor="#FF6600" CornerRadius="10" BackgroundColor="#F0FBFF" Margin="30,100,30,10" 
+                <Frame Grid.Row="4" HasShadow="False" OutlineColor="#FF6600" CornerRadius="10" BackgroundColor="#F0FBFF" Margin="20,50,20,10" 
                        Padding="12">
                     <StackLayout>
-                        <Label Text="Questions? Contact Exceed" TextColor="#FF6600" HorizontalTextAlignment="Center" FontSize="20"/>
+                        <Label Text="Questions? Contact Exceed" FontFamily="{StaticResource InterMedium}" TextColor="#FF6600" HorizontalTextAlignment="Center" FontSize="20"/>
                         <Grid RowSpacing="4" Margin="10,0,0,0">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="Auto"/>
@@ -688,22 +688,22 @@
                                 <RowDefinition Height="Auto"/>
                             </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="0.6*"/>
-                                <ColumnDefinition Width="1.4*"/>
+                                <ColumnDefinition Width="0.3*"/>
+                                <ColumnDefinition Width="1.7*"/>
                             </Grid.ColumnDefinitions>
                             <Image Grid.Row="0" Grid.Column="0" Source="ProfileIcon.png" WidthRequest="15" HeightRequest="15"/>
-                            <Label Grid.Row="0" Grid.Column="1" Text="Ashley Clay" TextColor="Black" FontSize="18" HorizontalOptions="StartAndExpand"/>
+                            <Label Grid.Row="0" Grid.Column="1" Text="Ashley Clay" FontFamily="{StaticResource InterRegular}" TextColor="Black" FontSize="18" HorizontalOptions="StartAndExpand"/>
                             <Image Grid.Row="1" Grid.Column="0" Source="PhoneIcon.png" WidthRequest="15" HeightRequest="15"/>
-                            <Label Grid.Row="1" Grid.Column="1" Text="406-459-5279" TextColor="Black" FontSize="18" HorizontalOptions="StartAndExpand"/>
+                            <Label Grid.Row="1" Grid.Column="1" Text="406-459-5279" FontFamily="{StaticResource InterRegular}" TextColor="Black" FontSize="18" HorizontalOptions="StartAndExpand"/>
                             <Image Grid.Row="2" Grid.Column="0" Source="EmailIcon.png" WidthRequest="15" HeightRequest="15"/>
-                            <Label Grid.Row="2" Grid.Column="1" Text="aclay@eoe-inc.com" TextColor="Black" FontSize="18" HorizontalOptions="StartAndExpand"/>
+                            <Label Grid.Row="2" Grid.Column="1" Text="aclay@eoe-inc.com" FontFamily="{StaticResource InterRegular}" TextColor="Black" FontSize="18" HorizontalOptions="StartAndExpand"/>
                         </Grid>
                     </StackLayout>
                 </Frame>
                 <StackLayout Orientation="Horizontal">
-                    <Button Text="Duplicate New" TextColor="White" TextTransform="None" FontSize="18" BackgroundColor="#FF6600" HeightRequest="40" WidthRequest="145"
+                    <Button Text="Duplicate New" FontFamily="{StaticResource InterRegular}" TextColor="White" TextTransform="None" FontSize="18" BackgroundColor="#FF6600" HeightRequest="40" WidthRequest="145"
                             HorizontalOptions="CenterAndExpand" Padding="1" CornerRadius="3"/>
-                    <Button Text="Close" TextColor="White" TextTransform="None" FontSize="18" BackgroundColor="#333333" HeightRequest="40" WidthRequest="145"
+                    <Button Text="Close" FontFamily="{StaticResource InterRegular}" TextColor="White" TextTransform="None" FontSize="18" BackgroundColor="#333333" HeightRequest="40" WidthRequest="145"
                             HorizontalOptions="CenterAndExpand" Padding="1" CornerRadius="3" Clicked="ClosedOrderToList_Clicked"/>
                 </StackLayout>
             </StackLayout>

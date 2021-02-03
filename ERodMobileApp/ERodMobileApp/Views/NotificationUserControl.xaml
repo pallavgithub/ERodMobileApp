@@ -22,7 +22,7 @@
                     </Grid.RowDefinitions>
                     <StackLayout Orientation="Horizontal" Grid.Row="0" Spacing="14" Margin="0,0,0,30" HorizontalOptions="FillAndExpand"
                              VerticalOptions="FillAndExpand">
-                        <Label Text="Notifications" HorizontalOptions="Start" TextColor="#FF4D00" FontSize="26" VerticalOptions="CenterAndExpand" TextTransform="Uppercase"/>
+                        <Label Text="Notifications" FontFamily="{StaticResource RobotoLight}" HorizontalOptions="Start" TextColor="#FF4D00" FontSize="26" VerticalOptions="CenterAndExpand" TextTransform="Uppercase"/>
                         <Image Source="RodLogo.png" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" HeightRequest="30"/>
                     </StackLayout>
                     <ListView Grid.Row="1" ItemsSource="{Binding NotificationList}" HasUnevenRows="True" RowHeight="74">
@@ -39,10 +39,10 @@
                                             <ColumnDefinition Width="Auto"/>
                                         </Grid.ColumnDefinitions>
                                         <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Horizontal" Spacing="16">
-                                            <Label Text="{Binding Date}" TextColor="#FF6600" FontSize="16" VerticalTextAlignment="Center"/>
-                                            <Label Text="{Binding Name}" TextColor="#FF6600" FontSize="18" FontAttributes="Bold"/>
+                                            <Label Text="{Binding Date}" FontFamily="{StaticResource InterRegular}" TextColor="#FF6600" FontSize="16" VerticalTextAlignment="Center"/>
+                                            <Label Text="{Binding Name}" FontFamily="{StaticResource InterBold}" TextColor="#FF6600" FontSize="18" FontAttributes="Bold"/>
                                         </StackLayout>
-                                        <Label Grid.Row="1" Grid.Column="0" Text="{Binding Id}" TextColor="#50555C" FontSize="16" VerticalTextAlignment="Center" FontAttributes="Bold"/>
+                                        <Label Grid.Row="1" Grid.Column="0" Text="{Binding Id}" FontFamily="{StaticResource InterBold}" TextColor="#50555C" FontSize="16" VerticalTextAlignment="Center" FontAttributes="Bold"/>
                                         <Image Grid.Row="1" Grid.Column="1" Source="Arrow.png" HeightRequest="18" WidthRequest="10"/>
                                     </Grid>
                                 </ViewCell>
