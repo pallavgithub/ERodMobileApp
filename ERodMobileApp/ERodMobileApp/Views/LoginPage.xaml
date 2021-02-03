@@ -12,12 +12,7 @@
     </ContentPage.Resources>
     <ContentPage.Content>
         <StackLayout>
-            <StackLayout.Margin>
-                <OnPlatform x:TypeArguments="Thickness">
-                    <On Platform="iOS" Value="0,25,0,0" />
-                    <On Platform="Android" Value="0,15,0,0" />
-                </OnPlatform>
-            </StackLayout.Margin>
+            
             <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                 <!--Enter Mobile (for ios)-->
                 <ContentView IsVisible="{Binding EnterMobilePageIsVisible}" VerticalOptions="FillAndExpand"
@@ -25,7 +20,12 @@
                     <Grid>
                         <Image Source="LoginBg.png" Aspect="AspectFill"/>
                         <Image Source="Rectangle110.png" Aspect="AspectFill"/>
-                        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="0,30,0,0">
+                        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                            <Grid.Margin>
+                <OnPlatform x:TypeArguments="Thickness">
+                    <On Platform="iOS" Value="0,40,0,0" />
+                </OnPlatform>
+            </Grid.Margin>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="*"/>
                                 <RowDefinition Height="2*"/>
@@ -75,6 +75,12 @@
                 <!--Profile Found-->
                 <ContentView IsVisible="{Binding LoginIsVisible}" Margin="0,20,0,0">
                     <Grid>
+                        <Grid.Margin>
+                <OnPlatform x:TypeArguments="Thickness">
+                    <On Platform="iOS" Value="0,25,0,0" />
+                    <On Platform="Android" Value="0,15,0,0" />
+                </OnPlatform>
+            </Grid.Margin>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="1.8*"/>
                             <RowDefinition Height="1.8*"/>
@@ -91,10 +97,10 @@
                         <Label Grid.Row="2" Text="User Profile Found!" FontFamily="{StaticResource RobotoRegular}" TextColor="#404040" FontSize="18" HorizontalTextAlignment="Center"/>
                         <Label Grid.Row="3" Text="{Binding UserName}" FontFamily="{StaticResource InterBold}" TextColor="#404040" FontSize="28"
                        VerticalOptions="End" HorizontalTextAlignment="Center"/>
-                        <StackLayout Grid.Row="4" HorizontalOptions="FillAndExpand" Margin="45,0,35,20">
+                        <StackLayout Grid.Row="4" HorizontalOptions="FillAndExpand" Margin="45,0,35,20" BackgroundColor="Yellow">
                             <StackLayout Orientation="Horizontal">
                                 <Image Source="Company.png" HeightRequest="25" WidthRequest="25"/>
-                                <Label Text="{Binding Company}" FontFamily="{StaticResource InterMedium}" TextColor="#404040" FontSize="20"/>
+                                <Label Text="{Binding Company}" FontFamily="{StaticResource InterMedium}" TextColor="#404040" FontSize="20" BackgroundColor="Pink"/>
                             </StackLayout>
                             <StackLayout Orientation="Horizontal">
                                 <Image Source="Phone.png" HeightRequest="25" WidthRequest="25"/>
@@ -195,7 +201,13 @@
                 </ContentView>
                 <!--Activation Code Page-->
                 <ContentView IsVisible="{Binding ActivationCodePageIsVisible}" Margin="0,30,0,0">
-                    <Grid Margin="45,0,40,0">
+                    <Grid>
+                        <Grid.Margin>
+                <OnPlatform x:TypeArguments="Thickness">
+                    <On Platform="iOS" Value="45,25,45,0" />
+                    <On Platform="Android" Value="45,15,45,0" />
+                </OnPlatform>
+            </Grid.Margin>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="1.5*"/>
                             <RowDefinition Height="1.5*"/>

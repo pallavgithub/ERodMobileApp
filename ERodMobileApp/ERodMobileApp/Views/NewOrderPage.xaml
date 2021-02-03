@@ -6,13 +6,14 @@
              prism:ViewModelLocator.AutowireViewModel="True"
              NavigationPage.HasNavigationBar="False">
     <ContentPage.Content>
-        <StackLayout>
+        <Grid>
+            <Grid BackgroundColor="#FF6600" HeightRequest="200" VerticalOptions="Start"/>
             <ScrollView VerticalScrollBarVisibility="Never">
                 <StackLayout>
                     <Grid BackgroundColor="#FF6600" HeightRequest="60">
                         <Grid.Padding>
                             <OnPlatform x:TypeArguments="Thickness">
-                                <On Platform="iOS" Value="20,20,20,0" />
+                                <On Platform="iOS" Value="20,0,20,0" />
                                 <On Platform="Android" Value="20,20,20,0"/>
                             </OnPlatform>
                         </Grid.Padding>
@@ -24,7 +25,7 @@
                         <Image Source="RodWhite.png" HeightRequest="30"/>
                         <Label Text="New Order" Grid.Column="1" FontSize="24" FontFamily="{StaticResource InterMedium}" TextColor="White" HorizontalOptions="Center" VerticalOptions="CenterAndExpand"/>
                     </Grid>
-                    <StackLayout Margin="20,10,20,50" Spacing="30">
+                    <StackLayout Padding="20,10,20,50" Spacing="30" BackgroundColor="White">
                         <Label Text="Update Order Information" FontFamily="{StaticResource InterMedium}" TextColor="#50555C" FontSize="24" Margin="5,0,0,0"/>
                         <StackLayout Spacing="0">
                             <Label Text="Location Name" FontFamily="{StaticResource InterRegular}" TextTransform="Uppercase" FontSize="18" TextColor="#FF6600"/>
@@ -123,6 +124,6 @@
                     </StackLayout>
                 </StackLayout>
             </ScrollView>
-        </StackLayout>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

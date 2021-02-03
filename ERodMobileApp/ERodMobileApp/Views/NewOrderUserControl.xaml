@@ -6,34 +6,34 @@
              prism:ViewModelLocator.AutowireViewModel="True"
              NavigationPage.HasNavigationBar="False">
     <ContentView.Content>
-        <StackLayout>
+        <Grid>
+            <Image Source="BannerBGred.png" VerticalOptions="Start"/>
             <ScrollView VerticalScrollBarVisibility="Never">
                 <Grid>
-                    <Image Source="BannerBGred.png" VerticalOptions="Start"/>
-                    <Grid RowSpacing="20">
-                        <Grid.Margin>
+                    <StackLayout>
+                        <StackLayout Orientation="Horizontal" Spacing="14" Margin="0,0,0,30" HorizontalOptions="FillAndExpand"
+                             VerticalOptions="FillAndExpand">                            
+                        <StackLayout.Padding>
                             <OnPlatform x:TypeArguments="Thickness">
-                                <On Platform="iOS" Value="15,45,15,30" />
-                                <On Platform="Android" Value="15,35,15,30"/>
+                                <On Platform="iOS" Value="15,0,15,0" />
+                                <On Platform="Android" Value="15,35,15,0"/>
                             </OnPlatform>
-                        </Grid.Margin>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                        </Grid.RowDefinitions>
-                        <StackLayout Orientation="Horizontal" Grid.Row="0" Spacing="14" Margin="0,0,0,30" HorizontalOptions="FillAndExpand"
-                             VerticalOptions="FillAndExpand">
+                        </StackLayout.Padding>
                             <Label Text="New Order" FontFamily="{StaticResource RobotoLight}" HorizontalOptions="Start" TextColor="#333333" FontSize="26" VerticalOptions="CenterAndExpand" TextTransform="Uppercase"/>
                             <Image Source="RodLogo.png" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" HeightRequest="30"/>
                         </StackLayout>
-                        <Frame Grid.Row="1" Padding="0" HasShadow="False" BackgroundColor="#FF6600" CornerRadius="8" HeightRequest="36">
+                        <StackLayout BackgroundColor="White">
+                            <StackLayout.Padding>
+                            <OnPlatform x:TypeArguments="Thickness">
+                                <On Platform="iOS" Value="15,0,15,30" />
+                                <On Platform="Android" Value="15,0,15,30"/>
+                            </OnPlatform>
+                        </StackLayout.Padding>
+                        <Frame Padding="0" HasShadow="False" BackgroundColor="#FF6600" CornerRadius="8" HeightRequest="36">
                             <Label Text="Select order to copy" FontFamily="{StaticResource InterMedium}" HorizontalTextAlignment="Center" TextColor="White" VerticalOptions="CenterAndExpand"
                                FontSize="20" TextTransform="Uppercase"/>
                         </Frame>
-                        <ListView ItemsSource="{Binding PastOrders}" Grid.Row="2" RowHeight="50" Margin="0,0,0,20" VerticalScrollBarVisibility="Never" SelectionMode="None">
+                        <ListView ItemsSource="{Binding PastOrders}" RowHeight="50" Margin="0,0,0,20" VerticalScrollBarVisibility="Never" SelectionMode="None">
                             <ListView.ItemTemplate>
                                 <DataTemplate>
                                     <ViewCell>
@@ -46,10 +46,10 @@
                                 </DataTemplate>
                             </ListView.ItemTemplate>
                         </ListView>
-                        <Button Grid.Row="3" Text="start from scratch" FontFamily="{StaticResource RobotoMedium}" TextTransform="Uppercase" BackgroundColor="#FF6600" TextColor="White" CornerRadius="3"
+                        <Button Text="start from scratch" FontFamily="{StaticResource RobotoMedium}" TextTransform="Uppercase" BackgroundColor="#FF6600" TextColor="White" CornerRadius="3"
                         FontSize="18" HeightRequest="38" WidthRequest="241" Padding="2" HorizontalOptions="CenterAndExpand"
                                 Command="{Binding StartFromScratchCommand}"/>
-                        <Frame Grid.Row="4" HasShadow="False" OutlineColor="#FF6600" CornerRadius="10" BackgroundColor="#F0FBFF" Margin="20,50,20,10" 
+                        <Frame HasShadow="False" OutlineColor="#FF6600" CornerRadius="10" BackgroundColor="#F0FBFF" Margin="20,50,20,10" 
                        Padding="12">
                             <StackLayout>
                                 <Label Text="Questions? Contact Exceed" FontFamily="{StaticResource InterMedium}" TextColor="#FF6600" HorizontalTextAlignment="Center" FontSize="20"/>
@@ -73,9 +73,10 @@
                                 </Grid>
                             </StackLayout>
                         </Frame>
-                    </Grid>
+                    </StackLayout>
+                        </StackLayout>
                 </Grid>
             </ScrollView>
-        </StackLayout>
+        </Grid>
     </ContentView.Content>
 </ContentView>

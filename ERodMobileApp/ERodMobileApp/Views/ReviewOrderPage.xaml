@@ -11,24 +11,32 @@
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
+        <Grid>
+             <Image Source="BannerBGgreen.png" VerticalOptions="Start"/>
         <ScrollView>
             <Grid>
-                <Image Source="BannerBGgreen.png" VerticalOptions="Start"/>
-                <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-                    <StackLayout.Margin>
-                        <OnPlatform x:TypeArguments="Thickness">
-                            <On Platform="iOS" Value="15,40,15,30" />
-                            <On Platform="Android" Value="15,30,15,30" />
-                        </OnPlatform>
-                    </StackLayout.Margin>
+                <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">                    
                     <StackLayout Orientation="Horizontal">
+                        <StackLayout.Padding>
+                        <OnPlatform x:TypeArguments="Thickness">
+                            <On Platform="iOS" Value="15,0,15,0" />
+                            <On Platform="Android" Value="15,30,15,0" />
+                        </OnPlatform>
+                    </StackLayout.Padding>
                         <Label Text="REVIEW ORDER" FontFamily="{StaticResource RobotoLight}" FontSize="28" TextColor="#FF6600"/>
                         <Image Source="RodLogo.png" HorizontalOptions="EndAndExpand" HeightRequest="30"/>
                     </StackLayout>
-                    <Frame Padding="0" BackgroundColor="#FF6600" CornerRadius="8" HeightRequest="36" HasShadow="False" Margin="0,20,0,0">
+                    <Frame Padding="0" BackgroundColor="#FF6600" CornerRadius="8" HeightRequest="36" HasShadow="False" Margin="15,20,15,0">
                         <Label Text="Well Name" FontFamily="{StaticResource InterRegular}" HorizontalTextAlignment="Center" TextColor="White" VerticalOptions="CenterAndExpand"
                                FontSize="18" TextTransform="Uppercase"/>
                     </Frame>
+                    <StackLayout BackgroundColor="White">
+                        <StackLayout.Padding>
+                        <OnPlatform x:TypeArguments="Thickness">
+                            <On Platform="iOS" Value="15,0,15,30" />
+                            <On Platform="Android" Value="15,0,15,30" />
+                        </OnPlatform>
+                    </StackLayout.Padding>
                     <Label Text="{Binding WellName}" FontFamily="{StaticResource InterBold}" HorizontalTextAlignment="Center" TextColor="Black" VerticalOptions="CenterAndExpand"
                                FontSize="24"/>
                     <Frame Padding="0" BackgroundColor="#FF6600" CornerRadius="8" HeightRequest="36" HasShadow="False">
@@ -209,7 +217,9 @@
                             HorizontalOptions="CenterAndExpand" Padding="1" CornerRadius="3"/>
                     </StackLayout>
                 </StackLayout>
+                    </StackLayout>
             </Grid>
         </ScrollView>
+            </Grid>
     </ContentPage.Content>
 </ContentPage>

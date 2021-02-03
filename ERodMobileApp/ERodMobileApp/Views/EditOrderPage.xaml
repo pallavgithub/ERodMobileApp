@@ -4,16 +4,16 @@
              x:Class="ERodMobileApp.Views.EditOrderPage"
              xmlns:prism="http://prismlibrary.com" xmlns:local="clr-namespace:ERodMobileApp.Helpers"
              prism:ViewModelLocator.AutowireViewModel="True"
-             NavigationPage.HasNavigationBar="False">
+             NavigationPage.HasNavigationBar="False">             
     <ContentPage.Content>
         <Grid>
-            <StackLayout>
+            <Grid BackgroundColor="#FF6600" HeightRequest="60" VerticalOptions="Start"/>
                 <ScrollView VerticalScrollBarVisibility="Never">
                     <StackLayout>
                         <Grid BackgroundColor="#FF6600" HeightRequest="60">
                             <Grid.Padding>
                                 <OnPlatform x:TypeArguments="Thickness">
-                                    <On Platform="iOS" Value="20,25,20,0" />
+                                    <On Platform="iOS" Value="20,0,20,0" />
                                     <On Platform="Android" Value="20,20,20,0"/>
                                 </OnPlatform>
                             </Grid.Padding>
@@ -25,7 +25,7 @@
                             <Image Source="RodWhite.png" HeightRequest="25"/>
                             <Label Text="Edit Order" FontFamily="{StaticResource InterMedium}" Grid.Column="1" FontSize="24" TextColor="White" HorizontalOptions="Center" VerticalOptions="CenterAndExpand"/>
                         </Grid>
-                        <StackLayout Margin="15,0,15,30">
+                        <StackLayout Padding="15,0,15,30" BackgroundColor="White">
                             <Frame Padding="0" BackgroundColor="#FF6600" CornerRadius="8" HeightRequest="36" HasShadow="False" Margin="0,20,0,0">
                                 <Label Text="Order Information" FontFamily="{StaticResource InterRegular}" TextTransform="Uppercase" HorizontalTextAlignment="Center" TextColor="White" VerticalOptions="CenterAndExpand"
                                FontSize="18"/>
@@ -162,7 +162,7 @@
                         </StackLayout>
                     </StackLayout>
                 </ScrollView>
-            </StackLayout>
+            
             <Grid IsVisible="{Binding IsBusy}" BackgroundColor="#fcf0e3" Opacity="0.69" VerticalOptions="FillAndExpand">
                 <ActivityIndicator Color="#FF6600" IsVisible="{Binding IsBusy}" IsRunning="{Binding IsBusy}"  HeightRequest="30" WidthRequest="30"
                                    HorizontalOptions="Center" VerticalOptions="Start" Margin="0,300,0,0"/>

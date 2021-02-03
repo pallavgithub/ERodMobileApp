@@ -25,9 +25,7 @@
                         <UserControl:ProfileUserControl/>
                     </StackLayout>
                     <StackLayout VerticalOptions="FillAndExpand" IsVisible="{Binding TabData, Converter={StaticResource TabVisibilityConverter}, ConverterParameter=Orders}">
-                        <ScrollView VerticalScrollBarVisibility="Never">
                             <UserControl:OrdersUserControl/>
-                        </ScrollView>
                     </StackLayout>
                     <StackLayout VerticalOptions="FillAndExpand" IsVisible="{Binding TabData, Converter={StaticResource TabVisibilityConverter}, ConverterParameter=NewOrder}">
                         <UserControl:NewOrderUserControl/>
@@ -44,7 +42,7 @@
                         Type=RelativeToParent,Property=Width,Factor=1,Constant=0}"
                     RelativeLayout.HeightConstraint="{ConstraintExpression
                         Type=RelativeToParent,Property=Height,Factor=1,Constant=0}">-->
-            <Frame Grid.Row="1" Padding="0,3,0,3" BackgroundColor="#F0FBFF" HasShadow="True">
+            <Frame Grid.Row="1" Padding="0,3,0,3" BackgroundColor="#F0FBFF" HasShadow="False">
                 <StackLayout Orientation="Horizontal" Spacing="0" VerticalOptions="Start">
                     <Grid HorizontalOptions="FillAndExpand" HeightRequest="44" WidthRequest="48">
                         <Image Source="Profileon" IsVisible="True"/>
