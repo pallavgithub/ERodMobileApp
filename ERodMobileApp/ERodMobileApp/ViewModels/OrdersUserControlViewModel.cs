@@ -5,6 +5,7 @@ using Prism.Navigation;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using Xamarin.Forms;
 
 namespace ERodMobileApp.ViewModels
 {
@@ -167,11 +168,66 @@ namespace ERodMobileApp.ViewModels
             get => _orderStatus;
             set => SetProperty(ref _orderStatus, value);
         }
+        public string ActiveOrderListHeight { get; set; }
+        public string ClosedOrderListHeight { get; set; }
         public DelegateCommand<SalesOrderDataModel> EditOrderCommand { get; set; }
         public OrdersUserControlViewModel(INavigationService navigationService) : base(navigationService)
         {
             GetSalesOrderList();
+            //GetCustomerSalesOrders();
             EditOrderCommand = new DelegateCommand<SalesOrderDataModel>(GoToEditOrderPage);
+        }
+        public async void GetCustomerSalesOrders()
+        {
+            IsBusy = true;
+            var data = (UserModel)Application.Current.Properties["User"];
+            UserDataModel user = new UserDataModel();
+            user.CompanyName = data.Company;
+            user.CustomerName = data.Name;
+            user.PhoneNumber = data.PhoneNumber;
+            ActiveSalesOrders = new ObservableCollection<SalesOrderDataModel>();
+            ClosedSalesOrders = new ObservableCollection<SalesOrderDataModel>();
+            ResponseModel<SalesOrder> response = await new ApiData().PostData<SalesOrder>("api/SalesOrder/GetCustomerOrders", user, true);
+            if (response != null && response.data != null)
+            {
+                foreach (var item in response.data.Orders)
+                {
+                    SalesOrderDataModel salesOrder = new SalesOrderDataModel();
+                    salesOrder.OrderID = item.Id;
+                    salesOrder.OrderTime = item.CreatedDate;
+                    salesOrder.SOId = item.CustomerId;
+                    salesOrder.WellName = item.CustomerName;
+                    salesOrder.Customer = item.CustomerPo;
+                    salesOrder.Phone = item.PoNum;
+                    salesOrder.Engineer = item.Salesman;
+                    salesOrder.GlCode = item.Carrier;
+                    salesOrder.ShippingName = item.Salesman;
+                    salesOrder.DeliveryTime = item.IssuedDate;
+                    salesOrder.DriverName = item.Carrier;
+                    salesOrder.DriverPhone = item.CustomerContact;
+                    if (item.Status == "60")
+                        salesOrder.Status = "Closed";
+                    if (item.Status == "10")
+                        salesOrder.Status = "Provisional";
+                    if (item.Status == "20")
+                        salesOrder.Status = "Confirmed";
+                    if (item.Status == "25")
+                        salesOrder.Status = "Processing";
+                    if (item.Status == "60")
+                        salesOrder.Status = "Closed";
+                    if (item.Status == "60")
+                        salesOrder.Status = "Closed";
+                    if (item.Status == "60")
+                        salesOrder.Status = "Closed";
+                    if (item.Status == "60")
+                        ClosedSalesOrders.Add(salesOrder);
+                    else
+                        ActiveSalesOrders.Add(salesOrder);
+                }
+                ActiveOrderListHeight = (ActiveSalesOrders.Count * 150).ToString();
+                ClosedOrderListHeight = (ActiveSalesOrders.Count * 150).ToString();
+            }
+            IsBusy = false;
         }
         public void GoToSignaturePage()
         {

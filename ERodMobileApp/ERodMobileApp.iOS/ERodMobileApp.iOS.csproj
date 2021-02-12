@@ -449,6 +449,11 @@
     <BundleResource Include="Resources\Remove.png" />
     <BundleResource Include="Resources\Remove%402x.png" />
     <BundleResource Include="Resources\Remove%403x.png" />
+    <BundleResource Include="Resources\PolishedRod.png" />
+    <BundleResource Include="Resources\PonyRod.png" />
+    <BundleResource Include="Resources\SuckerRod.png" />
+    <BundleResource Include="Resources\Coupling.png" />
+    <BundleResource Include="Resources\SinkerBar.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>

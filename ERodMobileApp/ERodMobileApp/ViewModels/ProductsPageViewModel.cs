@@ -119,6 +119,18 @@ namespace ERodMobileApp.ViewModels
             get => _productData;
             set => SetProperty(ref _productData, value);
         }
+        private string _selectedProductImage;
+        public string SelectedProductImage
+        {
+            get => _selectedProductImage;
+            set => SetProperty(ref _selectedProductImage, value);
+        }
+        private bool _imageIsVisible;
+        public bool ImageIsVisible
+        {
+            get => _imageIsVisible;
+            set => SetProperty(ref _imageIsVisible, value);
+        }
         private List<ProductModel> _productList;
         public List<ProductModel> ProductList
         {
@@ -141,6 +153,15 @@ namespace ERodMobileApp.ViewModels
         public DelegateCommand DeleteAndReturnBtnCommand { get; set; }
         public ProductsPageViewModel(INavigationService navigationService) : base(navigationService)
         {
+            TabData = new GroupData()
+            {
+                SelectedGroup = "SuckerRod",
+                SelectedGroupBgColor = Color.FromHex("#F0FBFF"),
+                SelectedGroupLblColor = Color.FromHex("#FF6600"),
+                SelectedGroupType = "Group"
+            };
+            ImageIsVisible = true;
+            SelectedProductImage = "SuckerRod.png";
             PonyRod = new List<ProductModel>();
             SuckerRod = new List<ProductModel>();
             PolishedRod = new List<ProductModel>();
@@ -149,13 +170,6 @@ namespace ERodMobileApp.ViewModels
             RodGuide = new List<ProductModel>();
             Coupling = new List<ProductModel>();
             GetAllProducts();
-            TabData = new GroupData()
-            {
-                SelectedGroup = "SuckerRod",
-                SelectedGroupBgColor = Color.FromHex("#F0FBFF"),
-                SelectedGroupLblColor = Color.FromHex("#FF6600"),
-                SelectedGroupType = "Group"
-            };
             SelectedProductGroup = "SuckerRod";
             SuckerRodSelectedCommand = new DelegateCommand(() => ProductGroupSelected("SuckerRod"));
             PonyRodSelectedCommand = new DelegateCommand(() => ProductGroupSelected("PonyRod"));
@@ -190,17 +204,40 @@ namespace ERodMobileApp.ViewModels
             SelectedMiscProduct = string.Empty;
 
             if (TabData.SelectedGroup == "SuckerRod")
+            {
                 ProductList = new List<ProductModel>(SuckerRod);
+                SelectedProductImage = "SuckerRod.png";
+                ImageIsVisible = true;
+            }
             if (TabData.SelectedGroup == "PonyRod")
+            {
                 ProductList = new List<ProductModel>(PonyRod);
+                SelectedProductImage = "PonyRod.png";
+                ImageIsVisible = true;
+            }
             if (TabData.SelectedGroup == "Couplings")
+            {
                 ProductList = new List<ProductModel>(Coupling);
+                SelectedProductImage = "Coupling.png"; 
+                ImageIsVisible = true;
+            }
             if (TabData.SelectedGroup == "SinkerBar")
+            {
                 ProductList = new List<ProductModel>(SinkerBar);
+                SelectedProductImage = "SinkerBar.png";
+                ImageIsVisible = true;
+            }
             if (TabData.SelectedGroup == "PolishedRod")
+            {
                 ProductList = new List<ProductModel>(PolishedRod);
+                SelectedProductImage = "PolishedRod.png";
+                ImageIsVisible = true;
+            }
             if (TabData.SelectedGroup == "MiscItem")
+            {
                 ProductList = new List<ProductModel>(OtherItem);
+                ImageIsVisible = false;
+            }
         }
         public void ProductGradeSelected(string grade)
         {
@@ -251,6 +288,7 @@ namespace ERodMobileApp.ViewModels
         }
         public async Task GetAllProducts()
         {
+            IsBusy = true;
             var response = await new ApiData().GetData<List<ProductModel>>("api/Products/GetAllEOEParts", true);
             AllProducts = new List<ProductModel>(response.data);
             foreach (var item in AllProducts)
@@ -270,6 +308,9 @@ namespace ERodMobileApp.ViewModels
                 if (item.Menu_1_Selection == "Coupling")
                     Coupling.Add(item);
             }
+            ProductList = new List<ProductModel>(SuckerRod);
+            ProductGroupSelected("SuckerRod");
+            IsBusy = false;
             //var item = AllProducts.Find(i => i.Menu_1_Selection == "Sucker Rod" || i.Menu_2_Selection == "EH" || i.Menu_3_Selection == "1 IN" || i.Menu_4_Selection == "25 FT");
         }
         public void GetProductItem(string data, string column)
