@@ -5,6 +5,7 @@ using Prism.Navigation;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using Xamarin.Forms;
 
 namespace ERodMobileApp.ViewModels
@@ -30,8 +31,8 @@ namespace ERodMobileApp.ViewModels
             get => _soListPageIsVisible;
             set => SetProperty(ref _soListPageIsVisible, value);
         }
-        private ObservableCollection<Order> _orders;
-        public ObservableCollection<Order> Orders
+        private ObservableCollection<SalesOrder> _orders;
+        public ObservableCollection<SalesOrder> Orders
         {
             get => _orders;
             set => SetProperty(ref _orders, value);
@@ -48,44 +49,59 @@ namespace ERodMobileApp.ViewModels
             get => _closedSalesOrders;
             set => SetProperty(ref _closedSalesOrders, value);
         }
-        private ObservableCollection<OrderItem> _suckerList;
-        public ObservableCollection<OrderItem> SuckerList
+
+
+        private ObservableCollection<SalesOrderModel> _activeSalesOrdersList;
+        public ObservableCollection<SalesOrderModel> ActiveSalesOrdersList
+        {
+            get => _activeSalesOrdersList;
+            set => SetProperty(ref _activeSalesOrdersList, value);
+        }
+        private ObservableCollection<SalesOrderModel> _closedSalesOrdersList;
+        public ObservableCollection<SalesOrderModel> ClosedSalesOrdersList
+        {
+            get => _closedSalesOrdersList;
+            set => SetProperty(ref _closedSalesOrdersList, value);
+        }
+
+        private ObservableCollection<SalesOrderItemModel> _suckerList;
+        public ObservableCollection<SalesOrderItemModel> SuckerList
         {
             get => _suckerList;
             set => SetProperty(ref _suckerList, value);
         }
-        private ObservableCollection<OrderItem> _ponyList;
-        public ObservableCollection<OrderItem> PonyList
+        private ObservableCollection<SalesOrderItemModel> _ponyList;
+        public ObservableCollection<SalesOrderItemModel> PonyList
         {
             get => _ponyList;
             set => SetProperty(ref _ponyList, value);
         }
-        private ObservableCollection<OrderItem> _couplings;
-        public ObservableCollection<OrderItem> Couplings
+        private ObservableCollection<SalesOrderItemModel> _couplings;
+        public ObservableCollection<SalesOrderItemModel> Couplings
         {
             get => _couplings;
             set => SetProperty(ref _couplings, value);
         }
-        private ObservableCollection<OrderItem> _sinkerBar;
-        public ObservableCollection<OrderItem> SinkerBar
+        private ObservableCollection<SalesOrderItemModel> _sinkerBar;
+        public ObservableCollection<SalesOrderItemModel> SinkerBar
         {
             get => _sinkerBar;
             set => SetProperty(ref _sinkerBar, value);
         }
-        private ObservableCollection<OrderItem> _polishedRod;
-        public ObservableCollection<OrderItem> PolishedRod
+        private ObservableCollection<SalesOrderItemModel> _polishedRod;
+        public ObservableCollection<SalesOrderItemModel> PolishedRod
         {
             get => _polishedRod;
             set => SetProperty(ref _polishedRod, value);
         }
-        private ObservableCollection<OrderItem> _stablizerBar;
-        public ObservableCollection<OrderItem> StablizerBar
+        private ObservableCollection<SalesOrderItemModel> _stablizerBar;
+        public ObservableCollection<SalesOrderItemModel> StablizerBar
         {
             get => _stablizerBar;
             set => SetProperty(ref _stablizerBar, value);
         }
-        private ObservableCollection<OrderItem> _otherItems;
-        public ObservableCollection<OrderItem> OtherItems
+        private ObservableCollection<SalesOrderItemModel> _otherItems;
+        public ObservableCollection<SalesOrderItemModel> OtherItems
         {
             get => _otherItems;
             set => SetProperty(ref _otherItems, value);
@@ -168,64 +184,221 @@ namespace ERodMobileApp.ViewModels
             get => _orderStatus;
             set => SetProperty(ref _orderStatus, value);
         }
+        private string _contact;
+        public string Contact
+        {
+            get => _contact;
+            set => SetProperty(ref _contact, value);
+        }
+        private string _engineer;
+        public string Engineer
+        {
+            get => _engineer;
+            set => SetProperty(ref _engineer, value);
+        }
+        private string _aFE;
+        public string AFE
+        {
+            get => _aFE;
+            set => SetProperty(ref _aFE, value);
+        }
+        private string _note;
+        public string Note
+        {
+            get => _note;
+            set => SetProperty(ref _note, value);
+        }
+        private string _consultant;
+        public string Consultant
+        {
+            get => _consultant;
+            set => SetProperty(ref _consultant, value);
+        }
+        private string _exceedName;
+        public string ExceedName
+        {
+            get => _exceedName;
+            set => SetProperty(ref _exceedName, value);
+        }
+        private string _exceedPhone;
+        public string ExceedPhone
+        {
+            get => _exceedPhone;
+            set => SetProperty(ref _exceedPhone, value);
+        }
+        private string _exceedEmail;
+        public string ExceedEmail
+        {
+            get => _exceedEmail;
+            set => SetProperty(ref _exceedEmail, value);
+        }
         public string ActiveOrderListHeight { get; set; }
         public string ClosedOrderListHeight { get; set; }
-        public DelegateCommand<SalesOrderDataModel> EditOrderCommand { get; set; }
+        private string _suckerListHeight;
+        public string SuckerListHeight
+        {
+            get => _suckerListHeight;
+            set => SetProperty(ref _suckerListHeight, value);
+        }
+        private string _ponyListHeight;
+        public string PonyListHeight
+        {
+            get => _ponyListHeight;
+            set => SetProperty(ref _ponyListHeight, value);
+        }
+        private string _polishedListHeight;
+        public string PolishedListHeight
+        {
+            get => _polishedListHeight;
+            set => SetProperty(ref _polishedListHeight, value);
+        }
+        private string _couplingListHeight;
+        public string CouplingListHeight
+        {
+            get => _couplingListHeight;
+            set => SetProperty(ref _couplingListHeight, value);
+        }
+        private string _sinkerListHeight;
+        public string SinkerListHeight
+        {
+            get => _sinkerListHeight;
+            set => SetProperty(ref _sinkerListHeight, value);
+        }
+        private string _stablizerListHeight;
+        public string StablizerListHeight
+        {
+            get => _stablizerListHeight;
+            set => SetProperty(ref _stablizerListHeight, value);
+        }
+        private string _othersListHeight;
+        public string OthersListHeight
+        {
+            get => _othersListHeight;
+            set => SetProperty(ref _othersListHeight, value);
+        }
+        public DelegateCommand<SalesOrderModel> EditOrderCommand { get; set; }
         public OrdersUserControlViewModel(INavigationService navigationService) : base(navigationService)
         {
-            GetSalesOrderList();
-            //GetCustomerSalesOrders();
-            EditOrderCommand = new DelegateCommand<SalesOrderDataModel>(GoToEditOrderPage);
+            GetExceedDetails();
+            GetCustomerSalesOrders();
+            EditOrderCommand = new DelegateCommand<SalesOrderModel>(GoToEditOrderPage);
         }
         public async void GetCustomerSalesOrders()
         {
             IsBusy = true;
-            var data = (UserModel)Application.Current.Properties["User"];
+            var user_data = (UserModel)Application.Current.Properties["User"];
             UserDataModel user = new UserDataModel();
-            user.CompanyName = data.Company;
-            user.CustomerName = data.Name;
-            user.PhoneNumber = data.PhoneNumber;
-            ActiveSalesOrders = new ObservableCollection<SalesOrderDataModel>();
-            ClosedSalesOrders = new ObservableCollection<SalesOrderDataModel>();
-            ResponseModel<SalesOrder> response = await new ApiData().PostData<SalesOrder>("api/SalesOrder/GetCustomerOrders", user, true);
-            if (response != null && response.data != null)
+            //user.CompanyName = user_data.Company;
+            //user.CustomerName = user_data.Name;
+            //user.PhoneNumber = user_data.PhoneNumber;
+            //user.UserGroup = user_data.UserGroup;
+            //user.DateCreated = string.Empty;
+            var names = user_data.Name.Split(' ');
+            user.CustomerName = names[0];
+            user.UserGroup = user_data.UserGroup;
+            ActiveSalesOrdersList = new ObservableCollection<SalesOrderModel>();
+            ClosedSalesOrdersList = new ObservableCollection<SalesOrderModel>();
+            try
             {
-                foreach (var item in response.data.Orders)
+                var response = await new ApiData().PostData<List<SalesOrder>>("api/SalesOrder/GetCustomerOrders", user, true);
+                if (response != null && response.data != null)
                 {
-                    SalesOrderDataModel salesOrder = new SalesOrderDataModel();
-                    salesOrder.OrderID = item.Id;
-                    salesOrder.OrderTime = item.CreatedDate;
-                    salesOrder.SOId = item.CustomerId;
-                    salesOrder.WellName = item.CustomerName;
-                    salesOrder.Customer = item.CustomerPo;
-                    salesOrder.Phone = item.PoNum;
-                    salesOrder.Engineer = item.Salesman;
-                    salesOrder.GlCode = item.Carrier;
-                    salesOrder.ShippingName = item.Salesman;
-                    salesOrder.DeliveryTime = item.IssuedDate;
-                    salesOrder.DriverName = item.Carrier;
-                    salesOrder.DriverPhone = item.CustomerContact;
-                    if (item.Status == "60")
-                        salesOrder.Status = "Closed";
-                    if (item.Status == "10")
-                        salesOrder.Status = "Provisional";
-                    if (item.Status == "20")
-                        salesOrder.Status = "Confirmed";
-                    if (item.Status == "25")
-                        salesOrder.Status = "Processing";
-                    if (item.Status == "60")
-                        salesOrder.Status = "Closed";
-                    if (item.Status == "60")
-                        salesOrder.Status = "Closed";
-                    if (item.Status == "60")
-                        salesOrder.Status = "Closed";
-                    if (item.Status == "60")
-                        ClosedSalesOrders.Add(salesOrder);
-                    else
-                        ActiveSalesOrders.Add(salesOrder);
+                    var all_Sales_Orders = response.data;
+                    foreach (var item in all_Sales_Orders)
+                    {
+                        SalesOrderModel salesOrder = new SalesOrderModel();
+                        salesOrder.SalesOrderId = item.Num;
+                        salesOrder.OrderId = "SO" + item.Num;
+                        salesOrder.Status = item.StatusId.ToString();
+                        salesOrder.CreatedDateAndTime = item.DateCreated.ToString();
+                        salesOrder.DriverPhone = item.CarrierServiceId;
+                        salesOrder.DriverName = item.CarrierServiceId;
+                        salesOrder.Phone = item.Phone;
+                        salesOrder.Consultant = item.Username;
+                        salesOrder.Note = item.Note;
+                        salesOrder.Customer = item.Username;
+                        salesOrder.Contact = item.CustomerContact;
+                        salesOrder.TruckingCo = item.CarrierId;
+
+                        foreach (var cf in item.CustomFields)
+                        {
+                            if (!string.IsNullOrEmpty(cf.Name))
+                            {
+                                if (cf.Name == "Well Name")
+                                {
+                                    salesOrder.WellName = cf.Info;
+                                }
+                                else if (cf.Name == "Delivery Time")
+                                {
+                                    salesOrder.DeliveryDateAndTime = cf.Info;
+                                }
+                                else if (cf.Name == "Engineer/Rig Supervisor")
+                                {
+                                    salesOrder.Engineer = cf.Info;
+                                }
+                                else if (cf.Name == "WBS#/AFE#")
+                                {
+                                    salesOrder.AFE = cf.Info;
+                                }
+                                else if(cf.Name== "Cost/GL Code")
+                                {
+                                    salesOrder.GlCode = cf.Info;
+                                }
+                            }
+                        }
+                        if (item.CustomFields.Count == 0)
+                        {
+                            salesOrder.WellName = "No Data";
+                            salesOrder.DeliveryDateAndTime = "No Data";
+                            salesOrder.Engineer = "No Data";
+                            salesOrder.AFE = "No Data";
+                        }
+                        if (item.StatusId == "10")
+                            salesOrder.StatusInDetail = "Provisional";
+                        if (item.StatusId == "20")
+                            salesOrder.StatusInDetail = "Confirmed";
+                        if (item.StatusId == "25")
+                            salesOrder.StatusInDetail = "Processing";
+                        //if (item.StatusId == "25")
+                        //{
+                        //    foreach (var cf in item.CustomFields)
+                        //    {
+                        //        if (!string.IsNullOrEmpty(cf.Name) && cf.Name == "CF-Shipped" || cf.Name == "CF-Delivered")
+                        //        {
+                        //            if (cf.Name == "CF-Shipped")
+                        //            {
+                        //                if (cf.Info == "1")
+                        //                    salesOrder.StatusInDetail = "Shipped";
+                        //            }
+                        //            else if (cf.Name == "CF-Delivered")
+                        //            {
+                        //                if (cf.Info == "1")
+                        //                    salesOrder.StatusInDetail = "Delivered";
+                        //            }
+                        //            else
+                        //            {
+                        //                salesOrder.StatusInDetail = "Processing";
+                        //            }
+                        //        }
+                        //    }
+
+                        //}
+
+                        if (item.StatusId == "60")
+                        {
+                            salesOrder.StatusInDetail = "Closed";
+                            ClosedSalesOrdersList.Add(salesOrder);
+                        }
+                        else
+                            ActiveSalesOrdersList.Add(salesOrder);
+                    }
+                    ActiveOrderListHeight = (ActiveSalesOrdersList.Count * 120).ToString();
+                    ClosedOrderListHeight = (ClosedSalesOrdersList.Count * 60).ToString();
                 }
-                ActiveOrderListHeight = (ActiveSalesOrders.Count * 150).ToString();
-                ClosedOrderListHeight = (ActiveSalesOrders.Count * 150).ToString();
+            }
+            catch (Exception e)
+            {
+
             }
             IsBusy = false;
         }
@@ -233,133 +406,89 @@ namespace ERodMobileApp.ViewModels
         {
             NavigationService.NavigateAsync("SignaturePage");
         }
-        public void GoToEditOrderPage(SalesOrderDataModel model)
+        public void GoToEditOrderPage(SalesOrderModel model)
         {
             NavigationParameters navigationParameters = new NavigationParameters();
             navigationParameters.Add("SalesOrderData", model);
             NavigationService.NavigateAsync("EditOrderPage", navigationParameters);
         }
-        public async void GetAllSalesOrders()
+        public void GetExceedDetails()
         {
-            IsBusy = true;
-            try
-            {
-                ResponseModel<SalesOrder> response = await new ApiData().GetData<SalesOrder>("api/SalesOrder/GetOrders", true);
-                if (response != null)
-                {
-                    var data = response.data.Orders;
-                    Orders = new ObservableCollection<Order>(data);
-                }
-                IsBusy = false;
-            }
-            catch (Exception e)
-            {
+            var UserDetails = (UserModel)Application.Current.Properties["User"];
+            ExceedName = UserDetails.SalesPersonName;
+            ExceedPhone = UserDetails.SalesPersonPhone;
+            ExceedEmail = UserDetails.SalesPersonEmail;
 
-            }
         }
-        public void GetSalesOrderList()
+        public async void GetClosedOrderDetails(SalesOrderModel so)
         {
             try
             {
                 IsBusy = true;
-                ActiveSalesOrders = new ObservableCollection<SalesOrderDataModel>();
-                ActiveSalesOrders.Add(new SalesOrderDataModel { OrderID = "Hobbs-WHX-14", OrderTime = "10/18/20", SOId = "SO201084", Status = "Provisional", WellName = "Packineau USA 21-3H - Grover 11-3TFH", Customer = "QEP", Phone = "John Doe", Engineer = "534675-6", GlCode = "534675-6", ShippingName = "ND Express Trucking", DeliveryTime = "10/18/20 10AM", DriverName = "Adam Smith", DriverPhone = "406-123-4567" });
-                ActiveSalesOrders.Add(new SalesOrderDataModel { OrderID = "Hobbs-WHX-12", OrderTime = "16/18/20", SOId = "SO201084", Status = "Provisional", WellName = "Packineau USA 21-3H - Grover 11-3TFH", Customer = "QEP", Phone = "John Doe", Engineer = "534675-6", GlCode = "534675-6", ShippingName = "ND Express Trucking", DeliveryTime = "10/18/20 10AM", DriverName = "Adam Smith", DriverPhone = "406-123-4567" });
-                ActiveSalesOrders.Add(new SalesOrderDataModel { OrderID = "Hobbs-WHX-11", OrderTime = "11/18/20", SOId = "SO201084", Status = "Confirmed", WellName = "Packineau USA 21-3H - Grover 11-3TFH", Customer = "QEP", Phone = "John Doe", Engineer = "534675-6", GlCode = "534675-6", ShippingName = "ND Express Trucking", DeliveryTime = "10/18/20 10AM", DriverName = "Adam Smith", DriverPhone = "406-123-4567" });
-                ActiveSalesOrders.Add(new SalesOrderDataModel { OrderID = "Hobbs-WHX-10", OrderTime = "13/18/20", SOId = "SO201084", Status = "Delivered", WellName = "Packineau USA 21-3H - Grover 11-3TFH", Customer = "QEP", Phone = "John Doe", Engineer = "534675-6", GlCode = "534675-6", ShippingName = "ND Express Trucking", DeliveryTime = "10/18/20 10AM", DriverName = "Adam Smith", DriverPhone = "406-123-4567" });
-                ActiveSalesOrders.Add(new SalesOrderDataModel { OrderID = "Hobbs-WHX-13", OrderTime = "11/18/20", SOId = "SO201084", Status = "Confirmed", WellName = "Packineau USA 21-3H - Grover 11-3TFH", Customer = "QEP", Phone = "John Doe", Engineer = "534675-6", GlCode = "534675-6", ShippingName = "ND Express Trucking", DeliveryTime = "10/18/20 10AM", DriverName = "Adam Smith", DriverPhone = "406-123-4567" });
-                ActiveSalesOrders.Add(new SalesOrderDataModel { OrderID = "Hobbs-WHX-15", OrderTime = "12/18/20", SOId = "SO201084", Status = "Processing", WellName = "Packineau USA 21-3H - Grover 11-3TFH", Customer = "QEP", Phone = "John Doe", Engineer = "534675-6", GlCode = "534675-6", ShippingName = "ND Express Trucking", DeliveryTime = "10/18/20 10AM", DriverName = "Adam Smith", DriverPhone = "406-123-4567" });
-                ActiveSalesOrders.Add(new SalesOrderDataModel { OrderID = "Hobbs-WHX-16", OrderTime = "12/18/20", SOId = "SO201084", Status = "Processing", WellName = "Packineau USA 21-3H - Grover 11-3TFH", Customer = "QEP", Phone = "John Doe", Engineer = "534675-6", GlCode = "534675-6", ShippingName = "ND Express Trucking", DeliveryTime = "10/18/20 10AM", DriverName = "Adam Smith", DriverPhone = "406-123-4567" });
-                ActiveSalesOrders.Add(new SalesOrderDataModel { OrderID = "Hobbs-WHX-17", OrderTime = "13/18/20", SOId = "SO201084", Status = "EnRoute", WellName = "Packineau USA 21-3H - Grover 11-3TFH", Customer = "QEP", Phone = "John Doe", Engineer = "534675-6", GlCode = "534675-6", ShippingName = "ND Express Trucking", DeliveryTime = "10/18/20 10AM", DriverName = "Adam Smith", DriverPhone = "406-123-4567" });
-                ActiveSalesOrders.Add(new SalesOrderDataModel { OrderID = "Hobbs-WHX-18", OrderTime = "14/18/20", SOId = "SO201084", Status = "Delivered", WellName = "Packineau USA 21-3H - Grover 11-3TFH", Customer = "QEP", Phone = "John Doe", Engineer = "534675-6", GlCode = "534675-6", ShippingName = "ND Express Trucking", DeliveryTime = "10/18/20 10AM", DriverName = "Adam Smith", DriverPhone = "406-123-4567" });
-
-                foreach (var activeSO in ActiveSalesOrders)
-                {
-                    activeSO.OrderItems = new List<OrderItem>();
-                    activeSO.OrderItems.Add(new OrderItem { Name = "EKD 1" + '"' + "25ft", Description = "+1" + '"' + "SM Simhole Coupling", Quantity = "66pcs", ProductType = "Sucker Rod" });
-                    activeSO.OrderItems.Add(new OrderItem { Name = "EKD 1" + '"' + "25ft", Description = "+1" + '"' + "SM Simhole Coupling", Quantity = "69pcs", ProductType = "Sucker Rod" });
-                    activeSO.OrderItems.Add(new OrderItem { Name = "EKD 1" + '"' + "25ft", Description = "+1/7" + '"' + "SM Fullsize Coupling", Quantity = "40pcs", ProductType = "Sucker Rod" });
-                    activeSO.OrderItems.Add(new OrderItem { Name = "EKD 1" + '"' + "25ft", Description = "+6/7" + '"' + "SM Simhole Coupling", Quantity = "23pcs", ProductType = "Sucker Rod" });
-                    activeSO.OrderItems.Add(new OrderItem { Name = "EKD 1" + '"' + "25ft", Description = "+7/8" + '"' + "SM Fullsize Coupling", Quantity = "65pcs", ProductType = "Sucker Rod" });
-                    activeSO.OrderItems.Add(new OrderItem { Name = "EKD 1" + '"' + "25ft", Description = "+1" + '"' + "SM Simhole Coupling", Quantity = "45pcs", ProductType = "Sucker Rod" });
-                    activeSO.OrderItems.Add(new OrderItem { Name = "EKD 1" + '"' + "25ft", Description = "+1" + '"' + "SM Simhole Coupling", Quantity = "65pcs", ProductType = "Sucker Rod" });
-                    activeSO.OrderItems.Add(new OrderItem { Name = "EKD 1" + '"' + "2ft", Description = "+1" + '"' + "SM Simhole Coupling", Quantity = "1pcs", ProductType = "Pony Rod" });
-                    activeSO.OrderItems.Add(new OrderItem { Name = "EKD 1" + '"' + "4ft", Description = "+1" + '"' + "SM Simhole Coupling", Quantity = "1pcs", ProductType = "Pony Rod" });
-                    activeSO.OrderItems.Add(new OrderItem { Name = "EKD 1" + '"' + "6ft", Description = "+1" + '"' + "SM Simhole Coupling", Quantity = "1pcs", ProductType = "Pony Rod" });
-                    activeSO.OrderItems.Add(new OrderItem { Name = "EKD 1" + '"' + "8ft", Description = "+1" + '"' + "SM Simhole Coupling", Quantity = "1pcs", ProductType = "Pony Rod" });
-                }
-
-                ClosedSalesOrders = new ObservableCollection<SalesOrderDataModel>();
-                ClosedSalesOrders.Add(new SalesOrderDataModel { OrderID = "Hobbs-WHX-1", OrderTime = "10/18/20", SOId = "SO201084", Status = "Closed", WellName = "Packineau USA 21-3H - Grover 11-3TFH", Customer = "QEP", Phone = "John Doe", Engineer = "534675-6", GlCode = "534675-6", ShippingName = "ND Express Trucking", DeliveryTime = "10/18/20 10AM", DriverName = "Adam Smith", DriverPhone = "406-123-4567" });
-                ClosedSalesOrders.Add(new SalesOrderDataModel { OrderID = "Hobbs-WHX-2", OrderTime = "16/18/20", SOId = "SO201084", Status = "Closed", WellName = "Packineau USA 21-3H - Grover 11-3TFH", Customer = "QEP", Phone = "John Doe", Engineer = "534675-6", GlCode = "534675-6", ShippingName = "ND Express Trucking", DeliveryTime = "10/18/20 10AM", DriverName = "Adam Smith", DriverPhone = "406-123-4567" });
-                ClosedSalesOrders.Add(new SalesOrderDataModel { OrderID = "Hobbs-WHX-31", OrderTime = "11/18/20", SOId = "SO201084", Status = "Closed", WellName = "Packineau USA 21-3H - Grover 11-3TFH", Customer = "QEP", Phone = "John Doe", Engineer = "534675-6", GlCode = "534675-6", ShippingName = "ND Express Trucking", DeliveryTime = "10/18/20 10AM", DriverName = "Adam Smith", DriverPhone = "406-123-4567" });
-                ClosedSalesOrders.Add(new SalesOrderDataModel { OrderID = "Hobbs-WHX-20", OrderTime = "13/18/20", SOId = "SO201084", Status = "Closed", WellName = "Packineau USA 21-3H - Grover 11-3TFH", Customer = "QEP", Phone = "John Doe", Engineer = "534675-6", GlCode = "534675-6", ShippingName = "ND Express Trucking", DeliveryTime = "10/18/20 10AM", DriverName = "Adam Smith", DriverPhone = "406-123-4567" });
-                ClosedSalesOrders.Add(new SalesOrderDataModel { OrderID = "Hobbs-WHX-4", OrderTime = "11/18/20", SOId = "SO201084", Status = "Closed", WellName = "Packineau USA 21-3H - Grover 11-3TFH", Customer = "QEP", Phone = "John Doe", Engineer = "534675-6", GlCode = "534675-6", ShippingName = "ND Express Trucking", DeliveryTime = "10/18/20 10AM", DriverName = "Adam Smith", DriverPhone = "406-123-4567" });
-                ClosedSalesOrders.Add(new SalesOrderDataModel { OrderID = "Hobbs-WHX-5", OrderTime = "12/18/20", SOId = "SO201084", Status = "Closed", WellName = "Packineau USA 21-3H - Grover 11-3TFH", Customer = "QEP", Phone = "John Doe", Engineer = "534675-6", GlCode = "534675-6", ShippingName = "ND Express Trucking", DeliveryTime = "10/18/20 10AM", DriverName = "Adam Smith", DriverPhone = "406-123-4567" });
-                ClosedSalesOrders.Add(new SalesOrderDataModel { OrderID = "Hobbs-WHX-6", OrderTime = "12/18/20", SOId = "SO201084", Status = "Closed", WellName = "Packineau USA 21-3H - Grover 11-3TFH", Customer = "QEP", Phone = "John Doe", Engineer = "534675-6", GlCode = "534675-6", ShippingName = "ND Express Trucking", DeliveryTime = "10/18/20 10AM", DriverName = "Adam Smith", DriverPhone = "406-123-4567" });
-                ClosedSalesOrders.Add(new SalesOrderDataModel { OrderID = "Hobbs-WHX-7", OrderTime = "13/18/20", SOId = "SO201084", Status = "Closed", WellName = "Packineau USA 21-3H - Grover 11-3TFH", Customer = "QEP", Phone = "John Doe", Engineer = "534675-6", GlCode = "534675-6", ShippingName = "ND Express Trucking", DeliveryTime = "10/18/20 10AM", DriverName = "Adam Smith", DriverPhone = "406-123-4567" });
-                ClosedSalesOrders.Add(new SalesOrderDataModel { OrderID = "Hobbs-WHX-8", OrderTime = "14/18/20", SOId = "SO201084", Status = "Closed", WellName = "Packineau USA 21-3H - Grover 11-3TFH", Customer = "QEP", Phone = "John Doe", Engineer = "534675-6", GlCode = "534675-6", ShippingName = "ND Express Trucking", DeliveryTime = "10/18/20 10AM", DriverName = "Adam Smith", DriverPhone = "406-123-4567" });
-                foreach (var closedSO in ClosedSalesOrders)
-                {
-                    closedSO.OrderItems = new List<OrderItem>();
-                    closedSO.OrderItems.Add(new OrderItem { Name = "EKD 1" + '"' + "25ft", Description = "+1" + '"' + "SM Simhole Coupling", Quantity = "66pcs", ProductType = "Sucker Rod" });
-                    closedSO.OrderItems.Add(new OrderItem { Name = "EKD 1" + '"' + "25ft", Description = "+1" + '"' + "SM Simhole Coupling", Quantity = "69pcs", ProductType = "Sucker Rod" });
-                    closedSO.OrderItems.Add(new OrderItem { Name = "EKD 1" + '"' + "25ft", Description = "+1/7" + '"' + "SM Fullsize Coupling", Quantity = "40pcs", ProductType = "Sucker Rod" });
-                    closedSO.OrderItems.Add(new OrderItem { Name = "EKD 1" + '"' + "25ft", Description = "+6/7" + '"' + "SM Simhole Coupling", Quantity = "23pcs", ProductType = "Sucker Rod" });
-                    closedSO.OrderItems.Add(new OrderItem { Name = "EKD 1" + '"' + "25ft", Description = "+7/8" + '"' + "SM Fullsize Coupling", Quantity = "65pcs", ProductType = "Sucker Rod" });
-                    closedSO.OrderItems.Add(new OrderItem { Name = "EKD 1" + '"' + "25ft", Description = "+1" + '"' + "SM Simhole Coupling", Quantity = "45pcs", ProductType = "Sucker Rod" });
-                    closedSO.OrderItems.Add(new OrderItem { Name = "EKD 1" + '"' + "25ft", Description = "+1" + '"' + "SM Simhole Coupling", Quantity = "65pcs", ProductType = "Sucker Rod" });
-                    closedSO.OrderItems.Add(new OrderItem { Name = "EKD 1" + '"' + "2ft", Description = "+1" + '"' + "SM Simhole Coupling", Quantity = "1pcs", ProductType = "Pony Rod" });
-                    closedSO.OrderItems.Add(new OrderItem { Name = "EKD 1" + '"' + "4ft", Description = "+1" + '"' + "SM Simhole Coupling", Quantity = "1pcs", ProductType = "Pony Rod" });
-                    closedSO.OrderItems.Add(new OrderItem { Name = "EKD 1" + '"' + "6ft", Description = "+1" + '"' + "SM Simhole Coupling", Quantity = "1pcs", ProductType = "Pony Rod" });
-                    closedSO.OrderItems.Add(new OrderItem { Name = "EKD 1" + '"' + "8ft", Description = "+1" + '"' + "SM Simhole Coupling", Quantity = "1pcs", ProductType = "Pony Rod" });
-                }
-                IsBusy = false;
-            }
-            catch (Exception e)
-            {
-
-            }
-        }
-        public void GetClosedOrderDetails(SalesOrderDataModel so)
-        {
-            try
-            {
-                IsBusy = true;
-                OrderId = so.OrderID;
-                OrderDate = so.OrderTime;
-                DeliveryTime = so.DeliveryTime;
-                TruckingCo = so.ShippingName;
+                WellName = so.WellName;
+                OrderDate = so.CreatedDateAndTime;
+                DeliveryTime = so.DeliveryDateAndTime;
+                TruckingCo = so.TruckingCo;
                 DriverName = so.DriverName;
                 DriverPhn = so.DriverPhone;
-                SoId = so.SOId;
-                WellName = so.WellName;
-                DeliveryTime = so.DeliveryTime;
+                SoId = so.OrderId;
                 Customer = so.Customer;
                 Phone = so.Phone;
                 GlCode = so.GlCode;
-                SuckerList = new ObservableCollection<OrderItem>();
-                PonyList = new ObservableCollection<OrderItem>();
-                Couplings = new ObservableCollection<OrderItem>();
-                SinkerBar = new ObservableCollection<OrderItem>();
-                PolishedRod = new ObservableCollection<OrderItem>();
-                StablizerBar = new ObservableCollection<OrderItem>();
-                OtherItems = new ObservableCollection<OrderItem>();
-                foreach (var item in so.OrderItems)
+                AFE = so.AFE;
+                Note = so.Note;
+                Contact = so.Contact; ;
+                Consultant = so.Consultant;
+                Engineer = so.Engineer;
+                SuckerList = new ObservableCollection<SalesOrderItemModel>();
+                PonyList = new ObservableCollection<SalesOrderItemModel>();
+                Couplings = new ObservableCollection<SalesOrderItemModel>();
+                SinkerBar = new ObservableCollection<SalesOrderItemModel>();
+                PolishedRod = new ObservableCollection<SalesOrderItemModel>();
+                StablizerBar = new ObservableCollection<SalesOrderItemModel>();
+                OtherItems = new ObservableCollection<SalesOrderItemModel>();
+                var soItemsResponse = await new ApiData().GetData<List<SalesOrderItemModel>>("api/salesorder/GetSoItemsById?soid=" + so.SalesOrderId, true);
+                if (soItemsResponse != null && soItemsResponse.data != null)
                 {
-                    if (item.ProductType == "Sucker Rod")
-                        SuckerList.Add(item);
-                    else
-                        PonyList.Add(item);
+                    foreach (var item in soItemsResponse.data)
+                    {
+                        if (item.Description.Contains("Sucker"))
+                        {
+                            SuckerList.Add(item);
+                        }
+                        else if (item.Description.Contains("Pony"))
+                        {
+                            PonyList.Add(item);
+                        }
+                        else if (item.Description.Contains("Coupling"))
+                        {
+                            Couplings.Add(item);
+                        }
+                        else if (item.Description.Contains("Polished"))
+                        {
+                            PolishedRod.Add(item);
+                        }
+                        else if (item.Description.Contains("Sinker"))
+                        {
+                            SinkerBar.Add(item);
+                        }
+                        else if (item.Description.Contains("Stablizer"))
+                        {
+                            StablizerBar.Add(item);
+                        }
+                        else
+                        {
+                            OtherItems.Add(item);
+                        }
+                    }
+                    SuckerListHeight = (SuckerList.Count * 90).ToString();
+                    PonyListHeight = (PonyList.Count * 90).ToString();
+                    CouplingListHeight = (Couplings.Count * 90).ToString();
+                    PolishedListHeight = (PolishedRod.Count * 90).ToString();
+                    SinkerListHeight = (SinkerBar.Count * 90).ToString();
+                    StablizerListHeight = (StablizerBar.Count * 90).ToString();
+                    OthersListHeight = (OtherItems.Count * 90).ToString();
                 }
-                Couplings.Add(new OrderItem { Name = "Crossover 1" + '"' + "X 7/8" + '"' + "SM Slimhole", Quantity = "1pcs", ProductType = "Couplings" });
-                Couplings.Add(new OrderItem { Name = "Crossover 3/4" + '"' + "X 7/8" + '"' + "SM Slimhole", Quantity = "1pcs", ProductType = "Couplings" });
-                SinkerBar.Add(new OrderItem { Name = "C 1-1/2" + '"' + " 25ft w/ 3/4 pin", Quantity = "15pcs", ProductType = "Sinker" });
-                PolishedRod.Add(new OrderItem { Name = "Alloy Metal 1-1/2" + '"' + " 26ft 1" + '"' + "pin", Quantity = "1pcs", ProductType = "Polished" });
-                StablizerBar.Add(new OrderItem { Name = "EHK 1" + '"' + " 4ft 3/4" + '"' + "pin", Quantity = "3pcs", ProductType = "Stablizer" });
-                OtherItems.Add(new OrderItem { Name = "Pin Glue", Quantity = "3pcs", ProductType = "Other" });
-                OtherItems.Add(new OrderItem { Name = "Break cleaner", Quantity = "3pcs", ProductType = "Other" });
-                OtherItems.Add(new OrderItem { Name = "Rags", Quantity = "3pcs", ProductType = "Other" });
                 IsBusy = false;
             }
             catch (Exception e)
@@ -367,46 +496,76 @@ namespace ERodMobileApp.ViewModels
             }
 
         }
-        public void GetActiveOrderDetails(SalesOrderDataModel so)
+        public async void GetActiveOrderDetails(SalesOrderModel so)
         {
             try
             {
                 IsBusy = true;
-                OrderId = so.OrderID;
-                OrderDate = so.OrderTime;
-                OrderStatus = so.Status;
-                DeliveryTime = so.DeliveryTime;
-                TruckingCo = so.ShippingName;
+                OrderDate = so.CreatedDateAndTime;
+                OrderStatus = so.StatusInDetail;
+                DeliveryTime = so.DeliveryDateAndTime;
+                TruckingCo = so.TruckingCo;
                 DriverName = so.DriverName;
                 DriverPhn = so.DriverPhone;
-                SoId = so.SOId;
+                SoId = so.OrderId;
                 WellName = so.WellName;
-                DeliveryTime = so.DeliveryTime;
                 Customer = so.Customer;
                 Phone = so.Phone;
                 GlCode = so.GlCode;
-                SuckerList = new ObservableCollection<OrderItem>();
-                PonyList = new ObservableCollection<OrderItem>();
-                Couplings = new ObservableCollection<OrderItem>();
-                SinkerBar = new ObservableCollection<OrderItem>();
-                PolishedRod = new ObservableCollection<OrderItem>();
-                StablizerBar = new ObservableCollection<OrderItem>();
-                OtherItems = new ObservableCollection<OrderItem>();
-                foreach (var item in so.OrderItems)
+                AFE = so.AFE;
+                Note = so.Note;
+                Contact = so.Contact;
+                Consultant = so.Consultant;
+                Engineer = so.Engineer;
+                SuckerList = new ObservableCollection<SalesOrderItemModel>();
+                PonyList = new ObservableCollection<SalesOrderItemModel>();
+                Couplings = new ObservableCollection<SalesOrderItemModel>();
+                SinkerBar = new ObservableCollection<SalesOrderItemModel>();
+                PolishedRod = new ObservableCollection<SalesOrderItemModel>();
+                StablizerBar = new ObservableCollection<SalesOrderItemModel>();
+                OtherItems = new ObservableCollection<SalesOrderItemModel>();
+                var soItemsResponse = await new ApiData().GetData<List<SalesOrderItemModel>>("api/salesorder/GetSoItemsById?soid=" + so.SalesOrderId, true);
+                if (soItemsResponse != null && soItemsResponse.data != null)
                 {
-                    if (item.ProductType == "Sucker Rod")
-                        SuckerList.Add(item);
-                    else
-                        PonyList.Add(item);
+                    foreach(var item in soItemsResponse.data)
+                    {
+                        if (item.Description.Contains("Sucker"))
+                        {
+                            SuckerList.Add(item);
+                        }
+                        else if (item.Description.Contains("Pony"))
+                        {
+                            PonyList.Add(item);
+                        }
+                        else if (item.Description.Contains("Coupling"))
+                        {
+                            Couplings.Add(item);
+                        }
+                        else if (item.Description.Contains("Polished"))
+                        {
+                            PolishedRod.Add(item);
+                        }
+                        else if (item.Description.Contains("Sinker"))
+                        {
+                            SinkerBar.Add(item);
+                        }
+                        else if (item.Description.Contains("Stablizer"))
+                        {
+                            StablizerBar.Add(item);
+                        }
+                        else
+                        {
+                            OtherItems.Add(item);
+                        }
+                    }
+                    SuckerListHeight = (SuckerList.Count * 90).ToString();
+                    PonyListHeight = (PonyList.Count * 90).ToString();
+                    CouplingListHeight = (Couplings.Count * 90).ToString();
+                    PolishedListHeight = (PolishedRod.Count * 90).ToString();
+                    SinkerListHeight = (SinkerBar.Count * 90).ToString();
+                    StablizerListHeight = (StablizerBar.Count * 90).ToString();
+                    OthersListHeight = (OtherItems.Count * 90).ToString();
                 }
-                Couplings.Add(new OrderItem { Name = "Crossover 1" + '"' + "X 7/8" + '"' + "SM Slimhole", Quantity = "1pcs", ProductType = "Couplings" });
-                Couplings.Add(new OrderItem { Name = "Crossover 3/4" + '"' + "X 7/8" + '"' + "SM Slimhole", Quantity = "1pcs", ProductType = "Couplings" });
-                SinkerBar.Add(new OrderItem { Name = "C 1-1/2" + '"' + " 25ft w/ 3/4 pin", Quantity = "15pcs", ProductType = "Sinker" });
-                PolishedRod.Add(new OrderItem { Name = "Alloy Metal 1-1/2" + '"' + " 26ft 1" + '"' + "pin", Quantity = "1pcs", ProductType = "Polished" });
-                StablizerBar.Add(new OrderItem { Name = "EHK 1" + '"' + " 4ft 3/4" + '"' + "pin", Quantity = "3pcs", ProductType = "Stablizer" });
-                OtherItems.Add(new OrderItem { Name = "Pin Glue", Quantity = "3pcs", ProductType = "Other" });
-                OtherItems.Add(new OrderItem { Name = "Break cleaner", Quantity = "3pcs", ProductType = "Other" });
-                OtherItems.Add(new OrderItem { Name = "Rags", Quantity = "3pcs", ProductType = "Other" });
                 IsBusy = false;
             }
             catch (Exception e)
@@ -414,7 +573,7 @@ namespace ERodMobileApp.ViewModels
 
             }
         }
-        public void GoToReviewOrderPage(SalesOrderDataModel salesOrder)
+        public void GoToReviewOrderPage(SalesOrderModel salesOrder)
         {
             NavigationParameters navigationParameters = new NavigationParameters();
             navigationParameters.Add("SalesOrder", salesOrder);

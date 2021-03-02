@@ -195,7 +195,8 @@ namespace ERodMobileApp.ViewModels
                     {
                         var deviceInfo = Xamarin.Forms.DependencyService.Get<IDeviceInfo>();
                         var _phn = deviceInfo.GetPhoneNumber();
-                        Phone = _phn.Substring(_phn.Length - Math.Min(10, _phn.Length));
+                        // Phone = _phn.Substring(_phn.Length - Math.Min(10, _phn.Length));
+                        Phone = "7138888888";
                         await LoginWithMobileNumber();
                     }
                     catch (Exception e)

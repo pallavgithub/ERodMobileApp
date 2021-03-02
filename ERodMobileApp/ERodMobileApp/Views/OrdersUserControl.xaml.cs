@@ -18,14 +18,14 @@ namespace ERodMobileApp.Views
         {
             (BindingContext as OrdersUserControlViewModel).SoListPageIsVisible = false;
             (BindingContext as OrdersUserControlViewModel).ClosedOrderPageIsVisible = true;
-            SalesOrderDataModel salesOrder = (((TappedEventArgs)e).Parameter) as SalesOrderDataModel;
+            SalesOrderModel salesOrder = (((TappedEventArgs)e).Parameter) as SalesOrderModel;
             (BindingContext as OrdersUserControlViewModel).GetClosedOrderDetails(salesOrder);
         }
         private void ActiveOrderDetails_Tapped(object sender, EventArgs e)
         {
             (BindingContext as OrdersUserControlViewModel).SoListPageIsVisible = false;
             (BindingContext as OrdersUserControlViewModel).ActiveOrderPageIsVisible = true;
-            SalesOrderDataModel salesOrder = (((TappedEventArgs)e).Parameter) as SalesOrderDataModel;
+            SalesOrderModel salesOrder = (((TappedEventArgs)e).Parameter) as SalesOrderModel;
             (BindingContext as OrdersUserControlViewModel).GetActiveOrderDetails(salesOrder);
         }
         private void ClosedOrderToList_Clicked(object sender, EventArgs e)
@@ -41,7 +41,7 @@ namespace ERodMobileApp.Views
 
         private void ReviewButton_Clicked(object sender, EventArgs e)
         {
-            var selectedItem = (SalesOrderDataModel)((Button)sender).CommandParameter;
+            var selectedItem = (SalesOrderModel)((Button)sender).CommandParameter;
             (BindingContext as OrdersUserControlViewModel).GoToReviewOrderPage(selectedItem);
         }
 
