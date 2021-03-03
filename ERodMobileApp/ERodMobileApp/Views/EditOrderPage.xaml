@@ -2,9 +2,14 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ERodMobileApp.Views.EditOrderPage"
-             xmlns:prism="http://prismlibrary.com" xmlns:local="clr-namespace:ERodMobileApp.Helpers"
+             xmlns:prism="http://prismlibrary.com" xmlns:local="clr-namespace:ERodMobileApp.Helpers" xmlns:Converter="clr-namespace:ERodMobileApp.Converters"
              prism:ViewModelLocator.AutowireViewModel="True"
              NavigationPage.HasNavigationBar="False">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Converter:QuantityConverter x:Key="QuantityConverter"></Converter:QuantityConverter>
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <ContentPage.Content>
         <Grid>
             <Grid BackgroundColor="#FF6600" HeightRequest="60" VerticalOptions="Start"/>
@@ -91,12 +96,16 @@
                                             <DataTemplate>
                                                 <ViewCell>
                                                     <StackLayout Spacing="0" Padding="0,5,0,5">
-                                                        <StackLayout Orientation="Horizontal">
-                                                            <Label Text="{Binding Description}" FontFamily="{StaticResource InterMedium}" FontAttributes="Bold" TextColor="#333333" FontSize="20"/>
-                                                            <Label Text="{Binding QtyToFulfill}" FontFamily="{StaticResource InterMedium}" TextColor="#333333" FontSize="20" HorizontalOptions="EndAndExpand"/>
-                                                            <Image Source="Remove.png" HeightRequest="15" WidthRequest="15" VerticalOptions="Center"/>
-                                                        </StackLayout>
-                                                        <!--<Label Text="{Binding Description}" FontFamily="{StaticResource InterRegular}" TextColor="#50555C" FontSize="20"/>-->
+                                                        <Grid>
+                                                            <Grid.ColumnDefinitions>
+                                                                <ColumnDefinition Width="*"/>
+                                                                <ColumnDefinition Width="50"/>
+                                                                <ColumnDefinition Width="20"/>
+                                                            </Grid.ColumnDefinitions>
+                                                            <Label Grid.Column="0" Text="{Binding Description}" FontFamily="{StaticResource InterMedium}" FontAttributes="Bold" TextColor="#333333" FontSize="20"/>
+                                                            <Label Grid.Column="1" Text="{Binding QtyToFulfill, Converter={StaticResource QuantityConverter}}" FontFamily="{StaticResource InterMedium}" TextColor="#333333" FontSize="20" HorizontalOptions="EndAndExpand"/>
+                                                            <Image Grid.Column="2" Source="Remove.png" HeightRequest="15" WidthRequest="15" VerticalOptions="StartAndExpand" Margin="0,8,0,0"/>
+                                                        </Grid>                                                       
                                                     </StackLayout>
                                                 </ViewCell>
                                             </DataTemplate>
@@ -113,11 +122,17 @@
                                             <DataTemplate>
                                                 <ViewCell>
                                                     <StackLayout Spacing="0" Padding="0,5,0,5">
-                                                        <StackLayout Orientation="Horizontal">
-                                                            <Label Text="{Binding Description}" FontFamily="{StaticResource InterMedium}" FontAttributes="Bold" TextColor="#333333" FontSize="20"/>
-                                                            <Label Text="{Binding QtyToFulfill}" FontFamily="{StaticResource InterMedium}" TextColor="#333333" FontSize="20" HorizontalOptions="EndAndExpand"/>
-                                                            <Image Source="Remove.png" HeightRequest="15" WidthRequest="15" VerticalOptions="Center"/>
-                                                        </StackLayout>
+                                                        <Grid>
+                                                            <Grid.ColumnDefinitions>
+                                                                <ColumnDefinition Width="*"/>
+                                                                <ColumnDefinition Width="50"/>
+                                                                <ColumnDefinition Width="20"/>
+                                                            </Grid.ColumnDefinitions>
+                                                            <Label Grid.Column="0" Text="{Binding Description}" FontFamily="{StaticResource InterMedium}" FontAttributes="Bold" TextColor="#333333" FontSize="20"/>
+                                                            <Label Grid.Column="1" Text="{Binding QtyToFulfill, Converter={StaticResource QuantityConverter}}" FontFamily="{StaticResource InterMedium}" TextColor="#333333" FontSize="20" HorizontalOptions="EndAndExpand"/>
+                                                            <Image Grid.Column="2" Source="Remove.png" HeightRequest="15" WidthRequest="15" VerticalOptions="StartAndExpand" Margin="0,8,0,0"/>
+                                                        </Grid>
+                                                       
                                                         <!--<Label Text="{Binding Description}" FontFamily="{StaticResource InterRegular}" TextColor="#50555C" FontSize="20"/>-->
                                                     </StackLayout>
                                                 </ViewCell>
@@ -136,11 +151,16 @@
                                             <DataTemplate>
                                                 <ViewCell>
                                                     <StackLayout Spacing="0" Padding="0,5,0,5">
-                                                        <StackLayout Orientation="Horizontal">
-                                                            <Label Text="{Binding Description}" FontFamily="{StaticResource InterMedium}" FontAttributes="Bold" TextColor="#333333" FontSize="20"/>
-                                                            <Label Text="{Binding QtyToFulfill}" FontFamily="{StaticResource InterMedium}" TextColor="#333333" FontSize="20" HorizontalOptions="EndAndExpand"/>
-                                                            <Image Source="Remove.png" HeightRequest="15" WidthRequest="15" VerticalOptions="Center"/>
-                                                        </StackLayout>
+                                                        <Grid>
+                                                            <Grid.ColumnDefinitions>
+                                                                <ColumnDefinition Width="*"/>
+                                                                <ColumnDefinition Width="50"/>
+                                                                <ColumnDefinition Width="20"/>
+                                                            </Grid.ColumnDefinitions>
+                                                            <Label Grid.Column="0" Text="{Binding Description}" FontFamily="{StaticResource InterMedium}" FontAttributes="Bold" TextColor="#333333" FontSize="20"/>
+                                                            <Label Grid.Column="1" Text="{Binding QtyToFulfill, Converter={StaticResource QuantityConverter}}" FontFamily="{StaticResource InterMedium}" TextColor="#333333" FontSize="20" HorizontalOptions="EndAndExpand"/>
+                                                            <Image Grid.Column="2" Source="Remove.png" HeightRequest="15" WidthRequest="15" VerticalOptions="StartAndExpand" Margin="0,8,0,0"/>
+                                                        </Grid>
                                                         <!--<Label Text="{Binding Description}" FontFamily="{StaticResource InterRegular}" TextColor="#50555C" FontSize="20"/>-->
                                                     </StackLayout>
                                                 </ViewCell>
@@ -159,11 +179,16 @@
                                             <DataTemplate>
                                                 <ViewCell>
                                                     <StackLayout Spacing="0" Padding="0,5,0,5">
-                                                        <StackLayout Orientation="Horizontal">
-                                                            <Label Text="{Binding Description}" FontFamily="{StaticResource InterMedium}" FontAttributes="Bold" TextColor="#333333" FontSize="20"/>
-                                                            <Label Text="{Binding QtyToFulfill}" FontFamily="{StaticResource InterMedium}" TextColor="#333333" FontSize="20" HorizontalOptions="EndAndExpand"/>
-                                                            <Image Source="Remove.png" HeightRequest="15" WidthRequest="15" VerticalOptions="Center"/>
-                                                        </StackLayout>
+                                                        <Grid>
+                                                            <Grid.ColumnDefinitions>
+                                                                <ColumnDefinition Width="*"/>
+                                                                <ColumnDefinition Width="50"/>
+                                                                <ColumnDefinition Width="20"/>
+                                                            </Grid.ColumnDefinitions>
+                                                            <Label Grid.Column="0" Text="{Binding Description}" FontFamily="{StaticResource InterMedium}" FontAttributes="Bold" TextColor="#333333" FontSize="20"/>
+                                                            <Label Grid.Column="1" Text="{Binding QtyToFulfill, Converter={StaticResource QuantityConverter}}" FontFamily="{StaticResource InterMedium}" TextColor="#333333" FontSize="20" HorizontalOptions="EndAndExpand"/>
+                                                            <Image Grid.Column="2" Source="Remove.png" HeightRequest="15" WidthRequest="15" VerticalOptions="StartAndExpand" Margin="0,8,0,0"/>
+                                                        </Grid>
                                                         <!--<Label Text="{Binding Description}" FontFamily="{StaticResource InterRegular}" TextColor="#50555C" FontSize="20"/>-->
                                                     </StackLayout>
                                                 </ViewCell>
@@ -181,11 +206,16 @@
                                             <DataTemplate>
                                                 <ViewCell>
                                                     <StackLayout Spacing="0" Padding="0,5,0,5">
-                                                        <StackLayout Orientation="Horizontal">
-                                                            <Label Text="{Binding Description}" FontFamily="{StaticResource InterMedium}" FontAttributes="Bold" TextColor="#333333" FontSize="20"/>
-                                                            <Label Text="{Binding QtyToFulfill}" FontFamily="{StaticResource InterMedium}" TextColor="#333333" FontSize="20" HorizontalOptions="EndAndExpand"/>
-                                                            <Image Source="Remove.png" HeightRequest="15" WidthRequest="15" VerticalOptions="Center"/>
-                                                        </StackLayout>
+                                                        <Grid>
+                                                            <Grid.ColumnDefinitions>
+                                                                <ColumnDefinition Width="*"/>
+                                                                <ColumnDefinition Width="50"/>
+                                                                <ColumnDefinition Width="20"/>
+                                                            </Grid.ColumnDefinitions>
+                                                            <Label Grid.Column="0" Text="{Binding Description}" FontFamily="{StaticResource InterMedium}" FontAttributes="Bold" TextColor="#333333" FontSize="20"/>
+                                                            <Label Grid.Column="1" Text="{Binding QtyToFulfill, Converter={StaticResource QuantityConverter}}" FontFamily="{StaticResource InterMedium}" TextColor="#333333" FontSize="20" HorizontalOptions="EndAndExpand"/>
+                                                            <Image Grid.Column="2" Source="Remove.png" HeightRequest="15" WidthRequest="15" VerticalOptions="StartAndExpand" Margin="0,8,0,0"/>
+                                                        </Grid>
                                                         <!--<Label Text="{Binding Description}" FontFamily="{StaticResource InterRegular}" TextColor="#50555C" FontSize="20"/>-->
                                                     </StackLayout>
                                                 </ViewCell>
@@ -204,11 +234,16 @@
                                             <DataTemplate>
                                                 <ViewCell>
                                                     <StackLayout Spacing="0" Padding="0,5,0,5">
-                                                        <StackLayout Orientation="Horizontal">
-                                                            <Label Text="{Binding Description}" FontFamily="{StaticResource InterMedium}" FontAttributes="Bold" TextColor="#333333" FontSize="20"/>
-                                                            <Label Text="{Binding QtyToFulfill}" FontFamily="{StaticResource InterMedium}" TextColor="#333333" FontSize="20" HorizontalOptions="EndAndExpand"/>
-                                                            <Image Source="Remove.png" HeightRequest="15" WidthRequest="15" VerticalOptions="Center"/>
-                                                        </StackLayout>
+                                                        <Grid>
+                                                            <Grid.ColumnDefinitions>
+                                                                <ColumnDefinition Width="*"/>
+                                                                <ColumnDefinition Width="50"/>
+                                                                <ColumnDefinition Width="20"/>
+                                                            </Grid.ColumnDefinitions>
+                                                            <Label Grid.Column="0" Text="{Binding Description}" FontFamily="{StaticResource InterMedium}" FontAttributes="Bold" TextColor="#333333" FontSize="20"/>
+                                                            <Label Grid.Column="1" Text="{Binding QtyToFulfill, Converter={StaticResource QuantityConverter}}" FontFamily="{StaticResource InterMedium}" TextColor="#333333" FontSize="20" HorizontalOptions="EndAndExpand"/>
+                                                            <Image Grid.Column="2" Source="Remove.png" HeightRequest="15" WidthRequest="15" VerticalOptions="StartAndExpand" Margin="0,8,0,0"/>
+                                                        </Grid>
                                                         <!--<Label Text="{Binding Description}" FontFamily="{StaticResource InterRegular}" TextColor="#50555C" FontSize="20"/>-->
                                                     </StackLayout>
                                                 </ViewCell>
@@ -227,11 +262,16 @@
                                             <DataTemplate>
                                                 <ViewCell>
                                                     <StackLayout Spacing="0" Padding="0,5,0,5">
-                                                        <StackLayout Orientation="Horizontal">
-                                                            <Label Text="{Binding Description}" FontFamily="{StaticResource InterMedium}" FontAttributes="Bold" TextColor="#333333" FontSize="20"/>
-                                                            <Label Text="{Binding QtyToFulfill}" FontFamily="{StaticResource InterMedium}" TextColor="#333333" FontSize="20" HorizontalOptions="EndAndExpand"/>
-                                                            <Image Source="Remove.png" HeightRequest="15" WidthRequest="15" VerticalOptions="Center"/>
-                                                        </StackLayout>
+                                                        <Grid>
+                                                            <Grid.ColumnDefinitions>
+                                                                <ColumnDefinition Width="*"/>
+                                                                <ColumnDefinition Width="50"/>
+                                                                <ColumnDefinition Width="20"/>
+                                                            </Grid.ColumnDefinitions>
+                                                            <Label Grid.Column="0" Text="{Binding Description}" FontFamily="{StaticResource InterMedium}" FontAttributes="Bold" TextColor="#333333" FontSize="20"/>
+                                                            <Label Grid.Column="1" Text="{Binding QtyToFulfill, Converter={StaticResource QuantityConverter}}" FontFamily="{StaticResource InterMedium}" TextColor="#333333" FontSize="20" HorizontalOptions="EndAndExpand"/>
+                                                            <Image Grid.Column="2" Source="Remove.png" HeightRequest="15" WidthRequest="15" VerticalOptions="StartAndExpand" Margin="0,8,0,0"/>
+                                                        </Grid>
                                                         <!--<Label Text="{Binding Description}" FontFamily="{StaticResource InterRegular}" TextColor="#50555C" FontSize="20"/>-->
                                                     </StackLayout>
                                                 </ViewCell>

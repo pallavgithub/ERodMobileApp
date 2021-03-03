@@ -7,6 +7,8 @@
              NavigationPage.HasNavigationBar="False">
     <ContentView.Resources>
         <ResourceDictionary>
+            <Converter:ListViewLabelConverter x:Key="ListViewLabelConverter"></Converter:ListViewLabelConverter>
+            <Converter:QuantityConverter x:Key="QuantityConverter"></Converter:QuantityConverter>
             <Converter:OrderStatusVisibilityConverter x:Key="OrderStatusVisibilityConverter"></Converter:OrderStatusVisibilityConverter>
         </ResourceDictionary>
     </ContentView.Resources>
@@ -325,7 +327,7 @@
                             <Label Text="PRODUCT DETAILS" FontFamily="{StaticResource InterRegular}" HorizontalTextAlignment="Center" TextColor="Black" VerticalOptions="CenterAndExpand"
                                FontSize="18"/>
                         </Frame>
-                        <Label Text="Sucker Rod" FontFamily="{StaticResource InterMedium}" HorizontalTextAlignment="Center" FontSize="20" TextColor="#FF6600"/>
+                        <Label Text="Sucker Rod" IsVisible="{Binding SuckerListHeight, Converter={StaticResource ListViewLabelConverter}}" FontFamily="{StaticResource InterMedium}" HorizontalTextAlignment="Center" FontSize="20" TextColor="#FF6600"/>
                         <ListView ItemsSource="{Binding SuckerList}" HeightRequest="{Binding SuckerListHeight}" SelectionMode="None" RowHeight="70">
                             <ListView.ItemTemplate>
                                 <DataTemplate>
@@ -333,7 +335,16 @@
                                         <StackLayout Spacing="0" VerticalOptions="CenterAndExpand">
                                             <StackLayout Orientation="Horizontal">
                                                 <Label Text="{Binding Description}" FontFamily="{StaticResource InterRegular}" TextColor="Black" FontSize="18"/>
-                                                <Label Text="{Binding QtyToFulfill}" FontFamily="{StaticResource InterRegular}" HorizontalOptions="EndAndExpand" TextColor="Black" FontSize="18"/>
+                                                <Label FontFamily="{StaticResource InterRegular}" HorizontalOptions="EndAndExpand" TextColor="Black" FontSize="18">
+                                                    <Label.FormattedText>
+                                                        <FormattedString>
+                                                            <FormattedString.Spans>
+                                                                <Span Text="{Binding QtyToFulfill, Converter={StaticResource QuantityConverter}}"/>
+                                                                <Span Text="pcs"/>
+                                                            </FormattedString.Spans>
+                                                        </FormattedString>
+                                                    </Label.FormattedText>
+                                                </Label>
                                             </StackLayout>
                                             <!--<Label Text="{Binding Description}" FontFamily="{StaticResource InterRegular}"/>-->
                                         </StackLayout>
@@ -341,7 +352,7 @@
                                 </DataTemplate>
                             </ListView.ItemTemplate>
                         </ListView>
-                        <Label Text="Pony Rod" FontFamily="{StaticResource InterMedium}" HorizontalTextAlignment="Center" FontSize="20" TextColor="#FF6600"/>
+                        <Label Text="Pony Rod" IsVisible="{Binding PonyListHeight, Converter={StaticResource ListViewLabelConverter}}" FontFamily="{StaticResource InterMedium}" HorizontalTextAlignment="Center" FontSize="20" TextColor="#FF6600"/>
                         <ListView ItemsSource="{Binding PonyList}" HeightRequest="{Binding PonyListHeight}" SelectionMode="None" RowHeight="70">
                             <ListView.ItemTemplate>
                                 <DataTemplate>
@@ -349,7 +360,16 @@
                                         <StackLayout Spacing="0" VerticalOptions="CenterAndExpand">
                                             <StackLayout Orientation="Horizontal">
                                                 <Label Text="{Binding Description}" FontFamily="{StaticResource InterRegular}" TextColor="Black" FontSize="18"/>
-                                                <Label Text="{Binding QtyToFulfill}" FontFamily="{StaticResource InterRegular}" HorizontalOptions="EndAndExpand" TextColor="Black" FontSize="18"/>
+                                                <Label FontFamily="{StaticResource InterRegular}" HorizontalOptions="EndAndExpand" TextColor="Black" FontSize="18">
+                                                    <Label.FormattedText>
+                                                        <FormattedString>
+                                                            <FormattedString.Spans>
+                                                                <Span Text="{Binding QtyToFulfill, Converter={StaticResource QuantityConverter}}"/>
+                                                                <Span Text="pcs"/>
+                                                            </FormattedString.Spans>
+                                                        </FormattedString>
+                                                    </Label.FormattedText>
+                                                </Label>
                                             </StackLayout>
                                             <!--<Label Text="{Binding Description}" FontFamily="{StaticResource InterRegular}"/>-->
                                         </StackLayout>
@@ -357,7 +377,7 @@
                                 </DataTemplate>
                             </ListView.ItemTemplate>
                         </ListView>
-                        <Label Text="Couplings" FontFamily="{StaticResource InterMedium}" HorizontalTextAlignment="Center" FontSize="20" TextColor="#FF6600"/>
+                        <Label Text="Couplings" IsVisible="{Binding CouplingListHeight, Converter={StaticResource ListViewLabelConverter}}" FontFamily="{StaticResource InterMedium}" HorizontalTextAlignment="Center" FontSize="20" TextColor="#FF6600"/>
                         <ListView ItemsSource="{Binding Couplings}" HeightRequest="{Binding CouplingListHeight}" SelectionMode="None" RowHeight="70">
                             <ListView.ItemTemplate>
                                 <DataTemplate>
@@ -365,14 +385,23 @@
                                         <StackLayout Spacing="0" VerticalOptions="CenterAndExpand">
                                             <StackLayout Orientation="Horizontal">
                                                 <Label Text="{Binding Description}" FontFamily="{StaticResource InterRegular}" TextColor="Black" FontSize="18"/>
-                                                <Label Text="{Binding QtyToFulfill}" FontFamily="{StaticResource InterRegular}" HorizontalOptions="EndAndExpand" TextColor="Black" FontSize="18"/>
-                                            </StackLayout>
+                                                <Label FontFamily="{StaticResource InterRegular}" HorizontalOptions="EndAndExpand" TextColor="Black" FontSize="18">
+                                                    <Label.FormattedText>
+                                                        <FormattedString>
+                                                            <FormattedString.Spans>
+                                                                <Span Text="{Binding QtyToFulfill, Converter={StaticResource QuantityConverter}}"/>
+                                                                <Span Text="pcs"/>
+                                                            </FormattedString.Spans>
+                                                        </FormattedString>
+                                                    </Label.FormattedText>
+                                                </Label>
+                                        </StackLayout>
                                         </StackLayout>
                                     </ViewCell>
                                 </DataTemplate>
                             </ListView.ItemTemplate>
                         </ListView>
-                        <Label Text="Sinker Bar" FontFamily="{StaticResource InterMedium}" HorizontalTextAlignment="Center" FontSize="20" TextColor="#FF6600"/>
+                        <Label Text="Sinker Bar" IsVisible="{Binding SinkerListHeight, Converter={StaticResource ListViewLabelConverter}}" FontFamily="{StaticResource InterMedium}" HorizontalTextAlignment="Center" FontSize="20" TextColor="#FF6600"/>
                         <ListView ItemsSource="{Binding SinkerBar}" HeightRequest="{Binding SinkerListHeight}" SelectionMode="None" RowHeight="70">
                             <ListView.ItemTemplate>
                                 <DataTemplate>
@@ -380,14 +409,23 @@
                                         <StackLayout Spacing="0" VerticalOptions="CenterAndExpand">
                                             <StackLayout Orientation="Horizontal">
                                                 <Label Text="{Binding Description}" FontFamily="{StaticResource InterRegular}" TextColor="Black" FontSize="18"/>
-                                                <Label Text="{Binding QtyToFulfill}" FontFamily="{StaticResource InterRegular}" HorizontalOptions="EndAndExpand" TextColor="Black" FontSize="18"/>
+                                                <Label FontFamily="{StaticResource InterRegular}" HorizontalOptions="EndAndExpand" TextColor="Black" FontSize="18">
+                                                    <Label.FormattedText>
+                                                        <FormattedString>
+                                                            <FormattedString.Spans>
+                                                                <Span Text="{Binding QtyToFulfill, Converter={StaticResource QuantityConverter}}"/>
+                                                                <Span Text="pcs"/>
+                                                            </FormattedString.Spans>
+                                                        </FormattedString>
+                                                    </Label.FormattedText>
+                                                </Label>
                                             </StackLayout>
                                         </StackLayout>
                                     </ViewCell>
                                 </DataTemplate>
                             </ListView.ItemTemplate>
                         </ListView>
-                        <Label Text="Polished Rod" FontFamily="{StaticResource InterMedium}" HorizontalTextAlignment="Center" FontSize="20" TextColor="#FF6600"/>
+                        <Label Text="Polished Rod" IsVisible="{Binding PolishedListHeight, Converter={StaticResource ListViewLabelConverter}}" FontFamily="{StaticResource InterMedium}" HorizontalTextAlignment="Center" FontSize="20" TextColor="#FF6600"/>
                         <ListView ItemsSource="{Binding PolishedRod}" HeightRequest="{Binding PolishedListHeight}" SelectionMode="None" RowHeight="70">
                             <ListView.ItemTemplate>
                                 <DataTemplate>
@@ -395,14 +433,23 @@
                                         <StackLayout Spacing="0" VerticalOptions="CenterAndExpand">
                                             <StackLayout Orientation="Horizontal">
                                                 <Label Text="{Binding Description}" FontFamily="{StaticResource InterRegular}" TextColor="Black" FontSize="18"/>
-                                                <Label Text="{Binding QtyToFulfill}" FontFamily="{StaticResource InterRegular}" HorizontalOptions="EndAndExpand" TextColor="Black" FontSize="18"/>
+                                                <Label FontFamily="{StaticResource InterRegular}" HorizontalOptions="EndAndExpand" TextColor="Black" FontSize="18">
+                                                    <Label.FormattedText>
+                                                        <FormattedString>
+                                                            <FormattedString.Spans>
+                                                                <Span Text="{Binding QtyToFulfill, Converter={StaticResource QuantityConverter}}"/>
+                                                                <Span Text="pcs"/>
+                                                            </FormattedString.Spans>
+                                                        </FormattedString>
+                                                    </Label.FormattedText>
+                                                </Label>
                                             </StackLayout>
                                         </StackLayout>
                                     </ViewCell>
                                 </DataTemplate>
                             </ListView.ItemTemplate>
                         </ListView>
-                        <Label Text="Stablizer Bar" FontFamily="{StaticResource InterMedium}" HorizontalTextAlignment="Center" FontSize="20" TextColor="#FF6600"/>
+                        <Label Text="Stablizer Bar" IsVisible="{Binding StablizerListHeight, Converter={StaticResource ListViewLabelConverter}}" FontFamily="{StaticResource InterMedium}" HorizontalTextAlignment="Center" FontSize="20" TextColor="#FF6600"/>
                         <ListView ItemsSource="{Binding StablizerBar}" HeightRequest="{Binding StablizerListHeight}" SelectionMode="None" RowHeight="70">
                             <ListView.ItemTemplate>
                                 <DataTemplate>
@@ -410,14 +457,23 @@
                                         <StackLayout Spacing="0" VerticalOptions="CenterAndExpand">
                                             <StackLayout Orientation="Horizontal">
                                                 <Label Text="{Binding Description}" FontFamily="{StaticResource InterRegular}" TextColor="Black" FontSize="18"/>
-                                                <Label Text="{Binding QtyToFulfill}" FontFamily="{StaticResource InterRegular}" HorizontalOptions="EndAndExpand" TextColor="Black" FontSize="18"/>
+                                                <Label FontFamily="{StaticResource InterRegular}" HorizontalOptions="EndAndExpand" TextColor="Black" FontSize="18">
+                                                    <Label.FormattedText>
+                                                        <FormattedString>
+                                                            <FormattedString.Spans>
+                                                                <Span Text="{Binding QtyToFulfill, Converter={StaticResource QuantityConverter}}"/>
+                                                                <Span Text="pcs"/>
+                                                            </FormattedString.Spans>
+                                                        </FormattedString>
+                                                    </Label.FormattedText>
+                                                </Label>
                                             </StackLayout>
                                         </StackLayout>
                                     </ViewCell>
                                 </DataTemplate>
                             </ListView.ItemTemplate>
                         </ListView>
-                        <Label Text="Other Items" FontFamily="{StaticResource InterMedium}" HorizontalTextAlignment="Center" FontSize="20" TextColor="#FF6600"/>
+                        <Label Text="Other Items" IsVisible="{Binding OthersListHeight, Converter={StaticResource ListViewLabelConverter}}" FontFamily="{StaticResource InterMedium}" HorizontalTextAlignment="Center" FontSize="20" TextColor="#FF6600"/>
                         <ListView ItemsSource="{Binding OtherItems}" HeightRequest="{Binding OthersListHeight}" SelectionMode="None" RowHeight="70">
                             <ListView.ItemTemplate>
                                 <DataTemplate>
@@ -425,7 +481,16 @@
                                         <StackLayout Spacing="0" VerticalOptions="CenterAndExpand">
                                             <StackLayout Orientation="Horizontal">
                                                 <Label Text="{Binding Description}" FontFamily="{StaticResource InterRegular}" TextColor="Black" FontSize="18"/>
-                                                <Label Text="{Binding QtyToFulfill}" FontFamily="{StaticResource InterRegular}" HorizontalOptions="EndAndExpand" TextColor="Black" FontSize="18"/>
+                                                <Label FontFamily="{StaticResource InterRegular}" HorizontalOptions="EndAndExpand" TextColor="Black" FontSize="18">
+                                                    <Label.FormattedText>
+                                                        <FormattedString>
+                                                            <FormattedString.Spans>
+                                                                <Span Text="{Binding QtyToFulfill, Converter={StaticResource QuantityConverter}}"/>
+                                                                <Span Text="pcs"/>
+                                                            </FormattedString.Spans>                                                            
+                                                        </FormattedString>
+                                                    </Label.FormattedText>
+                                                </Label>
                                             </StackLayout>
                                         </StackLayout>
                                     </ViewCell>
@@ -506,7 +571,7 @@
                             <Label Text="PRODUCT DETAILS" FontFamily="{StaticResource InterRegular}" HorizontalTextAlignment="Center" TextColor="White" VerticalOptions="CenterAndExpand"
                                FontSize="18"/>
                         </Frame>
-                        <Label Text="Sucker Rod" FontFamily="{StaticResource InterMedium}" HorizontalTextAlignment="Center" FontSize="20" TextColor="#FF6600"/>
+                        <Label Text="Sucker Rod" IsVisible="{Binding SuckerListHeight, Converter={StaticResource ListViewLabelConverter}}" FontFamily="{StaticResource InterMedium}" HorizontalTextAlignment="Center" FontSize="20" TextColor="#FF6600"/>
                         <ListView ItemsSource="{Binding SuckerList}" HeightRequest="{Binding SuckerListHeight}" SelectionMode="None" RowHeight="70">
                             <ListView.ItemTemplate>
                                 <DataTemplate>
@@ -514,7 +579,17 @@
                                         <StackLayout Spacing="0" VerticalOptions="CenterAndExpand">
                                             <StackLayout Orientation="Horizontal">
                                                 <Label Text="{Binding Description}" FontFamily="{StaticResource InterRegular}" TextColor="Black" FontSize="18"/>
-                                                <Label Text="{Binding QtyToFulfill}" FontFamily="{StaticResource InterRegular}" HorizontalOptions="EndAndExpand" TextColor="Black" FontSize="18"/>
+                                                <Label FontFamily="{StaticResource InterRegular}" HorizontalOptions="EndAndExpand" TextColor="Black" FontSize="18">
+                                                    <Label.FormattedText>
+                                                        <FormattedString>
+                                                            <FormattedString.Spans>
+                                                                <Span Text="{Binding QtyToFulfill, Converter={StaticResource QuantityConverter}}"/>
+                                                                <Span Text="pcs"/>
+                                                            </FormattedString.Spans>
+                                                        </FormattedString>
+                                                    </Label.FormattedText>
+                                                </Label>
+
                                             </StackLayout>
                                             <!--<Label Text="{Binding Description}" FontFamily="{StaticResource InterRegular}"/>-->
                                         </StackLayout>
@@ -522,7 +597,7 @@
                                 </DataTemplate>
                             </ListView.ItemTemplate>
                         </ListView>
-                        <Label Text="Pony Rod" FontFamily="{StaticResource InterMedium}" HorizontalTextAlignment="Center" FontSize="20" TextColor="#FF6600"/>
+                        <Label Text="Pony Rod" IsVisible="{Binding PonyListHeight, Converter={StaticResource ListViewLabelConverter}}" FontFamily="{StaticResource InterMedium}" HorizontalTextAlignment="Center" FontSize="20" TextColor="#FF6600"/>
                         <ListView ItemsSource="{Binding PonyList}" HeightRequest="{Binding PonyListHeight}" SelectionMode="None" RowHeight="70">
                             <ListView.ItemTemplate>
                                 <DataTemplate>
@@ -530,7 +605,16 @@
                                         <StackLayout Spacing="0" VerticalOptions="CenterAndExpand">
                                             <StackLayout Orientation="Horizontal">
                                                 <Label Text="{Binding Description}" FontFamily="{StaticResource InterRegular}" TextColor="Black" FontSize="18"/>
-                                                <Label Text="{Binding QtyToFulfill}" FontFamily="{StaticResource InterRegular}" HorizontalOptions="EndAndExpand" TextColor="Black" FontSize="18"/>
+                                                <Label FontFamily="{StaticResource InterRegular}" HorizontalOptions="EndAndExpand" TextColor="Black" FontSize="18">
+                                                    <Label.FormattedText>
+                                                        <FormattedString>
+                                                            <FormattedString.Spans>
+                                                                <Span Text="{Binding QtyToFulfill, Converter={StaticResource QuantityConverter}}"/>
+                                                                <Span Text="pcs"/>
+                                                            </FormattedString.Spans>
+                                                        </FormattedString>
+                                                    </Label.FormattedText>
+                                                </Label>
                                             </StackLayout>
                                             <!--<Label Text="{Binding Description}" FontFamily="{StaticResource InterRegular}"/>-->
                                         </StackLayout>
@@ -538,7 +622,7 @@
                                 </DataTemplate>
                             </ListView.ItemTemplate>
                         </ListView>
-                        <Label Text="Couplings" FontFamily="{StaticResource InterMedium}" HorizontalTextAlignment="Center" FontSize="20" TextColor="#FF6600"/>
+                        <Label Text="Couplings" IsVisible="{Binding CouplingListHeight, Converter={StaticResource ListViewLabelConverter}}" FontFamily="{StaticResource InterMedium}" HorizontalTextAlignment="Center" FontSize="20" TextColor="#FF6600"/>
                         <ListView ItemsSource="{Binding Couplings}" HeightRequest="{Binding CouplingListHeight}" SelectionMode="None" RowHeight="70">
                             <ListView.ItemTemplate>
                                 <DataTemplate>
@@ -546,14 +630,23 @@
                                         <StackLayout Spacing="0">
                                             <StackLayout Orientation="Horizontal" VerticalOptions="CenterAndExpand">
                                                 <Label Text="{Binding Description}" FontFamily="{StaticResource InterRegular}" TextColor="Black" FontSize="18"/>
-                                                <Label Text="{Binding QtyToFulfill}" FontFamily="{StaticResource InterRegular}" HorizontalOptions="EndAndExpand" TextColor="Black" FontSize="18"/>
+                                                <Label FontFamily="{StaticResource InterRegular}" HorizontalOptions="EndAndExpand" TextColor="Black" FontSize="18">
+                                                    <Label.FormattedText>
+                                                        <FormattedString>
+                                                            <FormattedString.Spans>
+                                                                <Span Text="{Binding QtyToFulfill, Converter={StaticResource QuantityConverter}}"/>
+                                                                <Span Text="pcs"/>
+                                                            </FormattedString.Spans>
+                                                        </FormattedString>
+                                                    </Label.FormattedText>
+                                                </Label>
                                             </StackLayout>
                                         </StackLayout>
                                     </ViewCell>
                                 </DataTemplate>
                             </ListView.ItemTemplate>
                         </ListView>
-                        <Label Text="Sinker Bar" FontFamily="{StaticResource InterMedium}" HorizontalTextAlignment="Center" FontSize="20" TextColor="#FF6600"/>
+                        <Label Text="Sinker Bar" IsVisible="{Binding SinkerListHeight, Converter={StaticResource ListViewLabelConverter}}" FontFamily="{StaticResource InterMedium}" HorizontalTextAlignment="Center" FontSize="20" TextColor="#FF6600"/>
                         <ListView ItemsSource="{Binding SinkerBar}" HeightRequest="{Binding SinkerListHeight}" SelectionMode="None" RowHeight="70">
                             <ListView.ItemTemplate>
                                 <DataTemplate>
@@ -561,14 +654,23 @@
                                         <StackLayout Spacing="0" VerticalOptions="CenterAndExpand">
                                             <StackLayout Orientation="Horizontal">
                                                 <Label Text="{Binding Description}" FontFamily="{StaticResource InterRegular}" TextColor="Black" FontSize="18"/>
-                                                <Label Text="{Binding QtyToFulfill}" FontFamily="{StaticResource InterRegular}" HorizontalOptions="EndAndExpand" TextColor="Black" FontSize="18"/>
+                                                <Label FontFamily="{StaticResource InterRegular}" HorizontalOptions="EndAndExpand" TextColor="Black" FontSize="18">
+                                                    <Label.FormattedText>
+                                                        <FormattedString>
+                                                            <FormattedString.Spans>
+                                                                <Span Text="{Binding QtyToFulfill, Converter={StaticResource QuantityConverter}}"/>
+                                                                <Span Text="pcs"/>
+                                                            </FormattedString.Spans>
+                                                        </FormattedString>
+                                                    </Label.FormattedText>
+                                                </Label>
                                             </StackLayout>
                                         </StackLayout>
                                     </ViewCell>
                                 </DataTemplate>
                             </ListView.ItemTemplate>
                         </ListView>
-                        <Label Text="Polished Rod" FontFamily="{StaticResource InterMedium}" HorizontalTextAlignment="Center" FontSize="20" TextColor="#FF6600"/>
+                        <Label Text="Polished Rod" IsVisible="{Binding PolishedListHeight, Converter={StaticResource ListViewLabelConverter}}" FontFamily="{StaticResource InterMedium}" HorizontalTextAlignment="Center" FontSize="20" TextColor="#FF6600"/>
                         <ListView ItemsSource="{Binding PolishedRod}" HeightRequest="{Binding PolishedListHeight}" SelectionMode="None" RowHeight="70">
                             <ListView.ItemTemplate>
                                 <DataTemplate>
@@ -576,14 +678,23 @@
                                         <StackLayout Spacing="0" VerticalOptions="CenterAndExpand">
                                             <StackLayout Orientation="Horizontal">
                                                 <Label Text="{Binding Description}" FontFamily="{StaticResource InterRegular}" TextColor="Black" FontSize="18"/>
-                                                <Label Text="{Binding QtyToFulfill}" FontFamily="{StaticResource InterRegular}" HorizontalOptions="EndAndExpand" TextColor="Black" FontSize="18"/>
+                                                <Label FontFamily="{StaticResource InterRegular}" HorizontalOptions="EndAndExpand" TextColor="Black" FontSize="18">
+                                                    <Label.FormattedText>
+                                                        <FormattedString>
+                                                            <FormattedString.Spans>
+                                                                <Span Text="{Binding QtyToFulfill, Converter={StaticResource QuantityConverter}}"/>
+                                                                <Span Text="pcs"/>
+                                                            </FormattedString.Spans>
+                                                        </FormattedString>
+                                                    </Label.FormattedText>
+                                                </Label>
                                             </StackLayout>
                                         </StackLayout>
                                     </ViewCell>
                                 </DataTemplate>
                             </ListView.ItemTemplate>
                         </ListView>
-                        <Label Text="Stablizer Bar" FontFamily="{StaticResource InterMedium}" HorizontalTextAlignment="Center" FontSize="20" TextColor="#FF6600"/>
+                        <Label Text="Stablizer Bar" IsVisible="{Binding StablizerListHeight, Converter={StaticResource ListViewLabelConverter}}" FontFamily="{StaticResource InterMedium}" HorizontalTextAlignment="Center" FontSize="20" TextColor="#FF6600"/>
                         <ListView ItemsSource="{Binding StablizerBar}" HeightRequest="{Binding StablizerListHeight}" SelectionMode="None" RowHeight="70">
                             <ListView.ItemTemplate>
                                 <DataTemplate>
@@ -591,14 +702,23 @@
                                         <StackLayout Spacing="0" VerticalOptions="CenterAndExpand">
                                             <StackLayout Orientation="Horizontal">
                                                 <Label Text="{Binding Description}" FontFamily="{StaticResource InterRegular}" TextColor="Black" FontSize="18"/>
-                                                <Label Text="{Binding QtyToFulfill}" FontFamily="{StaticResource InterRegular}" HorizontalOptions="EndAndExpand" TextColor="Black" FontSize="18"/>
+                                                <Label FontFamily="{StaticResource InterRegular}" HorizontalOptions="EndAndExpand" TextColor="Black" FontSize="18">
+                                                    <Label.FormattedText>
+                                                        <FormattedString>
+                                                            <FormattedString.Spans>
+                                                                <Span Text="{Binding QtyToFulfill, Converter={StaticResource QuantityConverter}}"/>
+                                                                <Span Text="pcs"/>
+                                                            </FormattedString.Spans>
+                                                        </FormattedString>
+                                                    </Label.FormattedText>
+                                                </Label>
                                             </StackLayout>
                                         </StackLayout>
                                     </ViewCell>
                                 </DataTemplate>
                             </ListView.ItemTemplate>
                         </ListView>
-                        <Label Text="Other Items" FontFamily="{StaticResource InterMedium}" HorizontalTextAlignment="Center" FontSize="20" TextColor="#FF6600"/>
+                        <Label Text="Other Items" IsVisible="{Binding OthersListHeight, Converter={StaticResource ListViewLabelConverter}}" FontFamily="{StaticResource InterMedium}" HorizontalTextAlignment="Center" FontSize="20" TextColor="#FF6600"/>
                         <ListView ItemsSource="{Binding OtherItems}" HeightRequest="{Binding OthersListHeight}" SelectionMode="None" RowHeight="70">
                             <ListView.ItemTemplate>
                                 <DataTemplate>
@@ -606,7 +726,16 @@
                                         <StackLayout Spacing="0" VerticalOptions="CenterAndExpand">
                                             <StackLayout Orientation="Horizontal">
                                                 <Label Text="{Binding Description}" FontFamily="{StaticResource InterRegular}" TextColor="Black" FontSize="18"/>
-                                                <Label Text="{Binding QtyToFulfill}" FontFamily="{StaticResource InterRegular}" HorizontalOptions="EndAndExpand" TextColor="Black" FontSize="18"/>
+                                                <Label FontFamily="{StaticResource InterRegular}" HorizontalOptions="EndAndExpand" TextColor="Black" FontSize="18">
+                                                    <Label.FormattedText>
+                                                        <FormattedString>
+                                                            <FormattedString.Spans>
+                                                                <Span Text="{Binding QtyToFulfill, Converter={StaticResource QuantityConverter}}"/>
+                                                                <Span Text="pcs"/>
+                                                            </FormattedString.Spans>
+                                                        </FormattedString>
+                                                    </Label.FormattedText>
+                                                </Label>
                                             </StackLayout>
                                         </StackLayout>
                                     </ViewCell>

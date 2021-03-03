@@ -310,7 +310,8 @@ namespace ERodMobileApp.ViewModels
                         salesOrder.SalesOrderId = item.Num;
                         salesOrder.OrderId = "SO" + item.Num;
                         salesOrder.Status = item.StatusId.ToString();
-                        salesOrder.CreatedDateAndTime = item.DateCreated.ToString();
+                        var date = item.DateCreated.ToString().Split(' ');
+                        salesOrder.CreatedDateAndTime = date[0];
                         salesOrder.DriverPhone = item.CarrierServiceId;
                         salesOrder.DriverName = item.CarrierServiceId;
                         salesOrder.Phone = item.Phone;
@@ -340,7 +341,7 @@ namespace ERodMobileApp.ViewModels
                                 {
                                     salesOrder.AFE = cf.Info;
                                 }
-                                else if(cf.Name== "Cost/GL Code")
+                                else if (cf.Name == "Cost/GL Code")
                                 {
                                     salesOrder.GlCode = cf.Info;
                                 }
@@ -359,30 +360,31 @@ namespace ERodMobileApp.ViewModels
                             salesOrder.StatusInDetail = "Confirmed";
                         if (item.StatusId == "25")
                             salesOrder.StatusInDetail = "Processing";
-                        //if (item.StatusId == "25")
-                        //{
-                        //    foreach (var cf in item.CustomFields)
-                        //    {
-                        //        if (!string.IsNullOrEmpty(cf.Name) && cf.Name == "CF-Shipped" || cf.Name == "CF-Delivered")
-                        //        {
-                        //            if (cf.Name == "CF-Shipped")
-                        //            {
-                        //                if (cf.Info == "1")
-                        //                    salesOrder.StatusInDetail = "Shipped";
-                        //            }
-                        //            else if (cf.Name == "CF-Delivered")
-                        //            {
-                        //                if (cf.Info == "1")
-                        //                    salesOrder.StatusInDetail = "Delivered";
-                        //            }
-                        //            else
-                        //            {
-                        //                salesOrder.StatusInDetail = "Processing";
-                        //            }
-                        //        }
-                        //    }
 
-                        //}
+                        if (item.StatusId == "25")
+                        {
+                            foreach (var cf in item.CustomFields)
+                            {
+                                if (!string.IsNullOrEmpty(cf.Name) && (cf.Name == "CF-Shipped" || cf.Name == "CF-Delivered"))
+                                {
+                                    if (cf.Name == "CF-Shipped")
+                                    {
+                                        if (cf.Info == "1")
+                                            salesOrder.StatusInDetail = "Shipped";
+                                    }
+                                    else if (cf.Name == "CF-Delivered")
+                                    {
+                                        if (cf.Info == "1")
+                                            salesOrder.StatusInDetail = "Delivered";
+                                    }
+                                    else
+                                    {
+                                        salesOrder.StatusInDetail = "Processing";
+                                    }
+                                }
+                            }
+
+                        }
 
                         if (item.StatusId == "60")
                         {
@@ -527,7 +529,7 @@ namespace ERodMobileApp.ViewModels
                 var soItemsResponse = await new ApiData().GetData<List<SalesOrderItemModel>>("api/salesorder/GetSoItemsById?soid=" + so.SalesOrderId, true);
                 if (soItemsResponse != null && soItemsResponse.data != null)
                 {
-                    foreach(var item in soItemsResponse.data)
+                    foreach (var item in soItemsResponse.data)
                     {
                         if (item.Description.Contains("Sucker"))
                         {
