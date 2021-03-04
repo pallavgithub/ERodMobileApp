@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using SQLite;
+using System.Collections.Generic;
 
 namespace ERodMobileApp.Models
 {
@@ -33,6 +34,7 @@ namespace ERodMobileApp.Models
         public string LocationGroupId { get; set; }
         public string McTotalTax { get; set; }
         public string Note { get; set; }
+        [PrimaryKey]
         public string Num { get; set; }
         public string PaymentTermsId { get; set; }
         public string Phone { get; set; }
@@ -74,6 +76,8 @@ namespace ERodMobileApp.Models
 
     public class CustomDataField
     {
+        //for foreign key
+        public string  SalesOrderNum { get; set; }
         public string RecordId { get; set; }
         public string Name { get; set; }
         public string Info { get; set; }

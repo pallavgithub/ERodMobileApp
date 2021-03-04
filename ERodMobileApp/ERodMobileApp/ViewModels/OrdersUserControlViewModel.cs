@@ -300,12 +300,18 @@ namespace ERodMobileApp.ViewModels
             ClosedSalesOrdersList = new ObservableCollection<SalesOrderModel>();
             try
             {
+
                 var response = await new ApiData().PostData<List<SalesOrder>>("api/SalesOrder/GetCustomerOrders", user, true);
-                if (response != null && response.data != null)
-                {
-                    var all_Sales_Orders = response.data;
+
+                var data = IsNotConnected == false ? response.data : await App.Database.GetSalesOrderAsync(); 
+                
+                if (data != null && data != null)
+                {    
+                    var all_Sales_Orders = data;
                     foreach (var item in all_Sales_Orders)
                     {
+                        item.CustomFields.ForEach(x => x.SalesOrderNum = item.Num);
+                        await App.Database.SaveSalesOrderAsync(item);
                         SalesOrderModel salesOrder = new SalesOrderModel();
                         salesOrder.SalesOrderId = item.Num;
                         salesOrder.OrderId = "SO" + item.Num;

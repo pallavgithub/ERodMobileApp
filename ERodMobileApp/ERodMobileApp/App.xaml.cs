@@ -1,8 +1,11 @@
+using ERodMobileApp.DatabaseRepo;
 using ERodMobileApp.ViewModels;
 using ERodMobileApp.Views;
 using Prism;
 using Prism.Ioc;
 using Prism.Navigation;
+using System;
+using System.IO;
 using System.Threading.Tasks;
 using Xamarin.Essentials;
 using Xamarin.Essentials.Implementation;
@@ -13,6 +16,20 @@ namespace ERodMobileApp
 {
     public partial class App
     {
+        static SalesOrderSqliteDatabase database;
+
+        // Create the database connection as a singleton.
+        public static SalesOrderSqliteDatabase Database
+        {
+            get
+            {
+                if (database == null)
+                {
+                    database = new SalesOrderSqliteDatabase(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "SalesOrder.db3"));
+                }
+                return database;
+            }
+        }
         public App(IPlatformInitializer initializer)
             : base(initializer)
         {

@@ -226,6 +226,8 @@ namespace ERodMobileApp.ViewModels
         }
         public void SaveAndEditLater()
         {
+            var NewsaleOrder = new SalesOrder();
+            App.Database.SaveSalesOrderAsync(NewsaleOrder);
             NavigationService.GoBackAsync();
         }
         public void DiscardChanges()

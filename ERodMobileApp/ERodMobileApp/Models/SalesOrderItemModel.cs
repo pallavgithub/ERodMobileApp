@@ -1,7 +1,10 @@
-﻿namespace ERodMobileApp.Models
+﻿using SQLite;
+
+namespace ERodMobileApp.Models
 {
     public class SalesOrderItemModel
     {
+        [PrimaryKey]
         public string Id { get; set; }
         public string AdjustAmount { get; set; }
         public string AdjustPercentage { get; set; }

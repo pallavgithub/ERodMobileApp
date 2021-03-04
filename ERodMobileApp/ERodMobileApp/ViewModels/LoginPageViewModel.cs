@@ -236,12 +236,16 @@ namespace ERodMobileApp.ViewModels
                 //string Mobile = "281-781-6334";
 
                 ResponseModel<UserModel> response = await new ApiData().PostData<UserModel>("api/account/Login?MobileNumber=" + Phone, true);
-                if (response != null && response.data != null)
+
+                var data = IsNotConnected == false ? response.data : await App.Database.GetUserAsync();
+
+                if (data != null && data != null)
                 {
                     ExitBtnIsVisible = true;
                     EnterMobilePageIsVisible = false;
                     LoginIsVisible = true;
-                    User = response.data;
+                    User = data;
+                    await App.Database.SaveUserAsync(User);
                     UserName = User.Name;
                     MobileNumber = User.PhoneNumber;
                     Company = User.Company;
@@ -277,10 +281,14 @@ namespace ERodMobileApp.ViewModels
                 ActivationCode = Text1 + Text2 + Text3 + Text4 + Text5 + Text6;
                 // string _activationCode = "411226";
                 ResponseModel<UserModel> response = await new ApiData().PostData<UserModel>("api/account/Login?ActivationCode=" + ActivationCode, true);
-                if (response != null && response.data != null)
+
+                var data = IsNotConnected == false ? response.data : await App.Database.GetUserAsync();
+
+                if (data != null && data != null)
                 {
                     LoginIsVisible = true;
-                    User = response.data;
+                    User = data;
+                    await App.Database.SaveUserAsync(User);
                     UserName = User.Name;
                     MobileNumber = User.PhoneNumber;
                     Company = User.Company;
