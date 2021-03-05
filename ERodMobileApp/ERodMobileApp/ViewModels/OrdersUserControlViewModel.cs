@@ -310,7 +310,7 @@ namespace ERodMobileApp.ViewModels
                     var all_Sales_Orders = data;
                     foreach (var item in all_Sales_Orders)
                     {
-                        item.CustomFields.ForEach(x => x.SalesOrderNum = item.Num);
+                       // item.CustomFields.ForEach(x => x.SalesOrderNum = item.Num);
                         await App.Database.SaveSalesOrderAsync(item);
                         SalesOrderModel salesOrder = new SalesOrderModel();
                         salesOrder.SalesOrderId = item.Num;
