@@ -17,6 +17,8 @@ namespace ERodMobileApp.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class SignaturePage : ContentPage
     {
+        public Stream _stream;
+        private string _filePath;
         public SignaturePage()
         {
             InitializeComponent();
@@ -57,6 +59,8 @@ namespace ERodMobileApp.Views
                 stampImg.Source = ImageSource.FromStream(() =>
                   {
                       var stream = file.GetStream();
+                      _stream = stream;
+                      _filePath = file.Path;
                       return stream;
                   });
                 signature.IsVisible = false;
@@ -67,14 +71,16 @@ namespace ERodMobileApp.Views
         private async void ConfirmBtn_Clicked(object sender, EventArgs e)
         {
             var viewModel = (BindingContext as SignaturePageViewModel);
-            Stream stream;
             if (signature.IsVisible)
             {
-                stream = await signature.GetImageStreamAsync(SignatureImageFormat.Jpeg);
+                viewModel._stream = await signature.GetImageStreamAsync(SignatureImageFormat.Jpeg);
+                // code for saving the file in galley and find the path
+                //viewModel._filePath = _filePath;
             }
             else
             {
-                ImageSource isr = stampImg.Source;
+                viewModel._stream = _stream;
+                viewModel._filePath = _filePath;
             }
             viewModel.SaveSignature();
         }

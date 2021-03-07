@@ -9,6 +9,6 @@ namespace ERodMobileApp.Models
         public string SalesOrderID { get; set; }
         public string UserName { get; set; }
         public string SignaturePath { get; set; }
-        public string SignatureByteArray { get; set; }
+        public byte[] SignatureByteArray { get; set; }
     }
 }
