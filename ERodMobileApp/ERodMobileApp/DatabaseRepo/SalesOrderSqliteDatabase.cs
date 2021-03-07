@@ -16,7 +16,7 @@ namespace ERodMobileApp.DatabaseRepo
             database = new SQLiteAsyncConnection(dbPath);
             database.CreateTableAsync<SalesOrder>().Wait();
             database.CreateTableAsync<UserModel>().Wait();
-         
+
             database.CreateTableAsync<CustomDataField>().Wait();
         }
 
@@ -36,8 +36,7 @@ namespace ERodMobileApp.DatabaseRepo
 
         public async Task<int> SaveSalesOrderAsync(SalesOrder so)
         {
-            var existingSo = database.Table<SalesOrder>().Where(x => x.Num == so.Num).FirstOrDefaultAsync();
-           
+            var existingSo = await database.Table<SalesOrder>().Where(x => x.Num == so.Num).FirstOrDefaultAsync();
 
             if (existingSo != null)
             {
@@ -51,19 +50,19 @@ namespace ERodMobileApp.DatabaseRepo
                 await SaveCustomFieldsAsync(so.CustomFields);
                 return await database.InsertAsync(so);
             }
-            
+
         }
         public async Task<int> SaveCustomFieldsAsync(List<CustomDataField> cdfs)
         {
             var rowUpdated = 0;
             foreach (var cdf in cdfs)
             {
-               
-                var existingSo = database.Table<CustomDataField>().Where(x => x.RecordId == cdf.RecordId && x.Name == cdf.Name && x.Info == cdf.Info).FirstOrDefaultAsync();
+
+                var existingSo = await database.Table<CustomDataField>().Where(x => x.RecordId == cdf.RecordId && x.Name == cdf.Name && x.Info == cdf.Info).FirstOrDefaultAsync();
 
                 if (existingSo != null)
                 {
-                  
+
                     // Update an existing note.
                     rowUpdated += await database.UpdateAsync(cdf);
                 }
@@ -82,18 +81,18 @@ namespace ERodMobileApp.DatabaseRepo
             return database.DeleteAsync(note);
         }
 
-        public Task<int> SaveUserAsync(UserModel so)
+        public async Task<int> SaveUserAsync(UserModel so)
         {
-            var existuser = database.Table<UserModel>().Where(x => x.PhoneNumber == so.PhoneNumber ||  x.ActivationCode == so.ActivationCode).FirstOrDefaultAsync();
+            var existuser = await database.Table<UserModel>().Where(x => x.PhoneNumber == so.PhoneNumber || x.ActivationCode == so.ActivationCode).FirstOrDefaultAsync();
             if (existuser != null)
             {
                 // Update an existing note.
-                return database.UpdateAsync(so);
+                return await database.UpdateAsync(so);
             }
             else
             {
                 // Save a new note.
-                return database.InsertAsync(so);
+                return await database.InsertAsync(so);
             }
         }
 

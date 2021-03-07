@@ -312,6 +312,7 @@ namespace ERodMobileApp.ViewModels
                     {
                        // item.CustomFields.ForEach(x => x.SalesOrderNum = item.Num);
                         await App.Database.SaveSalesOrderAsync(item);
+
                         SalesOrderModel salesOrder = new SalesOrderModel();
                         salesOrder.SalesOrderId = item.Num;
                         salesOrder.OrderId = "SO" + item.Num;

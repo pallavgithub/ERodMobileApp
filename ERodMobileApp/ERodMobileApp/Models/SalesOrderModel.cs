@@ -25,5 +25,6 @@ namespace ERodMobileApp.Models
         public string GlCode { get; set; }
         public string Note { get; set; }
         public List<CustomDataField> CustomFields { get; set; }
+        public List<SalesOrderItemModel> SOItems { get; set; }
     }
 }

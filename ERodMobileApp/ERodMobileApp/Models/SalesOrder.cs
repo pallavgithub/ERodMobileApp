@@ -7,6 +7,8 @@ namespace ERodMobileApp.Models
     {
         [Ignore]
         public List<CustomDataField> CustomFields { get; set; }
+        [Ignore]
+        public List<SalesOrderItemModel> SOItems { get; set; }
         public string Id { get; set; }
         public string BillToAddress { get; set; }
         public string BillToCity { get; set; }
@@ -77,8 +79,8 @@ namespace ERodMobileApp.Models
 
     public class CustomDataField
     {
-        [PrimaryKey,AutoIncrement]
-        public int  CDFId { get; set; }
+        [PrimaryKey, AutoIncrement]
+        public int CDFId { get; set; }
         public string RecordId { get; set; }
         public string Name { get; set; }
         public string Info { get; set; }
