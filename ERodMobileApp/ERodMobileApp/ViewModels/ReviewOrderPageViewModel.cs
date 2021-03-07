@@ -178,7 +178,7 @@ namespace ERodMobileApp.ViewModels
             SinkerBar = new ObservableCollection<SalesOrderItemModel>();
             StablizerBar = new ObservableCollection<SalesOrderItemModel>();
             PolishedRod = new ObservableCollection<SalesOrderItemModel>();
-            OtherItems = new ObservableCollection<SalesOrderItemModel>(); 
+            OtherItems = new ObservableCollection<SalesOrderItemModel>();
             WellName = salesOrder.WellName;
             DeliveryTime = salesOrder.DeliveryDateAndTime;
             Customer = salesOrder.Customer;
@@ -188,10 +188,11 @@ namespace ERodMobileApp.ViewModels
             Engineer = salesOrder.Engineer;
             AFE = salesOrder.AFE;
             Note = salesOrder.Note;
-            var soItemsResponse = await new ApiData().GetData<List<SalesOrderItemModel>>("api/salesorder/GetSoItemsById?soid=" + salesOrder.SalesOrderId, true);
-            if (soItemsResponse != null && soItemsResponse.data != null)
+            //var soItemsResponse = await new ApiData().GetData<List<SalesOrderItemModel>>("api/salesorder/GetSoItemsById?soid=" + salesOrder.SalesOrderId, true);
+            if (salesOrder.SOItems != null && salesOrder.SOItems.Count > 0)
             {
-                foreach (var item in soItemsResponse.data)
+                var salesOrderItems = salesOrder.SOItems;
+                foreach (var item in salesOrderItems)
                 {
                     if (item.Description.Contains("Sucker"))
                     {
@@ -222,14 +223,14 @@ namespace ERodMobileApp.ViewModels
                         OtherItems.Add(item);
                     }
                 }
-                SuckerListHeight = (SuckerList.Count * 90).ToString();
-                PonyListHeight = (PonyList.Count * 90).ToString();
-                CouplingListHeight = (Couplings.Count * 90).ToString();
-                PolishedListHeight = (PolishedRod.Count * 90).ToString();
-                SinkerListHeight = (SinkerBar.Count * 90).ToString();
-                StablizerListHeight = (StablizerBar.Count * 90).ToString();
-                OthersListHeight = (OtherItems.Count * 90).ToString();
             }
+            SuckerListHeight = (SuckerList.Count * 90).ToString();
+            PonyListHeight = (PonyList.Count * 90).ToString();
+            CouplingListHeight = (Couplings.Count * 90).ToString();
+            PolishedListHeight = (PolishedRod.Count * 90).ToString();
+            SinkerListHeight = (SinkerBar.Count * 90).ToString();
+            StablizerListHeight = (StablizerBar.Count * 90).ToString();
+            OthersListHeight = (OtherItems.Count * 90).ToString();
             IsBusy = false;
         }
         public override void OnNavigatedTo(INavigationParameters parameters)

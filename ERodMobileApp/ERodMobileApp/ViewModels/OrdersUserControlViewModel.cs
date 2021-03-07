@@ -303,14 +303,14 @@ namespace ERodMobileApp.ViewModels
 
                 var response = await new ApiData().PostData<List<SalesOrder>>("api/SalesOrder/GetCustomerOrders", user, true);
 
-                var data = IsNotConnected == false ? response.data : await App.Database.GetSalesOrderAsync(); 
-                
+                var data = IsNotConnected == false ? response.data : await App.Database.GetSalesOrderAsync();
+
                 if (data != null && data != null)
-                {    
+                {
                     var all_Sales_Orders = data;
                     foreach (var item in all_Sales_Orders)
                     {
-                       // item.CustomFields.ForEach(x => x.SalesOrderNum = item.Num);
+                        // item.CustomFields.ForEach(x => x.SalesOrderNum = item.Num);
                         await App.Database.SaveSalesOrderAsync(item);
 
                         SalesOrderModel salesOrder = new SalesOrderModel();
@@ -327,7 +327,7 @@ namespace ERodMobileApp.ViewModels
                         salesOrder.Customer = item.Username;
                         salesOrder.Contact = item.CustomerContact;
                         salesOrder.TruckingCo = item.CarrierId;
-
+                        salesOrder.SOItems = item.SOItems;
                         foreach (var cf in item.CustomFields)
                         {
                             if (!string.IsNullOrEmpty(cf.Name))
@@ -429,7 +429,7 @@ namespace ERodMobileApp.ViewModels
             ExceedEmail = UserDetails.SalesPersonEmail;
 
         }
-        public async void GetClosedOrderDetails(SalesOrderModel so)
+        public void GetClosedOrderDetails(SalesOrderModel so)
         {
             try
             {
@@ -456,10 +456,11 @@ namespace ERodMobileApp.ViewModels
                 PolishedRod = new ObservableCollection<SalesOrderItemModel>();
                 StablizerBar = new ObservableCollection<SalesOrderItemModel>();
                 OtherItems = new ObservableCollection<SalesOrderItemModel>();
-                var soItemsResponse = await new ApiData().GetData<List<SalesOrderItemModel>>("api/salesorder/GetSoItemsById?soid=" + so.SalesOrderId, true);
-                if (soItemsResponse != null && soItemsResponse.data != null)
+                //var soItemsResponse = await new ApiData().GetData<List<SalesOrderItemModel>>("api/salesorder/GetSoItemsById?soid=" + so.SalesOrderId, true);
+                if (so.SOItems != null && so.SOItems.Count > 0)
                 {
-                    foreach (var item in soItemsResponse.data)
+                    var salesOrderItemsList = so.SOItems;
+                    foreach (var item in salesOrderItemsList)
                     {
                         if (item.Description.Contains("Sucker"))
                         {
@@ -490,14 +491,14 @@ namespace ERodMobileApp.ViewModels
                             OtherItems.Add(item);
                         }
                     }
-                    SuckerListHeight = (SuckerList.Count * 90).ToString();
-                    PonyListHeight = (PonyList.Count * 90).ToString();
-                    CouplingListHeight = (Couplings.Count * 90).ToString();
-                    PolishedListHeight = (PolishedRod.Count * 90).ToString();
-                    SinkerListHeight = (SinkerBar.Count * 90).ToString();
-                    StablizerListHeight = (StablizerBar.Count * 90).ToString();
-                    OthersListHeight = (OtherItems.Count * 90).ToString();
                 }
+                SuckerListHeight = (SuckerList.Count * 90).ToString();
+                PonyListHeight = (PonyList.Count * 90).ToString();
+                CouplingListHeight = (Couplings.Count * 90).ToString();
+                PolishedListHeight = (PolishedRod.Count * 90).ToString();
+                SinkerListHeight = (SinkerBar.Count * 90).ToString();
+                StablizerListHeight = (StablizerBar.Count * 90).ToString();
+                OthersListHeight = (OtherItems.Count * 90).ToString();
                 IsBusy = false;
             }
             catch (Exception e)
@@ -505,7 +506,7 @@ namespace ERodMobileApp.ViewModels
             }
 
         }
-        public async void GetActiveOrderDetails(SalesOrderModel so)
+        public void GetActiveOrderDetails(SalesOrderModel so)
         {
             try
             {
@@ -533,10 +534,11 @@ namespace ERodMobileApp.ViewModels
                 PolishedRod = new ObservableCollection<SalesOrderItemModel>();
                 StablizerBar = new ObservableCollection<SalesOrderItemModel>();
                 OtherItems = new ObservableCollection<SalesOrderItemModel>();
-                var soItemsResponse = await new ApiData().GetData<List<SalesOrderItemModel>>("api/salesorder/GetSoItemsById?soid=" + so.SalesOrderId, true);
-                if (soItemsResponse != null && soItemsResponse.data != null)
+                //var soItemsResponse = await new ApiData().GetData<List<SalesOrderItemModel>>("api/salesorder/GetSoItemsById?soid=" + so.SalesOrderId, true);
+                if (so.SOItems != null && so.SOItems.Count > 0)
                 {
-                    foreach (var item in soItemsResponse.data)
+                    var salesOrderItems = so.SOItems;
+                    foreach (var item in salesOrderItems)
                     {
                         if (item.Description.Contains("Sucker"))
                         {
@@ -566,15 +568,15 @@ namespace ERodMobileApp.ViewModels
                         {
                             OtherItems.Add(item);
                         }
-                    }
-                    SuckerListHeight = (SuckerList.Count * 90).ToString();
-                    PonyListHeight = (PonyList.Count * 90).ToString();
-                    CouplingListHeight = (Couplings.Count * 90).ToString();
-                    PolishedListHeight = (PolishedRod.Count * 90).ToString();
-                    SinkerListHeight = (SinkerBar.Count * 90).ToString();
-                    StablizerListHeight = (StablizerBar.Count * 90).ToString();
-                    OthersListHeight = (OtherItems.Count * 90).ToString();
+                    }                    
                 }
+                SuckerListHeight = (SuckerList.Count * 90).ToString();
+                PonyListHeight = (PonyList.Count * 90).ToString();
+                CouplingListHeight = (Couplings.Count * 90).ToString();
+                PolishedListHeight = (PolishedRod.Count * 90).ToString();
+                SinkerListHeight = (SinkerBar.Count * 90).ToString();
+                StablizerListHeight = (StablizerBar.Count * 90).ToString();
+                OthersListHeight = (OtherItems.Count * 90).ToString();
                 IsBusy = false;
             }
             catch (Exception e)

@@ -95,7 +95,7 @@ namespace ERodMobileApp.ViewModels
             get => _othersListHeight;
             set => SetProperty(ref _othersListHeight, value);
         }
-      
+
         private string _deliveryTime;
         public string DeliveryTime
         {
@@ -150,6 +150,7 @@ namespace ERodMobileApp.ViewModels
             get => _note;
             set => SetProperty(ref _note, value);
         }
+        public SalesOrderModel salesOrderData { get; set; }
         public DelegateCommand SaveAndEditLaterBtnCommand { get; set; }
         public DelegateCommand DiscardChangesBtnCommand { get; set; }
         public EditOrderPageViewModel(INavigationService navigationService) : base(navigationService)
@@ -159,16 +160,17 @@ namespace ERodMobileApp.ViewModels
         }
         public override void OnNavigatedTo(INavigationParameters parameters)
         {
-            var SalesOrder = parameters["SalesOrderData"] as SalesOrderModel;
-            GetData(SalesOrder);
+            salesOrderData = new SalesOrderModel();
+            salesOrderData = parameters["SalesOrderData"] as SalesOrderModel;
+            GetData(salesOrderData);
         }
-        public async void GetData(SalesOrderModel salesOrder)
+        public void GetData(SalesOrderModel salesOrder)
         {
             IsBusy = true;
             WellName = salesOrder.WellName;
             DeliveryTime = salesOrder.DeliveryDateAndTime;
             Customer = salesOrder.Customer;
-            Phone = salesOrder.DriverPhone;
+            Phone = salesOrder.Phone;
             GlCode = salesOrder.GlCode;
             Contact = salesOrder.Consultant;
             AFE = salesOrder.AFE;
@@ -180,10 +182,11 @@ namespace ERodMobileApp.ViewModels
             StablizerBar = new ObservableCollection<SalesOrderItemModel>();
             PolishedRod = new ObservableCollection<SalesOrderItemModel>();
             OtherItems = new ObservableCollection<SalesOrderItemModel>();
-            var soItemsResponse = await new ApiData().GetData<List<SalesOrderItemModel>>("api/salesorder/GetSoItemsById?soid=" + salesOrder.SalesOrderId, true);
-            if (soItemsResponse != null && soItemsResponse.data != null)
+            // var soItemsResponse = await new ApiData().GetData<List<SalesOrderItemModel>>("api/salesorder/GetSoItemsById?soid=" + salesOrder.SalesOrderId, true);
+            if (salesOrder.SOItems != null && salesOrder.SOItems.Count > 0)
             {
-                foreach (var item in soItemsResponse.data)
+                var salesOrderItems = salesOrder.SOItems;
+                foreach (var item in salesOrderItems)
                 {
                     if (item.Description.Contains("Sucker"))
                     {
@@ -214,20 +217,71 @@ namespace ERodMobileApp.ViewModels
                         OtherItems.Add(item);
                     }
                 }
-                SuckerListHeight = (SuckerList.Count * 90).ToString();
-                PonyListHeight = (PonyList.Count * 90).ToString();
-                CouplingListHeight = (Couplings.Count * 90).ToString();
-                PolishedListHeight = (PolishedRod.Count * 90).ToString();
-                SinkerListHeight = (SinkerBar.Count * 90).ToString();
-                StablizerListHeight = (StablizerBar.Count * 90).ToString();
-                OthersListHeight = (OtherItems.Count * 90).ToString();
             }
+            SuckerListHeight = (SuckerList.Count * 90).ToString();
+            PonyListHeight = (PonyList.Count * 90).ToString();
+            CouplingListHeight = (Couplings.Count * 90).ToString();
+            PolishedListHeight = (PolishedRod.Count * 90).ToString();
+            SinkerListHeight = (SinkerBar.Count * 90).ToString();
+            StablizerListHeight = (StablizerBar.Count * 90).ToString();
+            OthersListHeight = (OtherItems.Count * 90).ToString();
             IsBusy = false;
         }
-        public void SaveAndEditLater()
+        public async void SaveAndEditLater()
         {
-            var NewsaleOrder = new SalesOrder();
-            App.Database.SaveSalesOrderAsync(NewsaleOrder);
+            SalesOrder so = new SalesOrder();
+            so = await App.Database.GetSalesOrderByIdAsync(salesOrderData.SalesOrderId);
+            if (so != null)
+            {
+                so.Username = Customer;
+                so.CustomerContact = Contact;
+                so.Phone = Phone;
+                so.Note = Note;
+                if (so.CustomFields != null && so.CustomFields.Count > 0)
+                {
+                    var existing_cf = so.CustomFields;
+                    foreach (var cf in salesOrderData.CustomFields)
+                    {
+                        if (cf.Name == "WellName")
+                        {
+                            var data = existing_cf.Where(c => c.Name == "WellName").FirstOrDefault();
+                            if (cf.Info != data.Info)
+                            {
+                               CustomDataField cdf = so.CustomFields.Where(x => x.Name == "WellName").FirstOrDefault();
+                                
+                            }
+
+                        }
+                       
+                        
+                       
+                        if (!existing_cf.Contains(cf))
+                        {
+                            so.CustomFields.Add(new CustomDataField { Name = "WellName", Info = WellName });
+                        }
+                    }
+                }
+                else
+                {
+
+                }
+                if (so.SOItems != null && so.SOItems.Count > 0)
+                {
+                    var existing_SOItems = so.SOItems;
+                    foreach (var item in existing_SOItems)
+                    {
+                        if (!salesOrderData.SOItems.Contains(item))
+                        {
+                            so.SOItems.Add(item);
+                        }
+                    }
+                }
+                await App.Database.SaveSalesOrderAsync(so);
+            }
+            else
+            {
+
+            }
             NavigationService.GoBackAsync();
         }
         public void DiscardChanges()
