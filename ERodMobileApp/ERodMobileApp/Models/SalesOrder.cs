@@ -6,7 +6,7 @@ namespace ERodMobileApp.Models
     public class SalesOrder
     {
         [Ignore]
-        public List<CustomDataField> CustomFields { get; set; }
+        public List<CustomDataField> CustomFields   { get; set; }
         public string Id { get; set; }
         public string BillToAddress { get; set; }
         public string BillToCity { get; set; }
