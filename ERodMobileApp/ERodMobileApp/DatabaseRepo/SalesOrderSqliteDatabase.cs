@@ -16,14 +16,22 @@ namespace ERodMobileApp.DatabaseRepo
             database = new SQLiteAsyncConnection(dbPath);
             database.CreateTableAsync<SalesOrder>().Wait();
             database.CreateTableAsync<UserModel>().Wait();
-
+            database.CreateTableAsync<SalesOrderItemModel>().Wait();
             database.CreateTableAsync<CustomDataField>().Wait();
         }
 
-        public Task<List<SalesOrder>> GetSalesOrderAsync()
+        public async Task<List<SalesOrder>> GetSalesOrderAsync()
         {
             //Get all notes.
-            return database.Table<SalesOrder>().ToListAsync();
+            var AllSo = await database.Table<SalesOrder>().ToListAsync();
+            for(int i  = 0; i < AllSo.Count; i++)
+            {
+               var customfields = await database.Table<CustomDataField>().Where(x => x.RecordId  == AllSo[i].Num).ToListAsync();
+               var Soitems = await database.Table<SalesOrderItemModel>().Where(x => x.SoId == AllSo[i].Num).ToListAsync();
+               AllSo[i].CustomFields.AddRange(customfields);
+               AllSo[i].SOItems.AddRange(Soitems);
+            }
+            return AllSo;
         }
 
         public Task<SalesOrder> GetSalesOrderAsync(int id)
@@ -42,16 +50,19 @@ namespace ERodMobileApp.DatabaseRepo
             {
                 // Update an existing note.
                 await SaveCustomFieldsAsync(so.CustomFields);
+                await SaveCustomFieldsAsync(so.CustomFields);
                 return await database.UpdateAsync(so);
             }
             else
             {
                 // Save a new note.
                 await SaveCustomFieldsAsync(so.CustomFields);
+                await SaveSoItemsAsync(so.SOItems);
                 return await database.InsertAsync(so);
             }
 
         }
+
         public async Task<int> SaveCustomFieldsAsync(List<CustomDataField> cdfs)
         {
             var rowUpdated = 0;
@@ -101,6 +112,40 @@ namespace ERodMobileApp.DatabaseRepo
             // Get a specific note.
             return database.Table<UserModel>()
                             .FirstOrDefaultAsync();
+        }
+
+        public async Task<int> SaveSoItemsAsync(List<SalesOrderItemModel> soItems)
+        {
+            var rowUpdated = 0;
+            foreach (var si in soItems)
+            {
+
+                var existingSo = await database.Table<SalesOrderItemModel>().Where(x => x.Id == si.Id).FirstOrDefaultAsync();
+
+                if (existingSo != null)
+                {
+
+
+                    rowUpdated += await database.UpdateAsync(si);
+                }
+                else
+                {
+
+                    rowUpdated += await database.InsertAsync(si);
+                }
+            }
+            return rowUpdated;
+        }
+
+        public async Task<List<SalesOrder>> GetSoitemsAsync(List<SalesOrder> So)
+        {
+
+            foreach (var order in So)
+            {
+                var soItems = await database.Table<SalesOrderItemModel>().Where(x => x.SoId == order.Num).FirstOrDefaultAsync();
+                order.SOItems.Add(soItems);
+            }
+            return So;
         }
     }
 }

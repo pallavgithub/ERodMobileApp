@@ -74,6 +74,7 @@ namespace ERodMobileApp.Models
         public SalesOrder()
         {
             CustomFields = new List<CustomDataField>();
+            SOItems = new List<SalesOrderItemModel>();
         }
     }
 
