@@ -1,8 +1,10 @@
 ﻿using ERodMobileApp.Helpers;
 using ERodMobileApp.ViewModels;
 using Plugin.Media;
+using SignaturePad.Forms;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -36,7 +38,7 @@ namespace ERodMobileApp.Views
             (BindingContext as SignaturePageViewModel)._navigation.GoBackAsync();
         }
         private async void UploadBtn_Clicked(object sender, EventArgs e)
-        {
+        {   
             var Toast = DependencyService.Get<IMessage>();
             await CrossMedia.Current.Initialize();
             if (!CrossMedia.Current.IsCameraAvailable || !CrossMedia.Current.IsTakePhotoSupported)
@@ -61,9 +63,25 @@ namespace ERodMobileApp.Views
                 stampImg.IsVisible = true;
             }
         }
+
+        private async void ConfirmBtn_Clicked(object sender, EventArgs e)
+        {
+            var viewModel = (BindingContext as SignaturePageViewModel);
+            Stream stream;
+            if (signature.IsVisible)
+            {
+                stream = await signature.GetImageStreamAsync(SignatureImageFormat.Jpeg);
+            }
+            else
+            {
+                ImageSource isr = stampImg.Source;
+            }
+            viewModel.SaveSignature();
+        }
+        //public async void Save(object sender, EventArgs eventArgs)
+        //{
+        //    Stream stream = await signature.GetImageStreamAsync(SignatureImageFormat.Jpeg);
+        //}
     }
-    //public async void Save(object sender, EventArgs eventArgs)
-    //{
-    //    Stream stream = await signature.GetImageStreamAsync(SignatureImageFormat.Jpeg);
-    //}
+    
 }

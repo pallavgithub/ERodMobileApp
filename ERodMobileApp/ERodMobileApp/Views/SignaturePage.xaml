@@ -23,7 +23,7 @@
             <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand" Margin="0,0,40,0">
                 <Button Text="Cancel" FontFamily="{StaticResource RobotoRegular}" TextTransform="None" HorizontalOptions="End" WidthRequest="145" HeightRequest="40" BackgroundColor="#333333" CornerRadius="3" TextColor="White" Clicked="CancelBtn_Clicked"/>
                 <Button Text="Upload" FontFamily="{StaticResource RobotoRegular}" TextTransform="None" HorizontalOptions="End" WidthRequest="145" HeightRequest="40" BackgroundColor="#FF6600" CornerRadius="3" TextColor="White" Clicked="UploadBtn_Clicked"/>
-                <Button Text="Confirm" FontFamily="{StaticResource RobotoRegular}" TextTransform="None" HorizontalOptions="End" WidthRequest="145" HeightRequest="40" BackgroundColor="#FF6600" CornerRadius="3" TextColor="White"/>
+                <Button Text="Confirm" FontFamily="{StaticResource RobotoRegular}" TextTransform="None" HorizontalOptions="End" WidthRequest="145" HeightRequest="40" BackgroundColor="#FF6600" CornerRadius="3" TextColor="White" Clicked="ConfirmBtn_Clicked"/>
             </StackLayout>
         </StackLayout>
     </ContentPage.Content>

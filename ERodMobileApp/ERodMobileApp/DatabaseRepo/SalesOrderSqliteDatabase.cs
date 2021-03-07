@@ -18,6 +18,7 @@ namespace ERodMobileApp.DatabaseRepo
             database.CreateTableAsync<UserModel>().Wait();
             database.CreateTableAsync<SalesOrderItemModel>().Wait();
             database.CreateTableAsync<CustomDataField>().Wait();
+            database.CreateTableAsync<UserSignature>().Wait();
         }
 
         public async Task<List<SalesOrder>> GetSalesOrderAsync()

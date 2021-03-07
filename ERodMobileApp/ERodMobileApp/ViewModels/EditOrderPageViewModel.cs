@@ -229,54 +229,72 @@ namespace ERodMobileApp.ViewModels
         }
         public async void SaveAndEditLater()
         {
-            SalesOrder so = new SalesOrder();
-            so = await App.Database.GetSalesOrderByIdAsync(salesOrderData.SalesOrderId);
-            if (so != null)
+            SalesOrder localSO = new SalesOrder();
+            localSO = await App.Database.GetSalesOrderByIdAsync(salesOrderData.SalesOrderId);
+            if (localSO != null)
             {
-                so.Username = Customer;
-                so.CustomerContact = Contact;
-                so.Phone = Phone;
-                so.Note = Note;
-                if (so.CustomFields != null && so.CustomFields.Count > 0)
+                localSO.Username = Customer;
+                localSO.CustomerContact = Contact;
+                localSO.Phone = Phone;
+                localSO.Note = Note;
+                if (localSO.CustomFields != null && localSO.CustomFields.Count > 0)
                 {
-                    var existing_cf = so.CustomFields;
-                    foreach (var cf in salesOrderData.CustomFields)
-                    {
-                        if (cf.Name == "WellName")
-                        {
-                            var data = existing_cf.Where(c => c.Name == "WellName").FirstOrDefault();
-                            if (cf.Info != data.Info)
-                            {
-                               CustomDataField cdf = so.CustomFields.Where(x => x.Name == "WellName").FirstOrDefault();
-                                
-                            }
+                    var localWellName = localSO.CustomFields.Where(p => p.Name == "WellName").FirstOrDefault();
+                    if(localWellName.Info != WellName)
+                        localWellName.Info = WellName;
 
-                        }
-                       
-                        
-                       
-                        if (!existing_cf.Contains(cf))
-                        {
-                            so.CustomFields.Add(new CustomDataField { Name = "WellName", Info = WellName });
-                        }
-                    }
-                }
-                else
-                {
+                    var localEngineerRigSupervisor = localSO.CustomFields.Where(p => p.Name == "Engineer/Rig Supervisor").FirstOrDefault();
+                    if (localEngineerRigSupervisor.Info != Engineer)
+                        localEngineerRigSupervisor.Info = Engineer;
 
+                    //var localBillingOffice = localSO.CustomFields.Where(p => p.Name == "Billing Office").FirstOrDefault();
+                    //if (localBillingOffice.Info != IsBillingOffice)
+                    //    localBillingOffice.Info = IsBillingOffice;
+
+                    var localAFE = localSO.CustomFields.Where(p => p.Name == "WBS#/AFE#").FirstOrDefault();
+                    if (localAFE.Info != AFE)
+                        localAFE.Info = AFE;
+
+                    var localGLCode = localSO.CustomFields.Where(p => p.Name == "Cost/GL Code").FirstOrDefault();
+                    if (localGLCode.Info != GlCode)
+                        localGLCode.Info = GlCode;
+
+                    var localDeliveryTime = localSO.CustomFields.Where(p => p.Name == "Delivery Time").FirstOrDefault();
+                    if (localDeliveryTime.Info != DeliveryTime)
+                        localDeliveryTime.Info = DeliveryTime;
+
+                    //var localShipped = localSO.CustomFields.Where(p => p.Name == "Shipped").FirstOrDefault();
+                    //if (localShipped.Info != IsShipped)
+                    //    localShipped.Info = IsShipped;
+
+                    //var localDelivered = localSO.CustomFields.Where(p => p.Name == "Delivered").FirstOrDefault();
+                    //if (localDelivered.Info != IsDelivered)
+                    //    localDelivered.Info = IsDelivered;
+
+                    //var localCoordinates = localSO.CustomFields.Where(p => p.Name == "Coordinates").FirstOrDefault();
+                    //if (localCoordinates.Info != Coordinates)
+                    //    localCoordinates.Info = Coordinates;
                 }
-                if (so.SOItems != null && so.SOItems.Count > 0)
+
+                localSO.SOItems.Clear();
+                if (salesOrderData.SOItems != null && salesOrderData.SOItems.Count > 0)
                 {
-                    var existing_SOItems = so.SOItems;
-                    foreach (var item in existing_SOItems)
-                    {
-                        if (!salesOrderData.SOItems.Contains(item))
-                        {
-                            so.SOItems.Add(item);
-                        }
-                    }
+                    var modified_SOItems = salesOrderData.SOItems; 
+                    localSO.SOItems.AddRange(modified_SOItems);
                 }
-                await App.Database.SaveSalesOrderAsync(so);
+
+                //if (localSO.SOItems != null && localSO.SOItems.Count > 0)
+                //{
+                //    var existing_SOItems = localSO.SOItems;
+                //    foreach (var item in existing_SOItems)
+                //    {
+                //        if (!salesOrderData.SOItems.Contains(item))
+                //        {
+                //            localSO.SOItems.Add(item);
+                //        }
+                //    }
+                //}
+                await App.Database.SaveSalesOrderAsync(localSO);
             }
             else
             {
