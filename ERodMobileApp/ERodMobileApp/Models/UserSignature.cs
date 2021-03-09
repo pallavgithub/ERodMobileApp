@@ -8,7 +8,9 @@ namespace ERodMobileApp.Models
     {
         public string SalesOrderID { get; set; }
         public string UserName { get; set; }
-        public string SignaturePath { get; set; }
-        public byte[] SignatureByteArray { get; set; }
+        public string ImageString { get; set; }
+        public string Name { get; set; }
+            //public string SignaturePath { get; set; }
+            //public byte[] SignatureByteArray { get; set; }
     }
 }

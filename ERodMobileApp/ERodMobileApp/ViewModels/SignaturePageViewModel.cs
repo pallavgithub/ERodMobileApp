@@ -1,11 +1,14 @@
-﻿using ERodMobileApp.Models;
+﻿using ERodMobileApp.Helpers;
+using ERodMobileApp.Models;
 using Prism.Navigation;
 using SignaturePad.Forms;
+using System;
 using System.IO;
+using Xamarin.Forms;
 
 namespace ERodMobileApp.ViewModels
 {
-    public class SignaturePageViewModel:ViewModelBase
+    public class SignaturePageViewModel : ViewModelBase
     {
         public INavigationService _navigation;
         public UserSignature _userSignature;
@@ -18,18 +21,29 @@ namespace ERodMobileApp.ViewModels
             _userSignature = new UserSignature();
         }
 
-        public void SaveSignature()
+        public async void SaveSignature()
         {
+            var Toast = DependencyService.Get<IMessage>();
             Stream stream = _stream;
             byte[] byteArray = ConvertToByteArrayFromStream();
+            string base64Img = Convert.ToBase64String(byteArray);
             string filePath = _filePath;
+
             UserSignature usersignature = new UserSignature()
             {
-                SalesOrderID = "",
-                SignatureByteArray = byteArray,
-                SignaturePath = filePath,
-                UserName = ""
+                ImageString = base64Img,
+                Name = filePath,
             };
+            var response = await new ApiData().PostData<string>("api/salesorder/PostSignatureImage", usersignature, true);
+            if (response != null && response.status=="Success")
+            {
+                Toast.LongAlert("Signature Uploaded.");
+                NavigationService.GoBackAsync();
+            }
+            else
+            {
+                Toast.LongAlert("Error occured");
+            }
             // Save user signature in local storage
             // api will be called when submit sales order will be initiated
         }
