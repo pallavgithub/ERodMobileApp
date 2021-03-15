@@ -4,6 +4,8 @@ using Prism.Commands;
 using Prism.Navigation;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using Xamarin.Forms;
+
 namespace ERodMobileApp.ViewModels
 {
     public class ReviewOrderPageViewModel : ViewModelBase, INavigatedAware
@@ -156,6 +158,7 @@ namespace ERodMobileApp.ViewModels
         }
         public DelegateCommand CheckBoxCommand { get; set; }
         public DelegateCommand SubmitBtnCommand { get; set; }
+        public SalesOrderModel salesOrder { get; set; }
         public ReviewOrderPageViewModel(INavigationService navigationService) : base(navigationService)
         {
             CheckBoxCommand = new DelegateCommand(CheckBoxCheckUncheck);
@@ -165,11 +168,28 @@ namespace ERodMobileApp.ViewModels
         {
             IsAgree = !IsAgree;
         }
-        public void SubmitBtnClicked()
+        public async void SubmitBtnClicked()
         {
-            NavigationService.GoBackAsync();
+            var Toast = DependencyService.Get<IMessage>();
+            SalesOrder localSO = new SalesOrder();
+            localSO = await App.Database.GetSalesOrderByIdAsync(salesOrder.SalesOrderId);
+            if (localSO != null)
+            {
+                IsBusy = true;
+                var response = await new ApiData().PostData<string>("api/salesorder/ReviewSubmitOrder", localSO, true);
+                if (response != null && response.status == "Success")
+                {
+                    Toast.LongAlert("Order submitted successfully.");
+                }
+                else
+                {
+                    Toast.LongAlert(response.message);
+                }
+                IsBusy = false;
+            }
+            await NavigationService.GoBackAsync();
         }
-        public async void GetData(SalesOrderModel salesOrder)
+        public void GetData(SalesOrderModel salesOrder)
         {
             IsBusy = true;
             SuckerList = new ObservableCollection<SalesOrderItemModel>();
@@ -235,8 +255,9 @@ namespace ERodMobileApp.ViewModels
         }
         public override void OnNavigatedTo(INavigationParameters parameters)
         {
-            SalesOrder = parameters["SalesOrder"] as SalesOrderModel;
-            GetData(SalesOrder);
+            salesOrder = new SalesOrderModel();
+            salesOrder = parameters["SalesOrder"] as SalesOrderModel;
+            GetData(salesOrder);
         }
     }
 }

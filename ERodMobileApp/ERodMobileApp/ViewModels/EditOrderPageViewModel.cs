@@ -240,7 +240,7 @@ namespace ERodMobileApp.ViewModels
                 if (localSO.CustomFields != null && localSO.CustomFields.Count > 0)
                 {
                     var localWellName = localSO.CustomFields.Where(p => p.Name == "WellName").FirstOrDefault();
-                    if(localWellName.Info != WellName)
+                    if (localWellName.Info != WellName)
                         localWellName.Info = WellName;
 
                     var localEngineerRigSupervisor = localSO.CustomFields.Where(p => p.Name == "Engineer/Rig Supervisor").FirstOrDefault();
@@ -279,7 +279,7 @@ namespace ERodMobileApp.ViewModels
                 localSO.SOItems.Clear();
                 if (salesOrderData.SOItems != null && salesOrderData.SOItems.Count > 0)
                 {
-                    var modified_SOItems = salesOrderData.SOItems; 
+                    var modified_SOItems = salesOrderData.SOItems;
                     localSO.SOItems.AddRange(modified_SOItems);
                 }
 
@@ -300,7 +300,7 @@ namespace ERodMobileApp.ViewModels
             {
 
             }
-            NavigationService.GoBackAsync();
+            await NavigationService.GoBackAsync();
         }
         public void DiscardChanges()
         {
