@@ -120,8 +120,7 @@ namespace ERodMobileApp.DatabaseRepo
         public Task<UserModel> GetUserAsync()
         {
             // Get a specific note.
-            return database.Table<UserModel>()
-                            .FirstOrDefaultAsync();
+            return database.Table<UserModel>().FirstOrDefaultAsync();
         }
 
         public async Task<int> SaveSoItemsAsync(List<SalesOrderItemModel> soItems)
@@ -156,6 +155,25 @@ namespace ERodMobileApp.DatabaseRepo
                 order.SOItems.Add(soItems);
             }
             return So;
+        }
+        public async Task<int> SaveSignatureAsync(UserSignature sign)
+        {
+
+            var existingsign = await database.Table<UserSignature>().Where(x => x.SalesOrderID == sign.SalesOrderID).FirstOrDefaultAsync();
+
+            if (existingsign != null)
+            {
+                return await database.UpdateAsync(sign);
+            }
+            else
+            {
+                return await database.InsertAsync(sign);
+            }
+           
+        }
+        public async Task<UserSignature> GetSignatureAsync(string OrderId)
+        {
+            return await database.Table<UserSignature>().Where(x => x.SalesOrderID == OrderId).FirstOrDefaultAsync();
         }
     }
 }
