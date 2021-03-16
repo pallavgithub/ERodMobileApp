@@ -172,22 +172,30 @@ namespace ERodMobileApp.ViewModels
         {
             var Toast = DependencyService.Get<IMessage>();
             SalesOrder localSO = new SalesOrder();
-            localSO = await App.Database.GetSalesOrderByIdAsync(salesOrder.SalesOrderId);
-            if (localSO != null)
+            if (IsNotConnected)
             {
-                IsBusy = true;
-                var response = await new ApiData().PostData<string>("api/salesorder/ReviewSubmitOrder", localSO, true);
-                if (response != null && response.status == "Success")
-                {
-                    Toast.LongAlert("Order submitted successfully.");
-                }
-                else
-                {
-                    Toast.LongAlert(response.message);
-                }
-                IsBusy = false;
+                Toast.LongAlert("You are offline.");
+                await NavigationService.GoBackAsync();
             }
-            await NavigationService.GoBackAsync();
+            else
+            {
+                localSO = await App.Database.GetSalesOrderByIdAsync(salesOrder.SalesOrderId);
+                if (localSO != null)
+                {
+                    IsBusy = true;
+                    var response = await new ApiData().PostData<string>("api/salesorder/ReviewSubmitOrder", localSO, true);
+                    if (response != null && response.status == "Success")
+                    {
+                        Toast.LongAlert("Order submitted successfully.");
+                    }
+                    else
+                    {
+                        Toast.LongAlert(response.message);
+                    }
+                    IsBusy = false;
+                }
+                await NavigationService.GoBackAsync();
+            }
         }
         public void GetData(SalesOrderModel salesOrder)
         {
