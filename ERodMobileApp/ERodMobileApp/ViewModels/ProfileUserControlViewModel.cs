@@ -1,4 +1,5 @@
 ﻿using ERodMobileApp.Models;
+using Prism.Commands;
 using Prism.Navigation;
 using System.Linq;
 using Xamarin.Forms;
@@ -63,15 +64,17 @@ namespace ERodMobileApp.ViewModels
         }
         public UserModel UserData { get; set; }
         public UserNotificationModel UserNotifications { get; set; }
+        public DelegateCommand LogoutBtnCommand { get; set; }
         public ProfileUserControlViewModel(INavigationService navigationService) : base(navigationService)
         {
+            LogoutBtnCommand = new DelegateCommand(Logout);
             UserData = new UserModel();
             GetUserProfile();
         }
         public void GetUserProfile()
         {
-            UserData=(UserModel)Application.Current.Properties.Where(x => x.Key == "User").FirstOrDefault().Value;
-            UserNotifications=(UserNotificationModel)Application.Current.Properties.Where(x => x.Key == "UserNotifications").FirstOrDefault().Value;
+            UserData = (UserModel)Application.Current.Properties.Where(x => x.Key == "User").FirstOrDefault().Value;
+            UserNotifications = (UserNotificationModel)Application.Current.Properties.Where(x => x.Key == "UserNotifications").FirstOrDefault().Value;
             MobileNumber = UserData.PhoneNumber;
             UserName = UserData.Name;
             Company = UserData.Company;
@@ -81,6 +84,16 @@ namespace ERodMobileApp.ViewModels
             OrderStatusChange = UserNotifications.StatusChangeNotification;
             ShippingNotification = UserNotifications.ShippingNotification;
             SignReminder = UserNotifications.SignatureReminder;
+        }
+        public void Logout()
+        {
+            Application.Current.Properties.Remove("User");
+            Application.Current.Properties.Remove("UserNotifications");
+            Application.Current.Properties["IsFromProfilePage"] = true;
+            Application.Current.SavePropertiesAsync();
+            var navigationParams = new NavigationParameters();
+            navigationParams.Add("IsFromProfile", true);
+            NavigationService.NavigateAsync("LoginPage", navigationParams);
         }
     }
 }

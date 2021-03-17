@@ -154,6 +154,12 @@ namespace ERodMobileApp.ViewModels
             get => _popupIsVisible;
             set => SetProperty(ref _popupIsVisible, value);
         }
+        public bool _isFromProfile;
+        public bool IsFromProfile
+        {
+            get => _isFromProfile;
+            set => SetProperty(ref _isFromProfile, value);
+        }
         public DelegateCommand DoneButtonCommand { get; set; }
         public DelegateCommand OpenPopupCommand { get; set; }
         public DelegateCommand EmailToggleCommand { get; set; }
@@ -178,6 +184,20 @@ namespace ERodMobileApp.ViewModels
             //CheckPlatform();
             //LoginWithMobileNumber();
         }
+        //public override void OnNavigatedTo(INavigationParameters parameters)
+        //{
+        //    if (parameters.ContainsKey("IsFromProfile"))
+        //    {
+        //        IsFromProfile = (bool)parameters["IsFromProfile"];
+        //        if (IsFromProfile)
+        //        {
+        //            LoginIsVisible = false;
+        //            ActivationCodePageIsVisible = false;
+        //            EnterMobilePageIsVisible = true;
+        //            var pro = Application.Current.Properties;
+        //        }
+        //    }
+        //}
         public void CheckBoxCheckUncheck()
         {
             IsAgree = !IsAgree;
@@ -193,11 +213,18 @@ namespace ERodMobileApp.ViewModels
                 case "Android":
                     try
                     {
-                        var deviceInfo = Xamarin.Forms.DependencyService.Get<IDeviceInfo>();
-                        var _phn = deviceInfo.GetPhoneNumber();
-                        Phone = _phn.Substring(_phn.Length - Math.Min(10, _phn.Length));
-                        //Phone = "2817816334";
-                        await LoginWithMobileNumber();
+                        if (Application.Current.Properties.ContainsKey("IsFromProfilePage") && (bool)Application.Current.Properties["IsFromProfilePage"] == true)
+                        {
+                            EnterMobilePageIsVisible = true;
+                        }
+                        else
+                        {
+                            var deviceInfo = Xamarin.Forms.DependencyService.Get<IDeviceInfo>();
+                            var _phn = deviceInfo.GetPhoneNumber();
+                            Phone = _phn.Substring(_phn.Length - Math.Min(10, _phn.Length));
+                            //Phone = "2817816334";
+                            await LoginWithMobileNumber();
+                        }
                     }
                     catch (Exception e)
                     {
@@ -215,6 +242,11 @@ namespace ERodMobileApp.ViewModels
             if (string.IsNullOrEmpty(Phone))
             {
                 if (Device.RuntimePlatform == "iOS")
+                {
+                    Toast.LongAlert("Please fill Mobile Number");
+                    return;
+                }
+                else if (Device.RuntimePlatform == "Android")
                 {
                     Toast.LongAlert("Please fill Mobile Number");
                     return;
@@ -263,6 +295,8 @@ namespace ERodMobileApp.ViewModels
                     UserNotifications.ShippingNotification = User.ShippingNotification;
                     UserNotifications.SignatureReminder = User.SignatureReminder;
                     UserNotifications.PhoneNumber = User.PhoneNumber;
+                    if (Application.Current.Properties.ContainsKey("IsFromProfilePage"))
+                        Application.Current.Properties.Remove("IsFromProfilePage");
                 }
                 else
                 {
@@ -359,7 +393,7 @@ namespace ERodMobileApp.ViewModels
             var response = await new ApiData().PostData<string>("api/account/UpdateNotification", UserNotifications, true);
             if (response != null)
             {
-               // UserNotifications = updatedNotifications;
+                // UserNotifications = updatedNotifications;
             }
         }
         public void DoneButtonClicked()
@@ -378,7 +412,7 @@ namespace ERodMobileApp.ViewModels
             }
         }
         public bool ExitApp()
-        {            
+        {
             Device.BeginInvokeOnMainThread(() =>
             {
                 var closer = DependencyService.Get<IExitApp>();
@@ -386,6 +420,6 @@ namespace ERodMobileApp.ViewModels
             });
             return true;
         }
-     
+
     }
 }

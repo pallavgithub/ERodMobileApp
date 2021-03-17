@@ -6,6 +6,7 @@
              prism:ViewModelLocator.AutowireViewModel="True">
     <ContentView.Content>
         <StackLayout VerticalOptions="FillAndExpand" Margin="0,0,0,0">
+            <ScrollView>
             <Grid VerticalOptions="FillAndExpand">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="2.3*"/>
@@ -14,6 +15,7 @@
                     <RowDefinition Height="2.2*"/>
                     <RowDefinition Height="1.5*"/>
                     <RowDefinition Height="5*"/>
+                    <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
                 <Image Grid.RowSpan="2" Source="BlueBg.png" Aspect="Fill"/>
                 <Image Grid.Row="0" Source="LogoWhite.png">
@@ -66,8 +68,9 @@
                     </StackLayout>
                 </StackLayout>
 
-
-            </Grid>
+                <Button Text="Logout" Command="{Binding LogoutBtnCommand}" FontFamily="{StaticResource InterMedium}" Grid.Row="6" HeightRequest="40" Padding="1" VerticalOptions="Start" HorizontalOptions="CenterAndExpand" TextColor="White" BackgroundColor="#FF6600" Margin="0,0,0,20"/>
+                </Grid>
+            </ScrollView>
         </StackLayout>
     </ContentView.Content>
 </ContentView>

@@ -12,7 +12,7 @@
     </ContentPage.Resources>
     <ContentPage.Content>
         <StackLayout>
-            
+
             <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                 <!--Enter Mobile (for ios)-->
                 <ContentView IsVisible="{Binding EnterMobilePageIsVisible}" VerticalOptions="FillAndExpand"
@@ -22,10 +22,11 @@
                         <Image Source="Rectangle110.png" Aspect="AspectFill"/>
                         <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                             <Grid.Margin>
-                <OnPlatform x:TypeArguments="Thickness">
-                    <On Platform="iOS" Value="0,40,0,0" />
-                </OnPlatform>
-            </Grid.Margin>
+                                <OnPlatform x:TypeArguments="Thickness">
+                                    <On Platform="iOS" Value="0,40,0,0"/>
+                                    <On Platform="Android" Value="0,40,0,0"/>
+                                </OnPlatform>
+                            </Grid.Margin>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="*"/>
                                 <RowDefinition Height="2*"/>
@@ -76,11 +77,11 @@
                 <ContentView IsVisible="{Binding LoginIsVisible}" Margin="0,20,0,0">
                     <Grid>
                         <Grid.Margin>
-                <OnPlatform x:TypeArguments="Thickness">
-                    <On Platform="iOS" Value="0,25,0,0" />
-                    <On Platform="Android" Value="0,15,0,0" />
-                </OnPlatform>
-            </Grid.Margin>
+                            <OnPlatform x:TypeArguments="Thickness">
+                                <On Platform="iOS" Value="0,25,0,0" />
+                                <On Platform="Android" Value="0,15,0,0" />
+                            </OnPlatform>
+                        </Grid.Margin>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="1.8*"/>
                             <RowDefinition Height="1.8*"/>
@@ -203,11 +204,11 @@
                 <ContentView IsVisible="{Binding ActivationCodePageIsVisible}" Margin="0,30,0,0">
                     <Grid>
                         <Grid.Margin>
-                <OnPlatform x:TypeArguments="Thickness">
-                    <On Platform="iOS" Value="45,25,45,0" />
-                    <On Platform="Android" Value="45,15,45,0" />
-                </OnPlatform>
-            </Grid.Margin>
+                            <OnPlatform x:TypeArguments="Thickness">
+                                <On Platform="iOS" Value="45,25,45,0" />
+                                <On Platform="Android" Value="45,15,45,0" />
+                            </OnPlatform>
+                        </Grid.Margin>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="1.5*"/>
                             <RowDefinition Height="1.5*"/>
