@@ -1,4 +1,5 @@
-﻿using ERodMobileApp.Helpers;
+﻿
+using ERodMobileApp.Helpers;
 using ERodMobileApp.Models;
 using Prism.Navigation;
 using SignaturePad.Forms;
