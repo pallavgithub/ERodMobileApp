@@ -156,20 +156,20 @@ namespace ERodMobileApp.DatabaseRepo
             }
             return So;
         }
-        public async Task<int> SaveSignatureAsync(UserSignature sign)
+        public async Task<UserSignature> SaveSignatureAsync(UserSignature sign)
         {
 
             var existingsign = await database.Table<UserSignature>().Where(x => x.SalesOrderID == sign.SalesOrderID).FirstOrDefaultAsync();
 
             if (existingsign != null)
             {
-                return await database.UpdateAsync(sign);
+                await database.UpdateAsync(sign);
             }
             else
             {
-                return await database.InsertAsync(sign);
+               await database.InsertAsync(sign);
             }
-           
+            return sign;
         }
         public async Task<UserSignature> GetSignatureAsync(string OrderId)
         {

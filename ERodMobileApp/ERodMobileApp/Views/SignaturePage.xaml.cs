@@ -40,7 +40,8 @@ namespace ERodMobileApp.Views
             (BindingContext as SignaturePageViewModel)._navigation.GoBackAsync();
         }
         private async void UploadBtn_Clicked(object sender, EventArgs e)
-        {   
+        {
+            var viewModel = (BindingContext as SignaturePageViewModel);
             var Toast = DependencyService.Get<IMessage>();
             await CrossMedia.Current.Initialize();
             if (!CrossMedia.Current.IsCameraAvailable || !CrossMedia.Current.IsTakePhotoSupported)
@@ -65,6 +66,9 @@ namespace ERodMobileApp.Views
                   });
                 signature.IsVisible = false;
                 stampImg.IsVisible = true;
+
+                viewModel.SaveSignature();
+                //App.Database.SaveSignatureAsync()
             }
         }
 

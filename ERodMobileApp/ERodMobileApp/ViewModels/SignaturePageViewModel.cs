@@ -31,19 +31,25 @@ namespace ERodMobileApp.ViewModels
 
             UserSignature usersignature = new UserSignature()
             {
+                SalesOrderID = RadomNumGenerator.RadomNumber(),
                 ImageString = base64Img,
                 Name = filePath,
+                ImageLivePath= ""          
             };
-            var response = await new ApiData().PostData<string>("api/salesorder/PostSignatureImage", usersignature, true);
-            if (response != null && response.status=="Success")
+
+            var response = await new ApiData().PostData<UserSignature>("api/salesorder/PostSignatureImage", usersignature, true);
+            if (response != null && response.status == "Success")
             {
                 Toast.LongAlert("Signature Uploaded.");
                 NavigationService.GoBackAsync();
             }
             else
             {
+                response.data = usersignature;
                 Toast.LongAlert("Error occured");
             }
+            await App.Database.SaveSignatureAsync(response.data);
+          
             // Save user signature in local storage
             // api will be called when submit sales order will be initiated
         }
