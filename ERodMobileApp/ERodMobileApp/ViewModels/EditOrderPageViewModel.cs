@@ -2,6 +2,7 @@
 using ERodMobileApp.Models;
 using Prism.Commands;
 using Prism.Navigation;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -150,7 +151,14 @@ namespace ERodMobileApp.ViewModels
             get => _note;
             set => SetProperty(ref _note, value);
         }
+        private bool _isFromProductsPage;
+        public bool IsFromProductsPage
+        {
+            get => _isFromProductsPage;
+            set => SetProperty(ref _isFromProductsPage, value);
+        }
         public SalesOrderModel salesOrderData { get; set; }
+        public SalesOrder newSalesOrderData { get; set; }
         public DelegateCommand SaveAndEditLaterBtnCommand { get; set; }
         public DelegateCommand DiscardChangesBtnCommand { get; set; }
         public EditOrderPageViewModel(INavigationService navigationService) : base(navigationService)
@@ -160,9 +168,18 @@ namespace ERodMobileApp.ViewModels
         }
         public override void OnNavigatedTo(INavigationParameters parameters)
         {
-            salesOrderData = new SalesOrderModel();
-            salesOrderData = parameters["SalesOrderData"] as SalesOrderModel;
-            GetData(salesOrderData);
+            if (parameters.ContainsKey("IsFromProductsPage"))
+            {
+                IsFromProductsPage = (bool)parameters["IsFromProductsPage"];
+                var soID = parameters["NewSOId"] as string;
+                GetNewSalesOrderData(soID);
+            }
+            else
+            {
+                salesOrderData = new SalesOrderModel();
+                salesOrderData = parameters["SalesOrderData"] as SalesOrderModel;
+                GetData(salesOrderData);
+            }
         }
         public void GetData(SalesOrderModel salesOrder)
         {
@@ -227,10 +244,116 @@ namespace ERodMobileApp.ViewModels
             OthersListHeight = (OtherItems.Count * 90).ToString();
             IsBusy = false;
         }
+        public async void GetNewSalesOrderData(string SoId)
+        {
+            try
+            {
+                IsBusy = true;
+                newSalesOrderData = new SalesOrder();
+                newSalesOrderData = await App.Database.GetSalesOrderByIdAsync(SoId);
+                if (newSalesOrderData != null)
+                {
+                    if (newSalesOrderData.CustomFields != null && newSalesOrderData.CustomFields.Count > 0)
+                    {
+                        foreach (var cf in newSalesOrderData.CustomFields)
+                        {
+                            if (!string.IsNullOrEmpty(cf.Name))
+                            {
+                                if (cf.Name == "Well Name")
+                                {
+                                    WellName = cf.Info;
+                                }
+                                else if (cf.Name == "Delivery Time")
+                                {
+                                    DeliveryTime = cf.Info;
+                                }
+                                else if (cf.Name == "Engineer/Rig Supervisor")
+                                {
+                                    Engineer = cf.Info;
+                                }
+                                else if (cf.Name == "WBS#/AFE#")
+                                {
+                                    AFE = cf.Info;
+                                }
+                                else if (cf.Name == "Cost/GL Code")
+                                {
+                                    GlCode = cf.Info;
+                                }
+                            }
+                        }                       
+                    }
+                    Customer = newSalesOrderData.Username;
+                    Phone = newSalesOrderData.Phone;
+                    Contact = newSalesOrderData.CustomerContact;
+                    Note = newSalesOrderData.Note;
+                    SuckerList = new ObservableCollection<SalesOrderItemModel>();
+                    PonyList = new ObservableCollection<SalesOrderItemModel>();
+                    Couplings = new ObservableCollection<SalesOrderItemModel>();
+                    SinkerBar = new ObservableCollection<SalesOrderItemModel>();
+                    StablizerBar = new ObservableCollection<SalesOrderItemModel>();
+                    PolishedRod = new ObservableCollection<SalesOrderItemModel>();
+                    OtherItems = new ObservableCollection<SalesOrderItemModel>();
+                    if (newSalesOrderData.SOItems != null && newSalesOrderData.SOItems.Count > 0)
+                    {
+                        var salesOrderItems = newSalesOrderData.SOItems;
+                        foreach (var item in salesOrderItems)
+                        {
+                            if (item.Description.Contains("Sucker"))
+                            {
+                                SuckerList.Add(item);
+                            }
+                            else if (item.Description.Contains("Pony"))
+                            {
+                                PonyList.Add(item);
+                            }
+                            else if (item.Description.Contains("Coupling"))
+                            {
+                                Couplings.Add(item);
+                            }
+                            else if (item.Description.Contains("Polished"))
+                            {
+                                PolishedRod.Add(item);
+                            }
+                            else if (item.Description.Contains("Sinker"))
+                            {
+                                SinkerBar.Add(item);
+                            }
+                            else if (item.Description.Contains("Stablizer"))
+                            {
+                                StablizerBar.Add(item);
+                            }
+                            else
+                            {
+                                OtherItems.Add(item);
+                            }
+                        }
+                    }
+                    SuckerListHeight = (SuckerList.Count * 90).ToString();
+                    PonyListHeight = (PonyList.Count * 90).ToString();
+                    CouplingListHeight = (Couplings.Count * 90).ToString();
+                    PolishedListHeight = (PolishedRod.Count * 90).ToString();
+                    SinkerListHeight = (SinkerBar.Count * 90).ToString();
+                    StablizerListHeight = (StablizerBar.Count * 90).ToString();
+                    OthersListHeight = (OtherItems.Count * 90).ToString();
+                }
+                IsBusy = false;
+            }
+            catch (Exception e)
+            {
+
+            }
+        }
         public async void SaveAndEditLater()
         {
             SalesOrder localSO = new SalesOrder();
-            localSO = await App.Database.GetSalesOrderByIdAsync(salesOrderData.SalesOrderId);
+            if (IsFromProductsPage)
+            {
+                localSO = await App.Database.GetSalesOrderByIdAsync(newSalesOrderData.Num);
+            }
+            else
+            {
+                localSO = await App.Database.GetSalesOrderByIdAsync(salesOrderData.SalesOrderId);
+            }
             if (localSO != null)
             {
                 localSO.Username = Customer;
@@ -239,68 +362,74 @@ namespace ERodMobileApp.ViewModels
                 localSO.Note = Note;
                 if (localSO.CustomFields != null && localSO.CustomFields.Count > 0)
                 {
-                    var localWellName = localSO.CustomFields.Where(p => p.Name == "WellName").FirstOrDefault();
-                    if (localWellName.Info != WellName)
-                        localWellName.Info = WellName;
-
-                    var localEngineerRigSupervisor = localSO.CustomFields.Where(p => p.Name == "Engineer/Rig Supervisor").FirstOrDefault();
-                    if (localEngineerRigSupervisor.Info != Engineer)
-                        localEngineerRigSupervisor.Info = Engineer;
-
-                    //var localBillingOffice = localSO.CustomFields.Where(p => p.Name == "Billing Office").FirstOrDefault();
-                    //if (localBillingOffice.Info != IsBillingOffice)
-                    //    localBillingOffice.Info = IsBillingOffice;
-
-                    var localAFE = localSO.CustomFields.Where(p => p.Name == "WBS#/AFE#").FirstOrDefault();
-                    if (localAFE.Info != AFE)
-                        localAFE.Info = AFE;
-
-                    var localGLCode = localSO.CustomFields.Where(p => p.Name == "Cost/GL Code").FirstOrDefault();
-                    if (localGLCode.Info != GlCode)
-                        localGLCode.Info = GlCode;
-
-                    var localDeliveryTime = localSO.CustomFields.Where(p => p.Name == "Delivery Time").FirstOrDefault();
-                    if (localDeliveryTime.Info != DeliveryTime)
-                        localDeliveryTime.Info = DeliveryTime;
-
-                    //var localShipped = localSO.CustomFields.Where(p => p.Name == "Shipped").FirstOrDefault();
-                    //if (localShipped.Info != IsShipped)
-                    //    localShipped.Info = IsShipped;
-
-                    //var localDelivered = localSO.CustomFields.Where(p => p.Name == "Delivered").FirstOrDefault();
-                    //if (localDelivered.Info != IsDelivered)
-                    //    localDelivered.Info = IsDelivered;
-
-                    //var localCoordinates = localSO.CustomFields.Where(p => p.Name == "Coordinates").FirstOrDefault();
-                    //if (localCoordinates.Info != Coordinates)
-                    //    localCoordinates.Info = Coordinates;
+                    foreach (var cf in localSO.CustomFields)
+                    {
+                        if (!string.IsNullOrEmpty(cf.Name))
+                        {
+                            if (cf.Name == "Well Name")
+                            {
+                                var localWellName = localSO.CustomFields.Where(p => p.Name == "WellName").FirstOrDefault();
+                                if (localWellName.Info != WellName)
+                                    localWellName.Info = WellName;
+                            }
+                            else if (cf.Name == "Delivery Time")
+                            {
+                                var localDeliveryTime = localSO.CustomFields.Where(p => p.Name == "Delivery Time").FirstOrDefault();
+                                if (localDeliveryTime.Info != DeliveryTime)
+                                    localDeliveryTime.Info = DeliveryTime;
+                            }
+                            else if (cf.Name == "Engineer/Rig Supervisor")
+                            {
+                                var localEngineerRigSupervisor = localSO.CustomFields.Where(p => p.Name == "Engineer/Rig Supervisor").FirstOrDefault();
+                                if (localEngineerRigSupervisor.Info != Engineer)
+                                    localEngineerRigSupervisor.Info = Engineer;
+                            }
+                            else if (cf.Name == "WBS#/AFE#")
+                            {
+                                var localAFE = localSO.CustomFields.Where(p => p.Name == "WBS#/AFE#").FirstOrDefault();
+                                if (localAFE.Info != AFE)
+                                    localAFE.Info = AFE;
+                            }
+                            else if (cf.Name == "Cost/GL Code")
+                            {
+                                var localGLCode = localSO.CustomFields.Where(p => p.Name == "Cost/GL Code").FirstOrDefault();
+                                if (localGLCode.Info != GlCode)
+                                    localGLCode.Info = GlCode;
+                            }
+                        }
+                    }
+                    
+                   
                 }
-
-                localSO.SOItems.Clear();
-                if (salesOrderData.SOItems != null && salesOrderData.SOItems.Count > 0)
+                if (IsFromProductsPage)
                 {
-                    var modified_SOItems = salesOrderData.SOItems;
-                    localSO.SOItems.AddRange(modified_SOItems);
+                    localSO.SOItems.Clear();
+                    if (newSalesOrderData.SOItems != null && newSalesOrderData.SOItems.Count > 0)
+                    {
+                        var modified_SOItems = newSalesOrderData.SOItems;
+                        localSO.SOItems.AddRange(modified_SOItems);
+                    }
+                    await App.Database.SaveSalesOrderAsync(localSO);
+                    await NavigationService.NavigateAsync("HomePage");
                 }
-
-                //if (localSO.SOItems != null && localSO.SOItems.Count > 0)
-                //{
-                //    var existing_SOItems = localSO.SOItems;
-                //    foreach (var item in existing_SOItems)
-                //    {
-                //        if (!salesOrderData.SOItems.Contains(item))
-                //        {
-                //            localSO.SOItems.Add(item);
-                //        }
-                //    }
-                //}
-                await App.Database.SaveSalesOrderAsync(localSO);
+                else
+                {
+                    localSO.SOItems.Clear();
+                    if (salesOrderData.SOItems != null && salesOrderData.SOItems.Count > 0)
+                    {
+                        var modified_SOItems = salesOrderData.SOItems;
+                        localSO.SOItems.AddRange(modified_SOItems);
+                    }
+                    await App.Database.SaveSalesOrderAsync(localSO);
+                    await NavigationService.GoBackAsync();
+                }
+                //await App.Database.SaveSalesOrderAsync(localSO);
             }
             else
             {
 
             }
-            await NavigationService.GoBackAsync();
+
         }
         public void DiscardChanges()
         {

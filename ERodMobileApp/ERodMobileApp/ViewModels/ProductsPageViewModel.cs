@@ -2,6 +2,7 @@
 using ERodMobileApp.Models;
 using Prism.Commands;
 using Prism.Navigation;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -125,6 +126,18 @@ namespace ERodMobileApp.ViewModels
             get => _selectedProductImage;
             set => SetProperty(ref _selectedProductImage, value);
         }
+        private string _selectedProductDescription;
+        public string SelectedProductDescription
+        {
+            get => _selectedProductDescription;
+            set => SetProperty(ref _selectedProductDescription, value);
+        }
+        private string _selectedProductQuantity;
+        public string SelectedProductQuantity
+        {
+            get => _selectedProductQuantity;
+            set => SetProperty(ref _selectedProductQuantity, value);
+        }
         private bool _imageIsVisible;
         public bool ImageIsVisible
         {
@@ -151,6 +164,10 @@ namespace ERodMobileApp.ViewModels
         public DelegateCommand<string> ProductSubGradeSelectedCommand { get; set; }
         public DelegateCommand<string> MiscItemProductSelectedCommand { get; set; }
         public DelegateCommand DeleteAndReturnBtnCommand { get; set; }
+        public DelegateCommand SaveAndContinueBtnCommand { get; set; }
+        public DelegateCommand AddItemToOrderCommand { get; set; }
+        public string NewSalesOrderId { get; set; }
+        public SalesOrder NewSalesOrder { get; set; }
         public ProductsPageViewModel(INavigationService navigationService) : base(navigationService)
         {
             TabData = new GroupData()
@@ -161,6 +178,7 @@ namespace ERodMobileApp.ViewModels
                 SelectedGroupType = "Group"
             };
             ImageIsVisible = true;
+            SelectedProductQuantity = "0";
             SelectedProductImage = "SuckerRod.png";
             PonyRod = new List<ProductModel>();
             SuckerRod = new List<ProductModel>();
@@ -185,6 +203,26 @@ namespace ERodMobileApp.ViewModels
             ProductSubGradeSelectedCommand = new DelegateCommand<string>(ProductSubGradeSelected);
             MiscItemProductSelectedCommand = new DelegateCommand<string>(MiscItemProductSelected);
             DeleteAndReturnBtnCommand = new DelegateCommand(DeleteAndReturn);
+            SaveAndContinueBtnCommand = new DelegateCommand(SaveAndContinue);
+            AddItemToOrderCommand = new DelegateCommand(AddItemToOrder);
+        }
+        public async override void OnNavigatedTo(INavigationParameters parameters)
+        {
+            var Toast = DependencyService.Get<IMessage>();
+            if (parameters.ContainsKey("NewSOId"))
+            {
+                NewSalesOrder = new SalesOrder();
+                var SOID = parameters["NewSOId"] as string;
+                var NewSO = await App.Database.GetSalesOrderByIdAsync(SOID);
+                if (NewSO != null)
+                {
+                    NewSalesOrder = NewSO;
+                }
+                else
+                {
+                    Toast.LongAlert("Order details not found.");
+                }
+            }
         }
         public void ProductGroupSelected(string group)
         {
@@ -202,6 +240,8 @@ namespace ERodMobileApp.ViewModels
             SelectedProductSubGroup = string.Empty;
             SelectedProductPinSize = string.Empty;
             SelectedMiscProduct = string.Empty;
+            SelectedProductDescription = string.Empty;
+            SelectedProductQuantity = "0";
 
             if (TabData.SelectedGroup == "SuckerRod")
             {
@@ -218,7 +258,7 @@ namespace ERodMobileApp.ViewModels
             if (TabData.SelectedGroup == "Couplings")
             {
                 ProductList = new List<ProductModel>(Coupling);
-                SelectedProductImage = "Coupling.png"; 
+                SelectedProductImage = "Coupling.png";
                 ImageIsVisible = true;
             }
             if (TabData.SelectedGroup == "SinkerBar")
@@ -412,6 +452,58 @@ namespace ERodMobileApp.ViewModels
                     }
                 }
             }
+            if (ProductList.Count < 6)
+            {
+                SelectedProductDescription = ProductList.FirstOrDefault().Description;
+            }
+        }
+        public void AddItemToOrder()
+        {
+            var Toast = DependencyService.Get<IMessage>();
+            if (string.IsNullOrEmpty(SelectedProductDescription))
+            {
+                Toast.LongAlert("Please select Product.");
+            }
+            else if (SelectedProductQuantity == "0")
+            {
+                Toast.LongAlert("Please select Product Quantity.");
+            }
+            else
+            {
+                if (NewSalesOrder != null)
+                {
+                    NewSalesOrder.SOItems.Add(new SalesOrderItemModel { Description = SelectedProductDescription, QtyOrdered = SelectedProductQuantity , QtyToFulfill = SelectedProductQuantity, Id= RadomNumGenerator.RadomNumber(), SoId=NewSalesOrder.Num});
+                    Toast.LongAlert("Product added.");
+                }
+                else
+                {
+                    Toast.LongAlert("Order not found.");
+                }
+            }
+
+        }
+        public async void SaveAndContinue()
+        {
+            //try
+            //{
+                var Toast = DependencyService.Get<IMessage>();
+                var result = await App.Database.SaveSalesOrderAsync(NewSalesOrder);
+                if (result == 1)
+                {
+                    var navParams = new NavigationParameters();
+                    navParams.Add("IsFromProductsPage", true);
+                    navParams.Add("NewSOId", NewSalesOrder.Num);
+                    await NavigationService.NavigateAsync("EditOrderPage", navParams);
+                }
+                else
+                {
+                    Toast.LongAlert("Something went wrong.");
+                }
+            //}
+            //catch(Exception e)
+            //{
+
+            //}           
         }
     }
 }

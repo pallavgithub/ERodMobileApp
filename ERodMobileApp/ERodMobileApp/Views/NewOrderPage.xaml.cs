@@ -27,7 +27,7 @@ namespace ERodMobileApp.Views
         {
             try
             {
-                (BindingContext as NewOrderPageViewModel)._navigation.NavigateAsync("ProductsPage");
+                (BindingContext as NewOrderPageViewModel).CreateNewOrder();
             }
             catch (Exception)
             {

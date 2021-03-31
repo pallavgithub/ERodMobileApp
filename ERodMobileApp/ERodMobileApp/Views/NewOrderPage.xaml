@@ -32,7 +32,7 @@
                             <Frame Padding="0,3,0,3" HasShadow="False" Grid.Row="1" OutlineColor="#ADB3BC" 
                            HorizontalOptions="FillAndExpand" VerticalOptions="Center" BackgroundColor="#F0FBFF" 
                            CornerRadius="5" HeightRequest="40">
-                                <Custom:XEntry Text="" FontSize="20" FontFamily="{StaticResource InterRegular}"
+                                <Custom:XEntry Text="{Binding LocationName}" FontSize="20" FontFamily="{StaticResource InterRegular}"
                               HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" Keyboard="Default" 
                                        TextColor="Black" Margin="10,0,0,0" RemovePadding="True"/>
                             </Frame>
@@ -42,7 +42,7 @@
                             <Frame Padding="0,3,0,3" HasShadow="False" Grid.Row="1" OutlineColor="#ADB3BC" 
                            HorizontalOptions="FillAndExpand" VerticalOptions="Center" BackgroundColor="#F0FBFF" 
                            CornerRadius="5" HeightRequest="40">
-                                <Custom:XEntry Text="ABC Resources" FontSize="20" FontFamily="{StaticResource InterRegular}"
+                                <Custom:XEntry Text="{Binding CompanyName}" FontSize="20" FontFamily="{StaticResource InterRegular}"
                               HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" Keyboard="Default" 
                                        TextColor="Black" Margin="10,0,0,0" RemovePadding="True"/>
                             </Frame>
@@ -52,7 +52,7 @@
                             <Frame Padding="0,3,0,3" HasShadow="False" Grid.Row="1" OutlineColor="#ADB3BC" 
                            HorizontalOptions="FillAndExpand" VerticalOptions="Center" BackgroundColor="#F0FBFF" 
                            CornerRadius="5" HeightRequest="40">
-                                <Custom:XEntry Text="ABC Resources" FontSize="20" FontFamily="{StaticResource InterRegular}"
+                                <Custom:XEntry Text="{Binding CustomerName}" FontSize="20" FontFamily="{StaticResource InterRegular}"
                               HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" Keyboard="Default" 
                                        TextColor="Black" Margin="10,0,0,0" RemovePadding="True"/>
                             </Frame>
@@ -62,7 +62,7 @@
                             <Frame Padding="0,3,0,3" HasShadow="False" Grid.Row="1" OutlineColor="#ADB3BC" 
                            HorizontalOptions="FillAndExpand" VerticalOptions="Center" BackgroundColor="#F0FBFF" 
                            CornerRadius="5" HeightRequest="40">
-                                <Custom:XEntry Text="ABC Resources" FontSize="20" FontFamily="{StaticResource InterRegular}"
+                                <Custom:XEntry Text="{Binding CustomerPhone}" FontSize="20" FontFamily="{StaticResource InterRegular}"
                               HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" Keyboard="Default" 
                                        TextColor="Black" Margin="10,0,0,0" RemovePadding="True"/>
                             </Frame>
@@ -73,7 +73,7 @@
                             <Frame Padding="0,3,0,3" HasShadow="False" Grid.Row="1" OutlineColor="#ADB3BC" 
                            HorizontalOptions="FillAndExpand" VerticalOptions="Center" BackgroundColor="#F0FBFF" 
                            CornerRadius="5" HeightRequest="40">
-                                <Custom:XEntry Text="ABC Resources" FontSize="20" FontFamily="{StaticResource InterRegular}"
+                                <Custom:XEntry Text="{Binding Engineer}" FontSize="20" FontFamily="{StaticResource InterRegular}"
                               HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" Keyboard="Default" 
                                        TextColor="Black" Margin="10,0,0,0" RemovePadding="True"/>
                             </Frame>
@@ -83,7 +83,7 @@
                             <Frame Padding="0,3,0,3" HasShadow="False" Grid.Row="1" OutlineColor="#ADB3BC" 
                            HorizontalOptions="FillAndExpand" VerticalOptions="Center" BackgroundColor="#F0FBFF" 
                            CornerRadius="5" HeightRequest="40">
-                                <Custom:XEntry Text="ABC Resources" FontSize="20" FontFamily="{StaticResource InterRegular}" 
+                                <Custom:XEntry Text="{Binding Office}" FontSize="20" FontFamily="{StaticResource InterRegular}" 
                               HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" Keyboard="Default" 
                                        TextColor="Black" Margin="10,0,0,0" RemovePadding="True"/>
                             </Frame>
@@ -93,7 +93,7 @@
                             <Frame Padding="0,3,0,3" HasShadow="False" Grid.Row="1" OutlineColor="#ADB3BC" 
                            HorizontalOptions="FillAndExpand" VerticalOptions="Center" BackgroundColor="#F0FBFF" 
                            CornerRadius="5" HeightRequest="40">
-                                <Custom:XEntry Text="ABC Resources" FontSize="20" FontFamily="{StaticResource InterRegular}"
+                                <Custom:XEntry Text="{Binding AFE}" FontSize="20" FontFamily="{StaticResource InterRegular}"
                               HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" Keyboard="Default" 
                                        TextColor="Black" Margin="10,0,0,0" RemovePadding="True"/>
                             </Frame>
@@ -103,7 +103,7 @@
                             <Frame Padding="0,3,0,3" HasShadow="False" Grid.Row="1" OutlineColor="#ADB3BC" 
                            HorizontalOptions="FillAndExpand" VerticalOptions="Center" BackgroundColor="#F0FBFF" 
                            CornerRadius="5" HeightRequest="40">
-                                <Custom:XEntry Text="ABC Resources" FontSize="20" FontFamily="{StaticResource InterRegular}"
+                                <Custom:XEntry Text="{Binding GlCode}" FontSize="20" FontFamily="{StaticResource InterRegular}"
                               HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" Keyboard="Default" 
                                        TextColor="Black" Margin="10,0,0,0" RemovePadding="True"/>
                             </Frame>
@@ -113,7 +113,7 @@
                             <Frame Padding="0,3,0,3" HasShadow="False" Grid.Row="1" OutlineColor="#ADB3BC" 
                            HorizontalOptions="FillAndExpand" VerticalOptions="Center" BackgroundColor="#F0FBFF" 
                            CornerRadius="5" HeightRequest="80">
-                                <Custom:XEntry FontSize="20" FontFamily="{StaticResource InterRegular}"
+                                <Custom:XEntry Text="{Binding Note}" FontSize="20" FontFamily="{StaticResource InterRegular}"
                               HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" Keyboard="Default"
                                        TextColor="Black" Margin="10,0,0,0" RemovePadding="True" Placeholder="Add note here" PlaceholderColor="#50555C"/>
                             </Frame>

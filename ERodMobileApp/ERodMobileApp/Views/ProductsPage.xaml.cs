@@ -12,13 +12,14 @@ namespace ERodMobileApp.Views
     public partial class ProductsPage : ContentPage
     {
         int Counter = 0;
+        Label QuantityLbl=new Label();
         public ProductsPage()
         {
             InitializeComponent();
             // (BindingContext as ProductsPageViewModel).ProductGroupSelected("SuckerRod");
             //CreateSuckerRodFilters();
             GetData();
-           
+
         }
         public async void GetData()
         {
@@ -190,7 +191,7 @@ namespace ERodMobileApp.Views
                                     VerticalOptions = LayoutOptions.Center,
                                     HorizontalOptions = LayoutOptions.Center
                                 }
-                            }; 
+                            };
                             Binding frameColorBinding = new Binding("SelectedProductSize");
                             frameColorBinding.Converter = FrameColorConverter;
                             frameColorBinding.ConverterParameter = size;
@@ -324,6 +325,18 @@ namespace ERodMobileApp.Views
                         VerticalOptions = LayoutOptions.CenterAndExpand
                     }
                 };
+                var decreaseQuanityTappedEvent = new TapGestureRecognizer();
+                decreaseQuanityTappedEvent.Tapped += DecreaseQuantityTapped;
+                minus_frame.GestureRecognizers.Add(decreaseQuanityTappedEvent);
+                QuantityLbl = new Label
+                {                    
+                    Text = (BindingContext as ProductsPageViewModel).SelectedProductQuantity,
+                    FontFamily = "{StaticResource InterBold}",
+                    TextColor = Color.Black,
+                    FontSize = 22,
+                    HorizontalOptions = LayoutOptions.CenterAndExpand,
+                    VerticalOptions = LayoutOptions.CenterAndExpand
+                };
                 var quantityValue_frame = new Frame
                 {
                     BackgroundColor = Color.FromHex("White"),
@@ -332,15 +345,7 @@ namespace ERodMobileApp.Views
                     HeightRequest = 35,
                     WidthRequest = 35,
                     HasShadow = false,
-                    Content = new Label
-                    {
-                        Text = "123",
-                        FontFamily = "{StaticResource InterBold}",
-                        TextColor = Color.Black,
-                        FontSize = 22,
-                        HorizontalOptions = LayoutOptions.CenterAndExpand,
-                        VerticalOptions = LayoutOptions.CenterAndExpand
-                    }
+                    Content = QuantityLbl,
                 };
                 var plus_frame = new Frame
                 {
@@ -359,6 +364,9 @@ namespace ERodMobileApp.Views
                         VerticalOptions = LayoutOptions.CenterAndExpand
                     }
                 };
+                var increaseQuanityTappedEvent = new TapGestureRecognizer();
+                increaseQuanityTappedEvent.Tapped += IncreaseQuantityTapped;
+                plus_frame.GestureRecognizers.Add(increaseQuanityTappedEvent);
                 quantityStack.Children.Add(minus_frame);
                 quantityStack.Children.Add(quantityValue_frame);
                 quantityStack.Children.Add(plus_frame);
@@ -625,6 +633,18 @@ namespace ERodMobileApp.Views
                         HorizontalOptions = LayoutOptions.CenterAndExpand,
                         VerticalOptions = LayoutOptions.CenterAndExpand
                     }
+                }; 
+                var decreaseQuanityTappedEvent = new TapGestureRecognizer();
+                decreaseQuanityTappedEvent.Tapped += DecreaseQuantityTapped;
+                minus_frame.GestureRecognizers.Add(decreaseQuanityTappedEvent);
+                QuantityLbl = new Label
+                {
+                    Text = (BindingContext as ProductsPageViewModel).SelectedProductQuantity,
+                    FontFamily = "{StaticResource InterBold}",
+                    TextColor = Color.Black,
+                    FontSize = 22,
+                    HorizontalOptions = LayoutOptions.CenterAndExpand,
+                    VerticalOptions = LayoutOptions.CenterAndExpand
                 };
                 var quantityValue_frame = new Frame
                 {
@@ -634,15 +654,7 @@ namespace ERodMobileApp.Views
                     HeightRequest = 35,
                     WidthRequest = 35,
                     HasShadow = false,
-                    Content = new Label
-                    {
-                        Text = "123",
-                        FontFamily = "{StaticResource InterBold}",
-                        TextColor = Color.Black,
-                        FontSize = 22,
-                        HorizontalOptions = LayoutOptions.CenterAndExpand,
-                        VerticalOptions = LayoutOptions.CenterAndExpand
-                    }
+                    Content = QuantityLbl
                 };
                 var plus_frame = new Frame
                 {
@@ -661,6 +673,9 @@ namespace ERodMobileApp.Views
                         VerticalOptions = LayoutOptions.CenterAndExpand
                     }
                 };
+                var increaseQuanityTappedEvent = new TapGestureRecognizer();
+                increaseQuanityTappedEvent.Tapped += IncreaseQuantityTapped;
+                plus_frame.GestureRecognizers.Add(increaseQuanityTappedEvent);
                 quantityStack.Children.Add(minus_frame);
                 quantityStack.Children.Add(quantityValue_frame);
                 quantityStack.Children.Add(plus_frame);
@@ -1031,6 +1046,18 @@ namespace ERodMobileApp.Views
                         VerticalOptions = LayoutOptions.CenterAndExpand
                     }
                 };
+                var decreaseQuanityTappedEvent = new TapGestureRecognizer();
+                decreaseQuanityTappedEvent.Tapped += DecreaseQuantityTapped;
+                minus_frame.GestureRecognizers.Add(decreaseQuanityTappedEvent);
+                QuantityLbl = new Label
+                {
+                    Text = (BindingContext as ProductsPageViewModel).SelectedProductQuantity,
+                    FontFamily = "{StaticResource InterBold}",
+                    TextColor = Color.Black,
+                    FontSize = 22,
+                    HorizontalOptions = LayoutOptions.CenterAndExpand,
+                    VerticalOptions = LayoutOptions.CenterAndExpand
+                };
                 var quantityValue_frame = new Frame
                 {
                     BackgroundColor = Color.FromHex("White"),
@@ -1039,15 +1066,7 @@ namespace ERodMobileApp.Views
                     HeightRequest = 35,
                     WidthRequest = 35,
                     HasShadow = false,
-                    Content = new Label
-                    {
-                        Text = "123",
-                        FontFamily = "{StaticResource InterBold}",
-                        TextColor = Color.Black,
-                        FontSize = 22,
-                        HorizontalOptions = LayoutOptions.CenterAndExpand,
-                        VerticalOptions = LayoutOptions.CenterAndExpand
-                    }
+                    Content = QuantityLbl
                 };
                 var plus_frame = new Frame
                 {
@@ -1066,6 +1085,9 @@ namespace ERodMobileApp.Views
                         VerticalOptions = LayoutOptions.CenterAndExpand
                     }
                 };
+                var increaseQuanityTappedEvent = new TapGestureRecognizer();
+                increaseQuanityTappedEvent.Tapped += IncreaseQuantityTapped;
+                plus_frame.GestureRecognizers.Add(increaseQuanityTappedEvent);
                 quantityStack.Children.Add(minus_frame);
                 quantityStack.Children.Add(quantityValue_frame);
                 quantityStack.Children.Add(plus_frame);
@@ -1360,6 +1382,18 @@ namespace ERodMobileApp.Views
                         HorizontalOptions = LayoutOptions.CenterAndExpand,
                         VerticalOptions = LayoutOptions.CenterAndExpand
                     }
+                }; 
+                var decreaseQuanityTappedEvent = new TapGestureRecognizer();
+                decreaseQuanityTappedEvent.Tapped += DecreaseQuantityTapped;
+                minus_frame.GestureRecognizers.Add(decreaseQuanityTappedEvent);
+                QuantityLbl = new Label
+                {
+                    Text = (BindingContext as ProductsPageViewModel).SelectedProductQuantity,
+                    FontFamily = "{StaticResource InterBold}",
+                    TextColor = Color.Black,
+                    FontSize = 22,
+                    HorizontalOptions = LayoutOptions.CenterAndExpand,
+                    VerticalOptions = LayoutOptions.CenterAndExpand
                 };
                 var quantityValue_frame = new Frame
                 {
@@ -1369,15 +1403,7 @@ namespace ERodMobileApp.Views
                     HeightRequest = 35,
                     WidthRequest = 35,
                     HasShadow = false,
-                    Content = new Label
-                    {
-                        Text = "123",
-                        FontFamily = "{StaticResource InterBold}",
-                        TextColor = Color.Black,
-                        FontSize = 22,
-                        HorizontalOptions = LayoutOptions.CenterAndExpand,
-                        VerticalOptions = LayoutOptions.CenterAndExpand
-                    }
+                    Content = QuantityLbl
                 };
                 var plus_frame = new Frame
                 {
@@ -1396,6 +1422,9 @@ namespace ERodMobileApp.Views
                         VerticalOptions = LayoutOptions.CenterAndExpand
                     }
                 };
+                var increaseQuanityTappedEvent = new TapGestureRecognizer();
+                increaseQuanityTappedEvent.Tapped += IncreaseQuantityTapped;
+                plus_frame.GestureRecognizers.Add(increaseQuanityTappedEvent);
                 quantityStack.Children.Add(minus_frame);
                 quantityStack.Children.Add(quantityValue_frame);
                 quantityStack.Children.Add(plus_frame);
@@ -1766,6 +1795,18 @@ namespace ERodMobileApp.Views
                         VerticalOptions = LayoutOptions.CenterAndExpand
                     }
                 };
+                var decreaseQuanityTappedEvent = new TapGestureRecognizer();
+                decreaseQuanityTappedEvent.Tapped += DecreaseQuantityTapped;
+                minus_frame.GestureRecognizers.Add(decreaseQuanityTappedEvent);
+                QuantityLbl = new Label
+                {
+                    Text = (BindingContext as ProductsPageViewModel).SelectedProductQuantity,
+                    FontFamily = "{StaticResource InterBold}",
+                    TextColor = Color.Black,
+                    FontSize = 22,
+                    HorizontalOptions = LayoutOptions.CenterAndExpand,
+                    VerticalOptions = LayoutOptions.CenterAndExpand
+                };
                 var quantityValue_frame = new Frame
                 {
                     BackgroundColor = Color.FromHex("White"),
@@ -1774,15 +1815,7 @@ namespace ERodMobileApp.Views
                     HeightRequest = 35,
                     WidthRequest = 35,
                     HasShadow = false,
-                    Content = new Label
-                    {
-                        Text = "123",
-                        FontFamily = "{StaticResource InterBold}",
-                        TextColor = Color.Black,
-                        FontSize = 22,
-                        HorizontalOptions = LayoutOptions.CenterAndExpand,
-                        VerticalOptions = LayoutOptions.CenterAndExpand
-                    }
+                    Content = QuantityLbl
                 };
                 var plus_frame = new Frame
                 {
@@ -1801,6 +1834,9 @@ namespace ERodMobileApp.Views
                         VerticalOptions = LayoutOptions.CenterAndExpand
                     }
                 };
+                var increaseQuanityTappedEvent = new TapGestureRecognizer();
+                increaseQuanityTappedEvent.Tapped += IncreaseQuantityTapped;
+                plus_frame.GestureRecognizers.Add(increaseQuanityTappedEvent);
                 quantityStack.Children.Add(minus_frame);
                 quantityStack.Children.Add(quantityValue_frame);
                 quantityStack.Children.Add(plus_frame);
@@ -1851,6 +1887,18 @@ namespace ERodMobileApp.Views
                 HeightRequest = 40
             };
             DeleteBtn.SetBinding(Button.CommandProperty, "DeleteAndReturnBtnCommand");
+        }
+        private void DecreaseQuantityTapped(object sender, EventArgs e)
+        {
+            var viewModel = BindingContext as ProductsPageViewModel;
+            viewModel.SelectedProductQuantity = (Convert.ToInt32(viewModel.SelectedProductQuantity) - 1).ToString();
+            QuantityLbl.Text = viewModel.SelectedProductQuantity;
+        }
+        private void IncreaseQuantityTapped(object sender, EventArgs e)
+        {
+            var viewModel = BindingContext as ProductsPageViewModel;
+            viewModel.SelectedProductQuantity = (Convert.ToInt32(viewModel.SelectedProductQuantity) + 1).ToString();
+            QuantityLbl.Text = viewModel.SelectedProductQuantity;
         }
     }
 }
