@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using Xamarin.Forms;
 
 namespace ERodMobileApp.ViewModels
 {
@@ -161,10 +162,12 @@ namespace ERodMobileApp.ViewModels
         public SalesOrder newSalesOrderData { get; set; }
         public DelegateCommand SaveAndEditLaterBtnCommand { get; set; }
         public DelegateCommand DiscardChangesBtnCommand { get; set; }
+        public DelegateCommand ReviewAndSubmitBtnCommand { get; set; }
         public EditOrderPageViewModel(INavigationService navigationService) : base(navigationService)
         {
             SaveAndEditLaterBtnCommand = new DelegateCommand(SaveAndEditLater);
             DiscardChangesBtnCommand = new DelegateCommand(DiscardChanges);
+            ReviewAndSubmitBtnCommand = new DelegateCommand(ReviewAndSubmitOrder);
         }
         public override void OnNavigatedTo(INavigationParameters parameters)
         {
@@ -434,6 +437,22 @@ namespace ERodMobileApp.ViewModels
         public void DiscardChanges()
         {
             NavigationService.GoBackAsync();
+        }
+        public async void ReviewAndSubmitOrder()
+        {
+            var Toast = DependencyService.Get<IMessage>();
+            var result = await App.Database.SaveSalesOrderAsync(newSalesOrderData);
+            if (result == 1)
+            {
+                var navParams = new NavigationParameters();
+                navParams.Add("IsFromEditOrderPage", true);
+                navParams.Add("NewSOId", newSalesOrderData.Num);
+                await NavigationService.NavigateAsync("ReviewOrderPage", navParams);
+            }
+            else
+            {
+                Toast.LongAlert("Something went wrong.");
+            }
         }
     }
 }

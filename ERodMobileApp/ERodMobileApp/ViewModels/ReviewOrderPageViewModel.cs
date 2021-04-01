@@ -2,6 +2,7 @@
 using ERodMobileApp.Models;
 using Prism.Commands;
 using Prism.Navigation;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using Xamarin.Forms;
@@ -156,9 +157,16 @@ namespace ERodMobileApp.ViewModels
             get => _isAgree;
             set => SetProperty(ref _isAgree, value);
         }
+        public bool _isFromEditOrderPage;
+        public bool IsFromEditOrderPage
+        {
+            get => _isFromEditOrderPage;
+            set => SetProperty(ref _isFromEditOrderPage, value);
+        }
         public DelegateCommand CheckBoxCommand { get; set; }
         public DelegateCommand SubmitBtnCommand { get; set; }
         public SalesOrderModel salesOrder { get; set; }
+        public SalesOrder newSalesOrderData { get; set; }
         public ReviewOrderPageViewModel(INavigationService navigationService) : base(navigationService)
         {
             CheckBoxCommand = new DelegateCommand(CheckBoxCheckUncheck);
@@ -179,7 +187,16 @@ namespace ERodMobileApp.ViewModels
             }
             else
             {
-                localSO = await App.Database.GetSalesOrderByIdAsync(salesOrder.SalesOrderId);
+                var soId = string.Empty;
+                if (IsFromEditOrderPage)
+                {
+                    soId = newSalesOrderData.Num;
+                }
+                else
+                {
+                    soId = salesOrder.SalesOrderId;
+                }
+                localSO = await App.Database.GetSalesOrderByIdAsync(soId);
                 if (localSO != null)
                 {
                     IsBusy = true;
@@ -194,7 +211,10 @@ namespace ERodMobileApp.ViewModels
                     }
                     IsBusy = false;
                 }
-                await NavigationService.GoBackAsync();
+                if (IsFromEditOrderPage)
+                    await NavigationService.NavigateAsync("HomePage");
+                else
+                    await NavigationService.GoBackAsync();
             }
         }
         public void GetData(SalesOrderModel salesOrder)
@@ -261,11 +281,118 @@ namespace ERodMobileApp.ViewModels
             OthersListHeight = (OtherItems.Count * 90).ToString();
             IsBusy = false;
         }
+        public async void GetNewSalesOrderData(string SOID)
+        {
+            try
+            {
+                IsBusy = true;
+                newSalesOrderData = await App.Database.GetSalesOrderByIdAsync(SOID);
+                if (newSalesOrderData != null)
+                {
+                    if (newSalesOrderData.CustomFields != null && newSalesOrderData.CustomFields.Count > 0)
+                    {
+                        foreach (var cf in newSalesOrderData.CustomFields)
+                        {
+                            if (!string.IsNullOrEmpty(cf.Name))
+                            {
+                                if (cf.Name == "Well Name")
+                                {
+                                    WellName = cf.Info;
+                                }
+                                else if (cf.Name == "Delivery Time")
+                                {
+                                    DeliveryTime = cf.Info;
+                                }
+                                else if (cf.Name == "Engineer/Rig Supervisor")
+                                {
+                                    Engineer = cf.Info;
+                                }
+                                else if (cf.Name == "WBS#/AFE#")
+                                {
+                                    AFE = cf.Info;
+                                }
+                                else if (cf.Name == "Cost/GL Code")
+                                {
+                                    GlCode = cf.Info;
+                                }
+                            }
+                        }
+                    }
+                    Customer = newSalesOrderData.Username;
+                    Phone = newSalesOrderData.Phone;
+                    Consultant = newSalesOrderData.CustomerContact;
+                    Note = newSalesOrderData.Note;
+                    SuckerList = new ObservableCollection<SalesOrderItemModel>();
+                    PonyList = new ObservableCollection<SalesOrderItemModel>();
+                    Couplings = new ObservableCollection<SalesOrderItemModel>();
+                    SinkerBar = new ObservableCollection<SalesOrderItemModel>();
+                    StablizerBar = new ObservableCollection<SalesOrderItemModel>();
+                    PolishedRod = new ObservableCollection<SalesOrderItemModel>();
+                    OtherItems = new ObservableCollection<SalesOrderItemModel>();
+                    if (newSalesOrderData.SOItems != null && newSalesOrderData.SOItems.Count > 0)
+                    {
+                        var salesOrderItems = newSalesOrderData.SOItems;
+                        foreach (var item in salesOrderItems)
+                        {
+                            if (item.Description.Contains("Sucker"))
+                            {
+                                SuckerList.Add(item);
+                            }
+                            else if (item.Description.Contains("Pony"))
+                            {
+                                PonyList.Add(item);
+                            }
+                            else if (item.Description.Contains("Coupling"))
+                            {
+                                Couplings.Add(item);
+                            }
+                            else if (item.Description.Contains("Polished"))
+                            {
+                                PolishedRod.Add(item);
+                            }
+                            else if (item.Description.Contains("Sinker"))
+                            {
+                                SinkerBar.Add(item);
+                            }
+                            else if (item.Description.Contains("Stablizer"))
+                            {
+                                StablizerBar.Add(item);
+                            }
+                            else
+                            {
+                                OtherItems.Add(item);
+                            }
+                        }
+                    }
+                    SuckerListHeight = (SuckerList.Count * 90).ToString();
+                    PonyListHeight = (PonyList.Count * 90).ToString();
+                    CouplingListHeight = (Couplings.Count * 90).ToString();
+                    PolishedListHeight = (PolishedRod.Count * 90).ToString();
+                    SinkerListHeight = (SinkerBar.Count * 90).ToString();
+                    StablizerListHeight = (StablizerBar.Count * 90).ToString();
+                    OthersListHeight = (OtherItems.Count * 90).ToString();
+                }
+                IsBusy = false;
+            }
+            catch (Exception e)
+            {
+
+            }
+        }
         public override void OnNavigatedTo(INavigationParameters parameters)
         {
-            salesOrder = new SalesOrderModel();
-            salesOrder = parameters["SalesOrder"] as SalesOrderModel;
-            GetData(salesOrder);
+            if (parameters.ContainsKey("IsFromEditOrderPage"))
+            {
+                IsFromEditOrderPage = (bool)parameters["IsFromEditOrderPage"];
+                var soID = parameters["NewSOId"] as string;
+                GetNewSalesOrderData(soID);
+            }
+            else
+            {
+                salesOrder = new SalesOrderModel();
+                salesOrder = parameters["SalesOrder"] as SalesOrderModel;
+                GetData(salesOrder);
+            }
         }
     }
 }

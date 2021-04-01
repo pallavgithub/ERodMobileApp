@@ -282,7 +282,7 @@
                                 </StackLayout>
                             </Frame>
                         </StackLayout>
-                        <Button Text="Review and Submit Order" FontFamily="{StaticResource RobotoRegular}" TextTransform="None" TextColor="White" BackgroundColor="#FF6600" HeightRequest="40" FontSize="18" Padding="0"/>
+                        <Button Text="Review and Submit Order" FontFamily="{StaticResource RobotoRegular}" TextTransform="None" TextColor="White" BackgroundColor="#FF6600" HeightRequest="40" FontSize="18" Padding="0" Command="{Binding ReviewAndSubmitBtnCommand}"/>
                         <Button Text="Save and Edit Later" FontFamily="{StaticResource RobotoRegular}" TextTransform="None" Margin="0,8,0,8" TextColor="White" BackgroundColor="#FF6600" HeightRequest="40" FontSize="18" Padding="0" Command="{Binding SaveAndEditLaterBtnCommand}"/>
                         <Button Text="Discard Change" FontFamily="{StaticResource RobotoRegular}" TextTransform="None" TextColor="White" BackgroundColor="#50555C" HeightRequest="40" FontSize="18" Padding="0" Command="{Binding DiscardChangesBtnCommand}"/>
                     </StackLayout>
