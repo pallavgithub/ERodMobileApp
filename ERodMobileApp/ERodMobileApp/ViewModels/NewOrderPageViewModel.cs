@@ -85,6 +85,7 @@ namespace ERodMobileApp.ViewModels
             newSalesOrder.Username = CustomerName;
             newSalesOrder.Phone = CustomerPhone;
             newSalesOrder.Note = Note;
+            newSalesOrder.StatusId ="15";//provisional
             newSalesOrder.CustomFields = new List<CustomDataField>()
             {
                 new CustomDataField{ RecordId=newSalesOrder.Num ,Name="Engineer/Rig Supervisor", Info=Engineer},

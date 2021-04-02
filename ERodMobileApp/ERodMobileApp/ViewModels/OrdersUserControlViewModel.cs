@@ -317,8 +317,16 @@ namespace ERodMobileApp.ViewModels
                         salesOrder.SalesOrderId = item.Num;
                         salesOrder.OrderId = "SO" + item.Num;
                         salesOrder.Status = item.StatusId.ToString();
-                        var date = item.DateCreated.ToString().Split(' ');
-                        salesOrder.CreatedDateAndTime = date[0];
+
+                        if (item.DateCreated != null)
+                        {
+                            var date = item.DateCreated.ToString().Split(' ');
+                            salesOrder.CreatedDateAndTime = date[0];
+                        }
+                        else
+                        {
+                            salesOrder.CreatedDateAndTime = item.DateCreated;
+                        }
                         salesOrder.DriverPhone = item.CarrierServiceId;
                         salesOrder.DriverName = item.CarrierServiceId;
                         salesOrder.Phone = item.Phone;
@@ -338,7 +346,7 @@ namespace ERodMobileApp.ViewModels
                                 }
                                 else if (cf.Name == "Delivery Time")
                                 {
-                                    salesOrder.DeliveryDateAndTime = cf.Info;
+                                    salesOrder.DeliveryDateAndTime = cf.Info.Split(' ')[0];
                                 }
                                 else if (cf.Name == "Engineer/Rig Supervisor")
                                 {
@@ -361,7 +369,7 @@ namespace ERodMobileApp.ViewModels
                             salesOrder.Engineer = "No Data";
                             salesOrder.AFE = "No Data";
                         }
-                        if (item.StatusId == "10")
+                        if (item.StatusId == "10" || item.StatusId == "15")
                             salesOrder.StatusInDetail = "Provisional";
                         if (item.StatusId == "20")
                             salesOrder.StatusInDetail = "Confirmed";
@@ -568,7 +576,7 @@ namespace ERodMobileApp.ViewModels
                         {
                             OtherItems.Add(item);
                         }
-                    }                    
+                    }
                 }
                 SuckerListHeight = (SuckerList.Count * 90).ToString();
                 PonyListHeight = (PonyList.Count * 90).ToString();
