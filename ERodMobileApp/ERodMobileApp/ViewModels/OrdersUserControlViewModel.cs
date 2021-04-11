@@ -277,11 +277,13 @@ namespace ERodMobileApp.ViewModels
             set => SetProperty(ref _othersListHeight, value);
         }
         public DelegateCommand<SalesOrderModel> EditOrderCommand { get; set; }
+        public DelegateCommand RefreshCommand { get; set; }
         public OrdersUserControlViewModel(INavigationService navigationService) : base(navigationService)
         {
             GetExceedDetails();
             GetCustomerSalesOrders();
             EditOrderCommand = new DelegateCommand<SalesOrderModel>(GoToEditOrderPage);
+            RefreshCommand = new DelegateCommand(RefreshOrdersData);
         }
         public async void GetCustomerSalesOrders()
         {
@@ -312,102 +314,104 @@ namespace ERodMobileApp.ViewModels
                     {
                         // item.CustomFields.ForEach(x => x.SalesOrderNum = item.Num);
                         await App.Database.SaveSalesOrderAsync(item);
+                        if (item.CustomFields.Count > 0)
+                        {
+                            SalesOrderModel salesOrder = new SalesOrderModel();
+                            salesOrder.SalesOrderId = item.Num;
+                            salesOrder.OrderId = "SO" + item.Num;
+                            salesOrder.Status = item.StatusId.ToString();
 
-                        SalesOrderModel salesOrder = new SalesOrderModel();
-                        salesOrder.SalesOrderId = item.Num;
-                        salesOrder.OrderId = "SO" + item.Num;
-                        salesOrder.Status = item.StatusId.ToString();
-
-                        if (item.DateCreated != null)
-                        {
-                            var date = item.DateCreated.ToString().Split(' ');
-                            salesOrder.CreatedDateAndTime = date[0];
-                        }
-                        else
-                        {
-                            salesOrder.CreatedDateAndTime = item.DateCreated;
-                        }
-                        salesOrder.DriverPhone = item.CarrierServiceId;
-                        salesOrder.DriverName = item.CarrierServiceId;
-                        salesOrder.Phone = item.Phone;
-                        salesOrder.Consultant = item.Username;
-                        salesOrder.Note = item.Note;
-                        salesOrder.Customer = item.Username;
-                        salesOrder.Contact = item.CustomerContact;
-                        salesOrder.TruckingCo = item.CarrierId;
-                        salesOrder.SOItems = item.SOItems;
-                        foreach (var cf in item.CustomFields)
-                        {
-                            if (!string.IsNullOrEmpty(cf.Name))
+                            if (item.DateCreated != null)
                             {
-                                if (cf.Name == "Well Name")
-                                {
-                                    salesOrder.WellName = cf.Info;
-                                }
-                                else if (cf.Name == "Delivery Time")
-                                {
-                                    salesOrder.DeliveryDateAndTime = cf.Info.Split(' ')[0];
-                                }
-                                else if (cf.Name == "Engineer/Rig Supervisor")
-                                {
-                                    salesOrder.Engineer = cf.Info;
-                                }
-                                else if (cf.Name == "WBS#/AFE#")
-                                {
-                                    salesOrder.AFE = cf.Info;
-                                }
-                                else if (cf.Name == "Cost/GL Code")
-                                {
-                                    salesOrder.GlCode = cf.Info;
-                                }
+                                var date = item.DateCreated.ToString().Split(' ');
+                                salesOrder.CreatedDateAndTime = date[0];
                             }
-                        }
-                        if (item.CustomFields.Count == 0)
-                        {
-                            salesOrder.WellName = "No Data";
-                            salesOrder.DeliveryDateAndTime = "No Data";
-                            salesOrder.Engineer = "No Data";
-                            salesOrder.AFE = "No Data";
-                        }
-                        if (item.StatusId == "10" || item.StatusId == "15")
-                            salesOrder.StatusInDetail = "Provisional";
-                        if (item.StatusId == "20")
-                            salesOrder.StatusInDetail = "Confirmed";
-                        if (item.StatusId == "25")
-                            salesOrder.StatusInDetail = "Processing";
-
-                        if (item.StatusId == "25")
-                        {
+                            else
+                            {
+                                salesOrder.CreatedDateAndTime = item.DateCreated;
+                            }
+                            salesOrder.DriverPhone = item.CarrierServiceId;
+                            salesOrder.DriverName = item.CarrierServiceId;
+                            salesOrder.Phone = item.Phone;
+                            salesOrder.Consultant = item.Username;
+                            salesOrder.Note = item.Note;
+                            salesOrder.Customer = item.Username;
+                            salesOrder.Contact = item.CustomerContact;
+                            salesOrder.TruckingCo = item.CarrierId;
+                            salesOrder.SOItems = item.SOItems;
                             foreach (var cf in item.CustomFields)
                             {
-                                if (!string.IsNullOrEmpty(cf.Name) && (cf.Name == "CF-Shipped" || cf.Name == "CF-Delivered"))
+                                if (!string.IsNullOrEmpty(cf.Name))
                                 {
-                                    if (cf.Name == "CF-Shipped")
+                                    if (cf.Name == "Well Name")
                                     {
-                                        if (cf.Info == "1")
-                                            salesOrder.StatusInDetail = "Shipped";
+                                        salesOrder.WellName = cf.Info;
                                     }
-                                    else if (cf.Name == "CF-Delivered")
+                                    else if (cf.Name == "Delivery Time")
                                     {
-                                        if (cf.Info == "1")
-                                            salesOrder.StatusInDetail = "Delivered";
+                                        salesOrder.DeliveryDateAndTime = cf.Info.Split(' ')[0];
                                     }
-                                    else
+                                    else if (cf.Name == "Engineer/Rig Supervisor")
                                     {
-                                        salesOrder.StatusInDetail = "Processing";
+                                        salesOrder.Engineer = cf.Info;
+                                    }
+                                    else if (cf.Name == "WBS#/AFE#")
+                                    {
+                                        salesOrder.AFE = cf.Info;
+                                    }
+                                    else if (cf.Name == "Cost/GL Code")
+                                    {
+                                        salesOrder.GlCode = cf.Info;
                                     }
                                 }
                             }
+                            if (item.CustomFields.Count == 0)
+                            {
+                                salesOrder.WellName = "No Data";
+                                salesOrder.DeliveryDateAndTime = "No Data";
+                                salesOrder.Engineer = "No Data";
+                                salesOrder.AFE = "No Data";
+                            }
+                            if (item.StatusId == "10" || item.StatusId == "15")
+                                salesOrder.StatusInDetail = "Provisional";
+                            if (item.StatusId == "20")
+                                salesOrder.StatusInDetail = "Confirmed";
+                            if (item.StatusId == "25")
+                                salesOrder.StatusInDetail = "Processing";
 
-                        }
+                            if (item.StatusId == "25")
+                            {
+                                foreach (var cf in item.CustomFields)
+                                {
+                                    if (!string.IsNullOrEmpty(cf.Name) && (cf.Name == "CF-Shipped" || cf.Name == "CF-Delivered"))
+                                    {
+                                        if (cf.Name == "CF-Shipped")
+                                        {
+                                            if (cf.Info == "1")
+                                                salesOrder.StatusInDetail = "Shipped";
+                                        }
+                                        else if (cf.Name == "CF-Delivered")
+                                        {
+                                            if (cf.Info == "1")
+                                                salesOrder.StatusInDetail = "Delivered";
+                                        }
+                                        else
+                                        {
+                                            salesOrder.StatusInDetail = "Processing";
+                                        }
+                                    }
+                                }
 
-                        if (item.StatusId == "60")
-                        {
-                            salesOrder.StatusInDetail = "Closed";
-                            ClosedSalesOrdersList.Add(salesOrder);
+                            }
+
+                            if (item.StatusId == "60")
+                            {
+                                salesOrder.StatusInDetail = "Closed";
+                                ClosedSalesOrdersList.Add(salesOrder);
+                            }
+                            else
+                                ActiveSalesOrdersList.Add(salesOrder);
                         }
-                        else
-                            ActiveSalesOrdersList.Add(salesOrder);
                     }
                     ActiveOrderListHeight = (ActiveSalesOrdersList.Count * 120).ToString();
                     ClosedOrderListHeight = (ClosedSalesOrdersList.Count * 60).ToString();
@@ -597,6 +601,10 @@ namespace ERodMobileApp.ViewModels
             NavigationParameters navigationParameters = new NavigationParameters();
             navigationParameters.Add("SalesOrder", salesOrder);
             NavigationService.NavigateAsync("ReviewOrderPage", navigationParameters);
+        }
+        public void RefreshOrdersData()
+        {
+            GetCustomerSalesOrders();
         }
     }
 }

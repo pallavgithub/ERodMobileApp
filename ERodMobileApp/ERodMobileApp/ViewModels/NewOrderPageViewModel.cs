@@ -40,6 +40,12 @@ namespace ERodMobileApp.ViewModels
             get => _customerPhone;
             set => SetProperty(ref _customerPhone, value);
         }
+        private string _wellName;
+        public string WellName
+        {
+            get => _wellName;
+            set => SetProperty(ref _wellName, value);
+        }
         private string _engineer;
         public string Engineer
         {
@@ -85,10 +91,11 @@ namespace ERodMobileApp.ViewModels
             newSalesOrder.Username = CustomerName;
             newSalesOrder.Phone = CustomerPhone;
             newSalesOrder.Note = Note;
-            newSalesOrder.StatusId ="15";//provisional
+            newSalesOrder.StatusId = "15";//provisional
             newSalesOrder.CustomFields = new List<CustomDataField>()
             {
                 new CustomDataField{ RecordId=newSalesOrder.Num ,Name="Engineer/Rig Supervisor", Info=Engineer},
+                new CustomDataField{ RecordId=newSalesOrder.Num ,Name="Well Name", Info=WellName},
                 new CustomDataField{ RecordId=newSalesOrder.Num ,Name="Billing Office", Info=Office},
                 new CustomDataField{ RecordId=newSalesOrder.Num ,Name="Cost/GL Code", Info=GlCode},
                 new CustomDataField{ RecordId=newSalesOrder.Num ,Name="WBS#/AFE#", Info=AFE},

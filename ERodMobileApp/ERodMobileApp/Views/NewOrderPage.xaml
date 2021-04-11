@@ -66,7 +66,16 @@
                               HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" Keyboard="Default" 
                                        TextColor="Black" Margin="10,0,0,0" RemovePadding="True"/>
                             </Frame>
-
+                        </StackLayout>
+                        <StackLayout Spacing="0">
+                            <Label Text="Well Name" FontFamily="{StaticResource InterRegular}" TextTransform="Uppercase" FontSize="18" TextColor="#FF6600"/>
+                            <Frame Padding="0,3,0,3" HasShadow="False" Grid.Row="1" OutlineColor="#ADB3BC" 
+                           HorizontalOptions="FillAndExpand" VerticalOptions="Center" BackgroundColor="#F0FBFF" 
+                           CornerRadius="5" HeightRequest="40">
+                                <Custom:XEntry Text="{Binding WellName}" FontSize="20" FontFamily="{StaticResource InterRegular}"
+                              HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" Keyboard="Default" 
+                                       TextColor="Black" Margin="10,0,0,0" RemovePadding="True"/>
+                            </Frame>
                         </StackLayout>
                         <StackLayout Spacing="0">
                             <Label Text="engr. / supvr." FontFamily="{StaticResource InterRegular}" TextTransform="Uppercase" FontSize="18" TextColor="#FF6600"/>
