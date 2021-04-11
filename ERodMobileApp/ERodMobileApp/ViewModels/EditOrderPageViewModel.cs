@@ -283,7 +283,7 @@ namespace ERodMobileApp.ViewModels
                                     GlCode = cf.Info;
                                 }
                             }
-                        }                       
+                        }
                     }
                     Customer = newSalesOrderData.Username;
                     Phone = newSalesOrderData.Phone;
@@ -348,87 +348,94 @@ namespace ERodMobileApp.ViewModels
         }
         public async void SaveAndEditLater()
         {
-            SalesOrder localSO = new SalesOrder();
-            if (IsFromProductsPage)
+            try
             {
-                localSO = await App.Database.GetSalesOrderByIdAsync(newSalesOrderData.Num);
-            }
-            else
-            {
-                localSO = await App.Database.GetSalesOrderByIdAsync(salesOrderData.SalesOrderId);
-            }
-            if (localSO != null)
-            {
-                localSO.Username = Customer;
-                localSO.CustomerContact = Contact;
-                localSO.Phone = Phone;
-                localSO.Note = Note;
-                if (localSO.CustomFields != null && localSO.CustomFields.Count > 0)
-                {
-                    foreach (var cf in localSO.CustomFields)
-                    {
-                        if (!string.IsNullOrEmpty(cf.Name))
-                        {
-                            if (cf.Name == "Well Name")
-                            {
-                                var localWellName = localSO.CustomFields.Where(p => p.Name == "WellName").FirstOrDefault();
-                                if (localWellName.Info != WellName)
-                                    localWellName.Info = WellName;
-                            }
-                            else if (cf.Name == "Delivery Time")
-                            {
-                                var localDeliveryTime = localSO.CustomFields.Where(p => p.Name == "Delivery Time").FirstOrDefault();
-                                if (localDeliveryTime.Info != DeliveryTime)
-                                    localDeliveryTime.Info = DeliveryTime;
-                            }
-                            else if (cf.Name == "Engineer/Rig Supervisor")
-                            {
-                                var localEngineerRigSupervisor = localSO.CustomFields.Where(p => p.Name == "Engineer/Rig Supervisor").FirstOrDefault();
-                                if (localEngineerRigSupervisor.Info != Engineer)
-                                    localEngineerRigSupervisor.Info = Engineer;
-                            }
-                            else if (cf.Name == "WBS#/AFE#")
-                            {
-                                var localAFE = localSO.CustomFields.Where(p => p.Name == "WBS#/AFE#").FirstOrDefault();
-                                if (localAFE.Info != AFE)
-                                    localAFE.Info = AFE;
-                            }
-                            else if (cf.Name == "Cost/GL Code")
-                            {
-                                var localGLCode = localSO.CustomFields.Where(p => p.Name == "Cost/GL Code").FirstOrDefault();
-                                if (localGLCode.Info != GlCode)
-                                    localGLCode.Info = GlCode;
-                            }
-                        }
-                    }
-                    
-                   
-                }
+                SalesOrder localSO = new SalesOrder();
                 if (IsFromProductsPage)
                 {
-                    localSO.SOItems.Clear();
-                    if (newSalesOrderData.SOItems != null && newSalesOrderData.SOItems.Count > 0)
-                    {
-                        var modified_SOItems = newSalesOrderData.SOItems;
-                        localSO.SOItems.AddRange(modified_SOItems);
-                    }
-                    await App.Database.SaveSalesOrderAsync(localSO);
-                    await NavigationService.NavigateAsync("HomePage");
+                    localSO = await App.Database.GetSalesOrderByIdAsync(newSalesOrderData.Num);
                 }
                 else
                 {
-                    localSO.SOItems.Clear();
-                    if (salesOrderData.SOItems != null && salesOrderData.SOItems.Count > 0)
-                    {
-                        var modified_SOItems = salesOrderData.SOItems;
-                        localSO.SOItems.AddRange(modified_SOItems);
-                    }
-                    await App.Database.SaveSalesOrderAsync(localSO);
-                    await NavigationService.GoBackAsync();
+                    localSO = await App.Database.GetSalesOrderByIdAsync(salesOrderData.SalesOrderId);
                 }
-                //await App.Database.SaveSalesOrderAsync(localSO);
+                if (localSO != null)
+                {
+                    localSO.Username = Customer;
+                    localSO.CustomerContact = Contact;
+                    localSO.Phone = Phone;
+                    localSO.Note = Note;
+                    if (localSO.CustomFields != null && localSO.CustomFields.Count > 0)
+                    {
+                        foreach (var cf in localSO.CustomFields)
+                        {
+                            if (!string.IsNullOrEmpty(cf.Name))
+                            {
+                                if (cf.Name == "Well Name")
+                                {
+                                    var localWellName = localSO.CustomFields.Where(p => p.Name == "Well Name").FirstOrDefault();
+                                    if (localWellName.Info != WellName)
+                                        localWellName.Info = WellName;
+                                }
+                                else if (cf.Name == "Delivery Time")
+                                {
+                                    var localDeliveryTime = localSO.CustomFields.Where(p => p.Name == "Delivery Time").FirstOrDefault();
+                                    if (localDeliveryTime.Info != DeliveryTime)
+                                        localDeliveryTime.Info = DeliveryTime;
+                                }
+                                else if (cf.Name == "Engineer/Rig Supervisor")
+                                {
+                                    var localEngineerRigSupervisor = localSO.CustomFields.Where(p => p.Name == "Engineer/Rig Supervisor").FirstOrDefault();
+                                    if (localEngineerRigSupervisor.Info != Engineer)
+                                        localEngineerRigSupervisor.Info = Engineer;
+                                }
+                                else if (cf.Name == "WBS#/AFE#")
+                                {
+                                    var localAFE = localSO.CustomFields.Where(p => p.Name == "WBS#/AFE#").FirstOrDefault();
+                                    if (localAFE.Info != AFE)
+                                        localAFE.Info = AFE;
+                                }
+                                else if (cf.Name == "Cost/GL Code")
+                                {
+                                    var localGLCode = localSO.CustomFields.Where(p => p.Name == "Cost/GL Code").FirstOrDefault();
+                                    if (localGLCode.Info != GlCode)
+                                        localGLCode.Info = GlCode;
+                                }
+                            }
+                        }
+
+
+                    }
+                    if (IsFromProductsPage)
+                    {
+                        localSO.SOItems.Clear();
+                        if (newSalesOrderData.SOItems != null && newSalesOrderData.SOItems.Count > 0)
+                        {
+                            var modified_SOItems = newSalesOrderData.SOItems;
+                            localSO.SOItems.AddRange(modified_SOItems);
+                        }
+                        await App.Database.SaveSalesOrderAsync(localSO);
+                        await NavigationService.NavigateAsync("HomePage");
+                    }
+                    else
+                    {
+                        localSO.SOItems.Clear();
+                        if (salesOrderData.SOItems != null && salesOrderData.SOItems.Count > 0)
+                        {
+                            var modified_SOItems = salesOrderData.SOItems;
+                            localSO.SOItems.AddRange(modified_SOItems);
+                        }
+                        await App.Database.SaveSalesOrderAsync(localSO);
+                        await NavigationService.GoBackAsync();
+                    }
+                    //await App.Database.SaveSalesOrderAsync(localSO);
+                }
+                else
+                {
+
+                }
             }
-            else
+            catch (Exception e)
             {
 
             }

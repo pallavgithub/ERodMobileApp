@@ -209,19 +209,27 @@ namespace ERodMobileApp.ViewModels
         public async override void OnNavigatedTo(INavigationParameters parameters)
         {
             var Toast = DependencyService.Get<IMessage>();
-            if (parameters.ContainsKey("NewSOId"))
+            try
             {
-                NewSalesOrder = new SalesOrder();
-                var SOID = parameters["NewSOId"] as string;
-                var NewSO = await App.Database.GetSalesOrderByIdAsync(SOID);
-                if (NewSO != null)
+                if (parameters.ContainsKey("NewSOId"))
                 {
-                    NewSalesOrder = NewSO;
+                    NewSalesOrder = new SalesOrder();
+                    var SOID = parameters["NewSOId"] as string;
+                    var NewSO = await App.Database.GetSalesOrderByIdAsync(SOID);
+                    if (NewSO != null)
+                    {
+                        NewSalesOrder = new SalesOrder();
+                        NewSalesOrder = NewSO;
+                    }
+                    else
+                    {
+                        Toast.LongAlert("Order details not found.");
+                    }
                 }
-                else
-                {
-                    Toast.LongAlert("Order details not found.");
-                }
+            }
+            catch (Exception e)
+            {
+
             }
         }
         public void ProductGroupSelected(string group)
@@ -329,27 +337,40 @@ namespace ERodMobileApp.ViewModels
         public async Task GetAllProducts()
         {
             IsBusy = true;
-            var response = await new ApiData().GetData<List<ProductModel>>("api/Products/GetAllEOEParts", true);
-            AllProducts = new List<ProductModel>(response.data);
-            foreach (var item in AllProducts)
+            try
             {
-                if (item.Menu_1_Selection == "Pony Rod")
-                    PonyRod.Add(item);
-                if (item.Menu_1_Selection == "Sucker Rod")
-                    SuckerRod.Add(item);
-                if (item.Menu_1_Selection == "Sinker Bar")
-                    SinkerBar.Add(item);
-                if (item.Menu_1_Selection == "Polished Rod")
-                    PolishedRod.Add(item);
-                if (item.Menu_1_Selection == "Rod Guide")
-                    RodGuide.Add(item);
-                if (item.Menu_1_Selection == "Other Item")
-                    OtherItem.Add(item);
-                if (item.Menu_1_Selection == "Coupling")
-                    Coupling.Add(item);
+                var response = await new ApiData().GetData<List<ProductModel>>("api/Products/GetAllEOEParts", true);
+                var data = IsNotConnected == false ? response.data : await App.Database.GetAllProductsAsync();
+                if (data != null)
+                {
+                    AllProducts = new List<ProductModel>(data);
+                    foreach (var item in AllProducts)
+                    {
+                        await App.Database.SaveProductAsync(item);
+                        if (item.Menu_1_Selection == "Pony Rod")
+                            PonyRod.Add(item);
+                        if (item.Menu_1_Selection == "Sucker Rod")
+                            SuckerRod.Add(item);
+                        if (item.Menu_1_Selection == "Sinker Bar")
+                            SinkerBar.Add(item);
+                        if (item.Menu_1_Selection == "Polished Rod")
+                            PolishedRod.Add(item);
+                        if (item.Menu_1_Selection == "Rod Guide")
+                            RodGuide.Add(item);
+                        if (item.Menu_1_Selection == "Other Item")
+                            OtherItem.Add(item);
+                        if (item.Menu_1_Selection == "Coupling")
+                            Coupling.Add(item);
+                    }
+                    ProductList = new List<ProductModel>(SuckerRod);
+                }
+                ProductGroupSelected("SuckerRod");
+
             }
-            ProductList = new List<ProductModel>(SuckerRod);
-            ProductGroupSelected("SuckerRod");
+            catch (Exception e)
+            {
+
+            }
             IsBusy = false;
             //var item = AllProducts.Find(i => i.Menu_1_Selection == "Sucker Rod" || i.Menu_2_Selection == "EH" || i.Menu_3_Selection == "1 IN" || i.Menu_4_Selection == "25 FT");
         }
@@ -472,7 +493,7 @@ namespace ERodMobileApp.ViewModels
             {
                 if (NewSalesOrder != null)
                 {
-                    NewSalesOrder.SOItems.Add(new SalesOrderItemModel { Description = SelectedProductDescription, QtyOrdered = SelectedProductQuantity , QtyToFulfill = SelectedProductQuantity, Id= RadomNumGenerator.RadomNumber(), SoId=NewSalesOrder.Num});
+                    NewSalesOrder.SOItems.Add(new SalesOrderItemModel { Description = SelectedProductDescription, QtyOrdered = SelectedProductQuantity, QtyToFulfill = SelectedProductQuantity, Id = RadomNumGenerator.RadomNumber(), SoId = NewSalesOrder.Num });
                     Toast.LongAlert("Product added.");
                 }
                 else
@@ -486,19 +507,19 @@ namespace ERodMobileApp.ViewModels
         {
             //try
             //{
-                var Toast = DependencyService.Get<IMessage>();
-                var result = await App.Database.SaveSalesOrderAsync(NewSalesOrder);
-                if (result == 1)
-                {
-                    var navParams = new NavigationParameters();
-                    navParams.Add("IsFromProductsPage", true);
-                    navParams.Add("NewSOId", NewSalesOrder.Num);
-                    await NavigationService.NavigateAsync("EditOrderPage", navParams);
-                }
-                else
-                {
-                    Toast.LongAlert("Something went wrong.");
-                }
+            var Toast = DependencyService.Get<IMessage>();
+            var result = await App.Database.SaveSalesOrderAsync(NewSalesOrder);
+            if (result == 1)
+            {
+                var navParams = new NavigationParameters();
+                navParams.Add("IsFromProductsPage", true);
+                navParams.Add("NewSOId", NewSalesOrder.Num);
+                await NavigationService.NavigateAsync("EditOrderPage", navParams);
+            }
+            else
+            {
+                Toast.LongAlert("Something went wrong.");
+            }
             //}
             //catch(Exception e)
             //{

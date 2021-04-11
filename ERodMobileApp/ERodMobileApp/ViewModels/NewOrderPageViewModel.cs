@@ -83,16 +83,18 @@ namespace ERodMobileApp.ViewModels
         }
         public async void CreateNewOrder()
         {
-            var Toast = DependencyService.Get<IMessage>();
-            var newSalesOrder = new SalesOrder();
-            newSalesOrder.Num = RadomNumGenerator.RadomNumber();
-            newSalesOrder.LocationGroupId = LocationName;
-            newSalesOrder.CustomerContact = CompanyName;
-            newSalesOrder.Username = CustomerName;
-            newSalesOrder.Phone = CustomerPhone;
-            newSalesOrder.Note = Note;
-            newSalesOrder.StatusId = "15";//provisional
-            newSalesOrder.CustomFields = new List<CustomDataField>()
+            try
+            {
+                var Toast = DependencyService.Get<IMessage>();
+                var newSalesOrder = new SalesOrder();
+                newSalesOrder.Num = RadomNumGenerator.RadomNumber();
+                newSalesOrder.LocationGroupId = LocationName;
+                newSalesOrder.CustomerContact = CompanyName;
+                newSalesOrder.Username = CustomerName;
+                newSalesOrder.Phone = CustomerPhone;
+                newSalesOrder.Note = Note;
+                newSalesOrder.StatusId = "15";//provisional
+                newSalesOrder.CustomFields = new List<CustomDataField>()
             {
                 new CustomDataField{ RecordId=newSalesOrder.Num ,Name="Engineer/Rig Supervisor", Info=Engineer},
                 new CustomDataField{ RecordId=newSalesOrder.Num ,Name="Well Name", Info=WellName},
@@ -101,16 +103,21 @@ namespace ERodMobileApp.ViewModels
                 new CustomDataField{ RecordId=newSalesOrder.Num ,Name="WBS#/AFE#", Info=AFE},
                 new CustomDataField{ RecordId=newSalesOrder.Num ,Name="Delivery Time", Info=DateTime.Now.ToString()},
             };
-            var result = await App.Database.SaveSalesOrderAsync(newSalesOrder);
-            if (result == 1)
-            {
-                var navParams = new NavigationParameters();
-                navParams.Add("NewSOId", newSalesOrder.Num);
-                await NavigationService.NavigateAsync("ProductsPage", navParams);
+                var result = await App.Database.SaveSalesOrderAsync(newSalesOrder);
+                if (result == 1)
+                {
+                    var navParams = new NavigationParameters();
+                    navParams.Add("NewSOId", newSalesOrder.Num);
+                    await NavigationService.NavigateAsync("ProductsPage", navParams);
+                }
+                else
+                {
+                    Toast.LongAlert("Something went wrong");
+                }
             }
-            else
+            catch (Exception e)
             {
-                Toast.LongAlert("Something went wrong");
+
             }
             //var cfResult = await App.Database.SaveCustomFieldsAsync(newSalesOrder.CustomFields);
             //var so = await App.Database.GetSalesOrderByIdAsync(newSalesOrder.Num);

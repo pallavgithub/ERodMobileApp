@@ -19,6 +19,7 @@ namespace ERodMobileApp.DatabaseRepo
             database.CreateTableAsync<SalesOrderItemModel>().Wait();
             database.CreateTableAsync<CustomDataField>().Wait();
             database.CreateTableAsync<UserSignature>().Wait();
+            database.CreateTableAsync<ProductModel>().Wait();
         }
 
         public async Task<List<SalesOrder>> GetSalesOrderAsync()
@@ -174,6 +175,27 @@ namespace ERodMobileApp.DatabaseRepo
         public async Task<UserSignature> GetSignatureAsync(string OrderId)
         {
             return await database.Table<UserSignature>().Where(x => x.SalesOrderID == OrderId).FirstOrDefaultAsync();
+        }
+        public async Task<int> SaveProductAsync(ProductModel product)
+        {
+            var existingProduct = await database.Table<ProductModel>().Where(x => x.Part == product.Part).FirstOrDefaultAsync();
+
+            if (existingProduct != null)
+            {
+                // Update an existing note.              
+                return await database.UpdateAsync(product);
+            }
+            else
+            {
+                // Save a new note.
+                return await database.InsertAsync(product);
+            }
+        }
+        public async Task<List<ProductModel>> GetAllProductsAsync()
+        {
+            //Get all notes.
+            var AllProducts = await database.Table<ProductModel>().ToListAsync();           
+            return AllProducts;
         }
     }
 }

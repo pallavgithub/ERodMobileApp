@@ -1,7 +1,10 @@
-﻿namespace ERodMobileApp.Models
+﻿using SQLite;
+
+namespace ERodMobileApp.Models
 {
     public class ProductModel
     {
+        [PrimaryKey]
         public string Part { get; set; }
         public string Description { get; set; }
         public string Menu_1_Name { get; set; }
