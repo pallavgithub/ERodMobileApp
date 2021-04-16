@@ -2,6 +2,7 @@
 using SQLite;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -168,7 +169,7 @@ namespace ERodMobileApp.DatabaseRepo
             }
             else
             {
-               await database.InsertAsync(sign);
+                await database.InsertAsync(sign);
             }
             return sign;
         }
@@ -194,8 +195,31 @@ namespace ERodMobileApp.DatabaseRepo
         public async Task<List<ProductModel>> GetAllProductsAsync()
         {
             //Get all notes.
-            var AllProducts = await database.Table<ProductModel>().ToListAsync();           
+            var AllProducts = await database.Table<ProductModel>().ToListAsync();
             return AllProducts;
+        }
+        public async Task<List<SalesOrder>> SaveAndCompareSalesOrderAsync(List<SalesOrder> soList)
+        {
+            var localSOList = await GetSalesOrderAsync();
+            var records = new List<SalesOrder>();
+            if (localSOList.Count != 0)
+            {
+                foreach (var item in soList)
+                {
+                    var localSOStatus = localSOList.Where(i => i.Num == item.Num).FirstOrDefault().StatusId;
+                    if (localSOStatus != item.StatusId)
+                        records.Add(item);
+                    await SaveSalesOrderAsync(item);
+                }
+            }
+            else
+            {
+                foreach (var item in soList)
+                {
+                    await SaveSalesOrderAsync(item);
+                }
+            }
+            return records;
         }
     }
 }

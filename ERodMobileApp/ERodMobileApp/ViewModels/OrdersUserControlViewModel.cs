@@ -302,18 +302,20 @@ namespace ERodMobileApp.ViewModels
             ClosedSalesOrdersList = new ObservableCollection<SalesOrderModel>();
             try
             {
-
-                var response = await new ApiData().PostData<List<SalesOrder>>("api/SalesOrder/GetCustomerOrders", user, true);
-
-                var data = IsNotConnected == false ? response.data : await App.Database.GetSalesOrderAsync();
-
-                if (data != null && data != null)
+                // var data = IsNotConnected == false ? response.data : await App.Database.GetSalesOrderAsync();
+                if (IsNotConnected == false)
+                {
+                    var response = await new ApiData().PostData<List<SalesOrder>>("api/SalesOrder/GetCustomerOrders", user, true);
+                    var notificationList = await App.Database.SaveAndCompareSalesOrderAsync(response.data);
+                }
+                var data = await App.Database.GetSalesOrderAsync();
+                if (data != null)
                 {
                     var all_Sales_Orders = data;
                     foreach (var item in all_Sales_Orders)
                     {
                         // item.CustomFields.ForEach(x => x.SalesOrderNum = item.Num);
-                        await App.Database.SaveSalesOrderAsync(item);
+                        //await App.Database.SaveSalesOrderAsync(item);
                         if (item.CustomFields.Count > 0)
                         {
                             SalesOrderModel salesOrder = new SalesOrderModel();
