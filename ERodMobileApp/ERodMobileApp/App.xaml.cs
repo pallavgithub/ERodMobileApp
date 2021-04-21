@@ -1,8 +1,10 @@
 using ERodMobileApp.DatabaseRepo;
+using ERodMobileApp.Helpers;
 using ERodMobileApp.ViewModels;
 using ERodMobileApp.Views;
 using Prism;
 using Prism.Ioc;
+using Prism.Mvvm;
 using Prism.Navigation;
 using System;
 using System.IO;
@@ -38,19 +40,28 @@ namespace ERodMobileApp
         protected override async void OnStart()
         {
             await NavigationService.NavigateAsync("NavigationPage/MainPage");
-           
+
         }
 
         protected override void OnInitialized()
         {
             InitializeComponent();
             Device.SetFlags(new string[] { "MediaElement_Experimental" });
-            Plugin.Media.CrossMedia.Current.Initialize();      
-
+            Plugin.Media.CrossMedia.Current.Initialize();
+            DependencyService.Get<INotificationManager>().Initialize();
+            MessagingCenter.Subscribe<string>(this, "HomePage", async (message) =>
+            {
+                // var notificationPage = new HomePage();
+                var navParams = new NavigationParameters();
+                navParams.Add("OpenFromLocalNotification", true);
+                await NavigationService.NavigateAsync("HomePage", navParams);
+                // await (MainPage as NavigationPage).PushAsync(favorite, true);
+            });
         }
 
         protected override void OnSleep()
         {
+            //MessagingCenter.Unsubscribe<string>(this, "HomePage");
             Connectivity.ConnectivityChanged -= Connectivity_ConnectivityChanged;
             // Handle when your app sleeps
         }
@@ -95,6 +106,7 @@ namespace ERodMobileApp
             containerRegistry.RegisterForNavigation<SignaturePage, SignaturePageViewModel>();
             containerRegistry.RegisterForNavigation<ProductsPage, ProductsPageViewModel>();
             containerRegistry.RegisterForNavigation<EditOrderPage, EditOrderPageViewModel>();
+            //ViewModelLocationProvider.Register<NotificationUserControl, OrdersUserControlViewModel>();
         }
 
         public static async Task<PermissionStatus> CheckAndRequestPhonePermission()

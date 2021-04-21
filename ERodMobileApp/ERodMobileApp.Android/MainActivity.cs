@@ -1,20 +1,18 @@
-﻿using Android;
-using Android.App;
+﻿using Android.App;
+using Android.Content;
 using Android.Content.PM;
 using Android.OS;
 using Android.Views;
-using AndroidX.Core.App;
-using AndroidX.Core.Content;
 using ERodMobileApp.Droid.CustomRenderers;
+using ERodMobileApp.Helpers;
 using ERodMobileApp.Views;
 using Prism;
 using Prism.Ioc;
-using System;
 using Xamarin.Forms;
 
 namespace ERodMobileApp.Droid
 {
-    [Activity(Theme = "@style/MainTheme",
+    [Activity(Theme = "@style/MainTheme", LaunchMode = LaunchMode.SingleTop,
               ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation | ConfigChanges.UiMode | ConfigChanges.ScreenLayout | ConfigChanges.SmallestScreenSize)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
@@ -32,7 +30,7 @@ namespace ERodMobileApp.Droid
             //{
             //    System.Diagnostics.Debug.WriteLine("Permission Granted!!!");
             //}
-
+            CreateNotificationFromIntent(Intent);
             var uiOptions = (int)Window.DecorView.SystemUiVisibility;
             uiOptions ^= (int)SystemUiFlags.LayoutStable;
             uiOptions ^= (int)SystemUiFlags.LayoutFullscreen;
@@ -62,6 +60,20 @@ namespace ERodMobileApp.Droid
             Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
 
             base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+        }
+        protected override void OnNewIntent(Intent intent)
+        {
+            CreateNotificationFromIntent(intent);
+        }
+        void CreateNotificationFromIntent(Intent intent)
+        {
+            if (intent?.Extras != null)
+            {
+                MessagingCenter.Send("message", "HomePage");
+                string title = intent.GetStringExtra(AndroidNotificationManager.TitleKey);
+                string message = intent.GetStringExtra(AndroidNotificationManager.MessageKey);
+                DependencyService.Get<INotificationManager>().ReceiveNotification(title, message);
+            }
         }
 
     }

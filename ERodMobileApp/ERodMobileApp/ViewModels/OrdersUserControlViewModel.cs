@@ -106,6 +106,12 @@ namespace ERodMobileApp.ViewModels
             get => _otherItems;
             set => SetProperty(ref _otherItems, value);
         }
+        private ObservableCollection<NotificationModel> _notificationList;
+        public ObservableCollection<NotificationModel> NotificationList
+        {
+            get => _notificationList;
+            set => SetProperty(ref _notificationList, value);
+        }
         private string _orderId;
         public string OrderId
         {
@@ -278,12 +284,20 @@ namespace ERodMobileApp.ViewModels
         }
         public DelegateCommand<SalesOrderModel> EditOrderCommand { get; set; }
         public DelegateCommand RefreshCommand { get; set; }
+        INotificationManager notificationManager;
+        int notificationNumber = 0;
         public OrdersUserControlViewModel(INavigationService navigationService) : base(navigationService)
         {
             GetExceedDetails();
-            GetCustomerSalesOrders();
+           // GetCustomerSalesOrders();
             EditOrderCommand = new DelegateCommand<SalesOrderModel>(GoToEditOrderPage);
             RefreshCommand = new DelegateCommand(RefreshOrdersData);
+            notificationManager = DependencyService.Get<INotificationManager>();
+            notificationManager.NotificationReceived += (sender, eventArgs) =>
+            {
+                var evtData = (NotificationEventArgs)eventArgs;
+                ShowNotification(evtData.Title, evtData.Message);
+            };
         }
         public async void GetCustomerSalesOrders()
         {
@@ -307,6 +321,53 @@ namespace ERodMobileApp.ViewModels
                 {
                     var response = await new ApiData().PostData<List<SalesOrder>>("api/SalesOrder/GetCustomerOrders", user, true);
                     var notificationList = await App.Database.SaveAndCompareSalesOrderAsync(response.data);
+                    if (notificationList != null && notificationList.Count != 0)
+                    {
+                        NotificationList = new ObservableCollection<NotificationModel>();
+                        foreach (var notification in notificationList)
+                        {
+                            var noti = new NotificationModel();
+                            noti.Date = notification.DateLastModified.Split(' ')[0] ?? "";
+                            if (notification.StatusId == "20")
+                                noti.Message = "Order Confirmed.";
+                            else if (notification.StatusId == "25")
+                            {
+                                foreach (var cf in notification.CustomFields)
+                                {
+                                    if (!string.IsNullOrEmpty(cf.Name) && (cf.Name == "CF-Shipped" || cf.Name == "CF-Delivered"))
+                                    {
+                                        if (cf.Name == "CF-Shipped")
+                                        {
+                                            if (cf.Info == "1")
+                                                noti.Message = "Order Shipped.";
+                                        }
+                                        else if (cf.Name == "CF-Delivered")
+                                        {
+                                            if (cf.Info == "1")
+                                                noti.Message = "Order Delivered.";
+                                        }
+                                        else
+                                        {
+                                            noti.Message = "Order is in Process.";
+                                        }
+                                    }
+                                }
+
+                            }
+                            else if (notification.StatusId == "60")
+                                noti.Message = "Order Closed.";
+                            if (notification.CustomFields != null && notification.CustomFields.Count > 0)
+                                noti.WellName = notification.CustomFields.Where(c => c.Name == "Well Name").FirstOrDefault().Info;
+                            else
+                                noti.WellName = "";
+                            NotificationList.Add(noti);
+                        }
+                        NotificationList = new ObservableCollection<NotificationModel>(NotificationList);
+                        notificationNumber++;
+                        string title = $"Local Notification #{notificationNumber}";
+                        string message = $"You have {notificationList.Count} new notifications!";
+                        notificationManager.SendNotification(title, message);
+                    }
                 }
                 var data = await App.Database.GetSalesOrderAsync();
                 if (data != null)
@@ -606,7 +667,39 @@ namespace ERodMobileApp.ViewModels
         }
         public void RefreshOrdersData()
         {
-            GetCustomerSalesOrders();
+            notificationNumber++;
+            string title = $"Local Notification #{notificationNumber}";
+            string message = $"You have now received {notificationNumber} notifications!";
+            notificationManager.SendNotification(title, message);
+
+            //GetCustomerSalesOrders();
+        }
+        void OnSendClick(object sender, EventArgs e)
+        {
+            notificationNumber++;
+            string title = $"Local Notification #{notificationNumber}";
+            string message = $"You have now received {notificationNumber} notifications!";
+            notificationManager.SendNotification(title, message);
+        }
+
+        void OnScheduleClick(object sender, EventArgs e)
+        {
+            notificationNumber++;
+            string title = $"Local Notification #{notificationNumber}";
+            string message = $"You have now received {notificationNumber} notifications!";
+            notificationManager.SendNotification(title, message, DateTime.Now.AddSeconds(10));
+        }
+
+        void ShowNotification(string title, string message)
+        {
+            Device.BeginInvokeOnMainThread(() =>
+            {
+                var msg = new Label()
+                {
+                    Text = $"Notification Received:\nTitle: {title}\nMessage: {message}"
+                };
+                //stackLayout.Children.Add(msg);
+            });
         }
     }
 }

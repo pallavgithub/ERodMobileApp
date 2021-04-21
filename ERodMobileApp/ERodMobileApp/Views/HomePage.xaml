@@ -31,7 +31,7 @@
                         <UserControl:NewOrderUserControl/>
                     </StackLayout>
                     <StackLayout VerticalOptions="FillAndExpand" IsVisible="{Binding TabData, Converter={StaticResource TabVisibilityConverter}, ConverterParameter=Notification}">
-                        <UserControl:NotificationUserControl/>
+                        <UserControl:NotificationUserControl />
                     </StackLayout>
                 </Grid>
             </StackLayout>

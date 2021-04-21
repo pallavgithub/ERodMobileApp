@@ -23,6 +23,17 @@ namespace ERodMobileApp.ViewModels
             GoToNewOrderCommand = new DelegateCommand(NewOrderTabSelected);
             GoToNotificationCommand = new DelegateCommand(NotificationTabSelected);
         }
+        public override void OnNavigatedTo(INavigationParameters parameters)
+        {
+            if (parameters.ContainsKey("OpenFromLocalNotification"))
+            {
+                if ((bool)parameters["OpenFromLocalNotification"])
+                {
+                    TabData = "Notification";
+                }
+            }
+        }
+
         public void ProfileTabSelected()
         {
             TabData = "Profile";

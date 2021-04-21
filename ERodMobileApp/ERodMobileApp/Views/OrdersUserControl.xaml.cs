@@ -13,6 +13,7 @@ namespace ERodMobileApp.Views
         {
             InitializeComponent();
             (BindingContext as OrdersUserControlViewModel).SoListPageIsVisible = true;
+            (BindingContext as OrdersUserControlViewModel).GetCustomerSalesOrders();
         }
         private void ClosedOrderDetails_Tapped(object sender, EventArgs e)
         {

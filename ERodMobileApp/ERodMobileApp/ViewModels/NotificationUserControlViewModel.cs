@@ -13,7 +13,7 @@ namespace ERodMobileApp.ViewModels
         }
         public NotificationUserControlViewModel(INavigationService navigationService):base(navigationService)
         {
-            GetAllNotifications();
+            //GetAllNotifications();
         }
         public void GetAllNotifications()
         {

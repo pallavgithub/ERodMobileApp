@@ -113,6 +113,8 @@
     <Compile Include="CustomRenderers\CloseApplication.cs" />
     <Compile Include="CustomRenderers\MessageIOS.cs" />
     <Compile Include="CustomRenderers\XEntryRenderer.cs" />
+    <Compile Include="iOSNotificationManager.cs" />
+    <Compile Include="iOSNotificationReceiver.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
     <Compile Include="SplashPlayerController.cs" />

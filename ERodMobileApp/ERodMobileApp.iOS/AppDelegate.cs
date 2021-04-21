@@ -5,6 +5,7 @@ using Prism;
 using Prism.Ioc;
 using System.Linq;
 using UIKit;
+using UserNotifications;
 using Xamarin.Forms;
 namespace ERodMobileApp.iOS
 {
@@ -25,18 +26,19 @@ namespace ERodMobileApp.iOS
         {
             global::Xamarin.Forms.Forms.Init();
             Window = new UIWindow(UIScreen.MainScreen.Bounds);
+            UNUserNotificationCenter.Current.Delegate = new iOSNotificationReceiver();
 
-           // var controller = new SplashPlayerController();
+            // var controller = new SplashPlayerController();
 
 
-           // var NavController = new UINavigationController(controller);
+            // var NavController = new UINavigationController(controller);
 
-           // Window.RootViewController = NavController;
-           // Window.MakeKeyAndVisible();
+            // Window.RootViewController = NavController;
+            // Window.MakeKeyAndVisible();
 
-          //  MessagingCenter.Subscribe<object, object>(this, "ShowMainScreen", (sender, args) =>
-           // {
-                LoadApplication(new App(new iOSInitializer()));
+            //  MessagingCenter.Subscribe<object, object>(this, "ShowMainScreen", (sender, args) =>
+            // {
+            LoadApplication(new App(new iOSInitializer()));
                 base.FinishedLaunching(app, options);
            // });
 

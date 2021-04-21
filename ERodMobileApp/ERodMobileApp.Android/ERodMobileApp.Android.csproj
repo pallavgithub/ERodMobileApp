@@ -75,6 +75,9 @@
     <PackageReference Include="Prism.Unity.Forms" Version="8.0.0.1909" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AlarmHandler.cs" />
+    <Compile Include="AndroidNotificationManager.cs" />
+    <Compile Include="BootReceiver.cs" />
     <Compile Include="CustomRenderers\CloseApplication.cs" />
     <Compile Include="CustomRenderers\DeviceInfo.cs" />
     <Compile Include="CustomRenderers\MessageAndroid.cs" />
