@@ -1,5 +1,6 @@
 ﻿using Prism.Commands;
 using Prism.Navigation;
+using Xamarin.Forms;
 
 namespace ERodMobileApp.ViewModels
 {
@@ -22,16 +23,14 @@ namespace ERodMobileApp.ViewModels
             GoToOrdersCommand = new DelegateCommand(OrdersTabSelected);
             GoToNewOrderCommand = new DelegateCommand(NewOrderTabSelected);
             GoToNotificationCommand = new DelegateCommand(NotificationTabSelected);
+            MessagingCenter.Subscribe<string>(this, "FromNotification", async (message) =>
+            {
+                TabData = "Notification";
+            });
         }
         public override void OnNavigatedTo(INavigationParameters parameters)
         {
-            if (parameters.ContainsKey("OpenFromLocalNotification"))
-            {
-                if ((bool)parameters["OpenFromLocalNotification"])
-                {
-                    TabData = "Notification";
-                }
-            }
+
         }
 
         public void ProfileTabSelected()

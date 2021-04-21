@@ -1,5 +1,6 @@
 using ERodMobileApp.DatabaseRepo;
 using ERodMobileApp.Helpers;
+using ERodMobileApp.Models;
 using ERodMobileApp.ViewModels;
 using ERodMobileApp.Views;
 using Prism;
@@ -7,6 +8,7 @@ using Prism.Ioc;
 using Prism.Mvvm;
 using Prism.Navigation;
 using System;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Threading.Tasks;
 using Xamarin.Essentials;
@@ -19,7 +21,7 @@ namespace ERodMobileApp
     public partial class App
     {
         static SalesOrderSqliteDatabase database;
-
+        public static ObservableCollection<NotificationModel> AllNotifications { get; set; }
         // Create the database connection as a singleton.
         public static SalesOrderSqliteDatabase Database
         {
@@ -49,14 +51,7 @@ namespace ERodMobileApp
             Device.SetFlags(new string[] { "MediaElement_Experimental" });
             Plugin.Media.CrossMedia.Current.Initialize();
             DependencyService.Get<INotificationManager>().Initialize();
-            MessagingCenter.Subscribe<string>(this, "HomePage", async (message) =>
-            {
-                // var notificationPage = new HomePage();
-                var navParams = new NavigationParameters();
-                navParams.Add("OpenFromLocalNotification", true);
-                await NavigationService.NavigateAsync("HomePage", navParams);
-                // await (MainPage as NavigationPage).PushAsync(favorite, true);
-            });
+           
         }
 
         protected override void OnSleep()

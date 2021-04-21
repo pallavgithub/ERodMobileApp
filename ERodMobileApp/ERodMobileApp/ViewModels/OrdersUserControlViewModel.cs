@@ -288,8 +288,14 @@ namespace ERodMobileApp.ViewModels
         int notificationNumber = 0;
         public OrdersUserControlViewModel(INavigationService navigationService) : base(navigationService)
         {
+            //if (App.IsFromNotification)
+            //{
+
+            //}
+            //else
+            //{
             GetExceedDetails();
-           // GetCustomerSalesOrders();
+            GetCustomerSalesOrders();
             EditOrderCommand = new DelegateCommand<SalesOrderModel>(GoToEditOrderPage);
             RefreshCommand = new DelegateCommand(RefreshOrdersData);
             notificationManager = DependencyService.Get<INotificationManager>();
@@ -298,6 +304,7 @@ namespace ERodMobileApp.ViewModels
                 var evtData = (NotificationEventArgs)eventArgs;
                 ShowNotification(evtData.Title, evtData.Message);
             };
+            //}
         }
         public async void GetCustomerSalesOrders()
         {
@@ -330,6 +337,8 @@ namespace ERodMobileApp.ViewModels
                             noti.Date = notification.DateLastModified.Split(' ')[0] ?? "";
                             if (notification.StatusId == "20")
                                 noti.Message = "Order Confirmed.";
+                            if (notification.StatusId == "25")
+                                noti.Message = "Order is in Process.";
                             else if (notification.StatusId == "25")
                             {
                                 foreach (var cf in notification.CustomFields)
@@ -363,6 +372,8 @@ namespace ERodMobileApp.ViewModels
                             NotificationList.Add(noti);
                         }
                         NotificationList = new ObservableCollection<NotificationModel>(NotificationList);
+                        App.AllNotifications = new ObservableCollection<NotificationModel>(NotificationList);
+                        MessagingCenter.Send("message", "NotifactionsAdded");
                         notificationNumber++;
                         string title = $"Local Notification #{notificationNumber}";
                         string message = $"You have {notificationList.Count} new notifications!";
@@ -667,12 +678,12 @@ namespace ERodMobileApp.ViewModels
         }
         public void RefreshOrdersData()
         {
-            notificationNumber++;
-            string title = $"Local Notification #{notificationNumber}";
-            string message = $"You have now received {notificationNumber} notifications!";
-            notificationManager.SendNotification(title, message);
+            //notificationNumber++;
+            //string title = $"Local Notification #{notificationNumber}";
+            //string message = $"You have now received {notificationNumber} notifications!";
+            //notificationManager.SendNotification(title, message);
 
-            //GetCustomerSalesOrders();
+            GetCustomerSalesOrders();
         }
         void OnSendClick(object sender, EventArgs e)
         {

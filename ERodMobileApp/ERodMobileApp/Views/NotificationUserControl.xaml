@@ -25,7 +25,7 @@
                         <Label Text="Notifications" FontFamily="{StaticResource RobotoLight}" HorizontalOptions="Start" TextColor="#FF4D00" FontSize="26" VerticalOptions="CenterAndExpand" TextTransform="Uppercase"/>
                         <Image Source="RodLogo.png" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" HeightRequest="30"/>
                     </StackLayout>
-                    <ListView Grid.Row="1" ItemsSource="{Binding NotificationList}" HasUnevenRows="True" RowHeight="74">
+                    <ListView Grid.Row="1" x:Name="Notification_Listview" ItemsSource="{Binding NotificationList}" HasUnevenRows="True" RowHeight="74">
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <ViewCell>

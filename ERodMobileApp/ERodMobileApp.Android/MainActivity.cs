@@ -69,7 +69,7 @@ namespace ERodMobileApp.Droid
         {
             if (intent?.Extras != null)
             {
-                MessagingCenter.Send("message", "HomePage");
+                MessagingCenter.Send("message", "FromNotification");
                 string title = intent.GetStringExtra(AndroidNotificationManager.TitleKey);
                 string message = intent.GetStringExtra(AndroidNotificationManager.MessageKey);
                 DependencyService.Get<INotificationManager>().ReceiveNotification(title, message);
