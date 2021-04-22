@@ -12,7 +12,15 @@ namespace ERodMobileApp.iOS
             ProcessNotification(notification);
             completionHandler(UNNotificationPresentationOptions.Alert);
         }
-
+        public override void DidReceiveNotificationResponse(UNUserNotificationCenter center, UNNotificationResponse response, Action completionHandler)
+        {
+            if (response.IsDefaultAction)
+            {
+                ProcessNotification(response.Notification);
+                MessagingCenter.Send("message", "FromNotification");
+            }
+            completionHandler();
+        }
         void ProcessNotification(UNNotification notification)
         {
             string title = notification.Request.Content.Title;

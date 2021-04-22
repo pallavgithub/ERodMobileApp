@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace ERodMobileApp.ViewModels
@@ -328,57 +329,7 @@ namespace ERodMobileApp.ViewModels
                 {
                     var response = await new ApiData().PostData<List<SalesOrder>>("api/SalesOrder/GetCustomerOrders", user, true);
                     var notificationList = await App.Database.SaveAndCompareSalesOrderAsync(response.data);
-                    if (notificationList != null && notificationList.Count != 0)
-                    {
-                        NotificationList = new ObservableCollection<NotificationModel>();
-                        foreach (var notification in notificationList)
-                        {
-                            var noti = new NotificationModel();
-                            noti.Date = notification.DateLastModified.Split(' ')[0] ?? "";
-                            if (notification.StatusId == "20")
-                                noti.Message = "Order Confirmed.";
-                            if (notification.StatusId == "25")
-                                noti.Message = "Order is in Process.";
-                            else if (notification.StatusId == "25")
-                            {
-                                foreach (var cf in notification.CustomFields)
-                                {
-                                    if (!string.IsNullOrEmpty(cf.Name) && (cf.Name == "CF-Shipped" || cf.Name == "CF-Delivered"))
-                                    {
-                                        if (cf.Name == "CF-Shipped")
-                                        {
-                                            if (cf.Info == "1")
-                                                noti.Message = "Order Shipped.";
-                                        }
-                                        else if (cf.Name == "CF-Delivered")
-                                        {
-                                            if (cf.Info == "1")
-                                                noti.Message = "Order Delivered.";
-                                        }
-                                        else
-                                        {
-                                            noti.Message = "Order is in Process.";
-                                        }
-                                    }
-                                }
-
-                            }
-                            else if (notification.StatusId == "60")
-                                noti.Message = "Order Closed.";
-                            if (notification.CustomFields != null && notification.CustomFields.Count > 0)
-                                noti.WellName = notification.CustomFields.Where(c => c.Name == "Well Name").FirstOrDefault().Info;
-                            else
-                                noti.WellName = "";
-                            NotificationList.Add(noti);
-                        }
-                        NotificationList = new ObservableCollection<NotificationModel>(NotificationList);
-                        App.AllNotifications = new ObservableCollection<NotificationModel>(NotificationList);
-                        MessagingCenter.Send("message", "NotifactionsAdded");
-                        notificationNumber++;
-                        string title = $"Local Notification #{notificationNumber}";
-                        string message = $"You have {notificationList.Count} new notifications!";
-                        notificationManager.SendNotification(title, message);
-                    }
+                    _ = Task.Run(() => ProcessNotificationListData(notificationList));
                 }
                 var data = await App.Database.GetSalesOrderAsync();
                 if (data != null)
@@ -711,6 +662,61 @@ namespace ERodMobileApp.ViewModels
                 };
                 //stackLayout.Children.Add(msg);
             });
+        }
+        Task ProcessNotificationListData(List<SalesOrder> notificationList)
+        {
+            if (notificationList != null && notificationList.Count != 0)
+            {
+                NotificationList = new ObservableCollection<NotificationModel>();
+                foreach (var notification in notificationList)
+                {
+                    var noti = new NotificationModel();
+                    noti.Date = notification.DateLastModified.Split(' ')[0] ?? "";
+                    if (notification.StatusId == "20")
+                        noti.Message = "Order Confirmed.";
+                    if (notification.StatusId == "25")
+                        noti.Message = "Order is in Process.";
+                    else if (notification.StatusId == "25")
+                    {
+                        foreach (var cf in notification.CustomFields)
+                        {
+                            if (!string.IsNullOrEmpty(cf.Name) && (cf.Name == "CF-Shipped" || cf.Name == "CF-Delivered"))
+                            {
+                                if (cf.Name == "CF-Shipped")
+                                {
+                                    if (cf.Info == "1")
+                                        noti.Message = "Order Shipped.";
+                                }
+                                else if (cf.Name == "CF-Delivered")
+                                {
+                                    if (cf.Info == "1")
+                                        noti.Message = "Order Delivered.";
+                                }
+                                else
+                                {
+                                    noti.Message = "Order is in Process.";
+                                }
+                            }
+                        }
+
+                    }
+                    else if (notification.StatusId == "60")
+                        noti.Message = "Order Closed.";
+                    if (notification.CustomFields != null && notification.CustomFields.Count > 0)
+                        noti.WellName = notification.CustomFields.Where(c => c.Name == "Well Name").FirstOrDefault().Info;
+                    else
+                        noti.WellName = "";
+                    NotificationList.Add(noti);
+                }
+                NotificationList = new ObservableCollection<NotificationModel>(NotificationList);
+                App.AllNotifications = new ObservableCollection<NotificationModel>(NotificationList);
+                MessagingCenter.Send("message", "NotifactionsAdded");
+                notificationNumber++;
+                string title = $"Local Notification #{notificationNumber}";
+                string message = $"You have {notificationList.Count} new notifications!";
+                notificationManager.SendNotification(title, message);
+            }
+            return Task.CompletedTask;
         }
     }
 }
